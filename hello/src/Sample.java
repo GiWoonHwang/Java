@@ -5,7 +5,31 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 public class Sample {
+    // Enum은 서로 관련이 있는 여러 개의 상수 집합을 정의할 때 사용하는 자료형이다.
+    // 매직넘버(1과 같은 숫자 상수값)를 사용할 때보다 코드가 명확해 진다.
+    // 잘못된 값을 사용함으로 인해 발생할수 있는 위험성이 사라진다.
+    // enum CoffeeType{
+    //     AMERICANO,
+    //     ICE_AMERICANO,
+    //     CAFE_LATTE
+    // };
+
+
     public static  void main(String[] args){
+        // System.out.println(CoffeeType.AMERICANO);
+        // System.out.println(CoffeeType.ICE_AMERICANO);
+        // System.out.println(CoffeeType.CAFE_LATTE);
+
+        // for(CoffeeType type: CoffeeType.values()){
+        //     System.out.println(type);
+        // }
+        
+
+
+
+
+
+
         // int i = 0;
         // System.out.println(i++); // 문장이 실행된 이후에 증가
         // System.out.println(i);
@@ -165,24 +189,54 @@ public class Sample {
         // HashSet<String> set = new HashSet<>(Arrays.asList("1","2","3","4"));
         // System.out.println(set);
         
-        HashSet<Integer>s1 = new HashSet<>(Arrays.asList(1,2,3,4,5,6));
-        HashSet<Integer>s2 = new HashSet<>(Arrays.asList(4,5,6,7,8));
+        // HashSet<Integer>s1 = new HashSet<>(Arrays.asList(1,2,3,4,5,6));
+        // HashSet<Integer>s2 = new HashSet<>(Arrays.asList(4,5,6,7,8));
         
-        HashSet<Integer> intersection = new HashSet<>(s1); // s1으로 intersaction 생성 만약 retainAll 메서드를 사용하면 s1의 내용이 변경될 것이다.
-        intersection.retainAll(s2);
-        System.out.println(intersection);
+        // HashSet<Integer> intersection = new HashSet<>(s1); // s1으로 intersaction 생성 만약 retainAll 메서드를 사용하면 s1의 내용이 변경될 것이다.
+        // intersection.retainAll(s2);
+        // System.out.println(intersection);
         
-        HashSet<Integer> union = new HashSet<>(s1);
-        union.addAll(s2);
+        // HashSet<Integer> union = new HashSet<>(s1);
+        // union.addAll(s2);
 
-        HashSet<Integer> substract = new HashSet<>(s1);  // s1으로 substract 생성
-        substract.removeAll(s2); // 차집합 수행
-        System.out.println(union);  // [1, 2, 3, 4, 5, 6, 7, 8, 9] 출력
+        // HashSet<Integer> substract = new HashSet<>(s1);  // s1으로 substract 생성
+        // substract.removeAll(s2); // 차집합 수행
+        // System.out.println(union);  // [1, 2, 3, 4, 5, 6, 7, 8, 9] 출력
 
-        HashSet<String> set = new HashSet<>();
-        set.add("ddd");
-        set.addAll(Arrays.asList("null","Ddd"));
-        set.remove("To");
+        // HashSet<String> set = new HashSet<>();
+        // set.add("ddd");
+        // set.addAll(Arrays.asList("null","Ddd"));
+        // set.remove("To");
+        
+        // String num = "123";
+        // int n = Integer.parseInt(num);
+        // System.out.println(n);  // 123 출력 문자열을 숫자로 바꾸어 준다.
+
+        // int n = 123;
+        // String num = "" + n;
+        // System.out.println(num);
+        // String num1 = String.valueOf(n);
+        // String num2 = Integer.toString(n);
+        // System.out.println(num1);  // 123 출력
+        // System.out.println(num2);  // 123 출력
+        
+        // String num = "123.456";
+        // double d = Double.parseDouble(num); // "실수형 문자열을 실수로 바꾸어 준다."
+
+        // // 실수를 정수로 바꿀 때에는 캐스팅이 필요 없지만 정수 -> 실수는 캐스팅이  필요하다.
+        // double d2 = 123.241;
+        // int n2 = (int) d2; // 자료형을 강제로 변한한다.
+        // System.out.println(n2);
+
+        // final int n = 123;
+        // n = 456; // 값 변경이 불가능하다 
+        // System.out.println(n);
+        
+        // final ArrayList<String> a = new ArrayList<>(Arrays.asList("a","b")); // 배열도 재할당 불가능
+        
+        
+        
+
     }
     
 }
