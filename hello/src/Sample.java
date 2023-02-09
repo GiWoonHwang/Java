@@ -234,6 +234,46 @@ public class Sample {
         
         // final ArrayList<String> a = new ArrayList<>(Arrays.asList("a","b")); // 배열도 재할당 불가능
         
+        // int a = 29;
+        // int b = 50;
+        // int c = 55;
+
+        // System.out.println((a+b+c)/3);
+
+        // String pin = "123456-1234567";
+        // String yyyyMMdd = pin.substring(0,6);
+        // String num = pin.substring(7);
+
+        // System.out.println(yyyyMMdd);
+        // System.out.println(num);
+
+        // System.out.println(pin.charAt(7)); // 1이면 남자, 2면 여자
+
+        // String a = "a:b:c:d";
+        // String b = a.replaceAll(":","#");
+        // System.out.println(b);
+        
+        // ArrayList<Integer> myList = new ArrayList<>(Arrays.asList(1,2,3,4,5));
+        // myList.sort(Comparator.reverseOrder());
+
+        // 리스트를 문자열로 만들기
+        // ArrayList<String> myList = new ArrayList<>(Arrays.asList("life","is","too","short"));
+
+        // String result = String.join("",myList);
+        // System.out.println(result); // "Life is too short" 출력
+        
+        HashMap<String, Integer> grade = new HashMap<>();
+        grade.put("a",90);
+        grade.put("b",80);
+        grade.put("c",70);
+
+        int result =  grade.remove("b");
+        System.out.println(result);
+        System.out.println(grade);
+        
+        
+
+
         
         
 
