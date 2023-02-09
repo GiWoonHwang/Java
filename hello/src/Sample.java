@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 public class Sample {
     public static  void main(String[] args){
         // int i = 0;
@@ -147,11 +148,11 @@ public class Sample {
          * 
          */
         
-         HashMap<String, String>map = new HashMap<>();
-         map.put("people","사람");
-         map.put("baseball","야구");
+        //  HashMap<String, String>map = new HashMap<>();
+        //  map.put("people","사람");
+        //  map.put("baseball","야구");
         
-         System.out.println(map.keySet()); // 모든 key를 모아서 set로 리턴한다
+        //  System.out.println(map.keySet()); // 모든 key를 모아서 set로 리턴한다
         
          /*
           * 
@@ -159,9 +160,29 @@ public class Sample {
           LinkedHashMap은 입력된 순서대로 데이터를 저장하는 특징을 가지고 있다.
           TreeMap은 입력된 key의 오름차순 순서로 데이터를 저장하는 특징을 가지고 있다.
           */
-         
+        
+        // 중복을 허용하지 않으며 순서가 없다.
+        // HashSet<String> set = new HashSet<>(Arrays.asList("1","2","3","4"));
+        // System.out.println(set);
+        
+        HashSet<Integer>s1 = new HashSet<>(Arrays.asList(1,2,3,4,5,6));
+        HashSet<Integer>s2 = new HashSet<>(Arrays.asList(4,5,6,7,8));
+        
+        HashSet<Integer> intersection = new HashSet<>(s1); // s1으로 intersaction 생성 만약 retainAll 메서드를 사용하면 s1의 내용이 변경될 것이다.
+        intersection.retainAll(s2);
+        System.out.println(intersection);
+        
+        HashSet<Integer> union = new HashSet<>(s1);
+        union.addAll(s2);
 
-    
+        HashSet<Integer> substract = new HashSet<>(s1);  // s1으로 substract 생성
+        substract.removeAll(s2); // 차집합 수행
+        System.out.println(union);  // [1, 2, 3, 4, 5, 6, 7, 8, 9] 출력
+
+        HashSet<String> set = new HashSet<>();
+        set.add("ddd");
+        set.addAll(Arrays.asList("null","Ddd"));
+        set.remove("To");
     }
     
 }
