@@ -1,6 +1,8 @@
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.HashMap;
 public class Sample {
     public static  void main(String[] args){
         // int i = 0;
@@ -126,11 +128,39 @@ public class Sample {
         // // String.join("구분자", 리스트객체)와 같이 사용하여 리스트의 각 요소에 "구분자"를 삽입하여 하나의 문자열로 만들 수 있다.
         // String result = String.join("1", pitches);
         // System.out.println(result);
-
         
+
+        // ArrayList<String> pitches = new ArrayList<>(Arrays.asList("123","414","321"));
+        // pitches.sort(Comparator.naturalOrder()); // Comparator.reverseOrder() 내림차순
+        // System.out.println(pitches);
     
-    
-    
+        /*
+         * 
+         * "사람"을 예로 들면 누구든지 "이름" = "홍길동", "생일" = "몇 월 며칠" 등으로 구분할 수 있다. 자바의 맵(Map)은 이러한 대응관계를 쉽게 표현할 수 있게 해 주는 자료형이다. 이것은 요즘 나오는 대부분의 언어들도 갖고 있는 자료형으로 Associative array, Hash라고도 불린다.
+
+            맵(Map)은 사전(dictionary)과 비슷하다. 즉, people 이란 단어에 "사람", baseball 이라는 단어에 "야구"라는 뜻이 부합되듯이 Map은 Key와 Value를 한 쌍으로 갖는 자료형이다.
+
+            key	value
+            people	사람
+            baseball	야구
+            Map은 리스트나 배열처럼 순차적으로(sequential) 해당 요소 값을 구하지 않고 key를 통해 value를 얻는다. 맵(Map)의 가장 큰 특징이라면 key로 value를 얻어낸다는 점이다. baseball이란 단어의 뜻을 찾기 위해서 사전의 내용을 순차적으로 모두 검색하는 것이 아니라 baseball이라는 단어가 있는 곳만을 펼쳐보는 것이다.
+         * 
+         */
+        
+         HashMap<String, String>map = new HashMap<>();
+         map.put("people","사람");
+         map.put("baseball","야구");
+        
+         System.out.println(map.keySet()); // 모든 key를 모아서 set로 리턴한다
+        
+         /*
+          * 
+          map의 가장 큰 특징은 순서에 의존하지 않고 key로 value를 가져온다
+          LinkedHashMap은 입력된 순서대로 데이터를 저장하는 특징을 가지고 있다.
+          TreeMap은 입력된 key의 오름차순 순서로 데이터를 저장하는 특징을 가지고 있다.
+          */
+         
+
     
     }
     
