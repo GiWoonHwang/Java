@@ -14,8 +14,28 @@ public class Sample {
     //     CAFE_LATTE
     // };
 
+    enum CoffeeType {
+        AMERICANO,
+        ICE_AMERICANO,
+        CAFE_LATTE
+    };
 
+
+    static void printCoffeePrice(CoffeeType type){
+        HashMap<CoffeeType, Integer> priceMap = new HashMap<>();
+        priceMap.put(CoffeeType.AMERICANO, 3000);  // 1: 아메리카노
+        priceMap.put(CoffeeType.ICE_AMERICANO, 4000);  // 2: 아이스 아메리카노
+        priceMap.put(CoffeeType.CAFE_LATTE, 5000);  // 3: 카페라떼
+        int price = priceMap.get(type);
+        System.out.println(String.format("가격은 %d원 입니다", price));
+    }
     public static  void main(String[] args){
+        printCoffeePrice(CoffeeType.AMERICANO); 
+
+
+
+
+
         // System.out.println(CoffeeType.AMERICANO);
         // System.out.println(CoffeeType.ICE_AMERICANO);
         // System.out.println(CoffeeType.CAFE_LATTE);
@@ -262,22 +282,26 @@ public class Sample {
         // String result = String.join("",myList);
         // System.out.println(result); // "Life is too short" 출력
         
-        HashMap<String, Integer> grade = new HashMap<>();
-        grade.put("a",90);
-        grade.put("b",80);
-        grade.put("c",70);
+        // HashMap<String, Integer> grade = new HashMap<>();
+        // grade.put("a",90);
+        // grade.put("b",80);
+        // grade.put("c",70);
 
-        int result =  grade.remove("b");
-        System.out.println(result);
-        System.out.println(grade);
+        // int result =  grade.remove("b");
+        // System.out.println(result);
+        // System.out.println(grade);
         
         
-
+        // ArrayList<Integer> numbers = new ArrayList<>(Arrays.asList(1,1,2,2,3,4,4,5,5));
+        // HashSet<Integer> temp = new HashSet<>(numbers); // 집합은 중복과 순서가 존재하지 않는다.
+        // ArrayList<Integer> result  = new ArrayList<>(temp);
+        
 
         
         
+        
 
-    }
+    }  
     
 }
  
