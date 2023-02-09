@@ -14,23 +14,107 @@ public class Sample {
     //     CAFE_LATTE
     // };
 
-    enum CoffeeType {
-        AMERICANO,
-        ICE_AMERICANO,
-        CAFE_LATTE
-    };
+    // enum CoffeeType {
+    //     AMERICANO,
+    //     ICE_AMERICANO,
+    //     CAFE_LATTE
+    // };
 
 
-    static void printCoffeePrice(CoffeeType type){
-        HashMap<CoffeeType, Integer> priceMap = new HashMap<>();
-        priceMap.put(CoffeeType.AMERICANO, 3000);  // 1: 아메리카노
-        priceMap.put(CoffeeType.ICE_AMERICANO, 4000);  // 2: 아이스 아메리카노
-        priceMap.put(CoffeeType.CAFE_LATTE, 5000);  // 3: 카페라떼
-        int price = priceMap.get(type);
-        System.out.println(String.format("가격은 %d원 입니다", price));
-    }
+    // static void printCoffeePrice(CoffeeType type){
+    //     HashMap<CoffeeType, Integer> priceMap = new HashMap<>();
+    //     priceMap.put(CoffeeType.AMERICANO, 3000);  // 1: 아메리카노
+    //     priceMap.put(CoffeeType.ICE_AMERICANO, 4000);  // 2: 아이스 아메리카노
+    //     priceMap.put(CoffeeType.CAFE_LATTE, 5000);  // 3: 카페라떼
+    //     int price = priceMap.get(type);
+    //     System.out.println(String.format("가격은 %d원 입니다", price));
+    // }
     public static  void main(String[] args){
-        printCoffeePrice(CoffeeType.AMERICANO); 
+        // printCoffeePrice(CoffeeType.AMERICANO); 
+
+
+        // ArrayList<String> pocket = new ArrayList<String>();
+        // pocket.add("paper");
+        // pocket.add("handphone");
+        // pocket.add("money");
+
+        // if(pocket.contains("money")){
+        //     System.out.println("택시를 타고 가라");
+        // }
+        // else{
+        //     System.out.println("걸어가라");
+        // }
+
+
+        // int money = 2000;
+        // if(money >= 3000){
+        //     System.out.println("택시를 타고 가라");
+        // }
+        // else{
+        //     System.out.println("걸어가라");
+        // }
+
+        // int month = 8;
+        // String monthString = "";
+        // switch (month){
+        //     case 1: monthString = "1월";
+        //         break;
+        //     case 2: monthString = "2월";
+        //         break;
+        //     default: monthString = "없음";
+
+        // }
+        // System.out.println(monthString);
+
+        // int tree_hit = 0;
+        // while(tree_hit < 10){
+        //     tree_hit ++;
+        //     System.out.println("나무를 " + tree_hit + "번 찍었습니다");
+        //     if(tree_hit == 10){
+        //         System.out.println("나무가 넘어갑니다.");
+        //     }
+        // }
+        
+        // int coffee = 10;
+        // int money = 300;
+
+        // while(money > 0){
+        //     System.out.println("돈을 받았으니 커피를 준다");
+        //     coffee --;
+        //     System.out.println("남은 커피의 양은 " + coffee + "입니다");
+        //     if(coffee == 0){
+        //         System.out.println("커피가 다 떨어졌습니다. 판매를 중지합니다");
+        //         break;
+        //     }
+        // }
+        
+        // 홀수만 출력한다.
+        // int a = 0;
+
+        // while(a< 10){
+        //     a++;
+        //     if(a % 2 == 0){
+        //         continue; // 짝수인 경우 조건문으로 돌아간다.
+        //     }
+        //     System.out.println(a);  // 홀수만 출력된다.
+        // }
+        // String[] numbers = {"one","two","three"};
+        // for(int i =0; i<numbers.length; i++){
+        //     System.out.println(numbers[i]);
+        // }
+
+        // int[] marks = {90,25,67,45,80};
+        // for(int i =0; i<marks.length; i++){
+        //     if(marks[i] >= 60){
+        //         System.out.println((i+1)+ "번 학생은 합격입니다.");
+        //     }
+        //     else{
+        //         System.out.println((i+1)+ "번 학생은 불합격입니다.");
+        //     }
+        // }
+
+        
+
 
 
 
@@ -44,7 +128,15 @@ public class Sample {
         //     System.out.println(type);
         // }
         
-
+        // int[] marks = {90, 25, 67, 45, 80};
+        // for (int i =0; i < marks.length; i++){
+        //     if(marks[i]<60){
+        //         continue;
+        //     }
+        //     else{
+        //         System.out.println((i+1)+"번 학생 축하합니다. 합격입니다.");
+        //     }
+        // }
 
 
 
@@ -295,6 +387,58 @@ public class Sample {
         // ArrayList<Integer> numbers = new ArrayList<>(Arrays.asList(1,1,2,2,3,4,4,5,5));
         // HashSet<Integer> temp = new HashSet<>(numbers); // 집합은 중복과 순서가 존재하지 않는다.
         // ArrayList<Integer> result  = new ArrayList<>(temp);
+        
+        // for each 기존 for문보다 조금 더 직관적이다.
+
+        // String[] numbers = {"one","two","three"};
+        // for(String number: numbers){
+        //     System.out.println(number);
+        // }
+
+        // int result = 0;
+        // int i = 1;
+        // while(i <= 1000){
+        //     if(i % 3 == 0){
+        //         result += i;
+        //     }
+        //     i += 1;
+        // }
+        // System.out.println(result);  // 166833 출력
+        
+        // 별 표시하기
+        // int i = 0;
+        // while(true){
+        //     i += 1;
+        //     if(i >5){
+        //         break;
+        //     }
+        //     for(int j = 0; j < i; j++){
+        //         System.out.print('*');
+        //     }
+        //     System.out.println("");
+        // }
+
+        // int i = 0;
+        // while(true){
+        //     i += 1;
+        //     if(i>5){
+        //         break;
+        //     }
+        //     for(int j = 0; j <i; j ++){
+        //         System.out.print('*');
+        //     }
+        //     System.out.println("");
+        // }
+
+        // int[] marks = {70, 60, 55, 75, 95, 90, 80, 80, 85, 100};
+        // int total = 0;
+        // for (int mark: marks) {  // for each 문
+        //     total += mark;  // A학급의 점수를 모두 더한다.
+        // }
+        // float average = (float) total / marks.length;  // 평균을 구하기 위해 총 점수를 총 학생수로 나눈다.
+        // System.out.println(average);  // 평균 79.0이 출력된다.
+        
+
         
 
         
