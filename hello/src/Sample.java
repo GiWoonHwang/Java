@@ -18,17 +18,38 @@ import java.util.HashSet;
 //     }
 // }
 
-class Animal{
-    String name;
+// class Animal{
+//     String name;
 
-    public void setName(String name){
-        this.name = name;
-    }
+//     public void setName(String name){
+//         this.name = name;
+//     }
 
-}
+// }
+
+
+
 
 
 public class Sample {
+    int a;
+    void varTest() {
+        this.a ++;
+    }
+    public static void main(String[] args) {
+        Sample sample = new Sample();
+        sample.a = 1;
+
+        sample.varTest();
+        System.out.println(sample.a);
+    }
+
+    // void sayNick(String nick) {
+    //     if ("fool".equals(nick)) { // 전달받는 인수가 fool과 동일하다면
+    //         return; // 바로 리턴
+    //     }
+    //     System.out.println("나의 별명은 "+nick+" 입니다.");
+    // }
     
     // Enum은 서로 관련이 있는 여러 개의 상수 집합을 정의할 때 사용하는 자료형이다.
     // 매직넘버(1과 같은 숫자 상수값)를 사용할 때보다 코드가 명확해 진다.
@@ -54,7 +75,19 @@ public class Sample {
     //     int price = priceMap.get(type);
     //     System.out.println(String.format("가격은 %d원 입니다", price));
     // }
-    public static  void main(String[] args){
+    // public static  void main(String[] args){
+        /*
+         * return 문만 단독으로 사용하여 메서드를 빠져나가는 이 방법은 리턴 자료형이 void인 메서드에만 해당된다.
+         * 리턴자료형이 명시되어 있는 메서드에서 return 문만 작성하면 컴파일 오류가 발생한다.
+         * 
+         */
+        // Sample sample = new Sample();
+        // sample.sayNick("dd");
+        // sample.sayNick("fool");
+        
+
+
+
         // Calculator cal1 = new Calculator();  // 계산기1 객체를 생성한다.
         // Calculator cal2 = new Calculator();  // 계산기2 객체를 생성한다.
 
@@ -64,11 +97,11 @@ public class Sample {
         // System.out.println(cal2.add(3));
         // System.out.println(cal2.add(7));
 
-        Animal cat = new Animal();
-        Animla dog = new Animal();
+        // Animal cat = new Animal();
+        // Animal dog = new Animal();
 
-        System.out.println(cat.setName("body"));
-        dog.setName("happy");
+        // // System.out.println(cat.setName("body"));
+        // dog.setName("happy");
         
         // printCoffeePrice(CoffeeType.AMERICANO); 
 
@@ -485,7 +518,7 @@ public class Sample {
         
         
 
-    }  
+    // }  
     
 }
  
