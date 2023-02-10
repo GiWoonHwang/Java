@@ -15,11 +15,7 @@ import java.util.HashSet;
  */
 
  interface Predator {
-    /*
-     * 이렇게 육식동물이 추가 될 때마다 feed 메서드를 추가해야 한다면 사육사(ZooKeeper)가 얼마나 귀찮겠는가? 이런 어려움을 극복하기 위해서는 인터페이스의 도움이 필요하다.
-     * 
-     */
-    String getFood(); // 상속받은 클래스에서 메소드를 마무리해야한다.
+    String getFood();
 
     default void printFood() {
         System.out.printf("my food is %s\n", getFood());
@@ -32,44 +28,61 @@ import java.util.HashSet;
     }
 }
 
-class Animal{
-    String name;
+interface Barkable {
+    void bark();
 }
 
-// 이와같이 객체가 한 개 이상의 자료형 타입을 갖게되는 특성을 다형성(폴리모피즘)이라고 하는데 이것에 대해서는 "다형성" 챕터에서 자세히 다루도록 한다.
-class Tiger extends Animal implements Predator {
-    public String getFood() { // 항상 public으로 구현해야 한다.
-        return "apple";
+interface BarkablePredator extends Predator, Barkable {
+}
+
+class Animal {
+    String name;
+
+    void setName(String name) {
+        this.name = name;
     }
 }
 
-class Lion extends Animal implements Predator {
+class Tiger extends Animal implements Predator, Barkable {
+    public String getFood() {
+        return "apple";
+    }
+
+    public void bark() {
+        System.out.println("어흥");
+    }
+}
+
+class Lion extends Animal implements BarkablePredator {
     public String getFood() {
         return "banana";
     }
-}
 
-class ZooKeeper{
-    void feed(Predator predator){
-        System.out.println("feed "+predator.getFood());
+    public void bark() {
+        System.out.println("으르렁");
     }
-
-    // void feed(Lion lion){
-    //     System.out.println("사자한테는 바나나");
-    // }
 }
 
-public class Sample{
-    public static void main(String[] args){
-        ZooKeeper zooKeeper = new ZooKeeper();
+class ZooKeeper {
+    void feed(Predator predator) {
+        System.out.println("feed " + predator.getFood());
+    }
+}
+
+class Bouncer {
+    void barkAnimal(Barkable animal) {
+        animal.bark();
+    }
+}
+
+public class Sample {
+    public static void main(String[] args) {
         Tiger tiger = new Tiger();
         Lion lion = new Lion();
 
-        zooKeeper.feed(tiger);
-        zooKeeper.feed(lion);
-
-
-
+        Bouncer bouncer = new Bouncer();
+        bouncer.barkAnimal(tiger);
+        bouncer.barkAnimal(lion);
     }
 }
 
