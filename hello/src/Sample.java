@@ -6,6 +6,9 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 
+
+
+
 // class Calculator {
 //     static int result = 0;
 //     int add(int num){
@@ -27,22 +30,41 @@ import java.util.HashSet;
 
 // }
 
+class Updater {
+    void update(Counter counter){
+        counter.count++;
+    }
+}
 
+class Counter{
+    int count = 0; // 객체 변수
+}
 
 
 
 public class Sample {
-    int a;
-    void varTest() {
-        this.a ++;
-    }
-    public static void main(String[] args) {
-        Sample sample = new Sample();
-        sample.a = 1;
+    public static void main(String[] args){
+        Counter myCounter = new Counter();
+        System.out.println("before update" + myCounter.count);
+        
+        Updater myUpdater = new Updater();
+        myUpdater.update(myCounter);
+        System.out.println("after update:"+myCounter.count);
 
-        sample.varTest();
-        System.out.println(sample.a);
+
     }
+
+    // int a;
+    // void varTest() {
+    //     this.a ++;
+    // }
+    // public static void main(String[] args) {
+    //     // Sample sample = new Sample();
+    //     // sample.a = 1;
+
+    //     // sample.varTest();
+    //     // System.out.println(sample.a);
+    // }
 
     // void sayNick(String nick) {
     //     if ("fool".equals(nick)) { // 전달받는 인수가 fool과 동일하다면
