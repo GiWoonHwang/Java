@@ -6,6 +6,211 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 
+/*
+ *  난 동물원의 사육사이다.
+    육식동물이 들어오면 난 먹이를 던져준다.
+    호랑이가 오면 사과를 던져준다.
+    사자가 오면 바나나를 던져준다.
+ * 
+ */
+
+ interface Predator {
+    /*
+     * 이렇게 육식동물이 추가 될 때마다 feed 메서드를 추가해야 한다면 사육사(ZooKeeper)가 얼마나 귀찮겠는가? 이런 어려움을 극복하기 위해서는 인터페이스의 도움이 필요하다.
+     * 
+     */
+    String getFood(); // 상속받은 클래스에서 메소드를 마무리해야한다.
+
+    default void printFood() {
+        System.out.printf("my food is %s\n", getFood());
+    }
+
+    int LEG_COUNT = 4;  // 인터페이스 상수
+
+    static int speed() {
+        return LEG_COUNT * 30;
+    }
+}
+
+class Animal{
+    String name;
+}
+
+// 이와같이 객체가 한 개 이상의 자료형 타입을 갖게되는 특성을 다형성(폴리모피즘)이라고 하는데 이것에 대해서는 "다형성" 챕터에서 자세히 다루도록 한다.
+class Tiger extends Animal implements Predator {
+    public String getFood() { // 항상 public으로 구현해야 한다.
+        return "apple";
+    }
+}
+
+class Lion extends Animal implements Predator {
+    public String getFood() {
+        return "banana";
+    }
+}
+
+class ZooKeeper{
+    void feed(Predator predator){
+        System.out.println("feed "+predator.getFood());
+    }
+
+    // void feed(Lion lion){
+    //     System.out.println("사자한테는 바나나");
+    // }
+}
+
+public class Sample{
+    public static void main(String[] args){
+        ZooKeeper zooKeeper = new ZooKeeper();
+        Tiger tiger = new Tiger();
+        Lion lion = new Lion();
+
+        zooKeeper.feed(tiger);
+        zooKeeper.feed(lion);
+
+
+
+    }
+}
+
+
+// class Animal{
+//     String name;
+
+//     void setName(String name){
+//         this.name = name;
+//     }
+// }
+
+// class Dog extends Animal{
+
+//     void sleep(){
+//         System.out.println(this.name + "슬립 메서드");
+//     }
+// }
+
+// class HouseDog extends Dog{
+//     // 객체변수를 무조건 생성하게 해주는 생성자
+//     // 생성자의 규칙: 클래스명과 메서드명이 동일하다, 리턴타입을 정의하지 않는다(void도 사용하지 않는다)
+//     HouseDog(String name) {
+//         this.setName(name);
+//     }
+
+//     HouseDog(int type){
+
+//         // 하나의 클래스에 여러개의 입력항목이 다른 생성자를 만들 수 있다.
+//         if(type == 1){
+//             this.setName("york");
+//         }
+//         else if(type == 2){
+//             this.setName("bulldog");
+//         }
+//     }
+
+
+//     void sleep(){
+//         System.out.println(this.name + "슬립 메소드 오버라이딩");
+//     }
+
+//     void sleep(int hour) {
+//         System.out.println(this.name + "메소드 오버로딩" + hour);
+//     }
+// }
+
+// public class Sample{
+//     public static void main(String[] args){
+//         HouseDog houseDog = new HouseDog("happy");
+//         houseDog.setName("happy");
+//         houseDog.sleep();
+//         houseDog.sleep(1);
+        
+//         HouseDog dog = new HouseDog("happy");
+//         System.out.println(dog.name);
+
+//         HouseDog happy = new HouseDog("happy");
+//         HouseDog yorkshire = new HouseDog(1);
+
+//     }
+// }
+
+
+
+
+
+
+
+
+
+
+// class Animal {
+//     String name;
+
+//     void setName(String name){
+//         this.name = name;
+//     }
+// }
+
+// class Dog extends Animal{
+//     void sleep(){
+//         System.out.println(this.name + "자식클래스에 메서드 추가");
+//     }
+
+// }
+
+// class HouseDog extends  Dog{
+//     /*
+//      * HouseDog 클래스에 Dog 클래스와 동일한 형태(입출력이 동일)의 sleep 메서드를 구현하면 HouseDog 클래스의 sleep 메서드가 Dog 클래스의 sleep 메서드보다 더 높은 우선순위를 갖게 되어 HouseDog 클래스의 sleep 메서드가 호출되게 된다.
+
+//         이렇게 부모클래스의 메서드를 자식클래스가 동일한 형태로 또다시 구현하는 행위를 메서드 오버라이딩(Method Overriding)이라고 한다. (메서드 덮어쓰기)
+//      * 
+//      */
+//     void sleep(){
+//         System.out.println(this.name + "zzz in house");
+//     }
+//     // 이렇듯 입력항목이 다른 경우 동일한 이름의 메서드를 만들 수 있는데 이를 메서드 오버로딩(method overloading)이라고 부른다.
+//     void sleep(int hour){
+//         System.out.println(this.name+" zzz in house for " + hour + " hours");
+//     }
+
+// }
+
+// public class Sample{
+//     public static void main(String[] args){
+//         // Dog dog   = new Dog();
+//         // // Animal dog = new Dog(); // Animal 자료형으로 선언하면 sleep 메서드 못씀 sleep는 자식클래스에만 존재하니까
+//         // Dog dog = new Animal();  // Animal is a Dog (X)
+//         // dog.setName("poppy");
+//         // System.out.println(dog.name);
+//         // dog.sleep();
+//         HouseDog houseDog = new HouseDog();
+//         houseDog.setName("상속에 상속입니다.");
+//         houseDog.sleep();
+//         houseDog.sleep(3);  // happy zzz in house for 3 hours 출력
+       
+//     }
+// }
+
+
+
+/*
+ * Object 클래스
+자바에서 만드는 모든 클래스는 Object 클래스를 상속받는다. 사실 우리가 만든 Animal 클래스는 다음과 기능적으로 완전히 동일하다. 
+하지만 굳이 아래 코드처럼 Object 클래스를 상속하도록 코딩하지 않아도 자바에서 만들어지는 모든 클래스는 Object 클래스를 자동으로 상속받게끔 되어 있다.
+
+class Animal extends Object {
+    String name;
+
+    void setName(String name) {
+        this.name = name;
+    }
+}
+따라서 자바에서 만드는 모든 객체는 Object 자료형으로 사용할 수 있다. 즉, 다음과 같이 코딩하는 것이 가능하다.
+
+Object animal = new Animal();  // Animal is a Object
+Object dog = new Dog();  // Dog is a Object
+ */
+
+
 
 
 
@@ -30,29 +235,29 @@ import java.util.HashSet;
 
 // }
 
-class Updater {
-    void update(Counter counter){
-        counter.count++;
-    }
-}
+// class Updater {
+//     void update(Counter counter){
+//         counter.count++;
+//     }
+// }
 
-class Counter{
-    int count = 0; // 객체 변수
-}
+// class Counter{
+//     int count = 0; // 객체 변수
+// }
 
 
 
-public class Sample {
-    public static void main(String[] args){
-        Counter myCounter = new Counter();
-        System.out.println("before update" + myCounter.count);
+// public class Sample {
+//     public static void main(String[] args){
+//         Counter myCounter = new Counter();
+//         System.out.println("before update" + myCounter.count);
         
-        Updater myUpdater = new Updater();
-        myUpdater.update(myCounter);
-        System.out.println("after update:"+myCounter.count);
+//         Updater myUpdater = new Updater();
+//         myUpdater.update(myCounter);
+//         System.out.println("after update:"+myCounter.count);
 
 
-    }
+//     }
 
     // int a;
     // void varTest() {
@@ -542,5 +747,5 @@ public class Sample {
 
     // }  
     
-}
+// }
  
