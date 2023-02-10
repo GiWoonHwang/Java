@@ -4,7 +4,32 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
+
+
+// class Calculator {
+//     static int result = 0;
+//     int add(int num){
+//         result += num;
+//         return result;
+//     }
+//     int sub(int num){
+//         result -= num;
+//         return result;
+//     }
+// }
+
+class Animal{
+    String name;
+
+    public void setName(String name){
+        this.name = name;
+    }
+
+}
+
+
 public class Sample {
+    
     // Enum은 서로 관련이 있는 여러 개의 상수 집합을 정의할 때 사용하는 자료형이다.
     // 매직넘버(1과 같은 숫자 상수값)를 사용할 때보다 코드가 명확해 진다.
     // 잘못된 값을 사용함으로 인해 발생할수 있는 위험성이 사라진다.
@@ -30,6 +55,21 @@ public class Sample {
     //     System.out.println(String.format("가격은 %d원 입니다", price));
     // }
     public static  void main(String[] args){
+        // Calculator cal1 = new Calculator();  // 계산기1 객체를 생성한다.
+        // Calculator cal2 = new Calculator();  // 계산기2 객체를 생성한다.
+
+        // System.out.println(cal1.add(3));
+        // System.out.println(cal1.add(4));
+
+        // System.out.println(cal2.add(3));
+        // System.out.println(cal2.add(7));
+
+        Animal cat = new Animal();
+        Animla dog = new Animal();
+
+        System.out.println(cat.setName("body"));
+        dog.setName("happy");
+        
         // printCoffeePrice(CoffeeType.AMERICANO); 
 
 
