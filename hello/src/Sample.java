@@ -10,9 +10,79 @@ import java.io.InputStreamReader;
 import java.io.BufferedReader;
 import java.util.Scanner;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.io.BufferedReader;
+
+// 입력 숫자의 합
+// public class Sample{
+//     public static void main(String[] args){
+//         Scanner sc =new Scanner(System.in);
+//         System.out.print("첫 번째 숫자를 입력하세요");
+//         int first = sc.nextInt();
+
+//         System.out.print("두 번째 숫자를 입력하세요");
+//         int second = sc.nextInt();
+
+//         int result = first + second;
+//         System.out.printf("%d + %d = %d 입니다.%n", first, second, result);
+//     }
+// }
+
+// 대문자로 변경하기
+// public class Sample{
+//     public static void main(String[] args){
+//         while(true){
+//             Scanner sc = new Scanner(System.in);
+//             System.out.print("영어 문장을 입력하세요:");
+//             String line = sc.nextLine();
+//             if("END".equals(line)){
+//                 break; // END가 나오면 While문 탈출
+//             }
+//             System.out.println(line.toUpperCase()); // 받은 영문자를 대문자로 출력
+//         }
+//     }
+// }
+
+// 파일 내용 바꾸어 저장하기
+/*
+ 다음과 같은 내용을 지닌 파일 sample.txt 파일이 있다. 이 파일의 내용 중 "python" 이라는 문자열을 "java"로 바꾸어서 저장해 보자.
+
+Life is too short
+you need python
+sample.txt 파일을 읽어서 줄 단위로 리스트 변수에 저장하고 문자열로 변경한 후 "python"이라는 문자열을 "java"로 변경하여 다시 sample.txt 파일에 그 내용을 저장한다.
+이 때 파일의 내용을 줄 단위로 읽어 리스트 변수에 저장했기 때문에 리스트 데이터를 다시 문자열로 만들때에는 줄바꿈 문자를 포함하여 만들어야 한다.
+ */
+public class Sample{
+    public static void main(String[] args) throws IOException {
+        // sample.tst 파일을 읽어 줄 단위로 리트스 변수에 저장한다.
+        ArrayList<String> data = new ArrayList<>();
+        BufferedReader br = new BufferedReader(new FileReader("sample.txt"));
+
+        while(true){
+            String line = br.readLine();
+            if(line ==null) break;
+            data.add(line);
+        }
+        br.close();
+
+        // 줄 단위로 읽으면 줄바꿈 문자가 없어지므로 줄바꿈 문자르르 포함한다.
+        String text = String.join("\n", data);
+
+        text = text.replaceAll("python", "java");
+
+        FileWriter fw = new FileWriter("sample.txt");
+    }
+}
+
+
+
+
+
+
+
+
 // public class Sample {
 //     public static void main(String[] args) throws IOException {
 //         FileOutputStream output = new FileOutputStream("C:/Users/PC/Desktop/out.txt");
