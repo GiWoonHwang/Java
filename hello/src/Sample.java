@@ -15,6 +15,18 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.io.BufferedReader;
 
+// 접근제어자: 자바는 접근제어자를 사용하여 변수나 메서드의 사용 권한을 설정할 수 있다.
+
+// private: 해당 클래스에서만 접근이 가능하다.
+public class Sample{
+    private String secret;
+    private String getString(){
+        return this.secret;
+        
+    }
+}
+
+
 // 입력 숫자의 합
 // public class Sample{
 //     public static void main(String[] args){
@@ -54,27 +66,27 @@ you need python
 sample.txt 파일을 읽어서 줄 단위로 리스트 변수에 저장하고 문자열로 변경한 후 "python"이라는 문자열을 "java"로 변경하여 다시 sample.txt 파일에 그 내용을 저장한다.
 이 때 파일의 내용을 줄 단위로 읽어 리스트 변수에 저장했기 때문에 리스트 데이터를 다시 문자열로 만들때에는 줄바꿈 문자를 포함하여 만들어야 한다.
  */
-public class Sample{
-    public static void main(String[] args) throws IOException {
-        // sample.tst 파일을 읽어 줄 단위로 리트스 변수에 저장한다.
-        ArrayList<String> data = new ArrayList<>();
-        BufferedReader br = new BufferedReader(new FileReader("sample.txt"));
+// public class Sample{
+//     public static void main(String[] args) throws IOException {
+//         // sample.tst 파일을 읽어 줄 단위로 리트스 변수에 저장한다.
+//         ArrayList<String> data = new ArrayList<>();
+//         BufferedReader br = new BufferedReader(new FileReader("sample.txt"));
 
-        while(true){
-            String line = br.readLine();
-            if(line ==null) break;
-            data.add(line);
-        }
-        br.close();
+//         while(true){
+//             String line = br.readLine();
+//             if(line ==null) break;
+//             data.add(line);
+//         }
+//         br.close();
 
-        // 줄 단위로 읽으면 줄바꿈 문자가 없어지므로 줄바꿈 문자르르 포함한다.
-        String text = String.join("\n", data);
+//         // 줄 단위로 읽으면 줄바꿈 문자가 없어지므로 줄바꿈 문자르르 포함한다.
+//         String text = String.join("\n", data);
 
-        text = text.replaceAll("python", "java");
+//         text = text.replaceAll("python", "java");
 
-        FileWriter fw = new FileWriter("sample.txt");
-    }
-}
+//         FileWriter fw = new FileWriter("sample.txt");
+//     }
+// }
 
 
 
