@@ -5,6 +5,163 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 
+// class Calculator {
+//     int value;
+
+
+//     /*
+//      * Integer 자료형은 값을 대입하지 않을 경우 null이기 때문에 add 메서드에서 null에 값을 더하려고 하기 때문에 오류가 발생한다. 따라서 다음처럼 Calculator 클래스의 생성자를 만들고 초깃값을 설정해야 한다.
+//      * 
+//      */
+//     Calculator(){
+//         this.value = 0;
+//     }
+
+//     void add(int val){ // 덧셈
+//         this.value += val;
+//     }
+
+//     int getValue(){
+//        return this.value;
+//     }
+
+//     boolean isOdd(int num){
+//         return num % 2 == 1;
+//     }
+
+//     int avg(int[] data){
+//         int total = 0;
+//         for(int num: data){
+//             total += num;
+//         }
+//         return total / data.length;
+//     }
+
+//     int avg(ArrayList<Integer> data){
+//         int total = 0;
+//         for(int num: data){
+//             total += num;
+//         }
+//         return total/data.size();
+//     }
+// }
+
+// class UpgeadeCalculator extends Calculator{
+//     void minus(int val){
+//         this.value -= val;
+//     }
+// }
+
+// class MaxLimitCalculator extends Calculator{
+//     void add(int val){
+//         this.value += val;
+//         if(this.value > 100){
+//             this.value = 100;
+//         }
+//     }
+// }
+
+// public class Sample{
+//     public static void main(String[] args){
+//         // MaxLimitCalculator cal = new MaxLimitCalculator();
+
+//         // cal.add(50);
+//         // cal.add(60);
+//         // System.out.println(cal.getValue());
+
+
+//         // Calculator cal = new Calculator();
+//         // System.out.println(cal.isOdd(3));  // 3은 홀수이므로 true 출력
+//         // System.out.println(cal.isOdd(4));  // 4는 짝수이므로 false 출력
+
+
+//         /*
+//          * 
+//                     array	                                    arrayList
+//         사이즈	    초기화시 고정	                             초기화시 사이즈를 표시하지 않음. 사이즈가 동적이다.
+//         속도	    초기화 시 메모리에 할당되어 속도 빠름       	추가시 메모리를 재할당하여 속도가 느림
+//         변경	    사이즈 변경 불가	                         추가,삭제 가능
+//         다차원	    가능	                                     불가능
+//         타입	    primitive type(int,byte, char etc), object	object elemnet만 가능
+//         제네릭	    사용 불가능	                                 사용 가능(타입 안정성 보장)
+//         길이	    length 변수	                                 size() 메서드
+//         변수 추가	assignment 연산자 사용	                     add() 메소드 사용
+//          * 
+//          */
+//         Calculator cal = new Calculator();
+//         int[] data1 = {1,3,5,7,9};
+//         int result1 = cal.avg(data1);
+//         System.out.println(result1); 
+
+//         ArrayList<Integer> data2 = new ArrayList<>(Arrays.asList(1,3,5,7,9));
+//         int result2 = cal.avg(data2);
+//         System.out.println(result2);  // 5 출력
+
+//         }
+// }
+
+
+
+/*
+ * 다음은 광물의 가치를 계산하는 MineralCalculator 클래스와 그 사용법이 담긴 코드이다. 광물 계산기는 금인 경우 100, 은인 경우 90, 구리의 경우는 80의 가치를 더하는 기능(add 메스드)이 있다. 
+ * 하지만 이 광물 계산기는 광물이 추가될 때마다 add 메서드를 추가해야 한다는 단점이 있다. 광물이 추가되더라도 MineralCalculator 클래스를 변경할 필요가 없도록 코드를 수정하시오.
+ * 
+ */
+
+interface Mineral{
+    int getValue();
+}
+
+class Gold implements Mineral{
+    public int getValue(){
+        return 100;
+    }
+}
+
+
+class Silver implements Mineral{
+    public int getValue(){
+        return 90;
+    }
+}
+
+class Bronze implements Mineral {
+    public int getValue() {
+        return 80;
+    }
+}
+
+class MineralCalculator{
+    int value = 0;
+
+    public void add(Mineral mineral){
+        this.value += mineral.getValue();
+    }
+
+    public int getValue(){
+        return this.value;
+    }
+}
+
+public class Sample{
+        public static void main(String[] args) {
+            MineralCalculator cal = new MineralCalculator();
+            cal.add(new Gold());
+            cal.add(new Silver());
+            cal.add(new Bronze());
+            System.out.println(cal.getValue());  // 270 출력
+    }
+}
+
+
+
+
+
+
+
+
+
+
 
 /*
  *  난 동물원의 사육사이다.
@@ -14,77 +171,81 @@ import java.util.HashSet;
  * 
  */
 
- interface Predator {
-    String getFood();
+//  abstract class Predator extends Animal{
+//     abstract String getFood();
+//  }
 
-    default void printFood() {
-        System.out.printf("my food is %s\n", getFood());
-    }
+//  interface Predator {
+//     String getFood();
 
-    int LEG_COUNT = 4;  // 인터페이스 상수
+//     default void printFood() {
+//         System.out.printf("my food is %s\n", getFood());
+//     }
 
-    static int speed() {
-        return LEG_COUNT * 30;
-    }
-}
+//     int LEG_COUNT = 4;  // 인터페이스 상수
 
-interface Barkable {
-    void bark();
-}
+//     static int speed() {
+//         return LEG_COUNT * 30;
+//     }
+// }
 
-interface BarkablePredator extends Predator, Barkable {
-}
+// interface Barkable {
+//     void bark();
+// }
 
-class Animal {
-    String name;
+// interface BarkablePredator extends Predator, Barkable {
+// }
 
-    void setName(String name) {
-        this.name = name;
-    }
-}
+// class Animal {
+//     String name;
 
-class Tiger extends Animal implements Predator, Barkable {
-    public String getFood() {
-        return "apple";
-    }
+//     void setName(String name) {
+//         this.name = name;
+//     }
+// }
 
-    public void bark() {
-        System.out.println("어흥");
-    }
-}
+// class Tiger extends Animal implements Predator, Barkable {
+//     public String getFood() {
+//         return "apple";
+//     }
 
-class Lion extends Animal implements BarkablePredator {
-    public String getFood() {
-        return "banana";
-    }
+//     public void bark() {
+//         System.out.println("어흥");
+//     }
+// }
 
-    public void bark() {
-        System.out.println("으르렁");
-    }
-}
+// class Lion extends Animal implements BarkablePredator {
+//     public String getFood() {
+//         return "banana";
+//     }
 
-class ZooKeeper {
-    void feed(Predator predator) {
-        System.out.println("feed " + predator.getFood());
-    }
-}
+//     public void bark() {
+//         System.out.println("으르렁");
+//     }
+// }
 
-class Bouncer {
-    void barkAnimal(Barkable animal) {
-        animal.bark();
-    }
-}
+// class ZooKeeper {
+//     void feed(Predator predator) {
+//         System.out.println("feed " + predator.getFood());
+//     }
+// }
 
-public class Sample {
-    public static void main(String[] args) {
-        Tiger tiger = new Tiger();
-        Lion lion = new Lion();
+// class Bouncer {
+//     void barkAnimal(Barkable animal) {
+//         animal.bark();
+//     }
+// }
 
-        Bouncer bouncer = new Bouncer();
-        bouncer.barkAnimal(tiger);
-        bouncer.barkAnimal(lion);
-    }
-}
+// public class Sample {
+//     public static void main(String[] args) {
+//         Tiger tiger = new Tiger();
+//         Lion lion = new Lion();
+
+//         Bouncer bouncer = new Bouncer();
+//         bouncer.barkAnimal(tiger);
+//         bouncer.barkAnimal(lion);
+//     }
+// }
 
 
 // class Animal{
