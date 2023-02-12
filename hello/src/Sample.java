@@ -4,6 +4,78 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
+import java.util.Scanner;
+// public class Sample{
+//     public static void main(String[] args) throws IOException{
+//         InputStream in  = System.in;
+
+//         int a;
+        
+//         /*
+//         * "abc" 를 입력했지만 출력은 "a"에 해당되는 아스키 코드값만 출력되었다. 
+//         * 그 이유는 InputStream의 read 메서드는 1 byte만 읽기 때문이다. 즉, 사용자는 "abc"라는 총 3 byte의 데이터를 전달했지만 프로그램에서 1 byte만 읽은 경우라고 할 수 있다. 이렇게 사용자가 전달한 1 byte의 데이터 또는 3 byte의 데이터를 다른 말로 입력 스트림(Stream)이라고 한다. 스트림은 이어져 있는 데이터(byte)의 형태를 의미한다.
+//         * 
+//         */
+//         a = in.read(); // 1byte(8bit)의 사용자 입력을 받아들인다
+//         System.out.println(a);
+
+//         int a;
+//         int b;
+//         int c;
+
+//         a = in.read();
+//         b = in.read();
+//         c = in.read();
+
+//         System.out.println(a);
+//         System.out.println(b);
+//         System.out.println(c);
+
+//                 byte[] a = new byte[3];
+//         in.read(a);
+
+//         System.out.println(a[0]);
+//         System.out.println(a[1]);
+//         System.out.println(a[2]);
+        
+//     }
+// }
+
+// 입력받은 문자를 아스키 코드가 아님 그대로 출력하는 방법
+// 그러나 항상 3byte만 읽도록 고정되어 있다.
+// public class Sample{
+//     public static void main(String[] args) throws IOException{
+//         InputStream in = System.in;
+//         InputStreamReader reader = new InputStreamReader(in);
+//         BufferedReader br = new BufferedReader(reader);
+//         String a = br.readLine();
+//         char[] a = new char[3];
+//         reader.read(a);
+
+//         System.out.println(a); 
+//     }
+// }
+
+// 콘솔 입력을 쉽게 처리할 수 있는 scanner
+/*
+    Scanner 객체의 next() 메서드는 단어 하나(Token)를 읽어들인다. Scanner 클래스에는 단어 뿐만 아니라 숫자, 문자열등 다양하게 읽어 들일 수 있는 여러 메서드들이 준비되어 있는데 몇가지만 알아보면 다음과 같은 것들이 있다.
+
+    next - 단어
+    nextLine - 라인
+    nextInt - 정수
+ * 
+ */
+public class Sample{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        System.out.println(sc.next());
+    }
+}
+
 
 // class Calculator {
 //     int value;
@@ -108,50 +180,50 @@ import java.util.HashSet;
  * 
  */
 
-interface Mineral{
-    int getValue();
-}
+// interface Mineral{
+//     int getValue();
+// }
 
-class Gold implements Mineral{
-    public int getValue(){
-        return 100;
-    }
-}
+// class Gold implements Mineral{
+//     public int getValue(){
+//         return 100;
+//     }
+// }
 
 
-class Silver implements Mineral{
-    public int getValue(){
-        return 90;
-    }
-}
+// class Silver implements Mineral{
+//     public int getValue(){
+//         return 90;
+//     }
+// }
 
-class Bronze implements Mineral {
-    public int getValue() {
-        return 80;
-    }
-}
+// class Bronze implements Mineral {
+//     public int getValue() {
+//         return 80;
+//     }
+// }
 
-class MineralCalculator{
-    int value = 0;
+// class MineralCalculator{
+//     int value = 0;
 
-    public void add(Mineral mineral){
-        this.value += mineral.getValue();
-    }
+//     public void add(Mineral mineral){
+//         this.value += mineral.getValue();
+//     }
 
-    public int getValue(){
-        return this.value;
-    }
-}
+//     public int getValue(){
+//         return this.value;
+//     }
+// }
 
-public class Sample{
-        public static void main(String[] args) {
-            MineralCalculator cal = new MineralCalculator();
-            cal.add(new Gold());
-            cal.add(new Silver());
-            cal.add(new Bronze());
-            System.out.println(cal.getValue());  // 270 출력
-    }
-}
+// public class Sample{
+//         public static void main(String[] args) {
+//             MineralCalculator cal = new MineralCalculator();
+//             cal.add(new Gold());
+//             cal.add(new Silver());
+//             cal.add(new Bronze());
+//             System.out.println(cal.getValue());  // 270 출력
+//     }
+// }
 
 
 
