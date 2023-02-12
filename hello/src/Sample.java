@@ -9,38 +9,93 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.BufferedReader;
 import java.util.Scanner;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.PrintWriter;
+import java.io.BufferedReader;
+// public class Sample {
+//     public static void main(String[] args) throws IOException {
+//         FileOutputStream output = new FileOutputStream("C:/Users/PC/Desktop/out.txt");
+//         for (int i =1; i<11; i++){
+//             String data = i + "번 째 줄 입니다.\r\n";
+
+//             // FileOutputStream에 값을 쓸 때는 byte배열로 써야 하므로 위와같이 String을 byte배열로 바꾸어 주는 getBytes() 메서드를 이용했다.
+//             output.write(data.getBytes());
+//         }
+        
+//         // 자바에서는 자동으로 닫아주지만, 직접 사용한 파일은 닫아주는게 좋다. 사용했던 파일을 닫지않고 다시 사용하려 하면 오류가 발생하기 때문
+//         output.close();
+//     }
+// }
+
+// 문자열 파일을 쓰는 좀 더 편리한 방법
+
+
+// public class Sample {
+//     public static void main(String[] args) throws IOException {
+//         PrintWriter pw = new PrintWriter("C:/Users/PC/Desktop/out.txt");
+//         for(int i=1; i<11; i++) {
+//             String data = i+" 번째 줄입니다.";
+//             pw.println(data);
+//         }
+//         pw.close();
+
+//         // 내용 추가하기, true면 덮어쓰지 않고 이어서 쓴다
+//         FileWriter fw2 = new FileWriter("c:/out.txt", true);  // 파일을 추가 모드로 연다.
+//         for(int i=11; i<21; i++) {
+//             String data = i+" 번째 줄입니다.\r\n";
+//             fw2.write(data);
+//         }
+//         fw2.close();
+//     }
+// }
+
+// // 파일을 라인단위로 읽어준다.
+// public class Sample {
+//     public static void main(String[] args) throws IOException {
+//         BufferedReader br = new BufferedReader(new FileReader("c:/out.txt"));
+//         while(true) {
+//             String line = br.readLine();
+//             if (line==null) break;  // 더 이상 읽을 라인이 없을 경우 while 문을 빠져나간다.
+//             System.out.println(line);
+//         }
+//         br.close();
+//     }
+// }
+//
+
 // public class Sample{
 //     public static void main(String[] args) throws IOException{
 //         InputStream in  = System.in;
 
-//         int a;
+        // int a;
         
-//         /*
-//         * "abc" 를 입력했지만 출력은 "a"에 해당되는 아스키 코드값만 출력되었다. 
-//         * 그 이유는 InputStream의 read 메서드는 1 byte만 읽기 때문이다. 즉, 사용자는 "abc"라는 총 3 byte의 데이터를 전달했지만 프로그램에서 1 byte만 읽은 경우라고 할 수 있다. 이렇게 사용자가 전달한 1 byte의 데이터 또는 3 byte의 데이터를 다른 말로 입력 스트림(Stream)이라고 한다. 스트림은 이어져 있는 데이터(byte)의 형태를 의미한다.
-//         * 
-//         */
-//         a = in.read(); // 1byte(8bit)의 사용자 입력을 받아들인다
-//         System.out.println(a);
+        /*
+        * "abc" 를 입력했지만 출력은 "a"에 해당되는 아스키 코드값만 출력되었다. 
+        * 그 이유는 InputStream의 read 메서드는 1 byte만 읽기 때문이다. 즉, 사용자는 "abc"라는 총 3 byte의 데이터를 전달했지만 프로그램에서 1 byte만 읽은 경우라고 할 수 있다. 이렇게 사용자가 전달한 1 byte의 데이터 또는 3 byte의 데이터를 다른 말로 입력 스트림(Stream)이라고 한다. 스트림은 이어져 있는 데이터(byte)의 형태를 의미한다.
+        * 
+        */
+        // a = in.read(); // 1byte(8bit)의 사용자 입력을 받아들인다
+        // System.out.println(a);
 
-//         int a;
-//         int b;
-//         int c;
+        // int a;
+        // int b;
+        // int c;
 
-//         a = in.read();
-//         b = in.read();
-//         c = in.read();
+        // a = in.read();
+        // b = in.read();
+        // c = in.read();
 
-//         System.out.println(a);
-//         System.out.println(b);
-//         System.out.println(c);
+        // System.out.println(a);
+        // System.out.println(b);
+        // System.out.println(c);
 
-//                 byte[] a = new byte[3];
-//         in.read(a);
+        // byte[] a = new byte[3];
+        // in.read(a);
 
-//         System.out.println(a[0]);
-//         System.out.println(a[1]);
-//         System.out.println(a[2]);
+        // System.out.println(a[0]);
+        // System.out.println(a[1]);
+        // System.out.println(a[2]);
         
 //     }
 // }
@@ -69,12 +124,12 @@ import java.util.Scanner;
     nextInt - 정수
  * 
  */
-public class Sample{
-    public static void main(String[] args){
-        Scanner sc = new Scanner(System.in);
-        System.out.println(sc.next());
-    }
-}
+// public class Sample{
+//     public static void main(String[] args){
+//         Scanner sc = new Scanner(System.in);
+//         System.out.println(sc.next());
+//     }
+// }
 
 
 // class Calculator {
