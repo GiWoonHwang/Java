@@ -14,17 +14,120 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.io.BufferedReader;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+// class HouseLee{
+//     // String lastname = "이";
+
+//     // static 키워드를 붙이면 자바는 메모리 할당을 딱 한번마 하게 된다.
+//     // 같은 곳의 메모리 주소만 바라보기 때문에 static 변수의 값을 공유하게 되는 것이다.
+//     static String lastname = "이";
+// }
+
+// /*
+//  이씨 집안을 나타내는 HouseLee 클래스이다. 위와 같은 클래스를 만들고 객체를 생성하면 객체마다 객체변수 lastname을 저장하기 위한 메모리가 별도로 할당된다.
+// 하지만 가만히 생각해 보면 HouseLee 클래스의 lastname은 어떤 객체이던지 동일한 값인 "이" 이어야 할 것 같지 않은가? 이렇게 항상 값이 변하지 않는 경우라면 static 사용시 메모리의 이점을 얻을 수 있다.
+
+// 다음의 변경된 예제를 보자.
+//  */
+// public class Sample{
+//     public static void main(String[] args){
+//         HouseLee lee1 = new HouseLee();
+//         HouseLee lee2 = new HouseLee();
+        
+//     }
+// }
+
+// class Counter{
+//     int count = 0;
+//     Counter(){
+//         this.count ++;
+//         System.out.println(this.count);
+//     }
+// }
+
+// public class Sample{
+//     public static void main(String[] args){
+//         /*
+//          c1, c2 객체 생성시 생성자에서 객체변수인 count의 값을 1씩 증가하더라도 c1과 c2의 count는 서로 다른 메모리를 가리키고 있기 때문에 원하던 결과(카운트가 증가된 결과)가 나오지 않는다. 
+//          객체변수는 항상 독립적인 값을 갖기 때문에 당연한 결과이다.
+//          */
+//         Counter c1 = new Counter();
+//         Counter c2 = new Counter();
+        
+//     }
+// }
+// class Util {
+//     /*
+//      보통 스태틱 메서드는 유틸리티성 메서드를 작성할 때 많이 사용된다.
+//      예를 들어 "오늘의 날짜 구하기", "숫자에 콤마 추가하기" 등의 메서드를 작성할 때에는 클래스 메서드를 사용하는 것이 유리하다. 
+//      */
+//     public static String getCurrentDate(String fmt) {
+//         SimpleDateFormat sdf = new SimpleDateFormat(fmt);
+//         return sdf.format(new Date());
+//     }
+// }
+
+// class Counter  {
+//     // 보통 변수의 static 키워드는 프로그래밍시 메모리의 효율보다는 공유의 목적으로 훨씬 더 많이 사용한다.
+//     static int count = 0;
+//     Counter() {
+//         count++;  // count는 더이상 객체변수가 아니므로 this를 제거하는 것이 좋다.
+//         System.out.println(count);  // this 제거
+//     }
+
+//     public static int getCount(){
+//         return count;
+//     }
+// }
+
+// public class Sample {
+//     public static void main(String[] args) {
+//         Counter c1 = new Counter();
+//         Counter c2 = new Counter();
+
+//         System.out.println(Counter.getCount());
+//     }
+// }
+
+// 싱글톤 패턴: 단 하나의 객체만을 생성하게 강제하는 패턴
+// class Singleton{
+//     private static Singleton one;
+//     private Singleton(){
+//     }
+
+//     public static Singleton getInstance(){
+//         if(one == null){
+//             one = new Singleton();
+//         }
+//         return one;
+//     }
+// }
+
+// public class Sample{
+//     public static void main(String[] args){
+//         // Singleton singleton = new Singleton(); // 에러 발생
+//         Singleton singleton1 = Singleton.getInstance();
+//         Singleton singleton2 = Singleton.getInstance();
+//         System.out.println(singleton1 == singleton2);  // true 출력
+//     }
+// }
+
+
+
+
 
 // 접근제어자: 자바는 접근제어자를 사용하여 변수나 메서드의 사용 권한을 설정할 수 있다.
 
 // private: 해당 클래스에서만 접근이 가능하다.
-public class Sample{
-    private String secret;
-    private String getString(){
-        return this.secret;
+// public class Sample{
+//     private String secret;
+//     private String getString(){
+//         return this.secret;
         
-    }
-}
+//     }
+// }
 
 
 // 입력 숫자의 합
