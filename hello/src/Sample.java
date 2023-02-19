@@ -18,6 +18,27 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ArrayList;
 
+/*
+jvm jre jdk 차이 
+
+jvm은 자바 소스코드로부터 만들어지는 자바 바이너리 파일을 실행할 수 있다.
+또한 jvm은 플랫폼에 의존적이다. 즉 리눅스의 jvm과 윈도우즈의 jvm은 다르다. 단 컴파일된 바이너리 코드는 어떤 jvm에서도 동작시킬 수 있다.
+
+1. 바이너리 코드를 읽는다.
+2. 바이너리 코드를 검증한다.
+3. 바이너리 코드를 실행한다.
+4. 실행환경의 규격을 제공한다
+
+jre
+jre는 자바 실행환경의 약자이다
+jre는 jvm이 자바 프로그램을 동작시킬 때 필요한 라이버르러  파일들과 기타 파일들을 가지고 있다.
+jre는 jvm의 실행환경을 구현했다고 할 수 있다.
+
+jdk는 자바 개발도구의 약자이다.
+jdk는 jre + 개발을위해 필요한 도구들을 포함한다.
+*/
+
+
 // public class Sample extends Thread {
 //     public void run() { // Thread 를 상속하면 run 메서드를 구현해야 한다
 //         System.out.println("thread run");
@@ -72,18 +93,18 @@ import java.util.ArrayList;
 //     }
 
 // }
-@FunctionalInterface // 두 번재 메서드를 허용하지 않는다.
-interface Calculator {
-    int sum(int a, int  b);
-}
+// @FunctionalInterface // 두 번재 메서드를 허용하지 않는다.
+// interface Calculator {
+//     int sum(int a, int  b);
+// }
 
-public class Sample {
-    public static void main(String[] args){
-        Calculator mc = (int a, int b) -> a + b;
-        int result = mc.sum(3, 4);
-        System.out.println(result);
-    }
-}
+// public class Sample {
+//     public static void main(String[] args){
+//         Calculator mc = (int a, int b) -> a + b;
+//         int result = mc.sum(3, 4);
+//         System.out.println(result);
+//     }
+// }
 
 
 
