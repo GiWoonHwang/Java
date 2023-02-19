@@ -30,49 +30,60 @@ import java.util.ArrayList;
 //     }
 // }
 
-public class Sample implements Runnable {
-    int seq;
+// public class Sample implements Runnable {
+//     int seq;
 
-    public Sample(int seq) {
-        this.seq = seq;
-    }
+//     public Sample(int seq) {
+//         this.seq = seq;
+//     }
 
-    public void run() {
-        System.out.println(this.seq + "thread start"); // 쓰레드 시작
-        try{
-            Thread.sleep(1000);
+//     public void run() {
+//         System.out.println(this.seq + "thread start"); // 쓰레드 시작
+//         try{
+//             Thread.sleep(1000);
 
-        } catch(Exception e){
+//         } catch(Exception e){
 
-        }
-        System.out.println(this.seq + "thread end");
-    }
+//         }
+//         System.out.println(this.seq + "thread end");
+//     }
 
-    public static void main(String[] args){
-        ArrayList<Thread> threads = new ArrayList<>();
-        for(int i = 0; i < 10; i ++){ // 총 10개의 쓰레드를 생성하여 실행
-            Thread t = new Thread(new Sample(i));
-            t.start();
-            threads.add(t);
-        }
+//     public static void main(String[] args){
+//         ArrayList<Thread> threads = new ArrayList<>();
+//         for(int i = 0; i < 10; i ++){ // 총 10개의 쓰레드를 생성하여 실행
+//             Thread t = new Thread(new Sample(i));
+//             t.start();
+//             threads.add(t);
+//         }
 
-        for(int i = 0; i<threads.size(); i++) {
-            Thread t = threads.get(i);
-            try{
-                t.join(); // t 쓰레드가 종료할 때까지 기다린다.
-            }catch(Exception e){
+//         for(int i = 0; i<threads.size(); i++) {
+//             Thread t = threads.get(i);
+//             try{
+//                 t.join(); // t 쓰레드가 종료할 때까지 기다린다.
+//             }catch(Exception e){
 
-            }
+//             }
 
-            System.out.println("main end");
-        }
+//             System.out.println("main end");
+//         }
 
 
 
-    }
+//     }
 
+// }
+@FunctionalInterface // 두 번재 메서드를 허용하지 않는다.
+interface Calculator {
+    int sum(int a, int  b);
 }
- 
+
+public class Sample {
+    public static void main(String[] args){
+        Calculator mc = (int a, int b) -> a + b;
+        int result = mc.sum(3, 4);
+        System.out.println(result);
+    }
+}
 
 
 
