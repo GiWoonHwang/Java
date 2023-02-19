@@ -17,6 +17,80 @@ import java.io.BufferedReader;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+// public class Sample{
+//     public void shouldBeRun() {
+//         System.out.println("ok thanks");
+//     }
+
+//     public static void main(String[] args){
+//         Sample sample = new Sample();
+//         int c;
+//         try{
+//             c = 4/0;
+//             sample.shouldBeRun();
+//         } catch (ArithmeticException e){ // ArithmeticException : 산술예외
+//             c = -1;
+//         } finally {
+//             sample.shouldBeRun();
+//         }
+//     }
+// }
+
+// public class Sample {
+//     public void shouldBeRun() {
+//         System.out.println("ok thanks");
+//     }
+
+//     public static  void main(String[] args){
+//         Sample sample = new Sample();
+//         int c;
+//         try{
+//             c = 4 / 0;
+//         } catch(ArithmeticException e){
+//             c = -1;
+//         } finally {
+//             sample.shouldBeRun();
+//         }
+//     }
+// }
+// class FoolException extends RuntimeException{
+//     /*
+//     FoolException이 상속받은 클래스는 RuntimeException이다. Exception은 크게 두가지로 구분된다.
+//     RuntimeException
+//     Exception
+//     RuntimeException은 실행시 발생하는 예외이고 Exception은 컴파일시 발생하는 예외이다. 즉,
+//     Exception은 프로그램 작성시 이미 예측가능한 예외를 작성할 때 사용하고 RuntimeException은 발생 할수도 발생 안 할수도 있는 경우에 작성한다.
+//     그래서 Exception을 Checked Exception, RuntimeException을 Unchecked Exception 이라고도 한다. 
+//      */
+
+// }
+
+// class FoolException extends Exception {
+// }
+
+
+// public class Sample {
+//     public void sayNick(String nick){
+//         try {
+//             if("fool".equals(nick)) {
+//                 throw new FoolException();
+//             }
+//             System.out.println("당신의 별명은 "+nick+" 입니다.");
+//         }catch(FoolException e) {
+//             System.err.println("FoolException이 발생했습니다.");
+//         }
+//     }
+//     public static void main(String[] args) {
+//         Sample sample = new Sample();
+//         sample.sayNick("fool");
+//         sample.sayNick("genious");
+//     }
+
+// }
+
+
+
+
 // class HouseLee{
 //     // String lastname = "이";
 
