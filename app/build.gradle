@@ -63,6 +63,7 @@ project(":project:board") {
 project(":project:admin") {
 	dependencies {
 		implementation project(":domain:admin-domain")
+		implementation project(":domain:board-domain")
 		implementation project(":common:")
 	}
 }
