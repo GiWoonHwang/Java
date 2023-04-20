@@ -1,12 +1,15 @@
 package com.mysite.web;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -21,9 +24,12 @@ public class Question {
     @Column(length = 200)
     private  String subject;
 
-    @Column(columnDefinition = "TEXT")
+    @Column(columnDefinition = "TEXT") // 글자 수를 제한하지 않는다.
     private String content;
 
     private LocalDateTime createDate;
+
+    @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE) // 질문을 삭제하면 그에 따른 답변도 전부 삭제된다.
+    private List<Answer> answerList;
 
 }
