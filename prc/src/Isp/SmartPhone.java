@@ -5,3 +5,4 @@ public interface SmartPhone {
 
     public String internet();
 }
+
