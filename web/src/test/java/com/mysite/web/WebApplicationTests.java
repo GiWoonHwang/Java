@@ -1,12 +1,16 @@
 package com.mysite.web;
+import com.mysite.web.question.Question;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import com.mysite.web.question.QuestionService;
+import com.mysite.web.question.QuestionRepository;
+import java.time.LocalDateTime;
 @SpringBootTest
 class WebApplicationTests {
 
-
+	@Autowired
+	private QuestionRepository questionRepository;
 	@Autowired
 	private QuestionService questionService;
 
@@ -18,9 +22,5 @@ class WebApplicationTests {
 			this.questionService.create(subject, content);
 		}
 
-
-
-
-	}
-
+}
 }
