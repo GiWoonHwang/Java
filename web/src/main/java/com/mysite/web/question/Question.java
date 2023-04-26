@@ -4,13 +4,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import com.mysite.web.answer.Answer;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import com.mysite.web.user.SiteUser;
+import jakarta.persistence.*;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -32,5 +27,8 @@ public class Question {
 
     @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE) // 질문을 삭제하면 그에 따른 답변도 전부 삭제된다.
     private List<Answer> answerList;
+
+    @ManyToOne
+    private SiteUser author;
 
 }
