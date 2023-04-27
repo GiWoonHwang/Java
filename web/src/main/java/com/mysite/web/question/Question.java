@@ -6,7 +6,8 @@ import java.util.List;
 import com.mysite.web.answer.Answer;
 import com.mysite.web.user.SiteUser;
 import jakarta.persistence.*;
-
+import java.util.Set;
+import jakarta.persistence.ManyToMany;
 import lombok.Getter;
 import lombok.Setter;
 @Getter
@@ -32,5 +33,8 @@ public class Question {
     private SiteUser author;
 
     private LocalDateTime modifyDate;
+
+    @ManyToMany
+    Set<SiteUser> voter; // 추천인은 중복되면 안된다 -> 중복을 허용하지 않는 set 사용했음
 
 }
