@@ -6,10 +6,10 @@ import java.util.List;
 public class Employees implements Cloneable {
     private List < String > empList;
 
+    // 생성자
     public Employees() {
         empList = new ArrayList <String > ();
     }
-
     public Employees(List < String > list) {
         this.empList = list;
     }
