@@ -8,9 +8,9 @@ package Observer;
 import java.util.List;
 
 public class Admin extends Subject{
-    private List < Room > room;
+    private List <Room> room;
 
-    public void setRoom(List < Room > room){
+    public void setRoom(List <Room> room){
         this.room = room;
     }
 
@@ -19,6 +19,5 @@ public class Admin extends Subject{
             numRoom.receive(msg);
         }
     }
-
 
 }
