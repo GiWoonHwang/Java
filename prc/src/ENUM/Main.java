@@ -1,4 +1,5 @@
 package ENUM;
+import java.math.BigDecimal;
 import java.util.stream.Stream;
 
 import static ENUM.EnumTest.LEVEL_ONE;
@@ -73,6 +74,21 @@ public class Main {
                 break;
 
         }
+
+        // 현재 유저가 가지고 있는 골
+        BigDecimal gold = BigDecimal.valueOf(100);
+
+        // 레벨에 따른 보상 골드를 가져와 보자.
+        System.out.println(EnumTest3.LEVEL_ONE.rewardGold(gold));
+        System.out.println(EnumTest3.fromString("one").rewardGold(gold));
+
+        System.out.println(EnumTest3.LEVEL_TWO.rewardGold(gold));
+        System.out.println(EnumTest3.fromString("two").rewardGold(gold));
+
+        System.out.println(EnumTest3.LEVEL_THREE.rewardGold(gold));
+        System.out.println(EnumTest3.fromString("three").rewardGold(gold));
+
+
 
     }
 }
