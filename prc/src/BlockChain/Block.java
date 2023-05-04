@@ -21,7 +21,7 @@ public class Block {
         this.hash = calculateHash();
     }
 
-    public String getPreviosHash() {
+    public String getPreviousHash() {
         return previousHash;
     }
 
