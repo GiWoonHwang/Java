@@ -5,7 +5,9 @@ import java.util.List;
 
 public class BlockChain {
     public static List<Block> BLOCK_CHAIN = new LinkedList<>();
+    public static int DIFFICULTY = 5; // 난이도
 
+    static Block genesisBlock1 = new Block("Genesis Block", "0");
     public static void main(String[] args){
         BLOCK_CHAIN.add(new Block("이건 Genesis Block 입니다.", "0"));
         BLOCK_CHAIN.add(new Block("이건 두번째 블럭 입니다.", BLOCK_CHAIN.get(BLOCK_CHAIN.size() - 1).getHash()));
@@ -20,6 +22,8 @@ public class BlockChain {
             System.out.println("Data : " + block.getData());
         }
         System.out.println("=========");
+
+        genesisBlock1.mineBlock();
     }
 
     private static boolean isValidBlockChain() {
@@ -40,6 +44,8 @@ public class BlockChain {
                 System.out.println("Not Equals Previous Block Hash!!");
                 return false;
             }
+
+
         }
 
         return true;
