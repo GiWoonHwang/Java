@@ -1,5 +1,6 @@
 package BlockChain;
 
+import java.security.PublicKey;
 import java.util.Date;
 
 public class Block {
@@ -17,7 +18,7 @@ public class Block {
         this.previousHash = previousHash;
 
         this.timeStamp = new Date().getTime();
-
+        this.hash = calculateHash();
     }
 
     public String getPreviosHash() {
@@ -34,6 +35,10 @@ public class Block {
 
     public String getData() {
         return data;
+    }
+
+    public String calculateHash(){
+        return BlockUtils.generateHash(previousHash, Long.toString(timeStamp), data);
     }
 }
 
