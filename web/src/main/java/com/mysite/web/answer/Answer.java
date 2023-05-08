@@ -4,14 +4,12 @@ import java.time.LocalDateTime;
 
 import com.mysite.web.question.Question;
 import com.mysite.web.user.SiteUser;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
+
+import java.util.List;
 import java.util.Set;
-import jakarta.persistence.ManyToMany;
+
+import com.mysite.web.comment.Comment;
 import lombok.Getter;
 import lombok.Setter;
 @Getter
@@ -37,6 +35,9 @@ public class Answer {
 
     @ManyToMany
     Set<SiteUser> voter;
+
+    @OneToMany(mappedBy = "answer")
+    private List<Comment> commentList;
 
 
 
