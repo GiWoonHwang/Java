@@ -1,50 +1,24 @@
-class Animal{
-    String name; // 객체변수
-
-    public void setName(String name){
-        this.name = name;
+class Updater {
+    void update(Counter counter){ // 단순히 값을 받으면 객체 값을 변경할 수 없다
+        counter.count ++;
     }
-
 }
+
+class Counter {
+    int count = 0; // 객체변수
+}
+
+
+
 public class Sample {
-    int e;
-    int varTest(int d){ // 외부의 d 값을 증가시키는 방법
-        d++;
-        return d;
-    }
-
-    void sayNick(String nick){
-        if("fool".equals(nick)){
-            return ;
-        }
-        System.out.println("나의 별명은 "+nick+" 입니다." );
-    }
-    int sum(int a, int b){
-        return a + b;
-    }
     public static void main(String[] args){
-//    int a = 3;
-//    int b = 4;
-//
-    Sample sample = new Sample(); // 작성한 클래스를 단독으로 실행시켜 테스트할 때 자주 사용하는 방법이다.
-//    int c = sample.sum(a,b);s
-//    System.out.println(c); // 7
-//
-//    sample.sayNick("angel");
-//    sample.sayNick("fool");  // 출력되지 않는다.
+        Counter myCounter = new Counter();
+        System.out.println("before update:"+myCounter.count);
 
-    int d = 1;
+        Updater myUpdater = new Updater();
+        myUpdater.update(myCounter); // 이렇게 메서드의 입력으로 객체를 전달받는 경우에는 메서드가 입력받은 객체를 그대로 사용하기 때문에 메서드가 객체의 속성값을 변경하면 메서드 수행 후에도 객체의 변경된 속성값이 유지된다.
 
-    d = sample.varTest(d);
-    sample.e = 1;
-    sample.varTest(sample.e);
-    System.out.println(d); // 2
-    System.out.println(sample.e); // 2
-
-
-
-
-
+        System.out.println("after update:"+myCounter.count);
 
 
 
