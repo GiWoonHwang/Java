@@ -1,3 +1,5 @@
+package jump_to_java_05;
+
 abstract class Predator extends Animal {
     abstract String getFood();
 

@@ -1,3 +1,5 @@
+package jump_to_java_05;
+
 public class Calculator {
     int result = 0;
 
