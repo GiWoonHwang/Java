@@ -6,7 +6,8 @@ import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
 
-
+import java.util.Optional;
+import com.mysite.sbb.DataNotFoundException;
 @RequiredArgsConstructor
 @Service
 public class QuestionService {
@@ -16,5 +17,7 @@ public class QuestionService {
     public List<Question> getList() {
         return this.questionRepository.findAll();
     }
+
+    public Qu
 
 }
