@@ -1,4 +1,4 @@
-package io.sdk;
+package io.sdk.service;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
