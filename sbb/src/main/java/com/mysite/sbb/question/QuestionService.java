@@ -18,6 +18,17 @@ public class QuestionService {
         return this.questionRepository.findAll();
     }
 
-    public Qu
+    public Question getQuestion(Integer id){
+        /*
+         리포지터리로 얻은 Question 객체는 Optional 객체이기 때문에 위와 같이 isPresent 메서드로 해당 데이터가 존재하는지 검사하는 로직이 필요하다.
+         */
+        Optional<Question> question = this.questionRepository.findById(id);
+        if(question.isPresent()){ // null이 아니라면
+            return question.get(); // id에 해당하는 데이터를 가져온다.
+        }
+        else{
+            throw new DataNotFoundException("question not found");
+        }
+    }
 
 }
