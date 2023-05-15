@@ -8,10 +8,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
 
+import com.mysite.sbb.BlockChain.BlockChainService;
 import com.mysite.sbb.answer.Answer;
 import com.mysite.sbb.answer.AnswerRepository;
 import com.mysite.sbb.question.Question;
 import com.mysite.sbb.question.QuestionRepository;
+import io.rigo.sdk.common.client.RigoWeb3;
+import io.rigo.sdk.domain.account.model.Account;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -25,6 +28,9 @@ class SbbApplicationTests {
 
 	@Autowired
 	private AnswerRepository answerRepository;
+
+	@Autowired
+	private RigoWeb3 rigoWeb3;
 
 
 	@Transactional // 세션이 끊어지는걸 방지해준다.
@@ -112,17 +118,24 @@ class SbbApplicationTests {
 //
 
 		// 답변에 연결된 질문 찾기 vs 질문에 달린 답변 찾기
-		Optional<Question> oq = this.questionRepository.findById(2);
-		assertTrue(oq.isPresent());
-		Question q = oq.get();
+//		Optional<Question> oq = this.questionRepository.findById(2);
+//		assertTrue(oq.isPresent());
+//		Question q = oq.get();
 
 		/*
 		findById를 호출하여 Question 객체를 조회하고 나면 db세션이 끊어지기 때문에 q.getAnswerList()는 오류가 발생한다
 		 */
-		List<Answer> answerList = q.getAnswerList();
+//		List<Answer> answerList = q.getAnswerList();
+//
+//		assertEquals(1, answerList.size()); // 답변은 한개였으니 size는 1이 나와야 한다.
+//		assertEquals("네 자동으로 생성됩니다.", answerList.get(0).getContent());
 
-		assertEquals(1, answerList.size()); // 답변은 한개였으니 size는 1이 나와야 한다.
-		assertEquals("네 자동으로 생성됩니다.", answerList.get(0).getContent());
+		/*
+		**************************************************************************************************************************************************
+		* 블록체인 api 테스트 코드 작성
+		 */
+		Account addrInfo = rigoWeb3.queryAccount("196508f1df43a562f044692ba0bd16cef992ec37");
+		assertEquals("8423",addrInfo.getValue().getNonce());
 
 
 	}
