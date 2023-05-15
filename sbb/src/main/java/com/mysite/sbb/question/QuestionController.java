@@ -6,10 +6,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import lombok.RequiredArgsConstructor;
-
+import jakarta.validation.Valid;
+import org.springframework.validation.BindingResult;
+import com.mysite.sbb.answer.AnswerForm;
 @RequestMapping("/question") // url prefix
 @RequiredArgsConstructor
 @Controller
@@ -34,11 +38,39 @@ public class QuestionController {
     요청 URL http://localhost:8080/question/detail/2의 숫자 2처럼 변하는 id 값을 얻을 때에는 위와 같이 @PathVariable 애너테이션을 사용해야 한다.
     이 때 @GetMapping(value = "/question/detail/{id}") 에서 사용한 id와 @PathVariable("id")의 매개변수 이름이 동일해야 한다.
      */
-    public String detail(Model model, @PathVariable("id") Integer id) {
+    public String detail(Model model, @PathVariable("id") Integer id, AnswerForm answerForm) {
         Question question = this.questionService.getQuestion(id);
         model.addAttribute("question", question);
         return "question_detail";
     }
 
+    // Get 요청으로 템플릿을 띄운다.
+    @GetMapping("/create")
+    public String questionCreate(QuestionForm questionForm) {
+        /*
+        템플릿을 위와 같이 수정할 경우 QuestionController의 GetMapping으로 매핑한 메서드도 다음과 같이 변경해야 한다.
+        왜냐하면 question_form.html 템플릿은 "질문 등록하기" 버튼을 통해 GET 방식으로 요청되더라도 th:object에 의해 QuestionForm 객체가 필요하기 때문이다.
+         */
+        return "question_form";
+    }
+
+    // 메서드 이름은 같고, 매개변수가 다른 메서드 오버로딩 적용
+    @PostMapping("/create")
+    public String questionCreate(@Valid QuestionForm questionForm, BindingResult bindingResult){
+        /*
+        questionCreate 메서드의 매개변수를 subject, cotent 대신 QuestionForm 객체로 변경했다. subject, content 항목을 지닌 폼이 전송되면
+        QuestionForm의 subject, content 속성이 자동으로 바인딩 된다. 이것은 스프링 프레임워크의 바인딩 기능이다.
+
+         QuestionForm 매개변수 앞에 @Valid 애너테이션을 적용했다. @Valid 애너테이션을 적용하면 QuestionForm의 @NotEmpty, @Size 등으로 설정한 검증 기능이 동작한다.
+         그리고 이어지는 BindingResult 매개변수는 @Valid 애너테이션으로 인해 검증이 수행된 결과를 의미하는 객체이다.
+         */
+        if(bindingResult.hasErrors()){ // 검증이 실패하면
+            return "question_form"; // 다시 돌아가라
+        }
+        // todo 질문을 저장한다.
+        this.questionService.create(questionForm.getSubject(), questionForm.getContent());
+        return "redirect:/question/list"; // 질문 저장 후 질문 목록으로 이동
+
+    }
 
 }
