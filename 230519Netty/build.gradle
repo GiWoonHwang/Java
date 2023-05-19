@@ -1,0 +1,68 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+    id 'com.google.protobuf' version '0.9.2'
+}
+
+sourceCompatibility = 11
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.11'
+
+    implementation 'org.web3j:core:5.0.0'
+    implementation 'org.bouncycastle:bcprov-jdk15on:1.70'
+
+    implementation 'com.google.protobuf:protobuf-java:3.23.0'
+    implementation 'io.grpc:grpc-netty:1.53.0'
+    implementation 'io.grpc:grpc-protobuf:1.53.0'
+    implementation 'io.grpc:grpc-stub:1.53.0'
+
+    implementation 'io.netty:netty-all:4.1.92.Final'
+
+    compileOnly 'org.projectlombok:lombok:1.18.26'
+    annotationProcessor 'org.projectlombok:lombok:1.18.26'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.2'
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'io.rigo'
+            artifactId = 'sdk'
+            version = '0.0.1-SNAPSHOT'
+            from components.java
+        }
+    }
+}
+
+protobuf {
+    protoc {
+        artifact = 'com.google.protobuf:protoc:3.23.0'
+    }
+    plugins {
+        grpc {
+            artifact = 'io.grpc:protoc-gen-grpc-java:1.55.1'
+        }
+    }
+    generateProtoTasks {
+        all().configureEach { task ->
+            task.plugins {
+                grpc { }
+            }
+        }
+        ofSourceSet('main')
+    }
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
