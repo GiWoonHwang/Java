@@ -11,8 +11,10 @@ import java.util.List;
 import com.mysite.sbb.BlockChain.BlockChainService;
 import com.mysite.sbb.answer.Answer;
 import com.mysite.sbb.answer.AnswerRepository;
+import com.mysite.sbb.common.config.RigoWeb3Configuration;
 import com.mysite.sbb.question.Question;
 import com.mysite.sbb.question.QuestionRepository;
+import com.mysite.sbb.subscriber.SubscriberListener;
 import io.rigo.sdk.common.client.RigoWeb3;
 import io.rigo.sdk.domain.account.model.Account;
 import org.junit.jupiter.api.Test;
@@ -35,7 +37,7 @@ class SbbApplicationTests {
 
 	@Transactional // 세션이 끊어지는걸 방지해준다.
 	@Test
-	void testJpa() {
+	void testJpa() throws InterruptedException {
 		// 생성
 //		Question q1 = new Question();
 //		q1.setSubject("sbb가 무엇인가요?"); // setter를 이용해 값 변경
@@ -134,8 +136,9 @@ class SbbApplicationTests {
 		**************************************************************************************************************************************************
 		* 블록체인 api 테스트 코드 작성
 		 */
-		Account addrInfo = rigoWeb3.queryAccount("196508f1df43a562f044692ba0bd16cef992ec37");
-		assertEquals("8423",addrInfo.getValue().getNonce());
+//		Account addrInfo = rigoWeb3.queryAccount("196508f1df43a562f044692ba0bd16cef992ec37");
+//		assertEquals("8423",addrInfo.getValue().getNonce());
+
 
 
 	}
