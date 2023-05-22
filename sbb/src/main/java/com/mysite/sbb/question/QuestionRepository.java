@@ -2,6 +2,8 @@ package com.mysite.sbb.question;
 
 import com.mysite.sbb.question.Question;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
@@ -17,4 +19,5 @@ JpaRepository를 상속할 때는 제네릭스 타입으로 <Question, Integer> 
     Question findBySubject(String subject);
     Question findBySubjectAndContent(String subject, String content);
     List<Question> findBySubjectLike(String subject);
+    Page<Question> findAll(Pageable pageable); // Pagealbe 객체를 입력받아 Page<Question>를 리턴하는 메서드
 }

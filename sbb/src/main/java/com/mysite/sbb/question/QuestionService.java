@@ -9,6 +9,12 @@ import lombok.RequiredArgsConstructor;
 import java.util.Optional;
 import java.time.LocalDateTime;
 import com.mysite.sbb.DataNotFoundException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import java.util.ArrayList;
+import java.util.List;
+import org.springframework.data.domain.Sort;
 @RequiredArgsConstructor
 @Service
 public class QuestionService {
@@ -38,6 +44,21 @@ public class QuestionService {
         q.setContent(content);
         q.setCreateDate(LocalDateTime.now());
         this.questionRepository.save(q);
+    }
+
+    public Page<Question> getList(int page){
+        /*
+        정수 타입의 페이지 번호를 입력받아 해당 페이지의 질문목록을 리턴한다
+        PageRequest.of(page, 10) = 몇번 페이지에 대한 데이터를 10개씩 보여준다
+
+        게시물을 역순으로 조회하기 위해서는 위와 같이 PageRequest.of 메서드의 세번째 파라미터로 Sort 객체를 전달해야 한다.
+        Sort.Order 객체로 구성된 리스트에 Sort.Order 객체를 추가하고 Sort.by(소트리스트)로 소트 객체를 생성할 수 있다.
+        작성일시(createDate)를 역순(Desc)으로 조회하려면 Sort.Order.desc("createDate") 같이 작성한다.
+         */
+        List<Sort.Order> sorts = new ArrayList<>();
+        sorts.add(Sort.Order.desc("createDate"));
+        Pageable pageable = PageRequest.of(page, 10, Sort.by(sorts));
+        return this.questionRepository.findAll(pageable);
     }
 
 }

@@ -14,6 +14,8 @@ import lombok.RequiredArgsConstructor;
 import jakarta.validation.Valid;
 import org.springframework.validation.BindingResult;
 import com.mysite.sbb.answer.AnswerForm;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.data.domain.Page;
 @RequestMapping("/question") // url prefix
 @RequiredArgsConstructor
 @Controller
@@ -23,11 +25,15 @@ public class QuestionController {
 
 //    @ResponseBody  어노테이션을 지우면 html 파일을 불러온다.
     @GetMapping("/list")
-    public String list(Model model) {
+    public String list(Model model, @RequestParam(value = "page",defaultValue = "0") int page) { // 스프링부트의 페이징은 첫페이지 번호가 1이 아닌 0이다.
         /*
         Question 리포지터의 findAll 메서드를 사용하여 질문 목록 데이터인 questionList를 생성하고 Model 객체에 "questionList" 라는 이름으로 값을 저장했다.
         Model 객체는 자바 클래스와 템플릿 간의 연결고리 역할을 한다. Model 객체에 값을 담아두면 템플릿에서 그 값을 사용할 수 있다.
          */
+        Page<Question> paging = this.questionService.getList(page);
+        model.addAttribute("paging", paging);
+
+
         List<Question> questionList = this.questionService.getList();
         model.addAttribute("questionList", questionList); // questionList 라는 이름으로 담아두었다. 템플릿에서 사용할 수 있다.
         return "question_list";

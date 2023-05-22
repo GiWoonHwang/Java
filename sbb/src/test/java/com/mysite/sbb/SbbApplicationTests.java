@@ -14,7 +14,8 @@ import com.mysite.sbb.answer.AnswerRepository;
 import com.mysite.sbb.common.config.RigoWeb3Configuration;
 import com.mysite.sbb.question.Question;
 import com.mysite.sbb.question.QuestionRepository;
-import com.mysite.sbb.subscriber.SubscriberListener;
+//import com.mysite.sbb.subscriber.SubscriberListener;
+import com.mysite.sbb.question.QuestionService;
 import io.rigo.sdk.common.client.RigoWeb3;
 import io.rigo.sdk.domain.account.model.Account;
 import org.junit.jupiter.api.Test;
@@ -34,10 +35,35 @@ class SbbApplicationTests {
 	@Autowired
 	private RigoWeb3 rigoWeb3;
 
+	@Autowired
+	private QuestionService questionService;
 
-	@Transactional // 세션이 끊어지는걸 방지해준다.
+
+//	@Transactional // 세션이 끊어지는걸 방지해준다.
 	@Test
 	void testJpa() throws InterruptedException {
+		for (int i = 1; i <= 300; i++) {
+			String subject = String.format("테스트 데이터입니다:[%03d]", i);
+			String content = "내용무";
+			this.questionService.create(subject, content);
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		// 생성
 //		Question q1 = new Question();
 //		q1.setSubject("sbb가 무엇인가요?"); // setter를 이용해 값 변경
