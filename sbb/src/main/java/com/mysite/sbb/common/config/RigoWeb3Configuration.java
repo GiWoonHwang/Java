@@ -29,29 +29,5 @@ public class RigoWeb3Configuration {
     // TODO
     //}
 
-    @Component
-    public class SubscriberListener {
 
-        @Value("${rigo.node.socket}")
-        private String websocketUrl;
-
-        @EventListener(ApplicationReadyEvent.class)
-        public void newBlockSubscribe() throws InterruptedException {
-            Subscriber subscriber = new Subscriber(websocketUrl);
-            SubscriberCallback callback = (message) -> {
-                System.out.println(message);
-            };
-            subscriber.start(DefaultEventType.NEW_BLOCK, callback);
-        }
-
-        @EventListener(ApplicationReadyEvent.class)
-        public void txSubscribe() throws InterruptedException {
-            Subscriber subscriber = new Subscriber(websocketUrl);
-            SubscriberCallback callback = (message) -> {
-                System.out.println(message);
-            };
-            subscriber.start(DefaultEventType.TX, callback);
-        }
-
-    }
 }
