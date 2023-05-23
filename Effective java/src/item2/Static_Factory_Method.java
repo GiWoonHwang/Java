@@ -1,4 +1,4 @@
-package Creating_and_destroying_objects;
+package item2;
 
 public class Static_Factory_Method {
     /*
