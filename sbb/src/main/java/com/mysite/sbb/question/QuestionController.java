@@ -1,7 +1,10 @@
 package com.mysite.sbb.question;
 
+import java.security.Principal;
 import java.util.List;
-
+import org.springframework.security.access.prepost.PreAuthorize;
+import com.mysite.sbb.user.SiteUser;
+import com.mysite.sbb.user.UserService;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +24,7 @@ import org.springframework.data.domain.Page;
 @Controller
 public class QuestionController {
     private final QuestionService questionService;
+    private final UserService userService;
 
 
 //    @ResponseBody  어노테이션을 지우면 html 파일을 불러온다.
@@ -51,6 +55,7 @@ public class QuestionController {
     }
 
     // Get 요청으로 템플릿을 띄운다.
+    @PreAuthorize("isAuthenticated()") // 로그인이 필요한 메서드를 의미함
     @GetMapping("/create")
     public String questionCreate(QuestionForm questionForm) {
         /*
@@ -61,8 +66,9 @@ public class QuestionController {
     }
 
     // 메서드 이름은 같고, 매개변수가 다른 메서드 오버로딩 적용
+    @PreAuthorize("isAuthenticated()")
     @PostMapping("/create")
-    public String questionCreate(@Valid QuestionForm questionForm, BindingResult bindingResult){
+    public String questionCreate(@Valid QuestionForm questionForm, BindingResult bindingResult, Principal principal){
         /*
         questionCreate 메서드의 매개변수를 subject, cotent 대신 QuestionForm 객체로 변경했다. subject, content 항목을 지닌 폼이 전송되면
         QuestionForm의 subject, content 속성이 자동으로 바인딩 된다. 이것은 스프링 프레임워크의 바인딩 기능이다.
@@ -74,7 +80,8 @@ public class QuestionController {
             return "question_form"; // 다시 돌아가라
         }
         // todo 질문을 저장한다.
-        this.questionService.create(questionForm.getSubject(), questionForm.getContent());
+        SiteUser siteUser = this.userService.getUser(principal.getName());
+        this.questionService.create(questionForm.getSubject(), questionForm.getContent(), siteUser);
         return "redirect:/question/list"; // 질문 저장 후 질문 목록으로 이동
 
     }

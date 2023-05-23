@@ -1,6 +1,8 @@
 package com.mysite.sbb.answer;
 import com.mysite.sbb.question.Question;
 import com.mysite.sbb.question.QuestionService;
+import com.mysite.sbb.user.SiteUser;
+import com.mysite.sbb.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,8 +10,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.security.access.prepost.PreAuthorize;
 import jakarta.validation.Valid;
 import org.springframework.validation.BindingResult;
+import java.security.Principal;
 
 @RequestMapping("/answer")
 @RequiredArgsConstructor
@@ -17,10 +21,17 @@ import org.springframework.validation.BindingResult;
 public class AnserController {
     private final QuestionService questionService;
     private final AnswerService answerService;
+    private final UserService userService;
+
+    @PreAuthorize("isAuthenticated()")
     @PostMapping("/create/{id}")
     public String createAnswer(Model model, @PathVariable("id") Integer id,
-        @Valid  AnswerForm answerForm, BindingResult bindingResult){
+        @Valid  AnswerForm answerForm, BindingResult bindingResult, Principal principal ){
+        /*
+        현재 로그인한 사용자에 대한 정보를 알기 위해서는 스프링 시큐리티가 제공하는 Principal를 이용한다.
+         */
         Question question = this.questionService.getQuestion(id);
+        SiteUser siteUser = this.userService.getUser(principal.getName()); // 로그인한 유저의 정보를 받아서
         if(bindingResult.hasErrors()){
             // question_detail 템플릿은 Question 객체가 필요하므로 model 객체에 Question 객체를 저장한 후에 question_detail 템플릿을 렌더링해야 한다.
             model.addAttribute("question", question);
@@ -28,7 +39,7 @@ public class AnserController {
         }
 
         // todo: 답변을 저장한다.
-        this.answerService.create(question,answerForm.getContent());
+        this.answerService.create(question,answerForm.getContent(), siteUser); // 매개변수로 전달
         return String.format("redirect:/question/detail/%s", id);
     }
 }

@@ -3,6 +3,8 @@ package com.mysite.sbb.question;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import jakarta.persistence.ManyToOne;
+import com.mysite.sbb.user.SiteUser;
 import com.mysite.sbb.answer.Answer;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -50,4 +52,7 @@ public class Question {
     @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE)
     // Answer 엔티티에서 Question 엔티티를 참조한 속성명 question을 mappedBy에 전달해야 한다.
     private List<Answer> answerList;
+
+    @ManyToOne
+    private SiteUser author;
 }

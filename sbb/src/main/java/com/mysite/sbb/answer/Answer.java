@@ -1,7 +1,7 @@
 package com.mysite.sbb.answer;
 
 import java.time.LocalDateTime;
-
+import com.mysite.sbb.user.SiteUser;
 import com.mysite.sbb.question.Question;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -31,7 +31,10 @@ public class Answer {
 
 즉, question 속성에 @ManyToOne 애너테이션을 추가해야 한다.
      */
-    @ManyToOne // 답변은 하난의 질문에 여러개가 달릴 수 있는 구조이다.
+    @ManyToOne // 답변은 하나의 질문에 여러개가 달릴 수 있는 구조이다.
     private Question question;
+
+    @ManyToOne // 여러개의 질문을 한명의 사용자가 작성할 수 있다
+    private SiteUser author;
 
 }
