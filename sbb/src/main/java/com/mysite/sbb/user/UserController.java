@@ -18,6 +18,11 @@ public class UserController {
 
     private final UserService userService;
 
+    @GetMapping("/login") // 시큐리티에 설정된 url에 맞춰 컨트롤러에 매핑을 추가한다
+    public String login() {
+        return "login_form";
+    }
+
     @GetMapping("/signup")
     public String signup(UserCreateForm userCreateForm){
         return "signup_form";
