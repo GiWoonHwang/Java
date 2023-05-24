@@ -121,7 +121,6 @@ public class QuestionController {
     @GetMapping("/delete/{id}")
     public String questionDelete(Principal principal, @PathVariable("id") Integer id){
         Question question = this.questionService.getQuestion(id);
-        System.out.println("ㄴ옴 ??"+ question);
         if(!question.getAuthor().getUsername().equals(principal.getName())){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "삭제권한이 없습니다.");
         }

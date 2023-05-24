@@ -1,11 +1,13 @@
 package com.mysite.sbb.answer;
 
+import com.mysite.sbb.DataNotFoundException;
 import com.mysite.sbb.question.Question;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import com.mysite.sbb.user.SiteUser;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
@@ -19,5 +21,24 @@ public class AnswerService {
         answer.setQuestion(question);
         answer.setAuthor(author); // 컨트롤러에서 principal.getName() 으로 얻어온 유저정보 받아온다.
         this.answerRepository.save(answer);
+    }
+
+    public Answer getAnswer(Integer id) {
+        Optional<Answer> answer = this.answerRepository.findById(id); // id에 해당하는 답변 객체를 가져온다
+        if(answer.isPresent()){
+            return answer.get();
+        } else {
+            throw new DataNotFoundException("answer not found");
+        }
+    }
+
+    public void modify(Answer answer, String content){
+        answer.setContent(content);
+        answer.setModifyDate(LocalDateTime.now());
+        this.answerRepository.save(answer);
+    }
+
+    public void delete(Answer answer){
+        this.answerRepository.delete(answer);
     }
 }
