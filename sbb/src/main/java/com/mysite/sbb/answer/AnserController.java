@@ -79,6 +79,14 @@ public class AnserController {
         }
         this.answerService.delete(answer);
         return String.format("redirect:/question/detail/%s", answer.getQuestion().getId());
+    }
 
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping("/vote/{id}")
+    public String answerVote(Principal principal, @PathVariable("id") Integer id){
+        Answer answer = answerService.getAnswer(id);
+        SiteUser siteUser = userService.getUser(principal.getName());
+        this.answerService.vote(answer, siteUser);
+        return String.format("redirect:/question/detail/%s", answer.getQuestion().getId());
     }
 }

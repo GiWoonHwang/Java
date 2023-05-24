@@ -2,17 +2,11 @@ package com.mysite.sbb.question;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import com.mysite.sbb.user.SiteUser;
 import com.mysite.sbb.answer.Answer;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -57,5 +51,9 @@ public class Question {
     private SiteUser author;
 
     private LocalDateTime modifyDate;
+
+    @ManyToMany
+    Set<SiteUser> voter; // 하나의 질문에 여러사람이, 한 사람이 여러질문을, 또 추천은 중복이 불가능하다.
+
 
 }

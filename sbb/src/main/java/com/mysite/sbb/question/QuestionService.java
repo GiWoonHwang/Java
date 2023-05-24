@@ -74,4 +74,10 @@ public class QuestionService {
         this.questionRepository.delete(question);
     }
 
+    public void vote(Question question, SiteUser siteUser){
+        question.getVoter().add(siteUser); // lombok으로 get 해서 Set에 유저를 넣는다
+        this.questionRepository.save(question);
+
+    }
+
 }
