@@ -14,13 +14,18 @@ import java.util.Optional;
 public class AnswerService {
     private final AnswerRepository answerRepository; // repository는 final
 
-    public void create(Question question, String cotent, SiteUser author){
+    public Answer create(Question question, String cotent, SiteUser author){
+        /*
+        앵커 : 원하는 위치로 이동
+        앵커 기능을 이용하기 위해 return 값을 생성한 답변객체로 설정한다
+         */
         Answer answer = new Answer();
         answer.setContent(cotent);
         answer.setCreateDate(LocalDateTime.now());
         answer.setQuestion(question);
         answer.setAuthor(author); // 컨트롤러에서 principal.getName() 으로 얻어온 유저정보 받아온다.
         this.answerRepository.save(answer);
+        return Answer
     }
 
     public Answer getAnswer(Integer id) {

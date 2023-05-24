@@ -18,7 +18,7 @@ import java.security.Principal;
 @RequestMapping("/answer")
 @RequiredArgsConstructor
 @Controller
-public class AnserController {
+public class AnswerController {
     private final QuestionService questionService;
     private final AnswerService answerService;
     private final UserService userService;
@@ -39,8 +39,8 @@ public class AnserController {
         }
 
         // todo: 답변을 저장한다.
-        this.answerService.create(question,answerForm.getContent(), siteUser); // 매개변수로 전달
-        return String.format("redirect:/question/detail/%s", id);
+        Answer answer = this.answerService.create(question,answerForm.getContent(), siteUser); // 매개변수로 전달
+        return String.format("redirect:/question/detail/%s#answer_%s", answer.getQuestion().getId(), answer.getId());
     }
 
 
@@ -67,7 +67,8 @@ public class AnserController {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "수정권한이 없습니다.");
         }
         this.answerService.modify(answer, answerForm.getContent());
-        return String.format("redirect:/question/detail/%s", answer.getQuestion().getId());
+        return String.format("redirect:/question/detail/%s#answer_%s",
+                answer.getQuestion().getId(), answer.getId());
     }
 
     @PreAuthorize("isAuthenticated()")
@@ -87,6 +88,7 @@ public class AnserController {
         Answer answer = answerService.getAnswer(id);
         SiteUser siteUser = userService.getUser(principal.getName());
         this.answerService.vote(answer, siteUser);
-        return String.format("redirect:/question/detail/%s", answer.getQuestion().getId());
+        return String.format("redirect:/question/detail/%s#answer_%s",
+                answer.getQuestion().getId(), answer.getId());
     }
 }
