@@ -12,6 +12,7 @@ import com.mysite.sbb.BlockChain.BlockChainService;
 import com.mysite.sbb.answer.Answer;
 import com.mysite.sbb.answer.AnswerRepository;
 import com.mysite.sbb.common.config.RigoWeb3Configuration;
+import com.mysite.sbb.common.util.SelectDate;
 import com.mysite.sbb.question.Question;
 import com.mysite.sbb.question.QuestionRepository;
 //import com.mysite.sbb.subscriber.SubscriberListener;
@@ -22,6 +23,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
+import java.time.LocalDateTime;
 
 @SpringBootTest
 class SbbApplicationTests {
@@ -40,31 +42,23 @@ class SbbApplicationTests {
 
 
 //	@Transactional // 세션이 끊어지는걸 방지해준다.
-	@Test
-	void testJpa() throws InterruptedException {
-		for (int i = 1; i <= 300; i++) {
-			String subject = String.format("테스트 데이터입니다:[%03d]", i);
-			String content = "내용무";
-//			this.questionService.create(subject, content);
-		}
+@Test
+void testJpa() throws InterruptedException {
+//		for (int i = 1; i <= 300; i++) {
+//			String subject = String.format("테스트 데이터입니다:[%03d]", i);
+//			String content = "내용무";
+////			this.questionService.create(subject, content);
+//		}
+
+	SelectDate data = SelectDate.TYPE_TWO;
+	System.out.println("짜잔 과연 결과는 ????????????????????????"+ data.transform(LocalDateTime.now()));
+	System.out.println("짜잔 과연 결과는 ????????????????????????"+ data.convertDate(LocalDateTime.now(),data.getPattern()));
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-		// 생성
+	// 생성
 //		Question q1 = new Question();
 //		q1.setSubject("sbb가 무엇인가요?"); // setter를 이용해 값 변경
 //		q1.setContent("sbb에 대해서 알고 싶습니다.");
@@ -77,7 +71,7 @@ class SbbApplicationTests {
 //		q2.setCreateDate(LocalDateTime.now());
 //		this.questionRepository.save(q2);  // 두번째 질문 저장
 
-		// 조회
+	// 조회
 //		List<Question> all = this.questionRepository.findAll();
 //		assertEquals(2, all.size());
 //
@@ -111,14 +105,14 @@ class SbbApplicationTests {
 //		Question q = qList.get(0);
 //		assertEquals("sbb가 무엇인가요?", q.getSubject());
 
-		// 수정
+	// 수정
 //		Optional<Question> oq = this.questionRepository.findById(1);
 //		assertTrue(oq.isPresent());
 //		Question q = oq.get();
 //		q.setSubject("수정된 제목");
 //		this.questionRepository.save(q);
 //
-		// 삭제
+	// 삭제
 //		assertEquals(2, this.questionRepository.count()); // 삭제하기 전에는 2
 //		Optional<Question> oq = this.questionRepository.findById(1);
 //		assertTrue(oq.isPresent());
@@ -127,7 +121,7 @@ class SbbApplicationTests {
 //		this.questionRepository.delete(q);
 //		assertEquals(1, this.questionRepository.count()); // 삭제한 후에는 1
 //
-		// 답변 데이터 생성 후 저장
+	// 답변 데이터 생성 후 저장
 //		Optional<Question> oq = this.questionRepository.findById(2);
 //		assertTrue(oq.isPresent());
 //		Question q = oq.get(); // id가 2번에 해당하는 데이터 가져온다.
@@ -138,19 +132,19 @@ class SbbApplicationTests {
 //		a.setCreateDate(LocalDateTime.now());
 //		this.answerRepository.save(a);
 
-		// 답변 조회하기
+	// 답변 조회하기
 //		Optional<Answer> oa = this.answerRepository.findById(1);
 //		assertTrue(oa.isPresent());
 //		Answer a = oa.get();
 //		assertEquals(2, a.getQuestion().getId()); // 답변에 대한 질문 id가 2인지 테스트
 //
 
-		// 답변에 연결된 질문 찾기 vs 질문에 달린 답변 찾기
+	// 답변에 연결된 질문 찾기 vs 질문에 달린 답변 찾기
 //		Optional<Question> oq = this.questionRepository.findById(2);
 //		assertTrue(oq.isPresent());
 //		Question q = oq.get();
 
-		/*
+        /*
 		findById를 호출하여 Question 객체를 조회하고 나면 db세션이 끊어지기 때문에 q.getAnswerList()는 오류가 발생한다
 		 */
 //		List<Answer> answerList = q.getAnswerList();
@@ -158,7 +152,7 @@ class SbbApplicationTests {
 //		assertEquals(1, answerList.size()); // 답변은 한개였으니 size는 1이 나와야 한다.
 //		assertEquals("네 자동으로 생성됩니다.", answerList.get(0).getContent());
 
-		/*
+	/*
 		**************************************************************************************************************************************************
 		* 블록체인 api 테스트 코드 작성
 		 */
@@ -166,7 +160,6 @@ class SbbApplicationTests {
 //		assertEquals("8423",addrInfo.getValue().getNonce());
 
 
-
-	}
+}
 
 }
