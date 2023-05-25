@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
 
+import com.mysite.sbb.comment.Comment;
 import jakarta.persistence.*;
 import com.mysite.sbb.user.SiteUser;
 import com.mysite.sbb.answer.Answer;
@@ -54,6 +55,9 @@ public class Question {
 
     @ManyToMany
     Set<SiteUser> voter; // 하나의 질문에 여러사람이, 한 사람이 여러질문을, 또 추천은 중복이 불가능하다.
+
+    @OneToMany(mappedBy = "question")
+    private List<Comment> commentList;
 
 
 }
