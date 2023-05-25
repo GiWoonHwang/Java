@@ -25,7 +25,7 @@ public class AnswerService {
         answer.setQuestion(question);
         answer.setAuthor(author); // 컨트롤러에서 principal.getName() 으로 얻어온 유저정보 받아온다.
         this.answerRepository.save(answer);
-        return Answer
+        return answer;
     }
 
     public Answer getAnswer(Integer id) {

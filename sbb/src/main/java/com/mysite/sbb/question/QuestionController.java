@@ -31,7 +31,7 @@ public class QuestionController {
 
 //    @ResponseBody  어노테이션을 지우면 html 파일을 불러온다.
     @GetMapping("/list")
-    public String list(Model model, @RequestParam(value = "page",defaultValue = "0") int page, @RequestParam(value = "kw", defaultValue = "") String kw)) { // 스프링부트의 페이징은 첫페이지 번호가 1이 아닌 0이다.
+    public String list(Model model, @RequestParam(value = "page",defaultValue = "0") int page, @RequestParam(value = "kw", defaultValue = "") String kw) { // 스프링부트의 페이징은 첫페이지 번호가 1이 아닌 0이다.
         /*
         Question 리포지터의 findAll 메서드를 사용하여 질문 목록 데이터인 questionList를 생성하고 Model 객체에 "questionList" 라는 이름으로 값을 저장했다.
         Model 객체는 자바 클래스와 템플릿 간의 연결고리 역할을 한다. Model 객체에 값을 담아두면 템플릿에서 그 값을 사용할 수 있다.

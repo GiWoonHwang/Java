@@ -22,5 +22,5 @@ JpaRepository를 상속할 때는 제네릭스 타입으로 <Question, Integer> 
     List<Question> findBySubjectLike(String subject);
     Page<Question> findAll(Pageable pageable); // Pagealbe 객체를 입력받아 Page<Question>를 리턴하는 메서드
 
-    Pageable<Question> findAll(Specification<Question> spec, Pageable pageable);
+    Page<Question> findAll(Specification<Question> spec, Pageable pageable);
 }
