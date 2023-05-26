@@ -4,11 +4,12 @@ import java.time.LocalDateTime;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import com.mysite.sbb.question.Question;
 import com.mysite.sbb.user.SiteUser;
+import org.springframework.stereotype.Service;
 
+@Service // 없으면 @org.springframework.beans.factory.annotation.Autowired(required=true)에러 발생
 public class CommentService {
 
     @Autowired

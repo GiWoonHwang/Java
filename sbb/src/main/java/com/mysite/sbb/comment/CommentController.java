@@ -1,7 +1,6 @@
 package com.mysite.sbb.comment;
 
 import java.security.Principal;
-import java.time.LocalDateTime;
 import java.util.Optional;
 
 import jakarta.validation.Valid;
@@ -9,7 +8,6 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -77,8 +75,9 @@ public class CommentController {
     }
 
     @PreAuthorize("isAuthenticated()")
-    @GetMapping("/modify/{id}")
-    public String modifyComment(@Valid CommentForm commentForm, BindingResult bindingResult, Principal principal, @PathVariable("id") Integer id) {
+    @PostMapping("/modify/{id}")
+    public String modifyComment(@Valid CommentForm commentForm, BindingResult bindingResult, Principal principal,
+                                @PathVariable("id") Integer id) {
         if (bindingResult.hasErrors()) {
             return "comment_form"; // form 양식을 만족하지 못하면
         }
