@@ -1,4 +1,4 @@
-package apps.noticeboard.user;
+package apps.noticeboard.forms;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;

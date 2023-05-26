@@ -3,6 +3,7 @@ package apps.noticeboard.question;
 import java.security.Principal;
 import java.util.List;
 
+import apps.noticeboard.forms.QuestionForm;
 import libs.entities.Question;
 import org.springframework.security.access.prepost.PreAuthorize;
 import libs.entities.SiteUser;
@@ -17,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import lombok.RequiredArgsConstructor;
 import jakarta.validation.Valid;
 import org.springframework.validation.BindingResult;
-import apps.noticeboard.answer.AnswerForm;
+import apps.noticeboard.forms.AnswerForm;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;

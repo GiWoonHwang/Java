@@ -1,5 +1,6 @@
 package apps.noticeboard.user;
 
+import apps.noticeboard.forms.UserCreateForm;
 import jakarta.validation.Valid;
 
 import org.springframework.stereotype.Controller;

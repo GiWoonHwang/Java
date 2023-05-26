@@ -4,16 +4,17 @@ import java.time.LocalDateTime;
 import java.util.Optional;
 
 import libs.entities.Comment;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import libs.entities.Question;
 import libs.entities.SiteUser;
 import org.springframework.stereotype.Service;
 
+@RequiredArgsConstructor
 @Service // 없으면 @org.springframework.beans.factory.annotation.Autowired(required=true)에러 발생
 public class CommentService {
 
-    @Autowired
     private CommentRepository commentRepository;
 
     public Comment create(Question question, SiteUser author, String content){

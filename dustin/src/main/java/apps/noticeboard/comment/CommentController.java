@@ -3,6 +3,7 @@ package apps.noticeboard.comment;
 import java.security.Principal;
 import java.util.Optional;
 
+import apps.noticeboard.forms.CommentForm;
 import jakarta.validation.Valid;
 
 import libs.entities.Comment;

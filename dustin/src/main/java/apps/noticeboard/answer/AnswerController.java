@@ -1,4 +1,5 @@
 package apps.noticeboard.answer;
+import apps.noticeboard.forms.AnswerForm;
 import libs.entities.Question;
 import apps.noticeboard.question.QuestionService;
 import libs.entities.SiteUser;
@@ -27,7 +28,7 @@ public class AnswerController {
     @PreAuthorize("isAuthenticated()")
     @PostMapping("/create/{id}")
     public String createAnswer(Model model, @PathVariable("id") Integer id,
-        @Valid  AnswerForm answerForm, BindingResult bindingResult, Principal principal ){
+                               @Valid AnswerForm answerForm, BindingResult bindingResult, Principal principal ){
         /*
         현재 로그인한 사용자에 대한 정보를 알기 위해서는 스프링 시큐리티가 제공하는 Principal를 이용한다.
          */
