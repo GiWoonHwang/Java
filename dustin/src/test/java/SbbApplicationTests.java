@@ -2,11 +2,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import apps.noticeboard.answer.AnswerRepository;
-import libs.common.utils.SelectDate;
-import apps.noticeboard.question.QuestionRepository;
+import dustin.apps.board.domain.qna.answer.respository.AnswerRepository;
+import dustin.libs.common.utils.SelectDate;
+import dustin.apps.board.domain.qna.question.repository.QuestionRepository;
 //import com.mysite.sbb.subscriber.SubscriberListener;
-import apps.noticeboard.question.QuestionService;
+import dustin.apps.board.domain.qna.question.service.WriteQuestionService;
 import io.rigo.sdk.common.client.RigoWeb3;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +27,7 @@ class SbbApplicationTests {
 	private RigoWeb3 rigoWeb3;
 
 	@Autowired
-	private QuestionService questionService;
+	private WriteQuestionService questionService;
 
 
 //	@Transactional // 세션이 끊어지는걸 방지해준다.
