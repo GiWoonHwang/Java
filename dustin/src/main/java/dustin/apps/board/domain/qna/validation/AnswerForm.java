@@ -1,4 +1,4 @@
-package dustin.apps.board.domain.qna.forms;
+package dustin.apps.board.domain.qna.validation;
 
 import jakarta.validation.constraints.NotEmpty;
 
@@ -7,7 +7,8 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class CommentForm {
+public class AnswerForm {
     @NotEmpty(message = "내용은 필수항목입니다.")
     private String content;
 }
+

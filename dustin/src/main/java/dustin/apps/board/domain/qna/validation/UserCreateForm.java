@@ -1,4 +1,4 @@
-package dustin.apps.board.domain.qna.forms;
+package dustin.apps.board.domain.qna.validation;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;

@@ -3,8 +3,8 @@ package dustin.apps.board.api.view;
 import java.security.Principal;
 import java.util.List;
 
-import dustin.apps.board.domain.qna.forms.AnswerForm;
-import dustin.apps.board.domain.qna.forms.QuestionForm;
+import dustin.apps.board.domain.qna.validation.AnswerForm;
+import dustin.apps.board.domain.qna.validation.QuestionForm;
 import dustin.apps.board.domain.qna.model.Question;
 import dustin.apps.board.domain.qna.model.SiteUser;
 import dustin.apps.board.domain.qna.question.service.WriteQuestionService;

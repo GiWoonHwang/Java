@@ -1,6 +1,6 @@
 package dustin.apps.board.domain.qna.user;
 
-import dustin.apps.board.domain.qna.forms.UserCreateForm;
+import dustin.apps.board.domain.qna.validation.UserCreateForm;
 import dustin.apps.board.domain.qna.user.service.WriteUserService;
 import jakarta.validation.Valid;
 

@@ -14,10 +14,7 @@ public class WriteAnswerService {
     private final AnswerRepository answerRepository;
 
     public Answer create(Question question, String content, SiteUser author){
-        /*
-        앵커 : 원하는 위치로 이동
-        앵커 기능을 이용하기 위해 return 값을 생성한 답변객체로 설정한다
-         */
+
         Answer answer = Answer.builder()
                 .content(content)
                 .question(question)

@@ -3,7 +3,7 @@ package dustin.apps.board.domain.qna.comment;
 import java.security.Principal;
 import java.util.Optional;
 
-import dustin.apps.board.domain.qna.forms.CommentForm;
+import dustin.apps.board.domain.qna.validation.CommentForm;
 import dustin.apps.board.domain.qna.question.service.WriteQuestionService;
 import dustin.apps.board.domain.qna.user.service.WriteUserService;
 import jakarta.validation.Valid;

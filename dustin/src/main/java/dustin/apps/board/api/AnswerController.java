@@ -3,7 +3,7 @@ package dustin.apps.board.api;
 import dustin.apps.board.api.usecase.answer.DeleteAnswerUseCase;
 import dustin.apps.board.api.usecase.answer.ModifyAnswerUseCase;
 import dustin.apps.board.api.usecase.answer.WriteAnswerUseCase;
-import dustin.apps.board.domain.qna.forms.AnswerForm;
+import dustin.apps.board.domain.qna.validation.AnswerForm;
 import dustin.apps.board.domain.qna.model.dto.AnswerDto;
 import dustin.libs.common.exception.BadRequestParameterException;
 import jakarta.validation.Valid;
