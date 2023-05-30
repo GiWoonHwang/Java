@@ -2,11 +2,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import dustin.apps.board.domain.qna.answer.respository.AnswerRepository;
-import dustin.libs.common.utils.SelectDate;
-import dustin.apps.board.domain.qna.question.repository.QuestionRepository;
+import io.dustin.apps.board.domain.qna.answer.respository.AnswerRepository;
+import io.dustin.apps.common.utils.SelectDate;
+import io.dustin.apps.board.domain.qna.question.repository.QuestionRepository;
 //import com.mysite.sbb.subscriber.SubscriberListener;
-import dustin.apps.board.domain.qna.question.service.WriteQuestionService;
+import io.dustin.apps.board.domain.qna.question.service.WriteQuestionService;
 import io.rigo.sdk.common.client.RigoWeb3;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
