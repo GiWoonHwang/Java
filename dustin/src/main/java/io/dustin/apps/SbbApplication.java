@@ -1,6 +1,5 @@
 package io.dustin.apps;
 
-//import com.mysite.sbb.subscriber.SubscriberListener;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
@@ -14,7 +13,7 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 public class SbbApplication {
 
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args)  {
 		SpringApplication.run(SbbApplication.class, args);
 		/**
 		 *		구독기능 테스트
