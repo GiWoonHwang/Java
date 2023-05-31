@@ -7,7 +7,7 @@ import io.dustin.apps.board.domain.qna.question.model.Question;
 import io.dustin.apps.user.domain.model.SiteUser;
 import io.dustin.apps.board.domain.qna.comment.model.dto.CommentDto;
 import io.dustin.apps.board.domain.qna.question.service.ReadQuestionService;
-import 추후삭제.user.service.ReadUserService;
+import io.dustin.apps.user.domain.service.ReadUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

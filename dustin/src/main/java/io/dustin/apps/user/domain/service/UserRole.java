@@ -1,4 +1,4 @@
-package 추후삭제.user;
+package io.dustin.apps.user.domain.service;
 
 import lombok.Getter;
 @Getter

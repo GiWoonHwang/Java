@@ -1,12 +1,10 @@
-package io.dustin.apps.board.api.qnacontroller;
+package io.dustin.apps.board.api.qna;
 
 import io.dustin.apps.board.api.usecase.qna.question.DeleteQuestionUseCase;
 import io.dustin.apps.board.api.usecase.qna.question.ModifyQuestionUseCase;
 import io.dustin.apps.board.api.usecase.qna.question.WriteQuestionUseCase;
-import io.dustin.apps.board.domain.qna.answer.model.dto.AnswerDto;
 import io.dustin.apps.board.domain.qna.question.model.dto.QuestionDto;
 import io.dustin.apps.common.exception.BadRequestParameterException;
-import io.dustin.apps.common.validation.AnswerForm;
 import io.dustin.apps.common.validation.QuestionForm;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

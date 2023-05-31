@@ -1,8 +1,7 @@
-package 추후삭제.user.service;
+package io.dustin.apps.user.domain.service;
 
 import io.dustin.apps.user.domain.model.SiteUser;
-import 추후삭제.user.UserRole;
-import 추후삭제.user.repository.UserRepository;
+import io.dustin.apps.user.domain.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

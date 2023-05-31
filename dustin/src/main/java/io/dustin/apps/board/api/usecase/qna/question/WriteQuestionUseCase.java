@@ -5,7 +5,7 @@ import io.dustin.apps.user.domain.model.SiteUser;
 import io.dustin.apps.board.domain.qna.question.model.dto.QuestionDto;
 import io.dustin.apps.board.domain.qna.question.service.ReadQuestionService;
 import io.dustin.apps.board.domain.qna.question.service.WriteQuestionService;
-import 추후삭제.user.service.ReadUserService;
+import io.dustin.apps.user.domain.service.ReadUserService;
 import io.dustin.apps.common.exception.DuplicatedVoteException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

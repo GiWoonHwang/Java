@@ -1,4 +1,4 @@
-package io.dustin.apps.board.api.qnacontroller;
+package io.dustin.apps.board.api.qna;
 
 import io.dustin.apps.board.api.usecase.qna.answer.DeleteAnswerUseCase;
 import io.dustin.apps.board.api.usecase.qna.answer.ModifyAnswerUseCase;
