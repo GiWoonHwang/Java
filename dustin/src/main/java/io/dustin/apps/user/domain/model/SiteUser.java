@@ -1,5 +1,6 @@
 package io.dustin.apps.user.domain.model;
 
+import io.dustin.apps.common.code.YesOrNo;
 import io.dustin.apps.common.model.BaseEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -14,11 +15,12 @@ import lombok.NoArgsConstructor;
 public class SiteUser extends BaseEntity {
 
     @Builder
-    public SiteUser (Long id, @NotNull String nickName, @NotNull String password, @NotNull String email) {
+    public SiteUser (Long id, @NotNull String nickName, @NotNull String password, @NotNull String email, YesOrNo isBaned) {
         this.id = id;
         this.nickName = nickName;
         this.password = password;
         this.email = email;
+        this.isBaned = isBaned == null ? YesOrNo.N : isBaned;
     }
 
     @Id
@@ -28,9 +30,13 @@ public class SiteUser extends BaseEntity {
     @Column(unique = true)
     private String nickName;
 
-    private String password;
-
     @Column(unique = true)
     private String email;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "is_baned", length = 1)
+    private YesOrNo isBaned;
+
+    private String password;
 
 }
