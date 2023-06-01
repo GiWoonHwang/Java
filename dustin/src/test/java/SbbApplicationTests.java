@@ -2,7 +2,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import io.dustin.apps.board.domain.qna.answer.respository.AnswerRepository;
+import io.dustin.apps.board.domain.qna.answer.repository.AnswerRepository;
 import io.dustin.apps.common.utils.SelectDate;
 import io.dustin.apps.board.domain.qna.question.repository.QuestionRepository;
 //import com.mysite.sbb.subscriber.SubscriberListener;

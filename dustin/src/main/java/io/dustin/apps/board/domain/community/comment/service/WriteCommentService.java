@@ -1,8 +1,8 @@
-package io.dustin.apps.board.domain.qna.comment.service;
+package io.dustin.apps.board.domain.community.comment.service;
 
-import io.dustin.apps.board.domain.qna.comment.repository.CommentRepository;
+import io.dustin.apps.board.domain.community.comment.repository.CommentRepository;
 import io.dustin.apps.board.domain.qna.answer.model.Answer;
-import io.dustin.apps.board.domain.qna.comment.model.Comment;
+import io.dustin.apps.board.domain.community.comment.model.Comment;
 import io.dustin.apps.board.domain.qna.question.model.Question;
 import io.dustin.apps.user.domain.model.SiteUser;
 import lombok.RequiredArgsConstructor;

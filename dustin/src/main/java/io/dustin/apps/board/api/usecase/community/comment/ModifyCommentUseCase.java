@@ -1,9 +1,9 @@
-package io.dustin.apps.board.api.usecase.qna.comment;
+package io.dustin.apps.board.api.usecase.community.comment;
 
-import io.dustin.apps.board.domain.qna.comment.service.ReadCommentService;
-import io.dustin.apps.board.domain.qna.comment.service.WriteCommentService;
-import io.dustin.apps.board.domain.qna.comment.model.Comment;
-import io.dustin.apps.board.domain.qna.comment.model.dto.CommentDto;
+import io.dustin.apps.board.domain.community.comment.service.ReadCommentService;
+import io.dustin.apps.board.domain.community.comment.service.WriteCommentService;
+import io.dustin.apps.board.domain.community.comment.model.Comment;
+import io.dustin.apps.board.domain.community.comment.model.dto.CommentDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;

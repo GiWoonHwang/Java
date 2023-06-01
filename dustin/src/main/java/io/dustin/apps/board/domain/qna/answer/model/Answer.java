@@ -3,7 +3,7 @@ package io.dustin.apps.board.domain.qna.answer.model;
 import java.util.List;
 import java.util.Set;
 
-import io.dustin.apps.board.domain.qna.comment.model.Comment;
+import io.dustin.apps.board.domain.community.comment.model.Comment;
 import io.dustin.apps.board.domain.qna.question.model.Question;
 import io.dustin.apps.common.code.YesOrNo;
 import io.dustin.apps.common.model.BaseEntity;

@@ -1,6 +1,6 @@
 package io.dustin.apps.board.domain.qna.answer.service;
 
-import io.dustin.apps.board.domain.qna.answer.respository.AnswerRepository;
+import io.dustin.apps.board.domain.qna.answer.repository.AnswerRepository;
 import io.dustin.apps.board.domain.qna.answer.model.Answer;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

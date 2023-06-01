@@ -1,6 +1,6 @@
 package io.dustin.apps.board.domain.qna.answer.service;
 
-import io.dustin.apps.board.domain.qna.answer.respository.AnswerRepository;
+import io.dustin.apps.board.domain.qna.answer.repository.AnswerRepository;
 import io.dustin.apps.board.domain.qna.answer.model.Answer;
 import io.dustin.apps.board.domain.qna.question.model.Question;
 import io.dustin.apps.user.domain.model.SiteUser;

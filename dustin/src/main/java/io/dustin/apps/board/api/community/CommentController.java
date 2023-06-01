@@ -1,9 +1,9 @@
-package io.dustin.apps.board.api.qna;
+package io.dustin.apps.board.api.community;
 
-import io.dustin.apps.board.api.usecase.qna.comment.DeleteCommentUseCase;
-import io.dustin.apps.board.api.usecase.qna.comment.ModifyCommentUseCase;
-import io.dustin.apps.board.api.usecase.qna.comment.WriteCommentUseCase;
-import io.dustin.apps.board.domain.qna.comment.model.dto.CommentDto;
+import io.dustin.apps.board.api.usecase.community.comment.DeleteCommentUseCase;
+import io.dustin.apps.board.api.usecase.community.comment.ModifyCommentUseCase;
+import io.dustin.apps.board.api.usecase.community.comment.WriteCommentUseCase;
+import io.dustin.apps.board.domain.community.comment.model.dto.CommentDto;
 import io.dustin.apps.common.exception.BadRequestParameterException;
 import io.dustin.apps.common.validation.CommentForm;
 import jakarta.validation.Valid;

@@ -1,7 +1,7 @@
-package io.dustin.apps.board.domain.qna.comment.model.dto;
+package io.dustin.apps.board.domain.community.comment.model.dto;
 
+import io.dustin.apps.board.domain.community.comment.model.Comment;
 import io.dustin.apps.board.domain.qna.answer.model.Answer;
-import io.dustin.apps.board.domain.qna.comment.model.Comment;
 import io.dustin.apps.board.domain.qna.question.model.Question;
 import lombok.Builder;
 

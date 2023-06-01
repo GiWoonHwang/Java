@@ -1,7 +1,7 @@
 package io.dustin.apps.board.domain.qna.question.model;
 
 import io.dustin.apps.board.domain.qna.answer.model.Answer;
-import io.dustin.apps.board.domain.qna.comment.model.Comment;
+import io.dustin.apps.board.domain.community.comment.model.Comment;
 import io.dustin.apps.common.code.YesOrNo;
 import io.dustin.apps.common.model.BaseEntity;
 import io.dustin.apps.user.domain.model.SiteUser;

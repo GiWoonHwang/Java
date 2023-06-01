@@ -1,11 +1,11 @@
-package io.dustin.apps.board.api.usecase.qna.comment;
+package io.dustin.apps.board.api.usecase.community.comment;
 
 import io.dustin.apps.board.domain.qna.answer.service.ReadAnswerService;
-import io.dustin.apps.board.domain.qna.comment.service.WriteCommentService;
-import io.dustin.apps.board.domain.qna.comment.model.Comment;
+import io.dustin.apps.board.domain.community.comment.service.WriteCommentService;
+import io.dustin.apps.board.domain.community.comment.model.Comment;
 import io.dustin.apps.board.domain.qna.question.model.Question;
 import io.dustin.apps.user.domain.model.SiteUser;
-import io.dustin.apps.board.domain.qna.comment.model.dto.CommentDto;
+import io.dustin.apps.board.domain.community.comment.model.dto.CommentDto;
 import io.dustin.apps.board.domain.qna.question.service.ReadQuestionService;
 import io.dustin.apps.user.domain.service.ReadUserService;
 import lombok.RequiredArgsConstructor;
