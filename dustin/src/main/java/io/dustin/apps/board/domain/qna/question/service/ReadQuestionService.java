@@ -22,7 +22,7 @@ import static io.dustin.apps.common.utils.OptionalUtils.getEntity;
 @Service
 @RequiredArgsConstructor
 public class ReadQuestionService {
-    // 생성자 방식으로 의존성 주입 됨
+
     private final QuestionRepository questionRepository;
 
     @Transactional(readOnly = true)
