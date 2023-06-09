@@ -1,5 +1,6 @@
 package io.dustin.apps.board.domain.community.posting.model;
 
+import io.dustin.apps.board.domain.click.model.Click;
 import io.dustin.apps.board.domain.qna.answer.model.Answer;
 import io.dustin.apps.board.domain.community.comment.model.Comment;
 import io.dustin.apps.common.code.YesOrNo;
@@ -23,15 +24,14 @@ import java.util.Set;
 public class Posting extends BaseEntity {
 
     @Builder
-    public Posting(Long id, @NotNull String subject, @NotNull String content, YesOrNo isDeleted, @NotNull SiteUser author, Set<SiteUser> like/*, List<Comment> commentList, List<SiteUser> clickList*/) {
+    public Posting(Long id, @NotNull String subject, @NotNull String content, YesOrNo isDeleted, @NotNull SiteUser author, Long likeCount, Long clickCount) {
         this.id = id;
         this.subject = subject;
         this.content = content;
         this.author = author;
         this.isDeleted = isDeleted == null ? YesOrNo.N : isDeleted;
-        this.like = like;
-        //this.commentList = commentList;
-        //this.clickList = clickList;
+        this.likeCount = likeCount;
+        this.clickCount = clickCount;
     }
 
     @Id
@@ -51,11 +51,11 @@ public class Posting extends BaseEntity {
     @ManyToOne
     private SiteUser author;
 
-    @ManyToMany
-    private Set<SiteUser> like;
+    @Column(name = "like")
+    private Long likeCount;
 
-//    @OneToMany(mappedBy = "author")
-//    private List<SiteUser> clickList;
+    @Column(name = "click")
+    private Long clickCount;
 
 //    @OneToMany(mappedBy = "comment")
 //    private List<Comment> commentList;

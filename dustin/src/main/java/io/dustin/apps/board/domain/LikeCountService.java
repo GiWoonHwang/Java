@@ -1,6 +1,6 @@
 package io.dustin.apps.board.domain;
 
 public interface LikeCountService {
-    void count(long id);
-    void unCount(long id);
+    void likeCount(long id);
+    void likeUncount(long id);
 }

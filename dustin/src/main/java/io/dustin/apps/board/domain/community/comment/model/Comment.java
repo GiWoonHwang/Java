@@ -1,5 +1,6 @@
 package io.dustin.apps.board.domain.community.comment.model;
 
+import io.dustin.apps.board.domain.click.model.Click;
 import io.dustin.apps.board.domain.community.posting.model.Posting;
 import io.dustin.apps.board.domain.qna.answer.model.Answer;
 import io.dustin.apps.board.domain.qna.question.model.Question;
@@ -23,15 +24,16 @@ import java.util.Set;
 public class Comment extends BaseEntity {
 
     @Builder
-    public Comment(Long id, @NotNull String content, YesOrNo isDeleted, @NotNull SiteUser author, @NotNull Posting posting, Comment comment, Set<SiteUser> like, List<Comment> replyList) {
+    public Comment(Long id, @NotNull String content, YesOrNo isDeleted, @NotNull SiteUser author, @NotNull Posting posting, Comment comment, Long likeCount, List<Comment> replyList, Long clickCount) {
         this.id = id;
         this.content = content;
         this.posting = posting;
         this.comment = comment;
         this.author = author;
         this.isDeleted = isDeleted == null ? YesOrNo.N : isDeleted;
-        this.like = like;
+        this.likeCount = likeCount;
         this.replyList = replyList;
+        this.clickCount = clickCount;
 
     }
 
@@ -50,8 +52,8 @@ public class Comment extends BaseEntity {
     @ManyToOne
     private SiteUser author;
 
-    @ManyToMany
-    private Set<SiteUser> like;
+    @Column(name = "like")
+    private Long likeCount;
 
     @ManyToOne
     private Posting posting;
@@ -60,6 +62,9 @@ public class Comment extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "comment_ID")
     private Comment comment;
+
+    @Column(name = "click")
+    private Long clickCount;
 
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "comment", cascade = CascadeType.ALL)

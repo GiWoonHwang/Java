@@ -16,7 +16,7 @@ public class TestController {
         System.out.println(queryPage.pageable());
         System.out.println("좋아요 저장했습니다.");
         LikeCountService lcs = command.getBoardType().getBean();
-        lcs.count(command.getBoardId());
+        lcs.likeCount(command.getBoardId());
         return "hello";
     }
 
@@ -24,7 +24,7 @@ public class TestController {
     public String unlike(@RequestBody LikeItCommand command) {
         System.out.println("좋아요 삭제했습니다.");
         LikeCountService lcs = command.getBoardType().getBean();
-        lcs.unCount(command.getBoardId());
+        lcs.likeUncount(command.getBoardId());
         return "hello";
     }
 

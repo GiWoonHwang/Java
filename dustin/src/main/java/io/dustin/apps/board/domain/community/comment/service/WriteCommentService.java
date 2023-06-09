@@ -37,12 +37,12 @@ public class WriteCommentService implements LikeCountService {
 
 
     @Override
-    public void count(long id) {
+    public void likeCount(long id) {
         System.out.println("코멘트 게시판 id : [" + id + "] 카운트 하나 올림");
     }
 
     @Override
-    public void unCount(long id) {
+    public void likeUncount(long id) {
         System.out.println("코멘트 게시판 id : [" + id + "] 코멘트 카운트 하나 내림");
     }
 }

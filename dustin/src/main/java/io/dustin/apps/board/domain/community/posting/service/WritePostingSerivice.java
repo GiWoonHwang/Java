@@ -36,10 +36,10 @@ public class WritePostingSerivice implements LikeCountService {
         posting.delete();
     }
 
-    public void like(Posting posting, SiteUser siteUser){
-        posting.getLike().add(siteUser);
-        postingRepository.save(posting);
-    }
+//    public void like(Posting posting, SiteUser siteUser){
+//        posting.getLike().add(siteUser);
+//        postingRepository.save(posting);
+//    }
 
     public void click(Posting posting, SiteUser siteUser){
         //posting.getClickList().add(siteUser);
@@ -47,12 +47,12 @@ public class WritePostingSerivice implements LikeCountService {
     }
 
     @Override
-    public void count(long id) {
+    public void likeCount(long id) {
         System.out.println("포스트 게시판 id : [" + id + "] 카운트 하나 올림");
     }
 
     @Override
-    public void unCount(long id) {
+    public void likeUncount(long id) {
         System.out.println("포스트 게시판 id : [" + id + "] 카운트 하나 내림");
     }
 
