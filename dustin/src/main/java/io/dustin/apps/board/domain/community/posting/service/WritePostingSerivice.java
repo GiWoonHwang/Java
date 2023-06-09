@@ -1,5 +1,6 @@
 package io.dustin.apps.board.domain.community.posting.service;
 
+import io.dustin.apps.board.domain.LikeCountService;
 import io.dustin.apps.board.domain.community.posting.model.Posting;
 import io.dustin.apps.board.domain.community.posting.repository.PostingRepository;
 import io.dustin.apps.board.domain.qna.question.model.Question;
@@ -8,9 +9,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-@Service
+@Service("posting")
 @RequiredArgsConstructor
-public class WritePostingSerivice {
+public class WritePostingSerivice implements LikeCountService {
 
     private final PostingRepository postingRepository;
 
@@ -41,8 +42,18 @@ public class WritePostingSerivice {
     }
 
     public void click(Posting posting, SiteUser siteUser){
-        posting.getClickList().add(siteUser);
+        //posting.getClickList().add(siteUser);
         postingRepository.save(posting);
+    }
+
+    @Override
+    public void count(long id) {
+        System.out.println("포스트 게시판 id : [" + id + "] 카운트 하나 올림");
+    }
+
+    @Override
+    public void unCount(long id) {
+        System.out.println("포스트 게시판 id : [" + id + "] 카운트 하나 내림");
     }
 
 }

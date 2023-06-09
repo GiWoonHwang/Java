@@ -23,15 +23,15 @@ import java.util.Set;
 public class Posting extends BaseEntity {
 
     @Builder
-    public Posting(Long id, @NotNull String subject, @NotNull String content, YesOrNo isDeleted, @NotNull SiteUser author, Set<SiteUser> like, List<Comment> commentList, List<SiteUser> clickList) {
+    public Posting(Long id, @NotNull String subject, @NotNull String content, YesOrNo isDeleted, @NotNull SiteUser author, Set<SiteUser> like/*, List<Comment> commentList, List<SiteUser> clickList*/) {
         this.id = id;
         this.subject = subject;
         this.content = content;
         this.author = author;
         this.isDeleted = isDeleted == null ? YesOrNo.N : isDeleted;
         this.like = like;
-        this.commentList = commentList;
-        this.clickList = clickList;
+        //this.commentList = commentList;
+        //this.clickList = clickList;
     }
 
     @Id
@@ -54,11 +54,11 @@ public class Posting extends BaseEntity {
     @ManyToMany
     private Set<SiteUser> like;
 
-    @OneToMany(mappedBy = "Posting")
-    private List<SiteUser> clickList;
+//    @OneToMany(mappedBy = "author")
+//    private List<SiteUser> clickList;
 
-    @OneToMany(mappedBy = "Posting")
-    private List<Comment> commentList;
+//    @OneToMany(mappedBy = "comment")
+//    private List<Comment> commentList;
 
     public void updateSubject(String subject) {
         this.subject = subject;

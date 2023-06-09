@@ -1,6 +1,8 @@
 package io.dustin.apps.board.domain.community.comment.service;
 
+import io.dustin.apps.board.domain.LikeCountService;
 import io.dustin.apps.board.domain.community.comment.repository.CommentRepository;
+import io.dustin.apps.board.domain.community.posting.model.Posting;
 import io.dustin.apps.board.domain.qna.answer.model.Answer;
 import io.dustin.apps.board.domain.community.comment.model.Comment;
 import io.dustin.apps.board.domain.qna.question.model.Question;
@@ -10,24 +12,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @RequiredArgsConstructor
-@Service
-public class WriteCommentService {
+@Service("comment")
+public class WriteCommentService implements LikeCountService {
     private final CommentRepository commentRepository;
 
-    public Comment create(Question question, String content, SiteUser author){
+    public Comment create(Posting posting, String content, SiteUser author){
         Comment comment = Comment.builder()
                 .content(content)
-                .question(question)
-                .author(author)
-                .build();
-        this.commentRepository.save(comment);
-        return comment;
-    }
-
-    public Comment create(Answer answer, String content, SiteUser author){
-        Comment comment = Comment.builder()
-                .content(content)
-                .answer(answer)
+                .posting(posting)
                 .author(author)
                 .build();
         this.commentRepository.save(comment);
@@ -39,9 +31,18 @@ public class WriteCommentService {
         comment.updateContent(content);
     }
 
-    @Transactional
     public void delete(Comment comment){
         comment.delete();
     }
 
+
+    @Override
+    public void count(long id) {
+        System.out.println("코멘트 게시판 id : [" + id + "] 카운트 하나 올림");
+    }
+
+    @Override
+    public void unCount(long id) {
+        System.out.println("코멘트 게시판 id : [" + id + "] 코멘트 카운트 하나 내림");
+    }
 }

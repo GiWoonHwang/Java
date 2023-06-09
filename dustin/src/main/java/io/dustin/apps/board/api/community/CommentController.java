@@ -8,7 +8,6 @@ import io.dustin.apps.common.exception.BadRequestParameterException;
 import io.dustin.apps.common.validation.CommentForm;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +22,7 @@ public class CommentController {
     private final ModifyCommentUseCase modifyCommentUseCase;
     private final DeleteCommentUseCase deleteCommentUseCase;
 
-    @PreAuthorize("isAuthenticated()")
+    //@PreAuthorize("isAuthenticated()")
     @PostMapping("/questions/{questionId}")
     public CommentDto createComment(@Valid CommentForm commentForm, BindingResult bindingResult,
                                     @PathVariable("questionId") Long questionId,
@@ -34,7 +33,7 @@ public class CommentController {
         return writeCommentUseCase.execute(principal, questionId, commentForm.getContent());
     }
 
-    @PreAuthorize("isAuthenticated()")
+    //@PreAuthorize("isAuthenticated()")
     @PatchMapping("/{id}")
     public CommentDto modifyAnswer(@Valid CommentForm commentForm, BindingResult bindingResult,
                                   @PathVariable("id") Long id,
@@ -45,7 +44,7 @@ public class CommentController {
         return modifyCommentUseCase.execute(principal, id, commentForm.getContent());
     }
 
-    @PreAuthorize("isAuthenticated()")
+    //@PreAuthorize("isAuthenticated()")
     @DeleteMapping("/{id}")
     public CommentDto deleteAnswer(@PathVariable("id") Long id,
                                   Principal principal) {

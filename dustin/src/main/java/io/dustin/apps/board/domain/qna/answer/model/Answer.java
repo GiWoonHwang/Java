@@ -20,14 +20,14 @@ import static java.time.LocalDateTime.now;
 public class Answer extends BaseEntity {
 
     @Builder
-    public Answer(Long id, @NotNull String content, YesOrNo isDeleted, @NotNull Question question, @NotNull SiteUser author, Set<SiteUser> voter, List<Comment> commentList) {
+    public Answer(Long id, @NotNull String content, YesOrNo isDeleted, @NotNull Question question, @NotNull SiteUser author, Set<SiteUser> voter/*, List<Comment> commentList*/) {
         // do something
         this.id = id;
         this.content = content;
         this.question = question;
         this.author = author;
         this.voter = voter;
-        this.commentList = commentList;
+        //this.commentList = commentList;
         this.isDeleted = isDeleted == null ? YesOrNo.N : isDeleted;
     }
 
@@ -54,8 +54,8 @@ public class Answer extends BaseEntity {
     @ManyToMany
     private Set<SiteUser> voter;
 
-    @OneToMany(mappedBy = "answer")
-    private List<Comment> commentList;
+//    @OneToMany(mappedBy = "answer")
+//    private List<Comment> commentList;
 
     public void updateContent(String content) {
         this.content = content;

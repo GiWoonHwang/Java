@@ -28,3 +28,9 @@ rigo:
   node:
     url: http://192.168.252.60:26657/
     socket: ws://192.168.252.60:26657/websocket
+
+server:
+  error:
+    whitelabel:
+      enabled: false
+  port: 8881

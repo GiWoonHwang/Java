@@ -9,7 +9,7 @@ import io.dustin.apps.common.exception.BadRequestParameterException;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
+//import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,7 +24,7 @@ public class AnswerController {
     private final ModifyAnswerUseCase modifyAnswerUseCase;
     private final DeleteAnswerUseCase deleteAnswerUseCase;
 
-    @PreAuthorize("isAuthenticated()")
+    //@PreAuthorize("isAuthenticated()")
     @PostMapping("/questions/{questionId}")
     public AnswerDto createAnswer(@Valid AnswerForm answerForm, BindingResult bindingResult,
                                   @PathVariable("questionId") Long questionId,
@@ -35,7 +35,7 @@ public class AnswerController {
         return writeAnswerUseCase.execute(principal, questionId, answerForm.getContent());
     }
 
-    @PreAuthorize("isAuthenticated()")
+    //@PreAuthorize("isAuthenticated()")
     @PatchMapping("/{id}")
     public AnswerDto modifyAnswer(@Valid AnswerForm answerForm, BindingResult bindingResult,
                                @PathVariable("id") Long id,
@@ -46,14 +46,14 @@ public class AnswerController {
         return modifyAnswerUseCase.execute(principal, id, answerForm.getContent());
     }
 
-    @PreAuthorize("isAuthenticated()")
+    //@PreAuthorize("isAuthenticated()")
     @DeleteMapping("/{id}")
     public AnswerDto deleteAnswer(@PathVariable("id") Long id,
                                   Principal principal) {
         return deleteAnswerUseCase.execute(principal, id);
     }
 
-    @PreAuthorize("isAuthenticated()")
+    //@PreAuthorize("isAuthenticated()")
     @GetMapping("/vote/{id}")
     public ResponseEntity<String> answerVote(Principal principal, @PathVariable("id") Long id) {
         writeAnswerUseCase.vote(principal, id);

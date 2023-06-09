@@ -9,7 +9,6 @@ import io.dustin.apps.common.validation.QuestionForm;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,7 +23,7 @@ public class QuestionController {
     private ModifyQuestionUseCase modifyQuestionUseCase;
     private DeleteQuestionUseCase deleteQuestionUseCase;
 
-    @PreAuthorize("isAuthenticated()")
+    //@PreAuthorize("isAuthenticated()")
     @PostMapping("/create")
     public QuestionDto createQuestion(@Valid QuestionForm questionForm, BindingResult bindingResult, Principal principal) {
         if(bindingResult.hasErrors()) {
@@ -33,7 +32,7 @@ public class QuestionController {
         return  writeQuestionService.execute(principal, questionForm.getSubject(), questionForm.getContent());
     }
 
-    @PreAuthorize("isAuthenticated()")
+    //@PreAuthorize("isAuthenticated()")
     @PatchMapping("/{id}")
     public QuestionDto modifyQuestion(@Valid QuestionForm questionForm, BindingResult bindingResult,
                                   @PathVariable("id") Long id,
@@ -44,14 +43,14 @@ public class QuestionController {
         return modifyQuestionUseCase.execute(principal, id, questionForm.getSubject(), questionForm.getContent());
     }
 
-    @PreAuthorize("isAuthenticated()")
+    //@PreAuthorize("isAuthenticated()")
     @DeleteMapping("/{id}")
     public QuestionDto deleteQuestion(@PathVariable("id") Long id,
                                   Principal principal) {
         return deleteQuestionUseCase.execute(principal, id);
     }
 
-    @PreAuthorize("isAuthenticated()")
+    //@PreAuthorize("isAuthenticated()")
     @GetMapping("/vote/{id}")
     public ResponseEntity<String> questionVote(Principal principal, @PathVariable("id") Long id) {
         writeQuestionService.vote(principal, id);

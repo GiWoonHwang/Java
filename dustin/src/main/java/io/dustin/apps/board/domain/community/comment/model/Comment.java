@@ -1,5 +1,6 @@
 package io.dustin.apps.board.domain.community.comment.model;
 
+import io.dustin.apps.board.domain.community.posting.model.Posting;
 import io.dustin.apps.board.domain.qna.answer.model.Answer;
 import io.dustin.apps.board.domain.qna.question.model.Question;
 import io.dustin.apps.common.code.YesOrNo;
@@ -13,25 +14,26 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+import java.util.Set;
+
 @Getter
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Comment extends BaseEntity {
 
     @Builder
-    public Comment(Long id, @NotNull String content, YesOrNo isDeleted, @NotNull SiteUser author, Question question, Answer answer) {
+    public Comment(Long id, @NotNull String content, YesOrNo isDeleted, @NotNull SiteUser author, @NotNull Posting posting, Comment comment, Set<SiteUser> like, List<Comment> replyList) {
         this.id = id;
         this.content = content;
-        this.question = question;
-        this.answer = answer;
+        this.posting = posting;
+        this.comment = comment;
         this.author = author;
         this.isDeleted = isDeleted == null ? YesOrNo.N : isDeleted;
+        this.like = like;
+        this.replyList = replyList;
 
     }
-
-
-
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -48,11 +50,20 @@ public class Comment extends BaseEntity {
     @ManyToOne
     private SiteUser author;
 
-    @ManyToOne
-    private Question question;
+    @ManyToMany
+    private Set<SiteUser> like;
 
     @ManyToOne
-    private Answer answer;
+    private Posting posting;
+
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "comment_ID")
+    private Comment comment;
+
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "comment", cascade = CascadeType.ALL)
+    private List<Comment> replyList;
 
     public void updateContent(String content) {
         this.content = content;
@@ -62,15 +73,5 @@ public class Comment extends BaseEntity {
         this.isDeleted = YesOrNo.Y;
     }
 
-    /** 추후에 삭제될 수도 있음 */
-    public Long getQuestionId() {
-        Long result = null;
-        if(this.question != null) {
-            result = this.question.getId();
-        }
-        if(this.answer != null) {
-            result = this.answer.getId();
-        }
-        return result;
-    }
+
 }
