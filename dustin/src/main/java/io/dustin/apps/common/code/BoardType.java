@@ -1,12 +1,8 @@
 package io.dustin.apps.common.code;
 
-import io.dustin.apps.board.domain.LikeCountService;
-import io.dustin.apps.board.domain.community.comment.service.WriteCommentService;
-import io.dustin.apps.board.domain.qna.question.service.WriteQuestionService;
-import io.dustin.apps.common.provider.ApplicationContextProvider;
+import io.dustin.apps.board.domain.like.model.LikeCountService;
 import io.dustin.apps.common.utils.CommonUtil;
 import io.dustin.apps.common.utils.Supplier;
-import lombok.Getter;
 
 public enum BoardType {
 

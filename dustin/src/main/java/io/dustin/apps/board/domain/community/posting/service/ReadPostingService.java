@@ -27,6 +27,9 @@ public class ReadPostingService {
     public List<Posting> getList() { return this.postingRepository.findAll(); }
 
     public Posting getPosting(Long id) {
+        /** todo
+         *  clickCount 한개 증가시키기
+         */
         return getEntity(postingRepository.findById(id), Posting.class, "posting not found");
     }
 

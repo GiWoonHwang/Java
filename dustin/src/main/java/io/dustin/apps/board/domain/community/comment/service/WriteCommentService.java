@@ -1,6 +1,6 @@
 package io.dustin.apps.board.domain.community.comment.service;
 
-import io.dustin.apps.board.domain.LikeCountService;
+import io.dustin.apps.board.domain.like.model.LikeCountService;
 import io.dustin.apps.board.domain.community.comment.repository.CommentRepository;
 import io.dustin.apps.board.domain.community.posting.model.Posting;
 import io.dustin.apps.board.domain.community.comment.model.Comment;
@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 @Service("comment")
 public class WriteCommentService implements LikeCountService {
+
     private final CommentRepository commentRepository;
 
     public Comment create(Posting posting, String content, SiteUser author){

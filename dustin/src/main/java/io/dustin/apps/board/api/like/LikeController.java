@@ -1,4 +1,4 @@
-package io.dustin.apps.board.api;
+package io.dustin.apps.board.api.like;
 
 import io.dustin.apps.board.domain.like.model.LikeCountService;
 import io.dustin.apps.board.domain.like.model.dto.LikeItCommand;
@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1")
-public class TestController {
+public class LikeController {
 
     @PostMapping("/like")
     public String like(QueryPage queryPage, @RequestBody LikeItCommand command) {
@@ -21,6 +21,7 @@ public class TestController {
 
     @PatchMapping("/unlike")
     public String unlike(@RequestBody LikeItCommand command) {
+        // TODO 좋아요 테이블에 삭제되는 로직
         System.out.println("좋아요 삭제했습니다.");
         LikeCountService lcs = command.getBoardType().getBean();
         lcs.likeUncount(command.getBoardId());

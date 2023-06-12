@@ -1,6 +1,6 @@
 package io.dustin.apps.board.domain.community.posting.service;
 
-import io.dustin.apps.board.domain.LikeCountService;
+import io.dustin.apps.board.domain.like.model.LikeCountService;
 import io.dustin.apps.board.domain.community.posting.model.Posting;
 import io.dustin.apps.board.domain.community.posting.repository.PostingRepository;
 import io.dustin.apps.user.domain.model.SiteUser;

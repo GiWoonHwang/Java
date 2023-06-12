@@ -3,8 +3,16 @@ package io.dustin.apps.board.domain.like.model;
 import io.dustin.apps.common.code.BoardType;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import lombok.AccessLevel;
 import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import org.hibernate.annotations.DynamicUpdate;
 
+@Getter
+@Entity
+@DynamicUpdate
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Like {
 
     @Builder
