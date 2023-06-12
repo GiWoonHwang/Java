@@ -1,6 +1,5 @@
 package io.dustin.apps.board.domain.community.comment.model;
 
-import io.dustin.apps.board.domain.click.model.Click;
 import io.dustin.apps.board.domain.community.posting.model.Posting;
 import io.dustin.apps.board.domain.qna.answer.model.Answer;
 import io.dustin.apps.board.domain.qna.question.model.Question;

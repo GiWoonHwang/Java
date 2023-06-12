@@ -3,7 +3,6 @@ package io.dustin.apps.board.domain.community.posting.service;
 import io.dustin.apps.board.domain.LikeCountService;
 import io.dustin.apps.board.domain.community.posting.model.Posting;
 import io.dustin.apps.board.domain.community.posting.repository.PostingRepository;
-import io.dustin.apps.board.domain.qna.question.model.Question;
 import io.dustin.apps.user.domain.model.SiteUser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -55,5 +54,6 @@ public class WritePostingSerivice implements LikeCountService {
     public void likeUncount(long id) {
         System.out.println("포스트 게시판 id : [" + id + "] 카운트 하나 내림");
     }
+
 
 }

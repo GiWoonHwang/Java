@@ -3,9 +3,7 @@ package io.dustin.apps.board.domain.community.comment.service;
 import io.dustin.apps.board.domain.LikeCountService;
 import io.dustin.apps.board.domain.community.comment.repository.CommentRepository;
 import io.dustin.apps.board.domain.community.posting.model.Posting;
-import io.dustin.apps.board.domain.qna.answer.model.Answer;
 import io.dustin.apps.board.domain.community.comment.model.Comment;
-import io.dustin.apps.board.domain.qna.question.model.Question;
 import io.dustin.apps.user.domain.model.SiteUser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -45,4 +43,5 @@ public class WriteCommentService implements LikeCountService {
     public void likeUncount(long id) {
         System.out.println("코멘트 게시판 id : [" + id + "] 코멘트 카운트 하나 내림");
     }
+
 }
