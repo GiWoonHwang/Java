@@ -13,7 +13,7 @@ public class ReadUserService {
 
     private final UserRepository userRepository;
 
-    public SiteUser getUser(String nickName) { // User 서비스를 통해 SiteUser를 조회한다.
-        return getEntity(userRepository.findBynickName(nickName), SiteUser.class, "site user not found");
+    public SiteUser getUser(Long userId) { // User 서비스를 통해 SiteUser를 조회한다.
+        return getEntity(userRepository.findBynId(userId), SiteUser.class, "site user not found");
     }
 }

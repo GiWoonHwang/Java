@@ -23,26 +23,24 @@ public class WriteAnswerUseCase {
     private final ReadAnswerService readAnswerService;
     private final WriteAnswerService writeAnswerService;
 
-    public AnswerDto execute(Principal principal, Long questionId, String content) {
-        Question question = readQuestionService.getQuestion(questionId);
-        SiteUser siteUser = readUserService.getUser(principal.getName());
-        Answer answer = writeAnswerService.create(question, content, siteUser);
+    public AnswerDto execute(Long admin, Long questionId, String content) {
+        Answer answer = writeAnswerService.create(questionId, content, admin);
         AnswerDto dto = AnswerDto.from(answer);
         return AnswerDto.from(answer);
     }
 
-    public void vote(Principal principal, Long id) {
-        Answer answer = readAnswerService.getAnswer(id);
-        long checked = answer.getVoter()
-                             .stream()
-                             .filter(siteUser -> siteUser.getNickName().equals(principal.getName()))
-                             .count();
-        if(checked > 0) {
-            throw new DuplicatedVoteException("이미 추천한 사람입니다.");
-        }
-
-        SiteUser siteUser = readUserService.getUser(principal.getName());
-        writeAnswerService.vote(answer, siteUser);
+//    public void vote(Principal principal, Long id) {
+//        Answer answer = readAnswerService.getAnswer(id);
+//        long checked = answer.getVoter()
+//                             .stream()
+//                             .filter(siteUser -> siteUser.getNickName().equals(principal.getName()))
+//                             .count();
+//        if(checked > 0) {
+//            throw new DuplicatedVoteException("이미 추천한 사람입니다.");
+//        }
+//
+//        SiteUser siteUser = readUserService.getUser(principal.getName());
+//        writeAnswerService.vote(answer, siteUser);
     }
 
-}
+

@@ -26,11 +26,11 @@ public class CommentController {
     @PostMapping("/questions/{questionId}")
     public CommentDto createComment(@Valid CommentForm commentForm, BindingResult bindingResult,
                                     @PathVariable("questionId") Long questionId,
-                                    Principal principal) {
+                                    @RequestBody Long userID) {
         if(bindingResult.hasErrors()) {
             throw new BadRequestParameterException("내용은 필수항목입니다.");
         }
-        return writeCommentUseCase.execute(principal, questionId, commentForm.getContent());
+        return writeCommentUseCase.execute(userID, questionId, commentForm.getContent());
     }
 
     //@PreAuthorize("isAuthenticated()")

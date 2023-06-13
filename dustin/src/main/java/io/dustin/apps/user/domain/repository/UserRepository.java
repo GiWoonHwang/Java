@@ -7,4 +7,7 @@ import io.dustin.apps.common.repository.BaseRepository;
 
 public interface UserRepository extends BaseRepository<SiteUser, Long> {
     Optional<SiteUser> findBynickName(String username);
+
+    Optional<SiteUser> findBynId(Long userId);
+
 }

@@ -1,4 +1,47 @@
 package io.dustin.apps.board.domain.notice.service;
 
-public class WriteNoticeService {
+import io.dustin.apps.board.domain.community.posting.model.Posting;
+import io.dustin.apps.board.domain.like.model.LikeCountService;
+import io.dustin.apps.board.domain.notice.model.Notice;
+import io.dustin.apps.board.domain.notice.repository.NoticeRepository;
+import io.dustin.apps.user.domain.model.SiteUser;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+@Service("notice")
+@RequiredArgsConstructor
+public class WriteNoticeService implements LikeCountService {
+
+    private final NoticeRepository noticeRepository;
+
+    public Notice create(String subject, String content, Long admin) {
+        Notice n = Notice.builder()
+                .subject(subject)
+                .content(content)
+                .admin(admin)
+                .build();
+        return noticeRepository.save(n);
+    }
+
+    public void updateContent(Notice notice, String subject, String content) {
+        notice.updateSubject(subject);
+        notice.updateContent(content);
+        noticeRepository.save(notice);
+    }
+
+    @Transactional
+    public void delete(Notice notice){
+        notice.delete();
+    }
+
+    @Override
+    public void likeCount(long id) {
+        System.out.println("공지 id : [" + id + "] 카운트 하나 올림");
+    }
+
+    @Override
+    public void likeUncount(long id) {
+        System.out.println("공지 id : [" + id + "] 카운트 하나 내림");
+    }
 }

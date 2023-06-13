@@ -28,36 +28,31 @@ public class AnswerController {
     @PostMapping("/questions/{questionId}")
     public AnswerDto createAnswer(@Valid AnswerForm answerForm, BindingResult bindingResult,
                                   @PathVariable("questionId") Long questionId,
-                                  Principal principal) {
+                                  @RequestBody Long userID) {
         if(bindingResult.hasErrors()) {
             throw new BadRequestParameterException("내용은 필수항목입니다.");
         }
-        return writeAnswerUseCase.execute(principal, questionId, answerForm.getContent());
+        return writeAnswerUseCase.execute(userID, questionId, answerForm.getContent());
     }
 
     //@PreAuthorize("isAuthenticated()")
     @PatchMapping("/{id}")
     public AnswerDto modifyAnswer(@Valid AnswerForm answerForm, BindingResult bindingResult,
                                @PathVariable("id") Long id,
-                               Principal principal) {
+                               @RequestBody Long userID) {
         if(bindingResult.hasErrors()) {
             throw new BadRequestParameterException("내용은 필수항목입니다.");
         }
-        return modifyAnswerUseCase.execute(principal, id, answerForm.getContent());
+        return modifyAnswerUseCase.execute(userID, id, answerForm.getContent());
     }
 
     //@PreAuthorize("isAuthenticated()")
     @DeleteMapping("/{id}")
     public AnswerDto deleteAnswer(@PathVariable("id") Long id,
-                                  Principal principal) {
-        return deleteAnswerUseCase.execute(principal, id);
+                                  @RequestBody Long userID) {
+        return deleteAnswerUseCase.execute(userID, id);
     }
 
-    //@PreAuthorize("isAuthenticated()")
-    @GetMapping("/vote/{id}")
-    public ResponseEntity<String> answerVote(Principal principal, @PathVariable("id") Long id) {
-        writeAnswerUseCase.vote(principal, id);
-        return ResponseEntity.ok().body("success");
-    }
+
 
 }

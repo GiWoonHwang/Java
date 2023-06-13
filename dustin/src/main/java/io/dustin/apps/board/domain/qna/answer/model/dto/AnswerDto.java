@@ -10,7 +10,7 @@ public record AnswerDto(
     Long id,
     String content,
 
-    String authorName,
+    Long admin,
 
     LocalDateTime createdAt
 ) {
@@ -18,7 +18,7 @@ public record AnswerDto(
         return AnswerDto.builder()
                 .id(answer.getId())
                 .content(answer.getContent())
-                .authorName(answer.getAuthor().getNickName())
+                .admin(answer.getAdmin())
                 .createdAt(answer.getCreatedAt())
                 .build();
     }

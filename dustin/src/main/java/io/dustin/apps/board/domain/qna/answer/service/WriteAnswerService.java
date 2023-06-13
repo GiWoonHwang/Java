@@ -13,12 +13,12 @@ import org.springframework.transaction.annotation.Transactional;
 public class WriteAnswerService {
     private final AnswerRepository answerRepository;
 
-    public Answer create(Question question, String content, SiteUser author){
+    public Answer create(Long question, String content, Long admin){
 
         Answer answer = Answer.builder()
                 .content(content)
                 .question(question)
-                .author(author)
+                .admin(admin)
                 .build();
         this.answerRepository.save(answer);
         return answer;
@@ -34,8 +34,4 @@ public class WriteAnswerService {
         answer.delete();
     }
 
-    public void vote(Answer answer, SiteUser siteUser) {
-        answer.getVoter().add(siteUser);
-        this.answerRepository.save(answer);
-    }
 }

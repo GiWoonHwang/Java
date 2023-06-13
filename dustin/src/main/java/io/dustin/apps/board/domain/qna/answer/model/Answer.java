@@ -3,7 +3,6 @@ package io.dustin.apps.board.domain.qna.answer.model;
 import java.util.List;
 import java.util.Set;
 
-import io.dustin.apps.board.domain.community.comment.model.Comment;
 import io.dustin.apps.board.domain.qna.question.model.Question;
 import io.dustin.apps.common.code.YesOrNo;
 import io.dustin.apps.common.model.BaseEntity;
@@ -12,7 +11,6 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
-import static java.time.LocalDateTime.now;
 
 @Getter
 @Entity
@@ -20,14 +18,12 @@ import static java.time.LocalDateTime.now;
 public class Answer extends BaseEntity {
 
     @Builder
-    public Answer(Long id, @NotNull String content, YesOrNo isDeleted, @NotNull Question question, @NotNull SiteUser author, Set<SiteUser> voter/*, List<Comment> commentList*/) {
+    public Answer(Long id, @NotNull String content, YesOrNo isDeleted, @NotNull Long question, @NotNull Long admin) {
         // do something
         this.id = id;
         this.content = content;
         this.question = question;
-        this.author = author;
-        this.voter = voter;
-        //this.commentList = commentList;
+        this.admin = admin;
         this.isDeleted = isDeleted == null ? YesOrNo.N : isDeleted;
     }
 
@@ -43,19 +39,13 @@ public class Answer extends BaseEntity {
     private YesOrNo isDeleted;
 
     /** 질문 엔티티 */
-    @ManyToOne
-    private Question question;
+    @Column
+    private Long question;
 
     /** 작성자 */
-    @ManyToOne
-    private SiteUser author;
+    @Column
+    private Long admin;
 
-    /** 추천 유저 */
-    @ManyToMany
-    private Set<SiteUser> voter;
-
-//    @OneToMany(mappedBy = "answer")
-//    private List<Comment> commentList;
 
     public void updateContent(String content) {
         this.content = content;

@@ -25,11 +25,11 @@ public class QuestionController {
 
     //@PreAuthorize("isAuthenticated()")
     @PostMapping("/create")
-    public QuestionDto createQuestion(@Valid QuestionForm questionForm, BindingResult bindingResult, Principal principal) {
+    public QuestionDto createQuestion(@Valid QuestionForm questionForm, BindingResult bindingResult, @RequestBody Long userID) {
         if(bindingResult.hasErrors()) {
             throw new BadRequestParameterException("내용은 필수항목입니다.");
         }
-        return  writeQuestionService.execute(principal, questionForm.getSubject(), questionForm.getContent());
+        return  writeQuestionService.execute(userID, questionForm.getSubject(), questionForm.getContent());
     }
 
     //@PreAuthorize("isAuthenticated()")
@@ -50,12 +50,7 @@ public class QuestionController {
         return deleteQuestionUseCase.execute(principal, id);
     }
 
-    //@PreAuthorize("isAuthenticated()")
-    @GetMapping("/vote/{id}")
-    public ResponseEntity<String> questionVote(Principal principal, @PathVariable("id") Long id) {
-        writeQuestionService.vote(principal, id);
-        return ResponseEntity.ok().body("success");
-    }
+
 
 
 }

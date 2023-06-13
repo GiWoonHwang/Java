@@ -20,11 +20,11 @@ public class WriteUserUseCase {
         return UserDto.from(siteUser);
     }
 
-    public SiteUser getUser(String nickName){
+    public SiteUser getUser(Long userID){
         /**
          * null이 나올 수 있는 데이터도 dto로 줘야 하나 ??
           */
-        SiteUser siteUser = readUserService.getUser(nickName);
+        SiteUser siteUser = readUserService.getUser(userID);
         return siteUser;
 
     }
