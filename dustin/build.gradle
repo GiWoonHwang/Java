@@ -23,6 +23,7 @@ dependencies {
 	runtimeOnly 'org.postgresql:postgresql' // postgres 라이브러리 설치
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
+	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 
 	implementation 'io.rigo:sdk:0.0.1-SNAPSHOT' // rigo sdk
 
