@@ -1,4 +1,4 @@
-package io.dustin.apps.user.domain.service;
+package io.dustin.apps.user.domain.model.code;
 
 import lombok.Getter;
 @Getter

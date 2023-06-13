@@ -47,13 +47,10 @@ public class Posting extends BaseEntity {
     @Column(name = "is_deleted", length = 1)
     private YesOrNo isDeleted;
 
-    @ManyToOne
     private Long author;
 
-    @Column(name = "like")
     private Long likeCount;
 
-    @Column(name = "click")
     private Long clickCount;
 
 //    @OneToMany(mappedBy = "comment")

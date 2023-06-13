@@ -46,7 +46,6 @@ public class Notice extends BaseEntity {
     @Column(name = "is_deleted", length = 1)
     private YesOrNo isDeleted;
 
-    @ManyToOne
     private Long admin;
 
     @Column(name = "click")

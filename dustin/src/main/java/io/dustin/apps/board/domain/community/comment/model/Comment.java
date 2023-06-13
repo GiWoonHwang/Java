@@ -47,21 +47,14 @@ public class Comment extends BaseEntity {
     private YesOrNo isDeleted;
 
     /** 작성자 */
-    @ManyToOne
     private Long author;
 
-    @Column(name = "like")
     private Long likeCount;
 
-    @Column
     private Long posting;
 
-
-    @Column(name = "click")
     private Long clickCount;
 
-
-    @Column(name = "click")
     private Long reply;
 
     public void updateContent(String content) {

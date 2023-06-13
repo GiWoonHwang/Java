@@ -11,6 +11,7 @@ import org.hibernate.annotations.DynamicUpdate;
 
 @Getter
 @Entity
+@Table(name = "like_it")
 @DynamicUpdate
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Like {
