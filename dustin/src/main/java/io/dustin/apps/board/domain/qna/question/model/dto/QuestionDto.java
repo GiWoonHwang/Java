@@ -12,7 +12,7 @@ public record QuestionDto(
 
         String content,
 
-        String authorName,
+        Long userId,
 
         LocalDateTime createdAt
 ) {
@@ -21,7 +21,7 @@ public record QuestionDto(
                     .id(question.getId())
                     .subject(question.getSubject())
                     .content(question.getContent())
-                    .authorName(question.getAuthor().getNickName())
+                    .userId(question.getAuthor())
                     .createdAt(question.getCreatedAt())
                     .build();
         }

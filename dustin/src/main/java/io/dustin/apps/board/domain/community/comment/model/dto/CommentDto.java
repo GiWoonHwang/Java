@@ -14,11 +14,11 @@ public record CommentDto (
 
         String content,
 
-        String authorName,
+        Long userId,
 
-        Comment comment,
+        Long posting,
 
-        Posting posting,
+        Long reply,
 
         LocalDateTime createdAt
 ){
@@ -26,8 +26,9 @@ public record CommentDto (
             return CommentDto.builder()
                 .id(comment.getId())
             .content(comment.getContent())
-            .authorName(comment.getAuthor().getNickName())
+            .userId(comment.getAuthor())
             .posting(comment.getPosting())
+            .reply(comment.getReply())
             .createdAt(comment.getCreatedAt())
             .build();
 }

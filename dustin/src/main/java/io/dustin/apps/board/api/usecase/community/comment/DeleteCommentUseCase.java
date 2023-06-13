@@ -18,9 +18,9 @@ public class DeleteCommentUseCase {
     private final ReadCommentService readCommentService;
     private final WriteCommentService writeCommentService;
 
-    public CommentDto execute(Principal principal, Long id) {
+    public CommentDto execute(Long userId, Long id) {
         Comment comment = readCommentService.getComment(id);
-        if(!comment.getAuthor().getNickName().equals(principal.getName())) {
+        if(!comment.getAuthor().equals(userId)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "삭제 권한이 없습니다.");
         }
         writeCommentService.delete(comment);

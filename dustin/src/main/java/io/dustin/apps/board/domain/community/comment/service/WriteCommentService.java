@@ -15,7 +15,7 @@ public class WriteCommentService implements LikeCountService {
 
     private final CommentRepository commentRepository;
 
-    public Comment create(Posting posting, String content, SiteUser author){
+    public Comment create(Long posting, String content, Long author){
         Comment comment = Comment.builder()
                 .content(content)
                 .posting(posting)

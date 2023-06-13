@@ -16,7 +16,7 @@ public record PostingDto (
 
         String content,
 
-        String authorName,
+        Long userId,
 
         LocalDateTime createdAt
 
@@ -26,7 +26,7 @@ public record PostingDto (
                 .id(posting.getId())
                 .subject(posting.getSubject())
                 .content(posting.getContent())
-                .authorName(posting.getAuthor().getNickName())
+                .userId(posting.getAuthor())
                 .createdAt(posting.getCreatedAt())
                 .build();
     }

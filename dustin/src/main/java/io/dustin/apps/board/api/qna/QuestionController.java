@@ -36,18 +36,18 @@ public class QuestionController {
     @PatchMapping("/{id}")
     public QuestionDto modifyQuestion(@Valid QuestionForm questionForm, BindingResult bindingResult,
                                   @PathVariable("id") Long id,
-                                  Principal principal) {
+                                  @RequestBody Long userID) {
         if(bindingResult.hasErrors()) {
             throw new BadRequestParameterException("내용은 필수항목입니다.");
         }
-        return modifyQuestionUseCase.execute(principal, id, questionForm.getSubject(), questionForm.getContent());
+        return modifyQuestionUseCase.execute(userID, id, questionForm.getSubject(), questionForm.getContent());
     }
 
     //@PreAuthorize("isAuthenticated()")
     @DeleteMapping("/{id}")
     public QuestionDto deleteQuestion(@PathVariable("id") Long id,
-                                  Principal principal) {
-        return deleteQuestionUseCase.execute(principal, id);
+                                      @RequestBody Long userID) {
+        return deleteQuestionUseCase.execute(userID, id);
     }
 
 

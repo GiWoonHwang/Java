@@ -16,7 +16,7 @@ public class ReadNoticeService {
 
     private final NoticeRepository noticeRepository;
 
-    public Notice getPosting(Long id) {
+    public Notice getNotice(Long id) {
         /** todo
          *  clickCount 한개 증가시키기
          */

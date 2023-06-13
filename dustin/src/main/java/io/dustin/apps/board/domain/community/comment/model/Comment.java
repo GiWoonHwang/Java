@@ -23,15 +23,14 @@ import java.util.Set;
 public class Comment extends BaseEntity {
 
     @Builder
-    public Comment(Long id, @NotNull String content, YesOrNo isDeleted, @NotNull SiteUser author, @NotNull Posting posting, Comment comment, Long likeCount, List<Comment> replyList, Long clickCount) {
+    public Comment(Long id, @NotNull String content, YesOrNo isDeleted, @NotNull Long author, @NotNull Long posting, Long likeCount, Long reply, Long clickCount) {
         this.id = id;
         this.content = content;
         this.posting = posting;
-        this.comment = comment;
         this.author = author;
         this.isDeleted = isDeleted == null ? YesOrNo.N : isDeleted;
         this.likeCount = likeCount;
-        this.replyList = replyList;
+        this.reply = reply;
         this.clickCount = clickCount;
 
     }
@@ -49,25 +48,21 @@ public class Comment extends BaseEntity {
 
     /** 작성자 */
     @ManyToOne
-    private SiteUser author;
+    private Long author;
 
     @Column(name = "like")
     private Long likeCount;
 
-    @ManyToOne
-    private Posting posting;
+    @Column
+    private Long posting;
 
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "comment_ID")
-    private Comment comment;
 
     @Column(name = "click")
     private Long clickCount;
 
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "comment", cascade = CascadeType.ALL)
-    private List<Comment> replyList;
+    @Column(name = "click")
+    private Long reply;
 
     public void updateContent(String content) {
         this.content = content;

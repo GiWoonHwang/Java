@@ -23,15 +23,13 @@ import java.util.Set;
 public class Question extends BaseEntity {
 
     @Builder
-    public Question(Long id, @NotNull String subject, @NotNull String content, YesOrNo isDeleted, List<Answer> answerList, @NotNull SiteUser author, Set<SiteUser> voter/*, List<Comment> commentList*/) {
+    public Question(Long id, @NotNull String subject, @NotNull String content, YesOrNo isDeleted, List<Answer> answerList, @NotNull Long author, Long clickCount) {
         this.id = id;
         this.subject = subject;
         this.content = content;
-        this.answerList = answerList;
         this.author = author;
         this.isDeleted = isDeleted == null ? YesOrNo.N : isDeleted;
-        this.voter = voter;
-        //this.commentList = commentList;
+        this.clickCount = clickCount;
     }
 
     @Id
@@ -48,17 +46,14 @@ public class Question extends BaseEntity {
     @Column(name = "is_deleted", length = 1)
     private YesOrNo isDeleted;
 
-    @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE)
-    private List<Answer> answerList;
+    @Column
+    private Long author;
 
-    @ManyToOne
-    private SiteUser author;
+    @Column
+    private Long clickCount;
 
-    @ManyToMany
-    private Set<SiteUser> voter; // 하나의 질문에 여러사람이, 한 사람이 여러질문을, 또 추천은 중복이 불가능하다.
 
-//    @OneToMany(mappedBy = "question")
-//    private List<Comment> commentList;
+
 
     public void updateSubject(String subject) {
         this.subject = subject;

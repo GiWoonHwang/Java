@@ -1,5 +1,6 @@
 package io.dustin.apps.board.domain.qna.question.service;
 
+import io.dustin.apps.board.domain.community.posting.model.Posting;
 import io.dustin.apps.board.domain.qna.answer.model.Answer;
 import io.dustin.apps.board.domain.qna.question.model.Question;
 import io.dustin.apps.user.domain.model.SiteUser;
@@ -26,22 +27,16 @@ public class ReadQuestionService {
     private final QuestionRepository questionRepository;
 
     @Transactional(readOnly = true)
-    public List<Question> getList() {
-        return this.questionRepository.findAll();
-    }
-
-    @Transactional(readOnly = true)
     public Question getQuestion(Long id) {
+        /**
+         * clickCount 한개 증가시키기
+         */
         return getEntity(questionRepository.findById(id), Question.class, "question not found");
     }
 
     @Transactional(readOnly = true)
-    public Page<Question> getList(int page, String kw) {
-        List<Sort.Order> sorts = new ArrayList<>();
-        sorts.add(Sort.Order.desc("createDate"));
-        Pageable pageable = PageRequest.of(page, 10, Sort.by(sorts));
-        Specification<Question> spec = search(kw); // 검색어를 의미하는 매개변수 kw를 getList에 추가하고 kw 값으로 Specification 객체를 생성하여 findAll 메서드 호출시 전달하였다.
-        return questionRepository.findAll(spec, pageable);
+    public Page<Question> getList(Pageable pageable) {
+        return questionRepository.findAll(pageable);
     }
 
     private Specification<Question> search(String kw) {

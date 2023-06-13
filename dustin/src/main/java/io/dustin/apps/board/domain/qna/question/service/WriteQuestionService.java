@@ -13,7 +13,7 @@ public class WriteQuestionService {
 
     private final QuestionRepository questionRepository;
 
-    public Question create(String subject, String content, SiteUser user) {
+    public Question create(String subject, String content, Long user) {
         Question q = Question.builder()
                 .subject(subject)
                 .content(content)
@@ -34,8 +34,4 @@ public class WriteQuestionService {
         question.delete();
     }
 
-    public void vote(Question question, SiteUser siteUser){
-        question.getVoter().add(siteUser);
-        questionRepository.save(question);
-    }
 }

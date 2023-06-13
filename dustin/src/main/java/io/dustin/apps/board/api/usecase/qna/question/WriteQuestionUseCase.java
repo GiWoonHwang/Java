@@ -19,8 +19,7 @@ public class WriteQuestionUseCase {
     private final ReadUserService readUserService;
 
     public QuestionDto execute(Long userId, String subject, String content) {
-        SiteUser siteUser = readUserService.getUser(userId);
-        Question question = writeQuestionService.create(subject, content, siteUser);
+        Question question = writeQuestionService.create(subject, content, userId);
         QuestionDto dto = QuestionDto.from(question);
         return QuestionDto.from(question);
 

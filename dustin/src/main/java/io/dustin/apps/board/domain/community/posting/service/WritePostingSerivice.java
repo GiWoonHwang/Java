@@ -14,11 +14,11 @@ public class WritePostingSerivice implements LikeCountService {
 
     private final PostingRepository postingRepository;
 
-    public Posting create(String subject, String content, SiteUser user) {
+    public Posting create(String subject, String content, Long userId) {
         Posting q = Posting.builder()
                 .subject(subject)
                 .content(content)
-                .author(user)
+                .author(userId)
                 .build();
         return postingRepository.save(q);
     }

@@ -23,7 +23,7 @@ import java.util.Set;
 public class Posting extends BaseEntity {
 
     @Builder
-    public Posting(Long id, @NotNull String subject, @NotNull String content, YesOrNo isDeleted, @NotNull SiteUser author, Long likeCount, Long clickCount) {
+    public Posting(Long id, @NotNull String subject, @NotNull String content, YesOrNo isDeleted, @NotNull Long author, Long likeCount, Long clickCount) {
         this.id = id;
         this.subject = subject;
         this.content = content;
@@ -48,7 +48,7 @@ public class Posting extends BaseEntity {
     private YesOrNo isDeleted;
 
     @ManyToOne
-    private SiteUser author;
+    private Long author;
 
     @Column(name = "like")
     private Long likeCount;

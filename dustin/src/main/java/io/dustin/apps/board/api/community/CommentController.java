@@ -37,18 +37,18 @@ public class CommentController {
     @PatchMapping("/{id}")
     public CommentDto modifyAnswer(@Valid CommentForm commentForm, BindingResult bindingResult,
                                   @PathVariable("id") Long id,
-                                  Principal principal) {
+                                  @RequestBody Long userID) {
         if(bindingResult.hasErrors()) {
             throw new BadRequestParameterException("내용은 필수항목입니다.");
         }
-        return modifyCommentUseCase.execute(principal, id, commentForm.getContent());
+        return modifyCommentUseCase.execute(userID, id, commentForm.getContent());
     }
 
     //@PreAuthorize("isAuthenticated()")
     @DeleteMapping("/{id}")
     public CommentDto deleteAnswer(@PathVariable("id") Long id,
-                                  Principal principal) {
-        return deleteCommentUseCase.execute(principal, id);
+                                   @RequestBody Long userID) {
+        return deleteCommentUseCase.execute(userID, id);
     }
 
 }
