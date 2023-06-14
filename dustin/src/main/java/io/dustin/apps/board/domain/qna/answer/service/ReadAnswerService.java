@@ -16,7 +16,7 @@ public class ReadAnswerService {
 
     @Transactional(readOnly = true)
     public Answer getAnswer(Long id) {
-        return getEntity(this.answerRepository.findById(id), Answer.class, "answer not fount");
+        return getEntity(this.answerRepository.findById(id), Answer.class, "answer not found");
     }
 
 }

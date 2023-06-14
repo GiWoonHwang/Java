@@ -35,7 +35,7 @@ public class CommentController {
 
     //@PreAuthorize("isAuthenticated()")
     @PatchMapping("/{id}")
-    public CommentDto modifyAnswer(@Valid CommentForm commentForm, BindingResult bindingResult,
+    public CommentDto modifyComment(@Valid CommentForm commentForm, BindingResult bindingResult,
                                   @PathVariable("id") Long id,
                                   @RequestBody Long userID) {
         if(bindingResult.hasErrors()) {
@@ -46,7 +46,7 @@ public class CommentController {
 
     //@PreAuthorize("isAuthenticated()")
     @DeleteMapping("/{id}")
-    public CommentDto deleteAnswer(@PathVariable("id") Long id,
+    public CommentDto deleteComment(@PathVariable("id") Long id,
                                    @RequestBody Long userID) {
         return deleteCommentUseCase.execute(userID, id);
     }

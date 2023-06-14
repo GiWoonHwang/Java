@@ -11,11 +11,11 @@ public record NoticeDto (
 
         Long id,
 
+        Long adminId,
+
         String subject,
 
         String content,
-
-        Long admin,
 
         LocalDateTime createdAt
 
@@ -25,7 +25,7 @@ public record NoticeDto (
                 .id(notice.getId())
                 .subject(notice.getSubject())
                 .content(notice.getContent())
-                .admin(notice.getAdmin())
+                .adminId(notice.getAdminId())
                 .createdAt(notice.getCreatedAt())
                 .build();
     }

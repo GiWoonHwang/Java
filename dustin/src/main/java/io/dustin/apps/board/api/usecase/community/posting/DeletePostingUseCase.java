@@ -17,7 +17,7 @@ public class DeletePostingUseCase {
     private final WritePostingSerivice writePostingSerivice;
 
 
-    public PostingDto execute(Long userId, Long id) {
+    public PostingDto execute(Long id, Long userId) {
         Posting posting = readPostingService.getPosting(id);
         if(!posting.getAuthor().equals(userId)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "삭제 권한이 없습니다.");

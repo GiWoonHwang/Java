@@ -16,9 +16,9 @@ public class ModifyNoticeUseCase {
     private final ReadNoticeService readNoticeService;
     private final WriteNoticeService writeNoticeService;
 
-    public NoticeDto execute(Long userId, Long id, String subject, String content) {
+    public NoticeDto execute(Long id, Long adminID, String subject, String content) {
         Notice notice = readNoticeService.getNotice(id);
-        if (!notice.getAdmin().equals(userId)) {
+        if (!notice.getAdminId().equals(adminID)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "수정권한이 없습니다.");
         }
         writeNoticeService.updateContent(notice, subject, content);

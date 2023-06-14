@@ -21,7 +21,7 @@ public class QNotice extends EntityPathBase<Notice> {
 
     public final io.dustin.apps.common.model.QBaseEntity _super = new io.dustin.apps.common.model.QBaseEntity(this);
 
-    public final NumberPath<Long> admin = createNumber("admin", Long.class);
+    public final NumberPath<Long> adminId = createNumber("adminId", Long.class);
 
     public final NumberPath<Long> clickCount = createNumber("clickCount", Long.class);
 

@@ -15,11 +15,11 @@ public class WriteNoticeService implements LikeCountService {
 
     private final NoticeRepository noticeRepository;
 
-    public Notice create(String subject, String content, Long admin) {
+    public Notice create(Long adminId, String subject, String content) {
         Notice n = Notice.builder()
                 .subject(subject)
                 .content(content)
-                .admin(admin)
+                .adminId(adminId)
                 .build();
         return noticeRepository.save(n);
     }

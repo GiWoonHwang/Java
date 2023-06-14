@@ -14,8 +14,8 @@ public class WriteNoticeUseCase {
     private final ReadNoticeService readNoticeService;
     private final WriteNoticeService writeNoticeService;
 
-    public NoticeDto execute(Long userId, String subject, String content) {
-        Notice notice = writeNoticeService.create(subject, content, userId);
+    public NoticeDto execute(Long adminId, String subject, String content) {
+        Notice notice = writeNoticeService.create(adminId, subject, content);
         NoticeDto dto = NoticeDto.from(notice);
         return NoticeDto.from(notice);
     }
