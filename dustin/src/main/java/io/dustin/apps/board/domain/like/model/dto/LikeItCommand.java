@@ -5,6 +5,7 @@ import lombok.Getter;
 
 @Getter
 public class LikeItCommand {
+    private Long id;
     private Long boardId;
     private Long userId;
     private BoardType boardType;

@@ -1,6 +1,7 @@
 package io.dustin.apps.board.domain.like.model;
 
 import io.dustin.apps.common.code.BoardType;
+import io.dustin.apps.common.model.BaseEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
@@ -14,7 +15,7 @@ import org.hibernate.annotations.DynamicUpdate;
 @Table(name = "like_it")
 @DynamicUpdate
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Like {
+public class Like extends BaseEntity {
 
     @Builder
     public Like(Long id, @NotNull Long boardId, @NotNull Long userId, @NotNull BoardType boardType){

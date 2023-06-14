@@ -1,7 +1,7 @@
 package io.dustin.apps.configurationProperies;
 
 
-import io.dustin.apps.common.model.RigoProperties;
+import io.dustin.apps.common.properties.RigoProperties;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

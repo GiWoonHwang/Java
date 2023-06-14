@@ -28,7 +28,7 @@ dependencies {
 	implementation 'io.rigo:sdk:0.0.1-SNAPSHOT' // rigo sdk
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	developmentOnly 'org.springframework.boot:spring-boot-devtools' // nondemon 같은거
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 
 	/**spring security*/
 	// https://mvnrepository.com/artifact/org.springframework.security/spring-security-crypto

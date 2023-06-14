@@ -15,6 +15,8 @@ public record UserDto (
 
         String email,
 
+        String profile,
+
         LocalDateTime createdAt
 ) {
     public static UserDto from(SiteUser siteUser) {
@@ -22,6 +24,7 @@ public record UserDto (
                 .id(siteUser.getId())
                 .nickName(siteUser.getNickName())
                 .password(siteUser.getPassword())
+                .profile(siteUser.getProfile())
                 .createdAt(siteUser.getCreatedAt())
                 .build();
     }

@@ -1,4 +1,4 @@
-package io.dustin.apps.common.model;
+package io.dustin.apps.common.properties;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

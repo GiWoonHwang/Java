@@ -22,7 +22,7 @@ public class WriteLikeService {
         return like;
     }
 
-    public void delete(Like like){
-        this.likeRepository.delete(like);
+    public void delete(Long id){
+        this.likeRepository.deleteById(id);
     }
 }

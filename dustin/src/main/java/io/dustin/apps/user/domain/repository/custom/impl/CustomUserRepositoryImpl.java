@@ -1,10 +1,9 @@
 package io.dustin.apps.user.domain.repository.custom.impl;
 
-import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import io.dustin.apps.common.code.BoardType;
-import io.dustin.apps.user.domain.model.dto.LikeItUser;
+import io.dustin.apps.user.domain.model.dto.LikeItUserDto;
 import io.dustin.apps.user.domain.repository.custom.CustomUserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
@@ -21,9 +20,9 @@ public class CustomUserRepositoryImpl implements CustomUserRepository {
     private final JPAQueryFactory query;
 
     @Override
-    public List<LikeItUser> findAllLikeItUser(Long boardId, BoardType boardType, Pageable pageable) {
+    public List<LikeItUserDto> findAllLikeItUser(Long boardId, BoardType boardType, Pageable pageable) {
 
-        JPAQuery<LikeItUser> jPAQuery = query.select(bean(LikeItUser.class,
+        JPAQuery<LikeItUserDto> jPAQuery = query.select(bean(LikeItUserDto.class,
                     siteUser.id,
                     siteUser.nickName
                 ))
@@ -41,4 +40,33 @@ public class CustomUserRepositoryImpl implements CustomUserRepository {
         }
         return jPAQuery.fetch();
     }
+
+    /**
+     * 추후 개발 예정
+     */
+    @Override
+    public List<LikeItUserDto> findAllLikeItUserNoOffeset(Long boardId, BoardType boardType, Pageable pageable) {
+
+        JPAQuery<LikeItUserDto> jPAQuery = query.select(bean(LikeItUserDto.class,
+                        siteUser.id,
+                        siteUser.nickName
+                ))
+                .from(siteUser)
+                .innerJoin(like).on(siteUser.id.eq(like.userId))
+                .where(
+                        like.boardId.eq(boardId),
+                        like.boardType.eq(boardType)
+                )
+                .orderBy(siteUser.nickName.asc());
+        if(pageable != null) {
+            jPAQuery.limit(pageable.getPageSize());
+
+
+        }
+        return jPAQuery.fetch();
+    }
+
+
+
+
 }

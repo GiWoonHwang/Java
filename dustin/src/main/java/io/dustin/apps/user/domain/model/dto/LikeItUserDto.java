@@ -1,6 +1,6 @@
 package io.dustin.apps.user.domain.model.dto;
 
-public record LikeItUser(
+public record LikeItUserDto(
     Long id,
     String nickName
 

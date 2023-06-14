@@ -19,11 +19,19 @@ public class QLike extends EntityPathBase<Like> {
 
     public static final QLike like = new QLike("like1");
 
+    public final io.dustin.apps.common.model.QBaseEntity _super = new io.dustin.apps.common.model.QBaseEntity(this);
+
     public final NumberPath<Long> boardId = createNumber("boardId", Long.class);
 
     public final EnumPath<io.dustin.apps.common.code.BoardType> boardType = createEnum("boardType", io.dustin.apps.common.code.BoardType.class);
 
+    //inherited
+    public final DateTimePath<java.time.LocalDateTime> createdAt = _super.createdAt;
+
     public final NumberPath<Long> id = createNumber("id", Long.class);
+
+    //inherited
+    public final DateTimePath<java.time.LocalDateTime> updatedAt = _super.updatedAt;
 
     public final NumberPath<Long> userId = createNumber("userId", Long.class);
 

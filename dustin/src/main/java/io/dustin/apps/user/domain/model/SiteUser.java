@@ -15,12 +15,15 @@ import lombok.NoArgsConstructor;
 public class SiteUser extends BaseEntity {
 
     @Builder
-    public SiteUser (Long id, @NotNull String nickName, @NotNull String password, @NotNull String email, YesOrNo isBaned) {
+    public SiteUser (Long id, @NotNull String nickName, @NotNull String password, @NotNull String email, String profile, YesOrNo isBaned, YesOrNo isDeleted) {
         this.id = id;
         this.nickName = nickName;
         this.password = password;
         this.email = email;
+        this.profile = profile;
         this.isBaned = isBaned == null ? YesOrNo.N : isBaned;
+        this.isDeleted = isDeleted == null ? YesOrNo.N : isDeleted;
+
     }
 
     @Id
@@ -37,6 +40,29 @@ public class SiteUser extends BaseEntity {
     @Column(name = "is_baned", length = 1)
     private YesOrNo isBaned;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "is_deleted", length = 1)
+    private YesOrNo isDeleted;
+
     private String password;
+
+    private String profile;
+
+    public void updatePassword(String password) { this.password = password; }
+
+    public void updateEmail(String email) { this.email = email; }
+
+    public void updateNickName(String nickName) { this.nickName = nickName; }
+
+    public void updateProfile(String profile) { this.profile = profile; }
+
+    /** 탈퇴 후 30일이 경과시 삭제되는 기능 구현 필요 */
+    public void deleteUser() {
+        this.isDeleted = YesOrNo.Y;
+    }
+
+    public void banedUser() {
+        this.isBaned = YesOrNo.Y;
+    }
 
 }

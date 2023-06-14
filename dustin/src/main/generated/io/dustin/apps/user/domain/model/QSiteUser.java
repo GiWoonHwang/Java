@@ -30,9 +30,13 @@ public class QSiteUser extends EntityPathBase<SiteUser> {
 
     public final EnumPath<io.dustin.apps.common.code.YesOrNo> isBaned = createEnum("isBaned", io.dustin.apps.common.code.YesOrNo.class);
 
+    public final EnumPath<io.dustin.apps.common.code.YesOrNo> isDeleted = createEnum("isDeleted", io.dustin.apps.common.code.YesOrNo.class);
+
     public final StringPath nickName = createString("nickName");
 
     public final StringPath password = createString("password");
+
+    public final StringPath profile = createString("profile");
 
     //inherited
     public final DateTimePath<java.time.LocalDateTime> updatedAt = _super.updatedAt;

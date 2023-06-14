@@ -3,7 +3,7 @@ package io.dustin.apps.board.domain.user.service;
 
 import io.dustin.apps.common.code.BoardType;
 import io.dustin.apps.user.domain.model.SiteUser;
-import io.dustin.apps.user.domain.model.dto.LikeItUser;
+import io.dustin.apps.user.domain.model.dto.LikeItUserDto;
 import io.dustin.apps.user.domain.service.ReadUserService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -47,7 +47,7 @@ public class ReadUserServiceTest {
         Pageable pageable = PageRequest.of(0, 10);
 
         // when
-        List<LikeItUser> likeItUsers = read.likeItUsers(boardId, boardType, pageable);
+        List<LikeItUserDto> likeItUsers = read.likeItUsers(boardId, boardType, pageable);
 
         // then
         assertThat(likeItUsers.size()).isEqualTo(0);
