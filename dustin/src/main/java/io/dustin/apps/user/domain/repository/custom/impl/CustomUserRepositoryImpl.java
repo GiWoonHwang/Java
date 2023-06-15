@@ -45,7 +45,7 @@ public class CustomUserRepositoryImpl implements CustomUserRepository {
      * 추후 개발 예정
      */
     @Override
-    public List<LikeItUserDto> findAllLikeItUserNoOffeset(Long boardId, BoardType boardType, Pageable pageable) {
+    public List<LikeItUserDto> findAllLikeItUserNoOffSet(Long boardId, BoardType boardType, Pageable pageable) {
 
         JPAQuery<LikeItUserDto> jPAQuery = query.select(bean(LikeItUserDto.class,
                         siteUser.id,

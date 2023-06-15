@@ -10,6 +10,10 @@ import org.springframework.stereotype.Service;
 public class WriteFollowService {
     private FollowRepository followRepository;
 
+    public Follow getFollow(Long followerId, Long followingId) {
+        return this.followRepository.getFollowByFollowerIdAndFollowingID(followerId,followingId);
+    }
+
     public Follow create(Long followerID, Long followingId){
         Follow follow = Follow.builder()
                 .followerID(followerID)
@@ -18,4 +22,11 @@ public class WriteFollowService {
         this.followRepository.save(follow);
         return follow;
     }
+
+    public void delete(Long followerID, Long followingId) {
+        this.followRepository.deleteByFollowerIdAndFollowingID(followerID, followingId);
+    }
+
+
+
 }
