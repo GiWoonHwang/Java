@@ -1,4 +1,4 @@
-package io.dustin.apps.board.domain.like.model;
+package io.dustin.apps.board.domain.bookmark.model;
 
 import io.dustin.apps.common.code.BoardType;
 import io.dustin.apps.common.model.BaseEntity;
@@ -12,13 +12,12 @@ import org.hibernate.annotations.DynamicUpdate;
 
 @Getter
 @Entity
-@Table(name = "like_it")
 @DynamicUpdate
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Like extends BaseEntity {
+public class Bookmark extends BaseEntity {
 
     @Builder
-    public Like(Long id, @NotNull Long userId, @NotNull Long boardId,  @NotNull BoardType boardType){
+    public Bookmark(Long id, @NotNull Long userId, @NotNull Long boardId, @NotNull BoardType boardType){
         this.id =id;
         this.userId = userId;
         this.boardId = boardId;

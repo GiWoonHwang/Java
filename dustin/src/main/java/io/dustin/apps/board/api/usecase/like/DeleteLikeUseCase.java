@@ -12,7 +12,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 @Service
 @RequiredArgsConstructor
-public class DeleteLikeUsecase {
+public class DeleteLikeUseCase {
 
     private final WriteLikeService writeLikeService;
     private final ReadLIkeService readLIkeService;
