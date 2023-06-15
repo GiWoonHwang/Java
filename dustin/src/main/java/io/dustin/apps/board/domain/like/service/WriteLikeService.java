@@ -12,7 +12,7 @@ public class WriteLikeService {
 
     private final LikeRepository likeRepository;
 
-    public Like create(Long userId, Long boardId,  BoardType boardType){
+    public Like create(Long userId, Long boardId, BoardType boardType){
         Like like = Like.builder()
                 .userId(userId)
                 .boardId(boardId)

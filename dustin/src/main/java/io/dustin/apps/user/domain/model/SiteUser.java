@@ -15,12 +15,16 @@ import lombok.NoArgsConstructor;
 public class SiteUser extends BaseEntity {
 
     @Builder
-    public SiteUser (Long id, @NotNull String nickName, @NotNull String password, @NotNull String email, String profile, YesOrNo isBaned, YesOrNo isDeleted) {
+    public SiteUser (Long id, @NotNull String nickName, @NotNull String password, @NotNull String email, String profile, YesOrNo isBaned, YesOrNo isDeleted,
+                     Long follower,Long following
+                     ) {
         this.id = id;
         this.nickName = nickName;
         this.password = password;
         this.email = email;
         this.profile = profile;
+        this.follower = follower;
+        this.following = following;
         this.isBaned = isBaned == null ? YesOrNo.N : isBaned;
         this.isDeleted = isDeleted == null ? YesOrNo.N : isDeleted;
 
@@ -47,6 +51,11 @@ public class SiteUser extends BaseEntity {
     private String password;
 
     private String profile;
+    
+    private Long follower;
+
+    private Long following;
+    
 
     public void updatePassword(String password) { this.password = password; }
 

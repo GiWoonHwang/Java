@@ -26,6 +26,10 @@ public class QSiteUser extends EntityPathBase<SiteUser> {
 
     public final StringPath email = createString("email");
 
+    public final NumberPath<Long> follower = createNumber("follower", Long.class);
+
+    public final NumberPath<Long> following = createNumber("following", Long.class);
+
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
     public final EnumPath<io.dustin.apps.common.code.YesOrNo> isBaned = createEnum("isBaned", io.dustin.apps.common.code.YesOrNo.class);
