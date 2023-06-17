@@ -11,20 +11,20 @@ public class WriteFollowService {
     private FollowRepository followRepository;
 
     public Follow getFollow(Long followerId, Long followingId) {
-        return this.followRepository.getFollowByFollowerIdAndFollowingID(followerId,followingId);
+        return this.followRepository.getFollowByFollowerIdAndFollowingId(followerId,followingId);
     }
 
-    public Follow create(Long followerID, Long followingId){
+    public Follow create(Long followerId, Long followingId){
         Follow follow = Follow.builder()
-                .followerID(followerID)
+                .followerId(followerId)
                 .followingId(followingId)
                 .build();
         this.followRepository.save(follow);
         return follow;
     }
 
-    public void delete(Long followerID, Long followingId) {
-        this.followRepository.deleteByFollowerIdAndFollowingID(followerID, followingId);
+    public void delete(Long followerId, Long followingId) {
+        this.followRepository.deleteByFollowerIdAndFollowingId(followerId, followingId);
     }
 
 

@@ -24,7 +24,7 @@ public class QFollow extends EntityPathBase<Follow> {
     //inherited
     public final DateTimePath<java.time.LocalDateTime> createdAt = _super.createdAt;
 
-    public final NumberPath<Long> followerID = createNumber("followerID", Long.class);
+    public final NumberPath<Long> followerId = createNumber("followerId", Long.class);
 
     public final NumberPath<Long> followingId = createNumber("followingId", Long.class);
 

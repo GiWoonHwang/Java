@@ -18,7 +18,7 @@ public record FollowDto (
     public static FollowDto from(Follow follow) {
         return FollowDto.builder()
                 .id(follow.getId())
-                .followerID(follow.getFollowerID())
+                .followerID(follow.getFollowerId())
                 .followingId(follow.getFollowingId())
                 .createdAt(follow.getCreatedAt())
                 .build();

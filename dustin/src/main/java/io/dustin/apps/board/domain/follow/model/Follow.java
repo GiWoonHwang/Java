@@ -18,9 +18,9 @@ import org.hibernate.annotations.DynamicUpdate;
 public class Follow extends BaseEntity {
 
     @Builder
-    public Follow(Long id, @NotNull Long followerID, @NotNull Long followingId) {
+    public Follow(Long id, @NotNull Long followerId, @NotNull Long followingId) {
         this.id =id;
-        this.followerID = followerID;
+        this.followerId = followerId;
         this.followingId = followingId;
     }
 
@@ -29,7 +29,7 @@ public class Follow extends BaseEntity {
     private Long id;
 
     @Column(name = "follower_id")
-    private Long followerID;
+    private Long followerId;
 
     @Column(name = "following_id")
     private Long followingId;
