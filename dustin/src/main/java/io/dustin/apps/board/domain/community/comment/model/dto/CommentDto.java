@@ -26,7 +26,7 @@ public record CommentDto (
             return CommentDto.builder()
                 .id(comment.getId())
             .content(comment.getContent())
-            .userId(comment.getAuthor())
+            .userId(comment.getUserId())
             .posting(comment.getPosting())
             .reply(comment.getReply())
             .createdAt(comment.getCreatedAt())

@@ -13,6 +13,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
 
 import java.util.List;
 import java.util.Set;
@@ -23,14 +24,15 @@ import java.util.Set;
 public class Comment extends BaseEntity {
 
     @Builder
-    public Comment(Long id, @NotNull String content, YesOrNo isDeleted, @NotNull Long author, @NotNull Long posting, Long likeCount, Long reply, Long clickCount) {
+    public Comment(Long id, @NotNull String content, YesOrNo isDeleted,@NotNull Long userId, @NotNull Long posting,
+                   Long likeCount, Long reply, Long clickCount) {
         this.id = id;
         this.content = content;
         this.posting = posting;
-        this.author = author;
+        this.userId = userId;
         this.isDeleted = isDeleted == null ? YesOrNo.N : isDeleted;
         this.likeCount = likeCount;
-        this.reply = reply;
+        this.reply = reply == null ? null : reply;
         this.clickCount = clickCount;
 
     }
@@ -43,17 +45,20 @@ public class Comment extends BaseEntity {
     private String content;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "is_deleted", length = 1)
+    @Column(name = "is_deleted")
     private YesOrNo isDeleted;
 
-    /** 작성자 */
-    private Long author;
 
+    /** 작성자 */
+    private Long userId;
+
+    @Column(columnDefinition = "bigint default 0")
     private Long likeCount;
 
-    private Long posting;
-
+    @Column(columnDefinition = "bigint default 0")
     private Long clickCount;
+
+    private Long posting;
 
     private Long reply;
 
@@ -64,6 +69,10 @@ public class Comment extends BaseEntity {
     public void delete() {
         this.isDeleted = YesOrNo.Y;
     }
+
+    public void countUp(Long likeCount ) {this.likeCount = likeCount;}
+
+    public void countDown(Long likeCount ) {this.likeCount = likeCount;}
 
 
 }

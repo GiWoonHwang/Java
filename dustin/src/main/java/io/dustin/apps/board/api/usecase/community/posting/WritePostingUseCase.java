@@ -5,7 +5,7 @@ import io.dustin.apps.board.domain.community.comment.model.dto.CommentDto;
 import io.dustin.apps.board.domain.community.posting.model.Posting;
 import io.dustin.apps.board.domain.community.posting.model.dto.PostingDto;
 import io.dustin.apps.board.domain.community.posting.service.ReadPostingService;
-import io.dustin.apps.board.domain.community.posting.service.WritePostingSerivice;
+import io.dustin.apps.board.domain.community.posting.service.WritePostingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,13 +14,12 @@ import org.springframework.stereotype.Service;
 public class WritePostingUseCase {
 
     private final ReadPostingService readPostingService;
-    private final WritePostingSerivice writePostingSerivice;
+    private final WritePostingService writePostingService;
 
     public PostingDto execute(Long userId, String subject, String content) {
-        Posting posting = writePostingSerivice.create(subject, content, userId);
+        Posting posting = writePostingService.create(userId, subject, content);
+        System.out.println("여기는 유즈케이스의 유즈케이스" + posting.toString());
         PostingDto dto = PostingDto.from(posting);
         return PostingDto.from(posting);
     }
-
-
 }

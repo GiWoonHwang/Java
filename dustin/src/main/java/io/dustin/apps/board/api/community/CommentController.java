@@ -23,14 +23,13 @@ public class CommentController {
     private final DeleteCommentUseCase deleteCommentUseCase;
 
     //@PreAuthorize("isAuthenticated()")
-    @PostMapping("/questions/{questionId}")
-    public CommentDto createComment(@Valid CommentForm commentForm, BindingResult bindingResult,
-                                    @PathVariable("questionId") Long questionId,
-                                    @RequestBody Long userID) {
-        if(bindingResult.hasErrors()) {
+    @PostMapping("/posting/{postingId}")
+    public CommentDto createComment(@PathVariable("postingId") Long postingId,
+                                    @RequestBody CommentDto commentDto) {
+        if(commentDto.content() == null) {
             throw new BadRequestParameterException("내용은 필수항목입니다.");
         }
-        return writeCommentUseCase.execute(userID, questionId, commentForm.getContent());
+        return writeCommentUseCase.execute(commentDto.userId(), postingId, commentDto.reply(), commentDto.content());
     }
 
     //@PreAuthorize("isAuthenticated()")

@@ -12,11 +12,11 @@ public record PostingDto (
 
         Long id,
 
+        Long userId,
+
         String subject,
 
         String content,
-
-        Long userId,
 
         LocalDateTime createdAt
 
@@ -24,9 +24,9 @@ public record PostingDto (
     public static PostingDto from(Posting posting) {
         return PostingDto.builder()
                 .id(posting.getId())
+                .userId(posting.getUserId())
                 .subject(posting.getSubject())
                 .content(posting.getContent())
-                .userId(posting.getAuthor())
                 .createdAt(posting.getCreatedAt())
                 .build();
     }

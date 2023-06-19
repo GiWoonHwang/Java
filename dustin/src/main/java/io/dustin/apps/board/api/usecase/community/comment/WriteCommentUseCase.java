@@ -17,8 +17,8 @@ public class WriteCommentUseCase {
     private final ReadPostingService readPostingService;
     private final WriteCommentService writeCommentService;
 
-    public CommentDto execute(Long userId, Long postingId, String content) {
-        Comment comment = writeCommentService.create(postingId, content, userId);
+    public CommentDto execute(Long userId, Long postingId, Long reply, String content ) {
+        Comment comment = writeCommentService.create(userId, postingId, reply, content);
         CommentDto dto = CommentDto.from(comment);
         return CommentDto.from(comment);
     }

@@ -9,4 +9,6 @@ import org.springframework.data.domain.Pageable;
 public interface CommentRepository extends BaseRepository<Comment, Long> {
 
     Page<Comment> findAll(Pageable pageable);
+
+
 }

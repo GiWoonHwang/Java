@@ -15,11 +15,12 @@ public class WriteCommentService implements LikeCountService {
 
     private final CommentRepository commentRepository;
 
-    public Comment create(Long posting, String content, Long author){
+    public Comment create(Long userId, Long posting, Long reply, String content){
         Comment comment = Comment.builder()
                 .content(content)
                 .posting(posting)
-                .author(author)
+                .userId(userId)
+                .reply(reply)
                 .build();
         this.commentRepository.save(comment);
         return comment;
@@ -36,13 +37,18 @@ public class WriteCommentService implements LikeCountService {
 
 
     @Override
-    public void likeCount(long id) {
-        System.out.println("코멘트 게시판 id : [" + id + "] 카운트 하나 올림");
+    public void likeCount(long id) { System.out.println("코멘트 게시판 id : [" + id + "] 카운트 하나 올림");
+        Comment comment = this.commentRepository.getById(id);
+        Long LikeCount = comment.getLikeCount() + 1;
+        comment.countUp(LikeCount);
     }
 
     @Override
     public void likeUncount(long id) {
         System.out.println("코멘트 게시판 id : [" + id + "] 코멘트 카운트 하나 내림");
+        Comment comment = this.commentRepository.getById(id);
+        Long LikeCount = comment.getLikeCount() - 1;
+        comment.countUp(LikeCount);
     }
 
 }

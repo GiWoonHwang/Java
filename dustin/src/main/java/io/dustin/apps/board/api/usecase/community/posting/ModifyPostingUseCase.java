@@ -5,7 +5,7 @@ import io.dustin.apps.board.domain.community.comment.model.dto.CommentDto;
 import io.dustin.apps.board.domain.community.posting.model.Posting;
 import io.dustin.apps.board.domain.community.posting.model.dto.PostingDto;
 import io.dustin.apps.board.domain.community.posting.service.ReadPostingService;
-import io.dustin.apps.board.domain.community.posting.service.WritePostingSerivice;
+import io.dustin.apps.board.domain.community.posting.service.WritePostingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -16,14 +16,14 @@ import org.springframework.web.server.ResponseStatusException;
 public class ModifyPostingUseCase {
 
     private final ReadPostingService readPostingService;
-    private final WritePostingSerivice writePostingSerivice;
+    private final WritePostingService writePostingService;
 
     public PostingDto execute(Long id, Long userId, String subject, String content) {
         Posting posting = readPostingService.getPosting(id);
-        if (!posting.getAuthor().equals(userId)) {
+        if (!posting.getUserId().equals(userId)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "수정권한이 없습니다.");
         }
-        writePostingSerivice.updateContent(posting, subject, content);
+        writePostingService.updateContent(posting, subject, content);
         return PostingDto.from(posting);
     }
 }

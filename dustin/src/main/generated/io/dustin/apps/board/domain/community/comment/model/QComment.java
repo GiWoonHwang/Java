@@ -21,8 +21,6 @@ public class QComment extends EntityPathBase<Comment> {
 
     public final io.dustin.apps.common.model.QBaseEntity _super = new io.dustin.apps.common.model.QBaseEntity(this);
 
-    public final NumberPath<Long> author = createNumber("author", Long.class);
-
     public final NumberPath<Long> clickCount = createNumber("clickCount", Long.class);
 
     public final StringPath content = createString("content");
@@ -42,6 +40,8 @@ public class QComment extends EntityPathBase<Comment> {
 
     //inherited
     public final DateTimePath<java.time.LocalDateTime> updatedAt = _super.updatedAt;
+
+    public final NumberPath<Long> userId = createNumber("userId", Long.class);
 
     public QComment(String variable) {
         super(Comment.class, forVariable(variable));

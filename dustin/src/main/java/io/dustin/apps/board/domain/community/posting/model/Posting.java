@@ -11,6 +11,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.DynamicUpdate;
 
 import java.util.List;
@@ -23,14 +24,17 @@ import java.util.Set;
 public class Posting extends BaseEntity {
 
     @Builder
-    public Posting(Long id, @NotNull String subject, @NotNull String content, YesOrNo isDeleted, @NotNull Long author, Long likeCount, Long clickCount) {
+    public Posting(Long id, @NotNull String subject, @NotNull String content, YesOrNo isDeleted,
+                   @NotNull Long userId, Long likeCount, Long clickCount) {
         this.id = id;
         this.subject = subject;
         this.content = content;
-        this.author = author;
+        this.userId = userId;
         this.isDeleted = isDeleted == null ? YesOrNo.N : isDeleted;
+
         this.likeCount = likeCount;
         this.clickCount = clickCount;
+
     }
 
     @Id
@@ -44,17 +48,17 @@ public class Posting extends BaseEntity {
     private String content;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "is_deleted", length = 1)
+    @Column(name = "is_deleted")
     private YesOrNo isDeleted;
 
-    private Long author;
+
+    private Long userId;
 
     private Long likeCount;
 
     private Long clickCount;
 
-//    @OneToMany(mappedBy = "comment")
-//    private List<Comment> commentList;
+
 
     public void updateSubject(String subject) {
         this.subject = subject;

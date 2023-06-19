@@ -1,10 +1,11 @@
-package io.dustin.apps.board.domain.user.service;
+package io.dustin.apps.user.domain.service.service;
 
 
 import io.dustin.apps.common.code.BoardType;
 import io.dustin.apps.user.domain.model.SiteUser;
 import io.dustin.apps.user.domain.model.dto.LikeItUserDto;
 import io.dustin.apps.user.domain.service.ReadUserService;
+import io.dustin.apps.user.domain.service.WriteUserService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,11 @@ public class ReadUserServiceTest {
 
     @Autowired
     private ReadUserService read;
+
+    @Autowired
+    private WriteUserService writeUserService;
+
+
 
     @Test
     @DisplayName("아이디로 유저 가져오기")
