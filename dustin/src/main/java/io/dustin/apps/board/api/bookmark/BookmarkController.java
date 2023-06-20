@@ -26,7 +26,7 @@ public class BookmarkController {
         return writeBookmarkUseCase.execute(bookMarkDto.userId(), bookMarkDto.boardId());
     }
 
-    @PatchMapping("/bookmarks/cancel")
+    @DeleteMapping("/bookmarks/cancel")
     public BookMarkDto cancel(@RequestBody BookMarkDto bookMarkDto) {
         System.out.println("북마크 삭제했습니다.");
         return deleteBookmarkUseCase.execute(bookMarkDto.userId(), bookMarkDto.boardId());
