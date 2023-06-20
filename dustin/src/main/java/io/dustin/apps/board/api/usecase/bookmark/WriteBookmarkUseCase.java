@@ -18,8 +18,8 @@ public class WriteBookmarkUseCase {
 
     private final WriteBookmarkService writeBookmarkService;
 
-    public BookMarkDto execute(Long userId, Long boardId, BoardType boardType) {
-        Bookmark bookmark = writeBookmarkService.create(userId, boardId, boardType);
+    public BookMarkDto execute(Long userId, Long boardId) {
+        Bookmark bookmark = writeBookmarkService.create(userId, boardId);
         BookMarkDto dto = BookMarkDto.from(bookmark);
         return BookMarkDto.from(bookmark);
     }

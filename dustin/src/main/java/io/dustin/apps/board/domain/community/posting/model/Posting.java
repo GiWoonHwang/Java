@@ -51,14 +51,13 @@ public class Posting extends BaseEntity {
     @Column(name = "is_deleted")
     private YesOrNo isDeleted;
 
-
-    private Long userId;
-
+    @Column(columnDefinition = "bigint default 0")
     private Long likeCount;
 
+    @Column(columnDefinition = "bigint default 0")
     private Long clickCount;
 
-
+    private Long userId;
 
     public void updateSubject(String subject) {
         this.subject = subject;
@@ -71,6 +70,10 @@ public class Posting extends BaseEntity {
     public void delete() {
         this.isDeleted = YesOrNo.Y;
     }
+
+    public void countUp(Long likeCount ) {this.likeCount = likeCount;}
+
+    public void countDown(Long likeCount ) {this.likeCount = likeCount;}
 
 
 }

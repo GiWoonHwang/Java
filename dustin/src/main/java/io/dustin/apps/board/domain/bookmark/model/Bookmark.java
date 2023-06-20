@@ -17,11 +17,10 @@ import org.hibernate.annotations.DynamicUpdate;
 public class Bookmark extends BaseEntity {
 
     @Builder
-    public Bookmark(Long id, @NotNull Long userId, @NotNull Long boardId, @NotNull BoardType boardType){
+    public Bookmark(Long id, @NotNull Long userId, @NotNull Long boardId){
         this.id =id;
         this.userId = userId;
         this.boardId = boardId;
-        this.boardType = boardType;
     }
 
     @Id
@@ -33,8 +32,4 @@ public class Bookmark extends BaseEntity {
 
     @Column(name = "board_id")
     private Long boardId;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "type")
-    private BoardType boardType;
 }

@@ -6,6 +6,7 @@ import io.dustin.apps.board.domain.like.model.Like;
 import io.dustin.apps.common.code.BoardType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @RequiredArgsConstructor
 @Service
@@ -13,18 +14,18 @@ public class WriteBookmarkService {
 
     private final BookmarkRepository bookmarkRepository;
 
-    public Bookmark create(Long userId, Long boardId, BoardType boardType){
+    public Bookmark create(Long userId, Long boardId){
         Bookmark bookmark = Bookmark.builder()
                 .userId(userId)
                 .boardId(boardId)
-                .boardType(boardType)
                 .build();
         this.bookmarkRepository.save(bookmark);
         return bookmark;
     }
 
-    public void delete(Long id){
-        this.bookmarkRepository.deleteById(id);
+    @Transactional
+    public void delete(Long userId, Long boardId){
+        this.bookmarkRepository.deleteByUserIdAndBoardId(userId, boardId);
     }
 
 

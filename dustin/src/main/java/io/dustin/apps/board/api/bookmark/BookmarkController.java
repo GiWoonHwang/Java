@@ -22,16 +22,14 @@ public class BookmarkController {
 
     @PostMapping("/bookmarks/add")
     public BookMarkDto add(@RequestBody BookMarkDto bookMarkDto) {
-        // TODO 북마크 테이블에 저장되는 로직
         System.out.println("북마크 저장했습니다.");
-        return writeBookmarkUseCase.execute(bookMarkDto.userId(), bookMarkDto.boardId(), bookMarkDto.boardType());
+        return writeBookmarkUseCase.execute(bookMarkDto.userId(), bookMarkDto.boardId());
     }
 
     @PatchMapping("/bookmarks/cancel")
-    public BookMarkDto cancel(BookMarkDto bookMarkDto) {
-        // TODO 북마크 테이블에 삭제되는 로직
+    public BookMarkDto cancel(@RequestBody BookMarkDto bookMarkDto) {
         System.out.println("북마크 삭제했습니다.");
-        return deleteBookmarkUseCase.execute(bookMarkDto.id(), bookMarkDto.userId(), bookMarkDto.boardId(), bookMarkDto.boardType());
+        return deleteBookmarkUseCase.execute(bookMarkDto.userId(), bookMarkDto.boardId());
     }
 
 }

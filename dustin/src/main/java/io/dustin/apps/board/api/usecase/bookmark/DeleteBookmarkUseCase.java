@@ -17,12 +17,12 @@ public class DeleteBookmarkUseCase {
     private final WriteBookmarkService writeBookmarkService;
     private final ReadBookmarkService readBookmarkService;
 
-    public BookMarkDto execute(Long id, Long userId, Long boardId, BoardType boardType) {
-        Bookmark bookmark = readBookmarkService.getBookmark(id);
+    public BookMarkDto execute(Long userId, Long boardId) {
+        Bookmark bookmark = readBookmarkService.getBookmark(userId, boardId);
         if(!bookmark.getUserId().equals(userId)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "삭제 권한이 없습니다.");
         }
-        writeBookmarkService.delete(id);
+        writeBookmarkService.delete(userId, boardId);
         BookMarkDto dto = BookMarkDto.from(bookmark);
         return BookMarkDto.from(bookmark);
     }

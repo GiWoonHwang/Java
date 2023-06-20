@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.security.Principal;
 
 @RestController
-@RequestMapping("/v1/comment")
+@RequestMapping("/api/v1/comment")
 @RequiredArgsConstructor
 public class CommentController {
 
@@ -27,27 +27,26 @@ public class CommentController {
     public CommentDto createComment(@PathVariable("postingId") Long postingId,
                                     @RequestBody CommentDto commentDto) {
         if(commentDto.content() == null) {
-            throw new BadRequestParameterException("내용은 필수항목입니다.");
+            throw new BadRequestParameterException("댓글 내용은 필수항목입니다.");
         }
         return writeCommentUseCase.execute(commentDto.userId(), postingId, commentDto.reply(), commentDto.content());
     }
 
     //@PreAuthorize("isAuthenticated()")
     @PatchMapping("/{id}")
-    public CommentDto modifyComment(@Valid CommentForm commentForm, BindingResult bindingResult,
-                                  @PathVariable("id") Long id,
-                                  @RequestBody Long userID) {
-        if(bindingResult.hasErrors()) {
-            throw new BadRequestParameterException("내용은 필수항목입니다.");
+    public CommentDto modifyComment(@PathVariable("id") Long id,
+                                    @RequestBody CommentDto commentDto) {
+
+        if(commentDto.content() == null) {
+            throw new BadRequestParameterException("댓글 내용은 필수항목입니다.");
         }
-        return modifyCommentUseCase.execute(userID, id, commentForm.getContent());
+        return modifyCommentUseCase.execute(commentDto.userId(), id, commentDto.content());
     }
 
     //@PreAuthorize("isAuthenticated()")
     @DeleteMapping("/{id}")
     public CommentDto deleteComment(@PathVariable("id") Long id,
-                                   @RequestBody Long userID) {
-        return deleteCommentUseCase.execute(userID, id);
+                                   @RequestBody CommentDto commentDto) {
+        return deleteCommentUseCase.execute(commentDto.userId(), id);
     }
-
 }

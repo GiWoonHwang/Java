@@ -41,7 +41,7 @@ public class WriteNoticeService implements LikeCountService {
     }
 
     @Override
-    public void likeUncount(long id) {
+    public void likeUnCount(long id) {
         System.out.println("공지 id : [" + id + "] 카운트 하나 내림");
     }
 }

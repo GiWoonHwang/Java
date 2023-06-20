@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/v1/posting")
+@RequestMapping("/api/v1/posting")
 @RequiredArgsConstructor
 public class PostingController {
 
@@ -28,7 +28,7 @@ public class PostingController {
     public PostingDto modifyPosting(@PathVariable("id") Long id,
                                     @RequestBody PostingDto postingDto) {
         /** req 데이터 검증로직 추가 필요 */
-        return modifyPostingUseCase.execute(postingDto.id(), postingDto.userId(), postingDto.subject(), postingDto.content());
+        return modifyPostingUseCase.execute(id, postingDto.userId(), postingDto.subject(), postingDto.content());
     }
 
     //@PreAuthorize("isAuthenticated()")
@@ -36,7 +36,7 @@ public class PostingController {
     public PostingDto deletePosting(@PathVariable("id") Long id,
                                     @RequestBody PostingDto postingDto) {
         /** req 데이터 검증로직 추가 필요 */
-        return deletePostingUseCase.execute(postingDto.id(), postingDto.userId());
+        return deletePostingUseCase.execute(id, postingDto.userId());
     }
 
 }

@@ -13,7 +13,6 @@ public record BookMarkDto (
         Long id,
         Long boardId,
         Long userId,
-        BoardType boardType,
         LocalDateTime createdAt
 
 ) {
@@ -22,7 +21,6 @@ public record BookMarkDto (
                 .id(bookmark.getId())
                 .boardId(bookmark.getBoardId())
                 .userId(bookmark.getUserId())
-                .boardType(bookmark.getBoardType())
                 .createdAt(bookmark.getCreatedAt())
                 .build();
     }

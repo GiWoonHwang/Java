@@ -23,8 +23,6 @@ public class QBookmark extends EntityPathBase<Bookmark> {
 
     public final NumberPath<Long> boardId = createNumber("boardId", Long.class);
 
-    public final EnumPath<io.dustin.apps.common.code.BoardType> boardType = createEnum("boardType", io.dustin.apps.common.code.BoardType.class);
-
     //inherited
     public final DateTimePath<java.time.LocalDateTime> createdAt = _super.createdAt;
 

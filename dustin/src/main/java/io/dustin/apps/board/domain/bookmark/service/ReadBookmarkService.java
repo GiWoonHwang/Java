@@ -15,5 +15,5 @@ public class ReadBookmarkService {
     private final BookmarkRepository bookmarkRepository;
 
     @Transactional(readOnly = true)
-    public Bookmark getBookmark(Long id) { return getEntity(this.bookmarkRepository.findById(id), Bookmark.class, "bookmark not found"); }
+    public Bookmark getBookmark(Long userId, Long boardId) { return getEntity(this.bookmarkRepository.findByUserIdAndBoardId(userId, boardId), Bookmark.class, "bookmark not found"); }
 }

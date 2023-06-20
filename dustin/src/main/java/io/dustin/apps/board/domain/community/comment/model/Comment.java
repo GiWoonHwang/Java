@@ -48,15 +48,14 @@ public class Comment extends BaseEntity {
     @Column(name = "is_deleted")
     private YesOrNo isDeleted;
 
-
-    /** 작성자 */
-    private Long userId;
-
     @Column(columnDefinition = "bigint default 0")
     private Long likeCount;
 
     @Column(columnDefinition = "bigint default 0")
     private Long clickCount;
+
+    /** 작성자 */
+    private Long userId;
 
     private Long posting;
 

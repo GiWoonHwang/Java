@@ -24,7 +24,7 @@ public class TestController {
     public String unlike(@RequestBody LikeItCommand command) {
         System.out.println("좋아요 삭제했습니다.");
         LikeCountService lcs = command.getBoardType().getBean();
-        lcs.likeUncount(command.getBoardId());
+        lcs.likeUnCount(command.getBoardId());
         return "hello";
     }
 
