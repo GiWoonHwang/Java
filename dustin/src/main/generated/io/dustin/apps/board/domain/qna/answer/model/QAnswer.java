@@ -21,7 +21,7 @@ public class QAnswer extends EntityPathBase<Answer> {
 
     public final io.dustin.apps.common.model.QBaseEntity _super = new io.dustin.apps.common.model.QBaseEntity(this);
 
-    public final NumberPath<Long> admin = createNumber("admin", Long.class);
+    public final NumberPath<Long> adminId = createNumber("adminId", Long.class);
 
     public final StringPath content = createString("content");
 
@@ -32,7 +32,7 @@ public class QAnswer extends EntityPathBase<Answer> {
 
     public final EnumPath<io.dustin.apps.common.code.YesOrNo> isDeleted = createEnum("isDeleted", io.dustin.apps.common.code.YesOrNo.class);
 
-    public final NumberPath<Long> question = createNumber("question", Long.class);
+    public final NumberPath<Long> questionId = createNumber("questionId", Long.class);
 
     //inherited
     public final DateTimePath<java.time.LocalDateTime> updatedAt = _super.updatedAt;

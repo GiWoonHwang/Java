@@ -18,9 +18,9 @@ public class ModifyAnswerUseCase {
     private final ReadAnswerService readAnswerService;
     private final WriteAnswerService writeAnswerService;
 
-    public AnswerDto execute(Long admin, Long id, String content) {
+    public AnswerDto execute(Long adminId, Long id, String content) {
         Answer answer = readAnswerService.getAnswer(id);
-        if (!answer.getAdmin().equals(admin)) {
+        if (!answer.getAdminId().equals(adminId)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "수정권한이 없습니다.");
         }
         writeAnswerService.updateContent(answer, content);

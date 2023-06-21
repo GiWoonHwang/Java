@@ -20,7 +20,7 @@ public class ModifyQuestionUseCase {
 
     public QuestionDto execute(Long userId, Long id, String subject, String content) {
         Question question = readQuestionService.getQuestion(id);
-        if (!question.getAuthor().equals(userId)){
+        if (!question.getUserID().equals(userId)){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "수정권한이 없습니다.");
         }
 

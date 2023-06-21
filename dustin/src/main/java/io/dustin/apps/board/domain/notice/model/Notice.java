@@ -43,13 +43,13 @@ public class Notice extends BaseEntity {
     private String content;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "is_deleted", length = 1)
+    @Column(name = "is_deleted")
     private YesOrNo isDeleted;
 
-    private Long adminId;
-
-    @Column(name = "click")
+    @Column(columnDefinition = "bigint default 0")
     private Long clickCount;
+
+    private Long adminId;
 
 
     public void updateSubject(String subject) {

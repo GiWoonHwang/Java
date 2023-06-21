@@ -23,8 +23,8 @@ public class WriteAnswerUseCase {
     private final ReadAnswerService readAnswerService;
     private final WriteAnswerService writeAnswerService;
 
-    public AnswerDto execute(Long admin, Long questionId, String content) {
-        Answer answer = writeAnswerService.create(questionId, content, admin);
+    public AnswerDto execute(Long adminId, Long questionId, String content) {
+        Answer answer = writeAnswerService.create(questionId, content, adminId);
         AnswerDto dto = AnswerDto.from(answer);
         return AnswerDto.from(answer);
     }

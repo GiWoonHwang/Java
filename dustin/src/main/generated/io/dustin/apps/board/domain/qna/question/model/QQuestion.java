@@ -21,8 +21,6 @@ public class QQuestion extends EntityPathBase<Question> {
 
     public final io.dustin.apps.common.model.QBaseEntity _super = new io.dustin.apps.common.model.QBaseEntity(this);
 
-    public final NumberPath<Long> author = createNumber("author", Long.class);
-
     public final NumberPath<Long> clickCount = createNumber("clickCount", Long.class);
 
     public final StringPath content = createString("content");
@@ -38,6 +36,8 @@ public class QQuestion extends EntityPathBase<Question> {
 
     //inherited
     public final DateTimePath<java.time.LocalDateTime> updatedAt = _super.updatedAt;
+
+    public final NumberPath<Long> userID = createNumber("userID", Long.class);
 
     public QQuestion(String variable) {
         super(Question.class, forVariable(variable));

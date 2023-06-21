@@ -19,7 +19,7 @@ public class ModifyCommentUseCase {
     private final WriteCommentService writeCommentService;
 
     public CommentDto execute(Long userId, Long id, String content) {
-        Comment comment = readCommentService.getComment(id);
+        Comment comment = readCommentService.findById(id);
         if (!comment.getUserId().equals(userId)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "수정권한이 없습니다.");
         }

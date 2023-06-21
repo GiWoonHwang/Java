@@ -29,7 +29,10 @@ public class CommentController {
         if(commentDto.content() == null) {
             throw new BadRequestParameterException("댓글 내용은 필수항목입니다.");
         }
-        return writeCommentUseCase.execute(commentDto.userId(), postingId, commentDto.reply(), commentDto.content());
+        /**
+         * 해당 게시물에 댓글 수 증가로직 추가
+         */
+        return writeCommentUseCase.execute(commentDto.userId(), postingId, commentDto.replyId(), commentDto.content());
     }
 
     //@PreAuthorize("isAuthenticated()")
@@ -40,6 +43,7 @@ public class CommentController {
         if(commentDto.content() == null) {
             throw new BadRequestParameterException("댓글 내용은 필수항목입니다.");
         }
+
         return modifyCommentUseCase.execute(commentDto.userId(), id, commentDto.content());
     }
 
@@ -47,6 +51,10 @@ public class CommentController {
     @DeleteMapping("/{id}")
     public CommentDto deleteComment(@PathVariable("id") Long id,
                                    @RequestBody CommentDto commentDto) {
-        return deleteCommentUseCase.execute(commentDto.userId(), id);
+        /**
+         * 해당 게시물에 댓글 수 감소로직 추가
+         */
+
+        return deleteCommentUseCase.execute(commentDto.userId(), commentDto.postingId() ,id);
     }
 }

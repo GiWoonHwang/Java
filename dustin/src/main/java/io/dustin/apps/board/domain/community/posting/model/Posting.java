@@ -25,7 +25,7 @@ public class Posting extends BaseEntity {
 
     @Builder
     public Posting(Long id, @NotNull String subject, @NotNull String content, YesOrNo isDeleted,
-                   @NotNull Long userId, Long likeCount, Long clickCount) {
+                   @NotNull Long userId, Long likeCount, Long clickCount, Long commentCount) {
         this.id = id;
         this.subject = subject;
         this.content = content;
@@ -34,6 +34,7 @@ public class Posting extends BaseEntity {
 
         this.likeCount = likeCount;
         this.clickCount = clickCount;
+        this.commentCount = commentCount;
 
     }
 
@@ -57,6 +58,9 @@ public class Posting extends BaseEntity {
     @Column(columnDefinition = "bigint default 0")
     private Long clickCount;
 
+    @Column(columnDefinition = "bigint default 0")
+    private Long commentCount;
+
     private Long userId;
 
     public void updateSubject(String subject) {
@@ -71,9 +75,11 @@ public class Posting extends BaseEntity {
         this.isDeleted = YesOrNo.Y;
     }
 
-    public void countUp(Long likeCount ) {this.likeCount = likeCount;}
+    public void setLikeCount(Long likeCount ) {this.likeCount = likeCount;}
 
-    public void countDown(Long likeCount ) {this.likeCount = likeCount;}
+    public void setCommentCount(Long commentCount ) {this.commentCount = commentCount;}
+
+    public void setClickCount(Long clickCount) {this.clickCount =clickCount;}
 
 
 }

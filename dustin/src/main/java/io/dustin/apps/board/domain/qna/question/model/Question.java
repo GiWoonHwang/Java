@@ -23,11 +23,11 @@ import java.util.Set;
 public class Question extends BaseEntity {
 
     @Builder
-    public Question(Long id, @NotNull String subject, @NotNull String content, YesOrNo isDeleted, List<Answer> answerList, @NotNull Long author, Long clickCount) {
+    public Question(Long id, @NotNull String subject, @NotNull String content, YesOrNo isDeleted, List<Answer> answerList, @NotNull Long userID, Long clickCount) {
         this.id = id;
         this.subject = subject;
         this.content = content;
-        this.author = author;
+        this.userID = userID;
         this.isDeleted = isDeleted == null ? YesOrNo.N : isDeleted;
         this.clickCount = clickCount;
     }
@@ -43,15 +43,13 @@ public class Question extends BaseEntity {
     private String content;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "is_deleted", length = 1)
+    @Column(name = "is_deleted")
     private YesOrNo isDeleted;
 
-    @Column
-    private Long author;
-
-    @Column
+    @Column(columnDefinition = "bigint default 0")
     private Long clickCount;
 
+    private Long userID;
 
 
 

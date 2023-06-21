@@ -21,7 +21,7 @@ public record QuestionDto(
                     .id(question.getId())
                     .subject(question.getSubject())
                     .content(question.getContent())
-                    .userId(question.getAuthor())
+                    .userId(question.getUserID())
                     .createdAt(question.getCreatedAt())
                     .build();
         }

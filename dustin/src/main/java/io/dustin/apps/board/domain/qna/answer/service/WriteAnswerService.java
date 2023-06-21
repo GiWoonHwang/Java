@@ -13,12 +13,12 @@ import org.springframework.transaction.annotation.Transactional;
 public class WriteAnswerService {
     private final AnswerRepository answerRepository;
 
-    public Answer create(Long question, String content, Long admin){
+    public Answer create(Long questionId, String content, Long adminId){
 
         Answer answer = Answer.builder()
                 .content(content)
-                .question(question)
-                .admin(admin)
+                .questionId(questionId)
+                .adminId(adminId)
                 .build();
         this.answerRepository.save(answer);
         return answer;

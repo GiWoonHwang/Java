@@ -16,9 +16,9 @@ public record CommentDto (
 
         Long userId,
 
-        Long posting,
+        Long postingId,
 
-        Long reply,
+        Long replyId,
 
         LocalDateTime createdAt
 ){
@@ -27,8 +27,8 @@ public record CommentDto (
                 .id(comment.getId())
             .content(comment.getContent())
             .userId(comment.getUserId())
-            .posting(comment.getPosting())
-            .reply(comment.getReply())
+            .postingId(comment.getPostingId())
+            .replyId(comment.getReplyId())
             .createdAt(comment.getCreatedAt())
             .build();
 }

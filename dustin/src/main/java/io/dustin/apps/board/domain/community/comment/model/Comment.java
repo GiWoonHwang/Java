@@ -24,15 +24,15 @@ import java.util.Set;
 public class Comment extends BaseEntity {
 
     @Builder
-    public Comment(Long id, @NotNull String content, YesOrNo isDeleted,@NotNull Long userId, @NotNull Long posting,
-                   Long likeCount, Long reply, Long clickCount) {
+    public Comment(Long id, @NotNull String content, YesOrNo isDeleted,@NotNull Long userId, @NotNull Long postingId,
+                   Long likeCount, Long replyId, Long clickCount) {
         this.id = id;
         this.content = content;
-        this.posting = posting;
+        this.postingId = postingId;
         this.userId = userId;
         this.isDeleted = isDeleted == null ? YesOrNo.N : isDeleted;
         this.likeCount = likeCount;
-        this.reply = reply == null ? null : reply;
+        this.replyId = replyId == null ? null : replyId;
         this.clickCount = clickCount;
 
     }
@@ -57,9 +57,9 @@ public class Comment extends BaseEntity {
     /** 작성자 */
     private Long userId;
 
-    private Long posting;
+    private Long postingId;
 
-    private Long reply;
+    private Long replyId;
 
     public void updateContent(String content) {
         this.content = content;
@@ -69,9 +69,8 @@ public class Comment extends BaseEntity {
         this.isDeleted = YesOrNo.Y;
     }
 
-    public void countUp(Long likeCount ) {this.likeCount = likeCount;}
+    public void setLikeCount(Long likeCount ) {this.likeCount = likeCount;}
 
-    public void countDown(Long likeCount ) {this.likeCount = likeCount;}
 
 
 }

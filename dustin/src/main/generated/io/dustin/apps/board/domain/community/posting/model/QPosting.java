@@ -23,6 +23,8 @@ public class QPosting extends EntityPathBase<Posting> {
 
     public final NumberPath<Long> clickCount = createNumber("clickCount", Long.class);
 
+    public final NumberPath<Long> commentCount = createNumber("commentCount", Long.class);
+
     public final StringPath content = createString("content");
 
     //inherited

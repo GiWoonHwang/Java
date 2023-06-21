@@ -39,24 +39,39 @@ public class WritePostingService implements LikeCountService {
         posting.delete();
     }
 
-    public void click(Posting posting, SiteUser siteUser){
-        //posting.getClickList().add(siteUser);
-        postingRepository.save(posting);
+    public void click(long id){
+        System.out.println("게시물 id : [" + id + "] 조회 수 증가");
+        Posting posting = this.findByIdOrThrow(id);
+        Long count = posting.getClickCount() + 1;
+        posting.setClickCount(count);
+    }
+
+    public void commentCount(long id) { System.out.println("게시물 id : [" + id + "] 댓글 수 증가");
+        Posting posting = this.findByIdOrThrow(id);
+        Long count = posting.getCommentCount() + 1;
+        posting.setCommentCount(count);
+    }
+
+    public void commentUnCount(long id) {
+        System.out.println("게시물 id : [" + id + "] 댓글 수 감소");
+        Posting posting = this.findByIdOrThrow(id);
+        Long count = posting.getCommentCount() - 1;
+        posting.setLikeCount(count);
     }
 
     @Override
-    public void likeCount(long id) { System.out.println("게시물 id : [" + id + "] 카운트 하나 올림");
+    public void likeCount(long id) { System.out.println("게시물 id : [" + id + "] 좋아요 증가");
         Posting posting = this.findByIdOrThrow(id);
-        Long LikeCount = posting.getLikeCount() + 1;
-        posting.countUp(LikeCount);
+        Long likeCount = posting.getLikeCount() + 1;
+        posting.setLikeCount(likeCount);
     }
 
     @Override
     public void likeUnCount(long id) {
-        System.out.println("게시물 id : [" + id + "] 코멘트 카운트 하나 내림");
+        System.out.println("게시물 id : [" + id + "] 좋아요 감소");
         Posting posting = this.findByIdOrThrow(id);
-        Long LikeCount = posting.getLikeCount() - 1;
-        posting.countUp(LikeCount);
+        Long likeCount = posting.getLikeCount() - 1;
+        posting.setLikeCount(likeCount);
     }
 
     public Posting findById(long id) {

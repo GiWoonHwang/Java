@@ -13,11 +13,11 @@ public class WriteQuestionService {
 
     private final QuestionRepository questionRepository;
 
-    public Question create(String subject, String content, Long user) {
+    public Question create(String subject, String content, Long userID) {
         Question q = Question.builder()
                 .subject(subject)
                 .content(content)
-                .author(user)
+                .userID(userID)
                 .build();
         return questionRepository.save(q);
     }
