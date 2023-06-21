@@ -26,7 +26,7 @@ public class DeleteCommentUseCase {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "삭제 권한이 없습니다.");
         }
         writeCommentService.delete(comment);
-        writePostingService.commentCount(postingId);
+        writePostingService.commentUnCount(postingId);
         return CommentDto.from(comment);
     }
 }

@@ -7,11 +7,13 @@ import io.dustin.apps.board.domain.community.posting.repository.PostingRepositor
 import io.dustin.apps.common.exception.DataNotFoundException;
 import io.dustin.apps.user.domain.model.SiteUser;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
+@Slf4j
 @Service("posting")
 @RequiredArgsConstructor
 public class WritePostingService implements LikeCountService {
@@ -39,19 +41,24 @@ public class WritePostingService implements LikeCountService {
         posting.delete();
     }
 
+
+    @Transactional
     public void click(long id){
-        System.out.println("게시물 id : [" + id + "] 조회 수 증가");
+        log.info("게시물 id : [" + id + "] 조회 수 증가");
         Posting posting = this.findByIdOrThrow(id);
         Long count = posting.getClickCount() + 1;
         posting.setClickCount(count);
     }
 
-    public void commentCount(long id) { System.out.println("게시물 id : [" + id + "] 댓글 수 증가");
+    @Transactional
+    public void commentCount(long id) {
         Posting posting = this.findByIdOrThrow(id);
         Long count = posting.getCommentCount() + 1;
+        log.info("게시물 id : [{}] 댓글 수 증가", posting.getCommentCount());
         posting.setCommentCount(count);
     }
 
+    @Transactional
     public void commentUnCount(long id) {
         System.out.println("게시물 id : [" + id + "] 댓글 수 감소");
         Posting posting = this.findByIdOrThrow(id);
@@ -60,6 +67,7 @@ public class WritePostingService implements LikeCountService {
     }
 
     @Override
+    @Transactional
     public void likeCount(long id) { System.out.println("게시물 id : [" + id + "] 좋아요 증가");
         Posting posting = this.findByIdOrThrow(id);
         Long likeCount = posting.getLikeCount() + 1;
@@ -67,6 +75,7 @@ public class WritePostingService implements LikeCountService {
     }
 
     @Override
+    @Transactional
     public void likeUnCount(long id) {
         System.out.println("게시물 id : [" + id + "] 좋아요 감소");
         Posting posting = this.findByIdOrThrow(id);

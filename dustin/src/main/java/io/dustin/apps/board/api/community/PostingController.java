@@ -3,8 +3,11 @@ package io.dustin.apps.board.api.community;
 
 import io.dustin.apps.board.api.usecase.community.posting.DeletePostingUseCase;
 import io.dustin.apps.board.api.usecase.community.posting.ModifyPostingUseCase;
+import io.dustin.apps.board.api.usecase.community.posting.ReadPostingUseCase;
 import io.dustin.apps.board.api.usecase.community.posting.WritePostingUseCase;
 import io.dustin.apps.board.domain.community.posting.model.dto.PostingDto;
+import io.dustin.apps.common.model.QueryPage;
+import io.dustin.apps.common.model.ResponseWithScroll;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,9 +16,15 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class PostingController {
 
+    private final ReadPostingUseCase readPostingUseCase;
     private final WritePostingUseCase writePostingUseCase;
     private final ModifyPostingUseCase modifyPostingUseCase;
     private final DeletePostingUseCase deletePostingUseCase;
+
+    @GetMapping("/all")
+    public ResponseWithScroll allPostings(QueryPage queryPage) {
+        return readPostingUseCase.execute(queryPage);
+    }
 
     @PostMapping("/create")
     public PostingDto createPosting(@RequestBody PostingDto postingDto) {
