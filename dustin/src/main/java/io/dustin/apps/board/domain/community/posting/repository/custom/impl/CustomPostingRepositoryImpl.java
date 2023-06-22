@@ -2,18 +2,15 @@ package io.dustin.apps.board.domain.community.posting.repository.custom.impl;
 
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.dsl.CaseBuilder;
-import com.querydsl.jpa.JPAExpressions;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import io.dustin.apps.board.domain.community.posting.model.dto.PostingDto;
 import io.dustin.apps.board.domain.community.posting.repository.custom.CustomPostingRepository;
 import io.dustin.apps.common.code.BoardType;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
-import static com.querydsl.core.types.Projections.bean;
 import static com.querydsl.core.types.Projections.constructor;
 import static io.dustin.apps.board.domain.bookmark.model.QBookmark.bookmark;
 import static io.dustin.apps.board.domain.community.posting.model.QPosting.posting;

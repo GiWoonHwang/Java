@@ -2,9 +2,12 @@ package io.dustin.apps.board.api.community;
 
 import io.dustin.apps.board.api.usecase.community.comment.DeleteCommentUseCase;
 import io.dustin.apps.board.api.usecase.community.comment.ModifyCommentUseCase;
+import io.dustin.apps.board.api.usecase.community.comment.ReadCommentUseCase;
 import io.dustin.apps.board.api.usecase.community.comment.WriteCommentUseCase;
 import io.dustin.apps.board.domain.community.comment.model.dto.CommentDto;
 import io.dustin.apps.common.exception.BadRequestParameterException;
+import io.dustin.apps.common.model.QueryPage;
+import io.dustin.apps.common.model.ResponseWithScroll;
 import io.dustin.apps.common.validation.CommentForm;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -18,9 +21,18 @@ import java.security.Principal;
 @RequiredArgsConstructor
 public class CommentController {
 
+    private final ReadCommentUseCase readCommentUseCase;
     private final WriteCommentUseCase writeCommentUseCase;
     private final ModifyCommentUseCase modifyCommentUseCase;
     private final DeleteCommentUseCase deleteCommentUseCase;
+
+    @GetMapping("/{postingId}/all")
+    public ResponseWithScroll allPostings(
+            @PathVariable("postingId") Long postingId,
+            QueryPage queryPage) {
+        return readCommentUseCase.execute(postingId, queryPage);
+    }
+
 
     //@PreAuthorize("isAuthenticated()")
     @PostMapping("/posting/{postingId}")

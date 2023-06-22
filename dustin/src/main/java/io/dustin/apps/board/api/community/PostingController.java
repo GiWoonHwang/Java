@@ -5,6 +5,7 @@ import io.dustin.apps.board.api.usecase.community.posting.DeletePostingUseCase;
 import io.dustin.apps.board.api.usecase.community.posting.ModifyPostingUseCase;
 import io.dustin.apps.board.api.usecase.community.posting.ReadPostingUseCase;
 import io.dustin.apps.board.api.usecase.community.posting.WritePostingUseCase;
+import io.dustin.apps.board.domain.community.posting.model.dto.PostingDetailDto;
 import io.dustin.apps.board.domain.community.posting.model.dto.PostingDto;
 import io.dustin.apps.common.model.QueryPage;
 import io.dustin.apps.common.model.ResponseWithScroll;
@@ -46,6 +47,11 @@ public class PostingController {
                                     @RequestBody PostingDto postingDto) {
         /** req 데이터 검증로직 추가 필요 */
         return deletePostingUseCase.execute(id, postingDto.userId());
+    }
+
+    @GetMapping("/{id}")
+    public PostingDetailDto postingDetailDto(@PathVariable("id") Long PostingId, QueryPage queryPage) {
+        return readPostingUseCase.postingDetail(PostingId, queryPage);
     }
 
 }

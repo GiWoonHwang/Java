@@ -4,11 +4,8 @@ import io.dustin.apps.board.domain.community.posting.model.Posting;
 import io.dustin.apps.board.domain.community.posting.model.dto.PostingDto;
 import io.dustin.apps.board.domain.community.posting.repository.PostingRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 
 import java.util.List;
 
@@ -36,7 +33,6 @@ public class ReadPostingService {
     public List<PostingDto> getPostings(long userId, Long nextId, int size) {
         return postingRepository.findPostings(userId, nextId, size);
     }
-
 
     @Transactional(readOnly = true)
     public Posting findById(Long id){
