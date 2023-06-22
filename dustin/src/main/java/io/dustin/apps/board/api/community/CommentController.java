@@ -4,7 +4,9 @@ import io.dustin.apps.board.api.usecase.community.comment.DeleteCommentUseCase;
 import io.dustin.apps.board.api.usecase.community.comment.ModifyCommentUseCase;
 import io.dustin.apps.board.api.usecase.community.comment.ReadCommentUseCase;
 import io.dustin.apps.board.api.usecase.community.comment.WriteCommentUseCase;
+import io.dustin.apps.board.domain.community.comment.model.dto.CommentDetailDto;
 import io.dustin.apps.board.domain.community.comment.model.dto.CommentDto;
+import io.dustin.apps.board.domain.community.posting.model.dto.PostingDetailDto;
 import io.dustin.apps.common.exception.BadRequestParameterException;
 import io.dustin.apps.common.model.QueryPage;
 import io.dustin.apps.common.model.ResponseWithScroll;
@@ -33,6 +35,13 @@ public class CommentController {
         return readCommentUseCase.execute(postingId, queryPage);
     }
 
+    @GetMapping("/{commentId}")
+    public ResponseWithScroll postingDetailDto(@PathVariable("commentId") Long commentId, QueryPage queryPage) {
+        return readCommentUseCase.commentDetail(commentId, queryPage);
+    }
+
+
+
 
     //@PreAuthorize("isAuthenticated()")
     @PostMapping("/posting/{postingId}")
@@ -48,25 +57,25 @@ public class CommentController {
     }
 
     //@PreAuthorize("isAuthenticated()")
-    @PatchMapping("/{id}")
-    public CommentDto modifyComment(@PathVariable("id") Long id,
+    @PatchMapping("/{commentId}")
+    public CommentDto modifyComment(@PathVariable("commentId") Long commentId,
                                     @RequestBody CommentDto commentDto) {
 
         if(commentDto.content() == null) {
             throw new BadRequestParameterException("댓글 내용은 필수항목입니다.");
         }
 
-        return modifyCommentUseCase.execute(commentDto.userId(), id, commentDto.content());
+        return modifyCommentUseCase.execute(commentDto.userId(), commentId, commentDto.content());
     }
 
     //@PreAuthorize("isAuthenticated()")
     @DeleteMapping("/{id}")
-    public CommentDto deleteComment(@PathVariable("id") Long id,
+    public CommentDto deleteComment(@PathVariable("commentId") Long commentId,
                                    @RequestBody CommentDto commentDto) {
         /**
          * 해당 게시물에 댓글 수 감소로직 추가
          */
 
-        return deleteCommentUseCase.execute(commentDto.userId(), commentDto.postingId() ,id);
+        return deleteCommentUseCase.execute(commentDto.userId(), commentDto.postingId() ,commentId);
     }
 }

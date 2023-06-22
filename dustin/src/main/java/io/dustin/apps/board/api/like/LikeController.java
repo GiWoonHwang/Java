@@ -22,7 +22,7 @@ public class LikeController {
         System.out.println("좋아요 저장했습니다.");
         LikeCountService lcs = command.getBoardType().getBean();
         lcs.likeCount(command.getBoardId());
-        return writeLikeUseCase.execute(command.getBoardId(), command.getUserId(), command.getBoardType());
+        return writeLikeUseCase.execute(command.getUserId(), command.getBoardId(), command.getBoardType());
     }
 
     @PatchMapping("/unlike")
@@ -30,7 +30,7 @@ public class LikeController {
         System.out.println("좋아요 삭제했습니다.");
         LikeCountService lcs = command.getBoardType().getBean();
         lcs.likeUnCount(command.getBoardId());
-        return deleteLikeUsecase.execute(command.getBoardId(), command.getUserId(), command.getBoardType());
+        return deleteLikeUsecase.execute(command.getUserId(), command.getBoardId(), command.getBoardType());
     }
 
 }

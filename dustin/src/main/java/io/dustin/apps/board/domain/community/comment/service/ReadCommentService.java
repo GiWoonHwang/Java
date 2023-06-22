@@ -29,11 +29,8 @@ public class ReadCommentService {
     }
 
     @Transactional(readOnly = true)
-    public Comment getComment(Long id) {
-        /** todo
-         *  댓글을 하나만 가져오는 로직이 필요해 ?
-         */
-        return getEntity(this.commentRepository.findById(id), Comment.class, "comment not fount");
+    public List<CommentDto> getReplyByComment(long loginId, long commentId, int size, Long nextId) {
+        return commentRepository.replyByComment(loginId, commentId, size, nextId);
     }
 
     @Transactional(readOnly = true)

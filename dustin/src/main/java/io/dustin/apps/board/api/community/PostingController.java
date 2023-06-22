@@ -27,6 +27,11 @@ public class PostingController {
         return readPostingUseCase.execute(queryPage);
     }
 
+    @GetMapping("/{PostingId}")
+    public PostingDetailDto postingDetailDto(@PathVariable("PostingId") Long PostingId, QueryPage queryPage) {
+        return readPostingUseCase.postingDetail(PostingId, queryPage);
+    }
+
     @PostMapping("/create")
     public PostingDto createPosting(@RequestBody PostingDto postingDto) {
         /** req 데이터 검증로직 추가 필요 */
@@ -34,24 +39,21 @@ public class PostingController {
     }
 
     //@PreAuthorize("isAuthenticated()")
-    @PatchMapping("/{id}")
-    public PostingDto modifyPosting(@PathVariable("id") Long id,
+    @PatchMapping("/{PostingId}")
+    public PostingDto modifyPosting(@PathVariable("PostingId") Long PostingId,
                                     @RequestBody PostingDto postingDto) {
         /** req 데이터 검증로직 추가 필요 */
-        return modifyPostingUseCase.execute(id, postingDto.userId(), postingDto.subject(), postingDto.content());
+        return modifyPostingUseCase.execute(PostingId, postingDto.userId(), postingDto.subject(), postingDto.content());
     }
 
     //@PreAuthorize("isAuthenticated()")
-    @DeleteMapping("/{id}")
-    public PostingDto deletePosting(@PathVariable("id") Long id,
+    @DeleteMapping("/{PostingId}")
+    public PostingDto deletePosting(@PathVariable("PostingId") Long PostingId,
                                     @RequestBody PostingDto postingDto) {
         /** req 데이터 검증로직 추가 필요 */
-        return deletePostingUseCase.execute(id, postingDto.userId());
+        return deletePostingUseCase.execute(PostingId, postingDto.userId());
     }
 
-    @GetMapping("/{id}")
-    public PostingDetailDto postingDetailDto(@PathVariable("id") Long PostingId, QueryPage queryPage) {
-        return readPostingUseCase.postingDetail(PostingId, queryPage);
-    }
+
 
 }

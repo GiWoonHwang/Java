@@ -30,19 +30,23 @@ public class CustomCommentRepositoryImpl implements CustomCommentRepository {
                                             posting,
                                             comment.content,
                                             new CaseBuilder().when(like.id.isNotNull()).then(true).otherwise(false).as("isLike"),
+                                            new CaseBuilder().when(comment.id.isNotNull()).then(true).otherwise(false).as("isReply"),
                                             comment.userId,
                                             comment.postingId,
                                             comment.replyId,
                                             comment.createdAt
                                         ))
                                         .from(comment)
-                                        .join(posting).on(comment.postingId.eq(posting.id))
+                                        .innerJoin(comment).on(comment.replyId.eq(comment.id))
+
+                                        .leftJoin(posting).on(comment.postingId.eq(posting.id))
+
                                         .leftJoin(like).on(
                                                 like.boardType.eq(BoardType.COMMENT)
                                                 .and(like.boardId.eq(comment.id))
                                                 .and(like.userId.eq(loginId))
 
-                )
+                                        )
                                         .where(
                                             comment.postingId.eq(postingId),
                                             comment.replyId.isNull(),
@@ -50,6 +54,39 @@ public class CustomCommentRepositoryImpl implements CustomCommentRepository {
                                         )
                                         .orderBy(comment.id.desc())
                                         .limit(size);
+        return jPAQuery.fetch();
+    }
+
+    @Override
+    public List<CommentDto> replyByComment(long loginId, long commentId, int size, Long nextId) {
+        JPAQuery<CommentDto> jPAQuery = query.select(constructor(CommentDto.class,
+                        comment.id,
+                        posting,
+                        comment.content,
+                        new CaseBuilder().when(like.id.isNotNull()).then(true).otherwise(false).as("isLike"),
+                        new CaseBuilder().when(comment.id.isNotNull()).then(true).otherwise(false).as("isReply"),
+                        comment.userId,
+                        comment.postingId,
+                        comment.replyId,
+                        comment.createdAt
+                ))
+                .from(comment)
+                .innerJoin(comment).on(comment.replyId.eq(comment.id))
+
+                .leftJoin(posting).on(comment.postingId.eq(posting.id))
+
+                .leftJoin(like).on(
+                        like.boardType.eq(BoardType.COMMENT)
+                                .and(like.boardId.eq(comment.id))
+                                .and(like.userId.eq(loginId))
+
+                )
+                .where(
+                        comment.replyId.eq(commentId),
+                        comment.indexByCountPagination(nextId)
+                )
+                .orderBy(comment.id.desc())
+                .limit(size);
         return jPAQuery.fetch();
     }
 }
