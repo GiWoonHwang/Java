@@ -1,51 +1,41 @@
 ```
-도메인에서 dto를 반환하지 마라
-도메인은 순수해야 한다(오염시키지 마라)
-
-
 --- io.dustin
-    
-    ㄴ apps
-       ㄴ common
-          ㄴ config 
-          ㄴ utils
-          ㄴ handler
-          ㄴ exception
-          ㄴ listener
-          ㄴ convertor
-          ㄴ repository
-          ㄴ code
-          ㄴ annotations
-          ㄴ aop
-          ㄴ interceptor
-       ㄴ board
-          ㄴ API
+
+프로젝트 구조
+ ㄴ apps
+    ㄴ domain
+        ㄴ api
             ㄴ controller
-            ㄴ usercase
-               ㄴ 비지니스 로직을 짠다.
-       
-          ㄴ dmoain -> data 정보를 엔티티로 순수하게 반환하는 API
-            ㄴ member
-              ㄴ model
-                 ㄴ dto
-                 ㄴ entity
-                 ㄴ code -> bsgp
-              ㄴ service
-              ㄴ repository   
-            ㄴ notice
-            ㄴ faq 
-            ㄴ qna
-              ㄴ service
-                  ㄴ di memberServer-> memberid -> member select
-       ㄴ blockchain
-       .
-       .
-       .
-       .
-       .   
-       ㄴ SbbApication.class
-   
-    ㄴ external
+                - DomainController.java
+            ㄴ usecase
+                - ReadDomainUseCase.java
+                - WriteDomainUseCase.java
+                - DeleteDomainUseCase.java
+                - ModifyDomainUseCase.java                
+        ㄴ model
+            ㄴ dto
+                - DomainDto.java
+            - DomainEntity.java    
+        ㄴ repository
+            ㄴ custom
+                - CustomDomainRepository.java
+            - DomainRepository.java
+        ㄴ service 
+            - ReadDomainService.java
+            - WriteDomainService.java
+    ㄴ common
+        ㄴ advice
+        ㄴ code
+        ㄴ config
+        ㄴ exception
+        ㄴ model
+        ㄴ properties
+        ㄴ provider
+        ㄴ repository
+        ㄴ utils
+        ㄴ validation 
+        
+    
 
 유저
  - 회원가입 (구글, 카카오, 네이버, 깃)
@@ -85,38 +75,8 @@ qna
  - qna 관리
  - 게시판 관리(디시 인사이드 같이)
  
- 
 
- 
-
-
-
-
-
-
-
-
-
-
-
-
-- 좋아요 ,북마크 등등 .. 프론트 입장에서 표시하려면 어떻게 해야하나 ? (인터페이스 이용)
-- 로그인, 회원가입 기능
-- 어드민에는 무엇을 넣을것인가
-
-
-- 게시물을 보내줄때 어떻게 보내줄 것인가 ?? (getPositng)
-
-
- 1. querydsl을 이용해서 좋아요 및 북마크 유무 , 댓글을 같이 보내줘야 하는가 ?
- 2. 대댓글은 어찌할거임 ?
- 3. 게시물 목록 보내줄 때 프론트에서 좋아요 ,북마크 구분 해 줄 수 있는 값 dto로 어떻게 처리할 것 ?
- 4, 무한스크롤 처리하기 
-
-
-jwt 헤더로 들어올건데 body에 userid 를 넣으면 어쩜 ?
-
-기본 기능
+--- 기본 기능 ---
 
 게시물 작성 o
 게시물 수정 o
@@ -128,6 +88,7 @@ jwt 헤더로 들어올건데 body에 userid 를 넣으면 어쩜 ?
 댓글 수정 o
 댓글 삭제 o
 댓글 조회(all)
+대댓글 조회 o
 
 좋아요 o
 좋아요 취소 o
@@ -138,7 +99,7 @@ jwt 헤더로 들어올건데 body에 userid 를 넣으면 어쩜 ?
 팔로우 o
 팔로우 취소 o
 
-세부 기능
+--- 세부 기능 ---
 
 
 
@@ -146,8 +107,7 @@ jwt 헤더로 들어올건데 body에 userid 를 넣으면 어쩜 ?
 
 
 
-대댓글을 어떻게 처리할 것인가 ?
-그 전에 게시물 상세보기를 어떻게 할지 부터 생각해야 한다
+
 
 
 

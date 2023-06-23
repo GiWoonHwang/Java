@@ -59,20 +59,20 @@ public class CustomCommentRepositoryImpl implements CustomCommentRepository {
 
     @Override
     public List<CommentDto> replyByComment(long loginId, long commentId, int size, Long nextId) {
+        QComment self = new QComment("self");
         JPAQuery<CommentDto> jPAQuery = query.select(constructor(CommentDto.class,
                                             comment.id,
                                             posting,
                                             comment.content,
                                             new CaseBuilder().when(like.id.isNotNull()).then(true).otherwise(false).as("isLike"),
-                                            new CaseBuilder().when(comment.id.isNotNull()).then(true).otherwise(false).as("isReply"),
+                                            new CaseBuilder().when(self.replyId.isNotNull()).then(true).otherwise(false).as("isReply"),
                                             comment.userId,
                                             comment.postingId,
                                             comment.replyId,
                                             comment.createdAt
                                         ))
                                         .from(comment)
-
-                                        .innerJoin(comment).on(comment.replyId.eq(comment.id))
+                                        .leftJoin(self).on(self.replyId.eq(comment.id).and(self.replyId.isNotNull()))
 
                                         .leftJoin(posting).on(comment.postingId.eq(posting.id))
 
