@@ -4,6 +4,7 @@ import io.dustin.apps.board.domain.qna.answer.model.Answer;
 import io.dustin.apps.board.domain.community.comment.model.Comment;
 import io.dustin.apps.common.code.YesOrNo;
 import io.dustin.apps.common.model.BaseEntity;
+import io.dustin.apps.common.model.IdAble;
 import io.dustin.apps.user.domain.model.SiteUser;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -80,6 +81,5 @@ public class Posting extends BaseEntity {
     public void setCommentCount(Long commentCount ) {this.commentCount = commentCount;}
 
     public void setClickCount(Long clickCount) {this.clickCount =clickCount;}
-
 
 }

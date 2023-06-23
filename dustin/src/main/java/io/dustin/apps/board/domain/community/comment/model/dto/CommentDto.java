@@ -5,6 +5,7 @@ import io.dustin.apps.board.domain.community.comment.model.Comment;
 import io.dustin.apps.board.domain.community.posting.model.Posting;
 import io.dustin.apps.board.domain.qna.answer.model.Answer;
 import io.dustin.apps.board.domain.qna.question.model.Question;
+import io.dustin.apps.common.model.IdAble;
 import lombok.Builder;
 
 import java.time.LocalDateTime;
@@ -29,8 +30,9 @@ public record CommentDto (
         Long replyId,
 
         LocalDateTime createdAt
-){
-        public static CommentDto from(Comment comment) {
+) implements IdAble {
+
+    public static CommentDto from(Comment comment) {
             return CommentDto.builder()
                 .id(comment.getId())
             .content(comment.getContent())
@@ -40,6 +42,11 @@ public record CommentDto (
             .createdAt(comment.getCreatedAt())
             .build();
 }
+
+    @Override
+    public Long getId() {
+        return this.id;
+    }
 }
 
 
