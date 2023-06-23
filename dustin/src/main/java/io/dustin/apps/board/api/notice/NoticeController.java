@@ -2,40 +2,51 @@ package io.dustin.apps.board.api.notice;
 
 import io.dustin.apps.board.api.usecase.notice.DeleteNoticeUseCase;
 import io.dustin.apps.board.api.usecase.notice.ModifyNoticeUseCase;
+import io.dustin.apps.board.api.usecase.notice.ReadNoticeUseCase;
 import io.dustin.apps.board.api.usecase.notice.WriteNoticeUseCase;
 import io.dustin.apps.board.domain.community.posting.model.dto.PostingDto;
 import io.dustin.apps.board.domain.notice.model.dto.NoticeDto;
+import io.dustin.apps.common.model.QueryPage;
+import io.dustin.apps.common.model.ResponseWithScroll;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/v1/notice")
+@RequestMapping("/api/v1/notice")
 @RequiredArgsConstructor
 public class NoticeController {
 
+    private final ReadNoticeUseCase readNoticeUseCase;
     private final WriteNoticeUseCase writeNoticeUseCase;
     private final ModifyNoticeUseCase modifyNoticeUseCase;
     private final DeleteNoticeUseCase deleteNoticeUseCase;
 
+
+    @GetMapping("/all")
+    public ResponseWithScroll allPostings(QueryPage queryPage) {
+        return readNoticeUseCase.execute(queryPage);
+    }
+
+
     @PostMapping("/create")
-    public NoticeDto createPosting(@RequestBody NoticeDto noticeDto) {
+    public NoticeDto createNotice(@RequestBody NoticeDto noticeDto) {
         /** req 데이터 검증로직 추가 필요 */
         return writeNoticeUseCase.execute(noticeDto.adminId(), noticeDto.subject(), noticeDto.content());
     }
 
     //@PreAuthorize("isAuthenticated()")
-    @PatchMapping("/{id}")
-    public NoticeDto modifyPosting(@PathVariable("id") Long id,
+    @PatchMapping("/{noticeId}")
+    public NoticeDto modifyNotice(@PathVariable("noticeId") Long noticeId,
                                     @RequestBody NoticeDto noticeDto) {
         /** req 데이터 검증로직 추가 필요 */
-        return modifyNoticeUseCase.execute(noticeDto.id(), noticeDto.adminId(), noticeDto.subject(), noticeDto.content());
+        return modifyNoticeUseCase.execute(noticeId, noticeDto.adminId(), noticeDto.subject(), noticeDto.content());
     }
 
     //@PreAuthorize("isAuthenticated()")
-    @DeleteMapping("/{id}")
-    public NoticeDto deletePosting(@PathVariable("id") Long id,
+    @DeleteMapping("/{noticeId}")
+    public NoticeDto deleteNotice(@PathVariable("noticeId") Long noticeId,
                                     @RequestBody NoticeDto noticeDto) {
         /** req 데이터 검증로직 추가 필요 */
-        return deleteNoticeUseCase.execute(noticeDto.id(), noticeDto.adminId());
+        return deleteNoticeUseCase.execute(noticeId, noticeDto.adminId());
     }
 }

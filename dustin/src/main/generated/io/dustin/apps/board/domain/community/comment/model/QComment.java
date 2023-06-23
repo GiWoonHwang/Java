@@ -1,7 +1,7 @@
 package io.dustin.apps.board.domain.community.comment.model;
 
 import static com.querydsl.core.types.PathMetadataFactory.*;
-import io.dustin.apps.board.domain.community.comment.model.extension.*;
+import io.dustin.apps.common.model.extension.*;
 
 import com.querydsl.core.types.dsl.*;
 

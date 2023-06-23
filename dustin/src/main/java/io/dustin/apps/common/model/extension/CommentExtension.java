@@ -1,4 +1,4 @@
-package io.dustin.apps.board.domain.community.comment.model.extension;
+package io.dustin.apps.common.model.extension;
 
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.annotations.QueryDelegate;

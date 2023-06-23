@@ -2,6 +2,7 @@ package io.dustin.apps.board.domain.notice.model.dto;
 
 import io.dustin.apps.board.domain.community.posting.model.Posting;
 import io.dustin.apps.board.domain.notice.model.Notice;
+import io.dustin.apps.common.model.IdAble;
 import lombok.Builder;
 
 import java.time.LocalDateTime;
@@ -17,17 +18,25 @@ public record NoticeDto (
 
         String content,
 
+        Long clickCount,
+
         LocalDateTime createdAt
 
-) {
+) implements IdAble {
     public static NoticeDto from(Notice notice) {
         return NoticeDto.builder()
                 .id(notice.getId())
                 .subject(notice.getSubject())
                 .content(notice.getContent())
                 .adminId(notice.getAdminId())
+                .clickCount(notice.getClickCount())
                 .createdAt(notice.getCreatedAt())
                 .build();
+    }
+
+    @Override
+    public Long getId() {
+        return this.id;
     }
 
 

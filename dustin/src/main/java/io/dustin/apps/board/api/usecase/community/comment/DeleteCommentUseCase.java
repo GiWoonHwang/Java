@@ -8,6 +8,7 @@ import io.dustin.apps.board.domain.community.posting.service.WritePostingService
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.security.Principal;
@@ -20,6 +21,7 @@ public class DeleteCommentUseCase {
     private final ReadCommentService readCommentService;
     private final WriteCommentService writeCommentService;
 
+    @Transactional
     public CommentDto execute(Long userId, Long postingId, Long id) {
         Comment comment = readCommentService.findById(id);
         if(!comment.getUserId().equals(userId)) {

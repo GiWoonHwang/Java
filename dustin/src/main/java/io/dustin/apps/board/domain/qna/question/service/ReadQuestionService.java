@@ -3,6 +3,7 @@ package io.dustin.apps.board.domain.qna.question.service;
 import io.dustin.apps.board.domain.community.posting.model.Posting;
 import io.dustin.apps.board.domain.qna.answer.model.Answer;
 import io.dustin.apps.board.domain.qna.question.model.Question;
+import io.dustin.apps.common.exception.DataNotFoundException;
 import io.dustin.apps.user.domain.model.SiteUser;
 import io.dustin.apps.board.domain.qna.question.repository.QuestionRepository;
 import jakarta.persistence.criteria.*;
@@ -17,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static io.dustin.apps.common.utils.OptionalUtils.getEntity;
 
@@ -62,6 +64,27 @@ public class ReadQuestionService {
 
             }
         };
+    }
+
+    @Transactional(readOnly = true)
+    public Question findById(long id) {
+        Optional<Question> optional = this.questionRepository.findById(id);
+        if(optional.isPresent()) {
+            return optional.get();
+        } else {
+            return null;
+        }
+    }
+
+    @Transactional(readOnly = true)
+    public Question findByIdOrThrow(long id) {
+        Optional<Question> optional = this.questionRepository.findById(id);
+        if(optional.isPresent()) {
+            return optional.get();
+        } else {
+            throw new DataNotFoundException("""
+                    id [#1]로 조회된 게시물이 없습니다.""".replace("#1", String.valueOf(id)));
+        }
     }
 
 }

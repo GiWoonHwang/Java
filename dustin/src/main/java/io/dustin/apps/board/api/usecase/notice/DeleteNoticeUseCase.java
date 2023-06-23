@@ -7,6 +7,7 @@ import io.dustin.apps.board.domain.notice.service.WriteNoticeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
 @Service
@@ -16,8 +17,9 @@ public class DeleteNoticeUseCase {
     private final ReadNoticeService readNoticeService;
     private final WriteNoticeService writeNoticeService;
 
-    public NoticeDto execute(Long id, Long adminId) {
-        Notice notice = readNoticeService.getNotice(id);
+    @Transactional
+    public NoticeDto execute(Long noticeId, Long adminId) {
+        Notice notice = readNoticeService.findById(noticeId);
         if(!notice.getAdminId().equals(adminId)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "삭제 권한이 없습니다.");
         }

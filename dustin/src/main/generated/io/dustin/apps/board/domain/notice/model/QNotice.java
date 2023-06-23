@@ -1,6 +1,7 @@
 package io.dustin.apps.board.domain.notice.model;
 
 import static com.querydsl.core.types.PathMetadataFactory.*;
+import io.dustin.apps.common.model.extension.*;
 
 import com.querydsl.core.types.dsl.*;
 
@@ -49,6 +50,10 @@ public class QNotice extends EntityPathBase<Notice> {
 
     public QNotice(PathMetadata metadata) {
         super(Notice.class, metadata);
+    }
+
+    public com.querydsl.core.BooleanBuilder indexByCountPagination(Long nextId) {
+        return NoticeExtension.indexByCountPagination(this, nextId);
     }
 
 }
