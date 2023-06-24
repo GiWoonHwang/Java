@@ -60,6 +60,9 @@ public class Notice extends BaseEntity {
         this.content = content;
     }
 
+    public void setClickCount(Long clickCount) {this.clickCount = clickCount;}
+
+
     public void delete() {
         this.isDeleted = YesOrNo.Y;
     }

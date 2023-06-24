@@ -30,6 +30,7 @@ public class WritePostingService implements LikeCountService {
     }
 
 
+    @Transactional
     public void updateContent(Posting posting, String subject, String content) {
         posting.updateSubject(subject);
         posting.updateContent(content);

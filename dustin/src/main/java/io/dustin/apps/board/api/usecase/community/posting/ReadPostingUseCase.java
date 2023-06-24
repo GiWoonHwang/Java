@@ -6,11 +6,14 @@ import io.dustin.apps.board.domain.community.posting.model.Posting;
 import io.dustin.apps.board.domain.community.posting.model.dto.PostingDetailDto;
 import io.dustin.apps.board.domain.community.posting.model.dto.PostingDto;
 import io.dustin.apps.board.domain.community.posting.service.ReadPostingService;
+import io.dustin.apps.board.domain.community.posting.service.WritePostingService;
+import io.dustin.apps.board.domain.notice.service.WriteNoticeService;
 import io.dustin.apps.common.model.CountByPagingInfo;
 import io.dustin.apps.common.model.QueryPage;
 import io.dustin.apps.common.model.ResponseWithScroll;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Map;
@@ -24,6 +27,7 @@ public class ReadPostingUseCase {
 
     private final ReadPostingService readPostingService;
     private final ReadCommentService readCommentService;
+    private final WritePostingService writePostingService;
 
     public ResponseWithScroll<List<PostingDto>> execute(QueryPage queryPage) {
         /**
@@ -40,10 +44,12 @@ public class ReadPostingUseCase {
 
     }
 
+    @Transactional
     public PostingDetailDto postingDetail(Long postingId, QueryPage queryPage) {
         /**
          * 게시물 상세조회 했을때 게시물과 댓글을 같이 보여줌
          */
+        writePostingService.click(postingId);
         long userId = 1;
         int realSize = queryPage.getSize();
         int querySize = realSize + 1;

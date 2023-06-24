@@ -2,13 +2,16 @@ package io.dustin.apps.board.api.usecase.notice;
 
 
 import io.dustin.apps.board.domain.community.posting.model.dto.PostingDto;
+import io.dustin.apps.board.domain.notice.model.Notice;
 import io.dustin.apps.board.domain.notice.model.dto.NoticeDto;
 import io.dustin.apps.board.domain.notice.service.ReadNoticeService;
+import io.dustin.apps.board.domain.notice.service.WriteNoticeService;
 import io.dustin.apps.common.model.CountByPagingInfo;
 import io.dustin.apps.common.model.QueryPage;
 import io.dustin.apps.common.model.ResponseWithScroll;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -19,6 +22,7 @@ import static io.dustin.apps.common.model.ResponseWithScrollSetting.getCountByPa
 public class ReadNoticeUseCase {
 
     private final ReadNoticeService readNoticeService;
+    private final WriteNoticeService writeNoticeService;
 
     public ResponseWithScroll<List<NoticeDto>> execute(QueryPage queryPage) {
         /**
@@ -32,6 +36,14 @@ public class ReadNoticeUseCase {
         CountByPagingInfo<NoticeDto> cbi = getCountByPagingInfo(result, realSize);
 
         return ResponseWithScroll.from(cbi.result(), cbi.isLast(), cbi.nextId());
+    }
+
+    @Transactional
+    public NoticeDto noticeDetail(Long noticeId) {
+        Notice notice = readNoticeService.getNotice(noticeId);
+        writeNoticeService.click(noticeId);
+        return NoticeDto.from(notice);
+
 
     }
 

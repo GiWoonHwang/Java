@@ -27,6 +27,9 @@ public class NoticeController {
         return readNoticeUseCase.execute(queryPage);
     }
 
+    @GetMapping("/{noticeId}")
+    public NoticeDto noticeDetail(@PathVariable("noticeId") Long noticeId){ return readNoticeUseCase.noticeDetail(noticeId);}
+
 
     @PostMapping("/create")
     public NoticeDto createNotice(@RequestBody NoticeDto noticeDto) {

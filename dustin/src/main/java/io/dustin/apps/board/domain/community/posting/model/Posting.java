@@ -80,6 +80,7 @@ public class Posting extends BaseEntity {
 
     public void setCommentCount(Long commentCount ) {this.commentCount = commentCount;}
 
-    public void setClickCount(Long clickCount) {this.clickCount =clickCount;}
+    public void setClickCount(Long clickCount) {this.clickCount = clickCount;}
+
 
 }

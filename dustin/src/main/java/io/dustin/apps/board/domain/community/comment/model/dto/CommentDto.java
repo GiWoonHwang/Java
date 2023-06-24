@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 public record CommentDto (
         Long id,
 
-        @JsonIgnore
+//        @JsonIgnore
         Posting posting,
 
         String content,

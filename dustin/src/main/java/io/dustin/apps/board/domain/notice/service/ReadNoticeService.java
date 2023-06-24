@@ -1,10 +1,12 @@
 package io.dustin.apps.board.domain.notice.service;
 
+import io.dustin.apps.board.domain.community.posting.model.Posting;
 import io.dustin.apps.board.domain.notice.model.Notice;
 import io.dustin.apps.board.domain.notice.model.dto.NoticeDto;
 import io.dustin.apps.board.domain.notice.repository.NoticeRepository;
 import io.dustin.apps.common.exception.DataNotFoundException;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -15,6 +17,7 @@ import java.util.Optional;
 
 import static io.dustin.apps.common.utils.OptionalUtils.getEntity;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class ReadNoticeService {
@@ -23,9 +26,9 @@ public class ReadNoticeService {
 
     public Notice getNotice(Long id) {
         /** todo
-         *  clickCount 한개 증가시키기
+         *  공지사항은 연관관계도 없고, 댓글도 없고 ... 쿼리를 굳이 쓸 필요가 있을까 ?
          */
-        return getEntity(noticeRepository.findById(id), Notice.class, "posting not found");
+        return getEntity(Optional.ofNullable(this.findById(id)), Notice.class, "posting not found");
     }
 
     @Transactional(readOnly = true)

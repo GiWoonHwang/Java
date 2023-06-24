@@ -9,6 +9,7 @@ import io.dustin.apps.board.domain.community.posting.service.WritePostingService
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
 @Service
@@ -18,6 +19,7 @@ public class ModifyPostingUseCase {
     private final ReadPostingService readPostingService;
     private final WritePostingService writePostingService;
 
+    @Transactional
     public PostingDto execute(Long id, Long userId, String subject, String content) {
         Posting posting = readPostingService.findById(id);
         if (!posting.getUserId().equals(userId)) {

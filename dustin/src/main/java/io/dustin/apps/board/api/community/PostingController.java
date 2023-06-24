@@ -28,7 +28,7 @@ public class PostingController {
     }
 
     @GetMapping("/{PostingId}")
-    public PostingDetailDto postingDetailDto(@PathVariable("PostingId") Long PostingId, QueryPage queryPage) {
+    public PostingDetailDto postingDetail(@PathVariable("PostingId") Long PostingId, QueryPage queryPage) {
         return readPostingUseCase.postingDetail(PostingId, queryPage);
     }
 
