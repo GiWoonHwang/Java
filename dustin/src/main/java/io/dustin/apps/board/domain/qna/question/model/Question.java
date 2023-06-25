@@ -23,11 +23,11 @@ import java.util.Set;
 public class Question extends BaseEntity {
 
     @Builder
-    public Question(Long id, @NotNull String subject, @NotNull String content, YesOrNo isDeleted, List<Answer> answerList, @NotNull Long userID, Long clickCount) {
+    public Question(Long id, @NotNull Long userId, @NotNull String subject, @NotNull String content, YesOrNo isDeleted, Long clickCount) {
         this.id = id;
+        this.userId = userId;
         this.subject = subject;
         this.content = content;
-        this.userID = userID;
         this.isDeleted = isDeleted == null ? YesOrNo.N : isDeleted;
         this.clickCount = clickCount;
     }
@@ -35,6 +35,8 @@ public class Question extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    private Long userId;
 
     @Column(length = 200)
     private String subject;
@@ -49,7 +51,7 @@ public class Question extends BaseEntity {
     @Column(columnDefinition = "bigint default 0")
     private Long clickCount;
 
-    private Long userID;
+
 
 
 
@@ -64,6 +66,9 @@ public class Question extends BaseEntity {
     public void delete() {
         this.isDeleted = YesOrNo.Y;
     }
+
+    public void setClickCount(Long clickCount) {this.clickCount = clickCount;}
+
 
 
 }

@@ -69,7 +69,7 @@ public class CommentController {
     }
 
     //@PreAuthorize("isAuthenticated()")
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{commentId}")
     public CommentDto deleteComment(@PathVariable("commentId") Long commentId,
                                    @RequestBody CommentDto commentDto) {
         /**

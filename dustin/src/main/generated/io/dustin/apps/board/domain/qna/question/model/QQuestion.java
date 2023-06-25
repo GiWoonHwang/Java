@@ -37,7 +37,7 @@ public class QQuestion extends EntityPathBase<Question> {
     //inherited
     public final DateTimePath<java.time.LocalDateTime> updatedAt = _super.updatedAt;
 
-    public final NumberPath<Long> userID = createNumber("userID", Long.class);
+    public final NumberPath<Long> userId = createNumber("userId", Long.class);
 
     public QQuestion(String variable) {
         super(Question.class, forVariable(variable));

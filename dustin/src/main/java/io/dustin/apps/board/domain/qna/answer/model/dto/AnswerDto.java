@@ -12,6 +12,8 @@ public record AnswerDto(
 
     Long adminId,
 
+    Long questionId,
+
     LocalDateTime createdAt
 ) {
     public static AnswerDto from(Answer answer) {
@@ -19,6 +21,7 @@ public record AnswerDto(
                 .id(answer.getId())
                 .content(answer.getContent())
                 .adminId(answer.getAdminId())
+                .questionId(answer.getQuestionId())
                 .createdAt(answer.getCreatedAt())
                 .build();
     }

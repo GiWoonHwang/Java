@@ -7,7 +7,10 @@ import io.dustin.apps.common.utils.Supplier;
 public enum BoardType {
 
     POSTING("posting", () -> CommonUtil.getBean("posting", LikeCountService.class)),
-    COMMENT("comment", () -> CommonUtil.getBean("comment", LikeCountService.class));
+    COMMENT("comment", () -> CommonUtil.getBean("comment", LikeCountService.class)),
+    NOTICE("notice", () -> CommonUtil.getBean("notice", LikeCountService.class));
+
+
 
     private String code;
 

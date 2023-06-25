@@ -32,7 +32,6 @@ public class Posting extends BaseEntity {
         this.content = content;
         this.userId = userId;
         this.isDeleted = isDeleted == null ? YesOrNo.N : isDeleted;
-
         this.likeCount = likeCount;
         this.clickCount = clickCount;
         this.commentCount = commentCount;

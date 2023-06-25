@@ -18,9 +18,9 @@ public class ModifyQuestionUseCase {
     private final ReadQuestionService readQuestionService;
     private final WriteQuestionService writeQuestionService;
 
-    public QuestionDto execute(Long userId, Long id, String subject, String content) {
-        Question question = readQuestionService.getQuestion(id);
-        if (!question.getUserID().equals(userId)){
+    public QuestionDto execute(Long id, Long userId, String subject, String content) {
+        Question question = readQuestionService.findById(id);
+        if (!question.getUserId().equals(userId)){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "수정권한이 없습니다.");
         }
 

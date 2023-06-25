@@ -8,6 +8,7 @@ import io.dustin.apps.board.domain.qna.question.service.WriteQuestionService;
 import io.dustin.apps.user.domain.service.ReadUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 
 @Service
@@ -18,8 +19,9 @@ public class WriteQuestionUseCase {
     private final ReadQuestionService readQuestionService;
     private final ReadUserService readUserService;
 
+    @Transactional
     public QuestionDto execute(Long userId, String subject, String content) {
-        Question question = writeQuestionService.create(subject, content, userId);
+        Question question = writeQuestionService.create(userId, subject, content);
         QuestionDto dto = QuestionDto.from(question);
         return QuestionDto.from(question);
 

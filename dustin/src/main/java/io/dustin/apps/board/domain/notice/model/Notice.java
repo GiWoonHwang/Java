@@ -22,12 +22,13 @@ public class Notice extends BaseEntity {
      */
 
     @Builder
-    public Notice(Long id, @NotNull String subject, @NotNull String content, YesOrNo isDeleted, @NotNull Long adminId, Long clickCount){
+    public Notice(Long id, @NotNull String subject, @NotNull String content, YesOrNo isDeleted, @NotNull Long adminId, Long clickCount, Long likeCount){
         this.id = id;
         this.subject = subject;
         this.content = content;
         this.adminId = adminId;
         this.isDeleted = isDeleted == null ? YesOrNo.N : isDeleted;
+        this.likeCount = likeCount;
         this.clickCount = clickCount;
 
     }
@@ -47,6 +48,9 @@ public class Notice extends BaseEntity {
     private YesOrNo isDeleted;
 
     @Column(columnDefinition = "bigint default 0")
+    private Long likeCount;
+
+    @Column(columnDefinition = "bigint default 0")
     private Long clickCount;
 
     private Long adminId;
@@ -61,6 +65,8 @@ public class Notice extends BaseEntity {
     }
 
     public void setClickCount(Long clickCount) {this.clickCount = clickCount;}
+
+    public void setLikeCount(Long likeCount ) {this.likeCount = likeCount;}
 
 
     public void delete() {

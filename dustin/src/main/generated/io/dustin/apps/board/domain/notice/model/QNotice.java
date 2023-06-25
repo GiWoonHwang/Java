@@ -35,6 +35,8 @@ public class QNotice extends EntityPathBase<Notice> {
 
     public final EnumPath<io.dustin.apps.common.code.YesOrNo> isDeleted = createEnum("isDeleted", io.dustin.apps.common.code.YesOrNo.class);
 
+    public final NumberPath<Long> likeCount = createNumber("likeCount", Long.class);
+
     public final StringPath subject = createString("subject");
 
     //inherited

@@ -7,6 +7,7 @@ import io.dustin.apps.board.domain.qna.answer.model.dto.AnswerDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.security.Principal;
@@ -18,6 +19,7 @@ public class ModifyAnswerUseCase {
     private final ReadAnswerService readAnswerService;
     private final WriteAnswerService writeAnswerService;
 
+    @Transactional
     public AnswerDto execute(Long adminId, Long id, String content) {
         Answer answer = readAnswerService.getAnswer(id);
         if (!answer.getAdminId().equals(adminId)) {

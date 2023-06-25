@@ -3,6 +3,7 @@ package io.dustin.apps.board.api.qna;
 import io.dustin.apps.board.api.usecase.qna.answer.DeleteAnswerUseCase;
 import io.dustin.apps.board.api.usecase.qna.answer.ModifyAnswerUseCase;
 import io.dustin.apps.board.api.usecase.qna.answer.WriteAnswerUseCase;
+import io.dustin.apps.board.domain.community.comment.model.dto.CommentDto;
 import io.dustin.apps.common.validation.AnswerForm;
 import io.dustin.apps.board.domain.qna.answer.model.dto.AnswerDto;
 import io.dustin.apps.common.exception.BadRequestParameterException;
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import java.security.Principal;
 
 @RestController
-@RequestMapping("/v1/answer")
+@RequestMapping("/api/v1/answer")
 @RequiredArgsConstructor
 public class AnswerController {
 
@@ -26,31 +27,29 @@ public class AnswerController {
 
     //@PreAuthorize("isAuthenticated()")
     @PostMapping("/questions/{questionId}")
-    public AnswerDto createAnswer(@Valid AnswerForm answerForm, BindingResult bindingResult,
-                                  @PathVariable("questionId") Long questionId,
-                                  @RequestBody Long userID) {
-        if(bindingResult.hasErrors()) {
-            throw new BadRequestParameterException("내용은 필수항목입니다.");
+    public AnswerDto createAnswer(@PathVariable("questionId") Long questionId,
+                                  @RequestBody AnswerDto answerDto) {
+        if(answerDto.content() == null) {
+            throw new BadRequestParameterException("댓글 내용은 필수항목입니다.");
         }
-        return writeAnswerUseCase.execute(userID, questionId, answerForm.getContent());
+        return writeAnswerUseCase.execute(answerDto.adminId(), questionId, answerDto.content());
     }
 
     //@PreAuthorize("isAuthenticated()")
-    @PatchMapping("/{id}")
-    public AnswerDto modifyAnswer(@Valid AnswerForm answerForm, BindingResult bindingResult,
-                               @PathVariable("id") Long id,
-                               @RequestBody Long userID) {
-        if(bindingResult.hasErrors()) {
-            throw new BadRequestParameterException("내용은 필수항목입니다.");
+    @PatchMapping("/{answerId}")
+    public AnswerDto modifyAnswer(@PathVariable("answerId") Long answerId,
+                                  @RequestBody AnswerDto answerDto) {
+        if(answerDto.content() == null) {
+            throw new BadRequestParameterException("댓글 내용은 필수항목입니다.");
         }
-        return modifyAnswerUseCase.execute(userID, id, answerForm.getContent());
+        return modifyAnswerUseCase.execute(answerDto.adminId(), answerId, answerDto.content());
     }
 
     //@PreAuthorize("isAuthenticated()")
-    @DeleteMapping("/{id}")
-    public AnswerDto deleteAnswer(@PathVariable("id") Long id,
-                                  @RequestBody Long userID) {
-        return deleteAnswerUseCase.execute(userID, id);
+    @DeleteMapping("/{answerId}")
+    public AnswerDto deleteAnswer(@PathVariable("answerId") Long answerId,
+                                  @RequestBody AnswerDto answerDto) {
+        return deleteAnswerUseCase.execute(answerDto.adminId(), answerId);
     }
 
 

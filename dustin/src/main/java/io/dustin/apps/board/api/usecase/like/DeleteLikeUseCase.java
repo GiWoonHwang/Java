@@ -8,6 +8,7 @@ import io.dustin.apps.common.code.BoardType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
 @Service
@@ -17,6 +18,7 @@ public class DeleteLikeUseCase {
     private final WriteLikeService writeLikeService;
     private final ReadLIkeService readLIkeService;
 
+    @Transactional
     public LikeDto execute(Long userId, Long boardId, BoardType boardType) {
         Like like = readLIkeService.getLike(boardId, userId, boardType);
         if(!like.getUserId().equals(userId)) {

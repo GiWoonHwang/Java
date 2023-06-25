@@ -8,20 +8,20 @@ import java.time.LocalDateTime;
 public record QuestionDto(
         Long id,
 
+        Long userId,
+
         String subject,
 
         String content,
-
-        Long userId,
 
         LocalDateTime createdAt
 ) {
         public static QuestionDto from(Question question) {
             return QuestionDto.builder()
                     .id(question.getId())
+                    .userId(question.getUserId())
                     .subject(question.getSubject())
                     .content(question.getContent())
-                    .userId(question.getUserID())
                     .createdAt(question.getCreatedAt())
                     .build();
         }

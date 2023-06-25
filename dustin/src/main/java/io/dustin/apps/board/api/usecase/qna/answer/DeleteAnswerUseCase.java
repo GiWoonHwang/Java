@@ -7,6 +7,7 @@ import io.dustin.apps.board.domain.qna.answer.model.dto.AnswerDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.security.Principal;
@@ -18,8 +19,9 @@ public class DeleteAnswerUseCase {
     private final ReadAnswerService readAnswerService;
     private final WriteAnswerService writeAnswerService;
 
+    @Transactional
     public AnswerDto execute(Long adminId, Long id) {
-        Answer answer = readAnswerService.getAnswer(id);
+        Answer answer = readAnswerService.findById(id);
         if(!answer.getAdminId().equals(adminId)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "삭제 권한이 없습니다.");
         }

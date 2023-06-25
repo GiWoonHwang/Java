@@ -48,17 +48,24 @@ public class WriteNoticeService implements LikeCountService {
     }
 
     @Override
+    @Transactional
     public void likeCount(long id) {
-        System.out.println("공지 id : [" + id + "] 카운트 하나 올림");
+        System.out.println("공지 좋아요 id : [" + id + "] 카운트 하나 올림");
+        Notice notice = this.findByIdOrThrow(id);
+        Long likeCount = notice.getLikeCount() + 1;
+        notice.setLikeCount(likeCount);
     }
 
     @Override
+    @Transactional
     public void likeUnCount(long id) {
-        System.out.println("공지 id : [" + id + "] 카운트 하나 내림");
+        System.out.println("공지 좋아요 id : [" + id + "] 카운트 하나 내림");
+        Notice notice = this.findByIdOrThrow(id);
+        Long likeCount = notice.getLikeCount() - 1;
+        notice.setLikeCount(likeCount);
     }
 
 
-    @Transactional(readOnly = true)
     public Notice findById(long id) {
         Optional<Notice> optional = this.noticeRepository.findById(id);
         if(optional.isPresent()) {
@@ -68,7 +75,6 @@ public class WriteNoticeService implements LikeCountService {
         }
     }
 
-    @Transactional(readOnly = true)
     public Notice findByIdOrThrow(long id) {
         Optional<Notice> optional = this.noticeRepository.findById(id);
         if(optional.isPresent()) {
