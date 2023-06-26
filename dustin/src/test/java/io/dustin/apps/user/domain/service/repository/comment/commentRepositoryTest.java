@@ -26,7 +26,7 @@ public class commentRepositoryTest {
         int size = 10;
         Long nextId = null;
 
-        List<CommentDto> dtos = repo.commentsByPosting(longinId, postingId, size, null);
+        List<CommentDto> dtos = repo.commentListByPosting(longinId, postingId, size, null);
         System.out.println(dtos.get(0).posting().getContent());
         // then
         //assertThat(dtos.get(0).posting().getContent()).isEqualTo(id);

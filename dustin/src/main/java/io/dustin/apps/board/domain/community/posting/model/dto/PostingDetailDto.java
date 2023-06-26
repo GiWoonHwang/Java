@@ -11,29 +11,15 @@ import java.util.List;
 
 @Builder
 public record PostingDetailDto (
-        Long id,
-        Long userId,
-        String subject,
-        String content,
-        ResponseWithScroll<List<CommentDto>> comment,
-        Boolean isLike,
-        Boolean isBookmark,
-        Long commentCnt,
-        Long clickCnt,
-        Long likeCount,
-        LocalDateTime createdAt
+        PostingDto posting,
+
+        ResponseWithScroll<List<CommentDto>> comment
 
 ) {
-    public static PostingDetailDto from(Posting posting,  ResponseWithScroll<List<CommentDto>> comment) {
+    public static PostingDetailDto from(PostingDto posting,  ResponseWithScroll<List<CommentDto>> comment) {
         return PostingDetailDto.builder()
-                .id(posting.getId())
-                .userId(posting.getUserId())
-                .subject(posting.getSubject())
-                .content(posting.getContent())
+                .posting(posting)
                 .comment(comment)
-                .clickCnt(posting.getClickCount())
-                .likeCount(posting.getLikeCount())
-                .createdAt(posting.getCreatedAt())
                 .build();
     }
 

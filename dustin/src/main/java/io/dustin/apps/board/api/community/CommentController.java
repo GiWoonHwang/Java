@@ -29,18 +29,16 @@ public class CommentController {
     private final DeleteCommentUseCase deleteCommentUseCase;
 
     @GetMapping("/{postingId}/all")
-    public ResponseWithScroll allPostings(
+    public ResponseWithScroll commentListByPosting(
             @PathVariable("postingId") Long postingId,
             QueryPage queryPage) {
         return readCommentUseCase.execute(postingId, queryPage);
     }
 
     @GetMapping("/{commentId}")
-    public ResponseWithScroll postingDetailDto(@PathVariable("commentId") Long commentId, QueryPage queryPage) {
-        return readCommentUseCase.commentDetail(commentId, queryPage);
+    public ResponseWithScroll replyListByComment(@PathVariable("commentId") Long commentId, QueryPage queryPage) {
+        return readCommentUseCase.replyListByComment(commentId, queryPage);
     }
-
-
 
 
     //@PreAuthorize("isAuthenticated()")

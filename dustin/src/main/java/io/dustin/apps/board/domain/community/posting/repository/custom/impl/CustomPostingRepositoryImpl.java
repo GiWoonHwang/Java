@@ -24,6 +24,42 @@ public class CustomPostingRepositoryImpl implements CustomPostingRepository {
     private final JPAQueryFactory query;
 
     @Override
+    public PostingDto getPosting(long loginId, long postingId) {
+
+
+        JPAQuery<PostingDto> jPAQuery = query.select(constructor(PostingDto.class,
+                        posting.id,
+                        posting.userId,
+                        posting.subject,
+                        posting.content,
+                        new CaseBuilder().when(like.id.isNotNull()).then(true).otherwise(false).as("isLike"),
+                        new CaseBuilder().when(bookmark.id.isNotNull()).then(true).otherwise(false).as("isBookmark"),
+                        posting.commentCount.as("commentCnt"),
+                        posting.clickCount.as("clickCnt"),
+                        posting.likeCount,
+                        posting.createdAt
+                ))
+                .from(posting)
+                .leftJoin(like).on(
+                        like.boardType.eq(BoardType.POSTING)
+                                .and(like.boardId.eq(posting.id))
+                                .and(like.userId.eq(loginId))
+
+                )
+                .leftJoin(bookmark).on(
+                        bookmark.boardId.eq(posting.id)
+                                .and(bookmark.userId.eq(loginId))
+                )
+                .where(
+                        posting.id.eq(postingId)
+                );
+
+        return jPAQuery.fetchOne();
+    }
+
+
+
+    @Override
     public List<PostingDto> getPostingList(long loginId, Long nextId, int size) {
         BooleanBuilder booleanBuilder = new BooleanBuilder();
         if(nextId != null) {

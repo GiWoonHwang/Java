@@ -20,17 +20,10 @@ public class ReadPostingService {
     private final PostingRepository postingRepository;
 
     @Transactional(readOnly = true)
-    public Posting getPosting(Long id) {
-        /** todo
-         *  clickCount 한개 증가시키기
-         *  게시물에 해당되는 댓글 가져오기
-         *  좋아요, 북마크 표시할 수 있는 데이터 넣기
-         *  이거 현재 안써요
-         */
-        return getEntity(postingRepository.findById(id), Posting.class, "posting not found");
+    public
+    PostingDto getPosting(long userId, long postingId) {
+        return postingRepository.getPosting(userId, postingId);
     }
-
-
 
     @Transactional(readOnly = true)
     public List<PostingDto> getPostingList(long userId, Long nextId, int size) {

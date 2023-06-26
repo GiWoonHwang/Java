@@ -24,7 +24,7 @@ public class CustomCommentRepositoryImpl implements CustomCommentRepository {
     private final JPAQueryFactory query;
 
     @Override
-    public List<CommentDto> commentsByPosting(long loginId, long postingId, int size, Long nextId) {
+    public List<CommentDto> commentListByPosting(long loginId, long postingId, int size, Long nextId) {
         QComment self = new QComment("self");
         JPAQuery<CommentDto> jPAQuery = query.select(constructor(CommentDto.class,
                                             comment.id,
@@ -58,7 +58,7 @@ public class CustomCommentRepositoryImpl implements CustomCommentRepository {
     }
 
     @Override
-    public List<CommentDto> replyByComment(long loginId, long commentId, int size, Long nextId) {
+    public List<CommentDto> replyListByComment(long loginId, long commentId, int size, Long nextId) {
         QComment self = new QComment("self");
         JPAQuery<CommentDto> jPAQuery = query.select(constructor(CommentDto.class,
                                             comment.id,

@@ -6,6 +6,7 @@ import io.dustin.apps.board.api.usecase.community.posting.ModifyPostingUseCase;
 import io.dustin.apps.board.api.usecase.community.posting.ReadPostingUseCase;
 import io.dustin.apps.board.api.usecase.community.posting.WritePostingUseCase;
 import io.dustin.apps.board.domain.community.posting.model.dto.PostingDetailDto;
+import io.dustin.apps.board.domain.community.posting.model.dto.PostingDetailDtoTest;
 import io.dustin.apps.board.domain.community.posting.model.dto.PostingDto;
 import io.dustin.apps.common.model.QueryPage;
 import io.dustin.apps.common.model.ResponseWithScroll;
