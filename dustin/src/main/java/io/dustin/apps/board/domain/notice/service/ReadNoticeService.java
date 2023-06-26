@@ -24,16 +24,17 @@ public class ReadNoticeService {
 
     private final NoticeRepository noticeRepository;
 
-    public Notice getNotice(Long id) {
+    public NoticeDto getNotice(Long loginId, Long noticeId) {
         /** todo
          *  공지사항은 연관관계도 없고, 댓글도 없고 ... 쿼리를 굳이 쓸 필요가 있을까 ?
+         *  ㄴ 멍청아 좋아요 유무 판단하려면 쿼리 써야지
          */
-        return getEntity(Optional.ofNullable(this.findById(id)), Notice.class, "posting not found");
+        return noticeRepository.getNotice(loginId, noticeId);
     }
 
     @Transactional(readOnly = true)
-    public List<NoticeDto> getNotices(Long nextId, int size) {
-        return noticeRepository.findNotices(nextId, size);
+    public List<NoticeDto> getNoticeList(long loginId, Long nextId, int size) {
+        return noticeRepository.getNoticeList(loginId, nextId, size);
     }
 
     @Transactional(readOnly = true)

@@ -34,7 +34,7 @@ public class ReadPostingServiceTest {
         // when
         // 화면에 보여주는 것은 10개 하지만 디비에서는 11개를 가져온다.
         // /postings?size=10
-        List<PostingDto> datas = readPostingService.getPostings(userID, 28L, querySize);
+        List<PostingDto> datas = readPostingService.getPostingList(userID, 28L, querySize);
 
         List<PostingDto> toClient = new ArrayList<>();
         boolean isLast = false;

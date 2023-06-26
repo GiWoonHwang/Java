@@ -7,6 +7,7 @@ import io.dustin.apps.board.domain.community.comment.model.QComment;
 import io.dustin.apps.board.domain.community.comment.model.dto.CommentDto;
 import io.dustin.apps.board.domain.community.comment.repository.custom.CustomCommentRepository;
 import io.dustin.apps.common.code.BoardType;
+import io.dustin.apps.common.code.YesOrNo;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
@@ -15,6 +16,7 @@ import static com.querydsl.core.types.Projections.constructor;
 import static io.dustin.apps.board.domain.community.comment.model.QComment.comment;
 import static io.dustin.apps.board.domain.community.posting.model.QPosting.posting;
 import static io.dustin.apps.board.domain.like.model.QLike.like;
+import static io.dustin.apps.board.domain.notice.model.QNotice.notice;
 
 @RequiredArgsConstructor
 public class CustomCommentRepositoryImpl implements CustomCommentRepository {
@@ -36,11 +38,9 @@ public class CustomCommentRepositoryImpl implements CustomCommentRepository {
                                             comment.createdAt
                                         )).
                                         distinct()
-                                        .from(comment)
+                                        .from(posting)
+                                        .leftJoin(comment).on(comment.postingId.eq(posting.id))
                                         .leftJoin(self).on(self.replyId.eq(comment.id).and(self.replyId.isNotNull()))
-
-                                        .leftJoin(posting).on(comment.postingId.eq(posting.id))
-
                                         .leftJoin(like).on(
                                                 like.boardType.eq(BoardType.COMMENT)
                                                 .and(like.boardId.eq(comment.id))
@@ -48,7 +48,7 @@ public class CustomCommentRepositoryImpl implements CustomCommentRepository {
 
                                         )
                                         .where(
-                                            comment.postingId.eq(postingId),
+                                            posting.id.eq(postingId),
                                             comment.replyId.isNull(),
                                             comment.indexByCountPagination(nextId)
                                         )
@@ -84,6 +84,7 @@ public class CustomCommentRepositoryImpl implements CustomCommentRepository {
                                         )
                                         .where(
                                             comment.replyId.eq(commentId),
+                                            comment.isDeleted.ne(YesOrNo.Y),
                                             comment.indexByCountPagination(nextId)
                                         )
                                         .orderBy(comment.id.desc())

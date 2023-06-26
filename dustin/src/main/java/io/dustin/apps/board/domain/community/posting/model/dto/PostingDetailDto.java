@@ -31,6 +31,8 @@ public record PostingDetailDto (
                 .subject(posting.getSubject())
                 .content(posting.getContent())
                 .comment(comment)
+                .clickCnt(posting.getClickCount())
+                .likeCount(posting.getLikeCount())
                 .createdAt(posting.getCreatedAt())
                 .build();
     }

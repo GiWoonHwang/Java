@@ -35,17 +35,6 @@ public class ReadCommentService {
         return commentRepository.replyByComment(loginId, commentId, size, nextId);
     }
 
-    @Transactional(readOnly = true)
-    public Page<Comment> getList(Pageable pageable) {
-        /**
-         * 대댓글 같이 가져오기
-         * 좋아요 표시할 수 있는 데이터 넣기
-         */
-//        List<Sort.Order> sorts = new ArrayList<>();
-//        sorts.add(Sort.Order.desc("createDate"));
-//        Pageable pageable = PageRequest.of(page, 10, Sort.by(sorts));
-        return commentRepository.findAll(pageable);
-    }
 
     @Transactional(readOnly = true)
     public Comment findById(long id) {

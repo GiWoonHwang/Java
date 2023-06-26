@@ -32,7 +32,7 @@ public class ReadNoticeUseCase {
         int realSize = queryPage.getSize();
         int querySize = realSize + 1;
 
-        List<NoticeDto> result = readNoticeService.getNotices(queryPage.getNextId(), querySize);
+        List<NoticeDto> result = readNoticeService.getNoticeList(userId, queryPage.getNextId(), querySize);
         CountByPagingInfo<NoticeDto> cbi = getCountByPagingInfo(result, realSize);
 
         return ResponseWithScroll.from(cbi.result(), cbi.isLast(), cbi.nextId());
@@ -40,9 +40,10 @@ public class ReadNoticeUseCase {
 
     @Transactional
     public NoticeDto noticeDetail(Long noticeId) {
-        Notice notice = readNoticeService.getNotice(noticeId);
+        long userId = 1;
+        NoticeDto notice = readNoticeService.getNotice(userId, noticeId);
         writeNoticeService.click(noticeId);
-        return NoticeDto.from(notice);
+        return notice;
 
 
     }

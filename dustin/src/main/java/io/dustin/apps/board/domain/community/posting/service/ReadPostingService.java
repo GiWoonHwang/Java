@@ -33,8 +33,8 @@ public class ReadPostingService {
 
 
     @Transactional(readOnly = true)
-    public List<PostingDto> getPostings(long userId, Long nextId, int size) {
-        return postingRepository.findPostings(userId, nextId, size);
+    public List<PostingDto> getPostingList(long userId, Long nextId, int size) {
+        return postingRepository.getPostingList(userId, nextId, size);
     }
 
     @Transactional(readOnly = true)

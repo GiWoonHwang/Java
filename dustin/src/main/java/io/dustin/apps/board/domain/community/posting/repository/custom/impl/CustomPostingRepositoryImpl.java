@@ -7,12 +7,14 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 import io.dustin.apps.board.domain.community.posting.model.dto.PostingDto;
 import io.dustin.apps.board.domain.community.posting.repository.custom.CustomPostingRepository;
 import io.dustin.apps.common.code.BoardType;
+import io.dustin.apps.common.code.YesOrNo;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 
 import static com.querydsl.core.types.Projections.constructor;
 import static io.dustin.apps.board.domain.bookmark.model.QBookmark.bookmark;
+import static io.dustin.apps.board.domain.community.comment.model.QComment.comment;
 import static io.dustin.apps.board.domain.community.posting.model.QPosting.posting;
 import static io.dustin.apps.board.domain.like.model.QLike.like;
 
@@ -22,7 +24,7 @@ public class CustomPostingRepositoryImpl implements CustomPostingRepository {
     private final JPAQueryFactory query;
 
     @Override
-    public List<PostingDto> findPostings(long loginId, Long nextId, int size) {
+    public List<PostingDto> getPostingList(long loginId, Long nextId, int size) {
         BooleanBuilder booleanBuilder = new BooleanBuilder();
         if(nextId != null) {
             booleanBuilder.and(posting.id.lt(nextId));
@@ -52,7 +54,8 @@ public class CustomPostingRepositoryImpl implements CustomPostingRepository {
                         .and(bookmark.userId.eq(loginId))
                 )
                 .where(
-                    booleanBuilder
+                    booleanBuilder,
+                    posting.isDeleted.ne(YesOrNo.Y)
                 )
                 .orderBy(posting.id.desc())
                 .limit(size);

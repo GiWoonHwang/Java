@@ -14,9 +14,7 @@ spring:
         show_sql: true
     hibernate:
 #       ddl-auto: create
-      ddl-auto: none
-    generate-ddl: true
-    show-sql: true
+      ddl-auto: update
   thymeleaf:
     cache: false
     prefix: file:src/main/resources/templates/

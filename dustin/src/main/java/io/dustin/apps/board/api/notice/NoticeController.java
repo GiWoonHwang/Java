@@ -23,7 +23,7 @@ public class NoticeController {
 
 
     @GetMapping("/all")
-    public ResponseWithScroll allPostings(QueryPage queryPage) {
+    public ResponseWithScroll getNoticeList(QueryPage queryPage) {
         return readNoticeUseCase.execute(queryPage);
     }
 

@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface CustomPostingRepository {
 
-    List<PostingDto> findPostings(long loginId, Long nextId, int size);
+    List<PostingDto> getPostingList(long loginId, Long nextId, int size);
 
 }

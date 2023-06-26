@@ -18,6 +18,8 @@ public record NoticeDto (
 
         String content,
 
+        Boolean isLike,
+
         Long clickCount,
 
         LocalDateTime createdAt
