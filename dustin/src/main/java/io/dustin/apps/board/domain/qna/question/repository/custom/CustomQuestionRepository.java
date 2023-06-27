@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface CustomQuestionRepository {
 
-    QuestionDto getQuestion(long loginId, long questionId);
+    QuestionDto getQuestion(long userId, long questionId);
 
-    List<QuestionDto> getQuestionList(long loginId, Long nextId, int size);
+    List<QuestionDto> getQuestionList(long userId, Long nextId, int size);
 }

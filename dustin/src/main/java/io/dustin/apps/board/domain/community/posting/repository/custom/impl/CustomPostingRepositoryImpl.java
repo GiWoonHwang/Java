@@ -24,7 +24,7 @@ public class CustomPostingRepositoryImpl implements CustomPostingRepository {
     private final JPAQueryFactory query;
 
     @Override
-    public PostingDto getPosting(long loginId, long postingId) {
+    public PostingDto getPosting(long userId, long postingId) {
 
 
         JPAQuery<PostingDto> jPAQuery = query.select(constructor(PostingDto.class,
@@ -43,12 +43,12 @@ public class CustomPostingRepositoryImpl implements CustomPostingRepository {
                 .leftJoin(like).on(
                         like.boardType.eq(BoardType.POSTING)
                                 .and(like.boardId.eq(posting.id))
-                                .and(like.userId.eq(loginId))
+                                .and(like.userId.eq(userId))
 
                 )
                 .leftJoin(bookmark).on(
                         bookmark.boardId.eq(posting.id)
-                                .and(bookmark.userId.eq(loginId))
+                                .and(bookmark.userId.eq(userId))
                 )
                 .where(
                         posting.id.eq(postingId)
@@ -60,7 +60,7 @@ public class CustomPostingRepositoryImpl implements CustomPostingRepository {
 
 
     @Override
-    public List<PostingDto> getPostingList(long loginId, Long nextId, int size) {
+    public List<PostingDto> getPostingList(long userId, Long nextId, int size) {
         BooleanBuilder booleanBuilder = new BooleanBuilder();
         if(nextId != null) {
             booleanBuilder.and(posting.id.lt(nextId));
@@ -82,12 +82,12 @@ public class CustomPostingRepositoryImpl implements CustomPostingRepository {
                 .leftJoin(like).on(
                         like.boardType.eq(BoardType.POSTING)
                         .and(like.boardId.eq(posting.id))
-                        .and(like.userId.eq(loginId))
+                        .and(like.userId.eq(userId))
 
                 )
                 .leftJoin(bookmark).on(
                         bookmark.boardId.eq(posting.id)
-                        .and(bookmark.userId.eq(loginId))
+                        .and(bookmark.userId.eq(userId))
                 )
                 .where(
                     booleanBuilder,

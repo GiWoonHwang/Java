@@ -42,6 +42,7 @@ public class CustomQuestionRepositoryImpl implements CustomQuestionRepository {
                         answer.questionId.eq(question.id)
                 )
                 .where(
+                        question.id.eq(questionId),
                         question.userId.eq(userId),
                         question.isDeleted.ne(YesOrNo.Y)
                 );

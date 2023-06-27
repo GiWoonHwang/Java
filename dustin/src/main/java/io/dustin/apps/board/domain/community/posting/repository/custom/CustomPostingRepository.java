@@ -6,8 +6,8 @@ import java.util.List;
 
 public interface CustomPostingRepository {
 
-    PostingDto getPosting(long loginId, long postingId);
+    PostingDto getPosting(long userId, long postingId);
 
-    List<PostingDto> getPostingList(long loginId, Long nextId, int size);
+    List<PostingDto> getPostingList(long userId, Long nextId, int size);
 
 }

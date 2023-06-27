@@ -26,13 +26,13 @@ public class ReadCommentService {
     private final CommentRepository commentRepository;
 
     @Transactional(readOnly = true)
-    public List<CommentDto> getCommentsByPosting(long loginId, long postingId, int size, Long nextId) {
-        return commentRepository.commentListByPosting(loginId, postingId, size, nextId);
+    public List<CommentDto> getCommentsByPosting(long userId, long postingId, int size, Long nextId) {
+        return commentRepository.commentListByPosting(userId, postingId, size, nextId);
     }
 
     @Transactional(readOnly = true)
-    public List<CommentDto> replyListByComment(long loginId, long commentId, int size, Long nextId) {
-        return commentRepository.replyListByComment(loginId, commentId, size, nextId);
+    public List<CommentDto> replyListByComment(long userId, long commentId, int size, Long nextId) {
+        return commentRepository.replyListByComment(userId, commentId, size, nextId);
     }
 
 

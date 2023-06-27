@@ -32,16 +32,16 @@ public class ReadQuestionService {
     private final QuestionRepository questionRepository;
 
     @Transactional(readOnly = true)
-    public QuestionDto getQuestion(long loginId, long questionId) {
+    public QuestionDto getQuestion(long userId, long questionId) {
         /**
          * clickCount 한개 증가시키기
          */
-        return questionRepository.getQuestion(loginId, questionId);
+        return questionRepository.getQuestion(userId, questionId);
     }
 
     @Transactional(readOnly = true)
-    public List<QuestionDto> getQuestionList(long loginId, Long nextId, int size) {
-        return questionRepository.getQuestionList(loginId, nextId, size);
+    public List<QuestionDto> getQuestionList(long userId, Long nextId, int size) {
+        return questionRepository.getQuestionList(userId, nextId, size);
     }
 
 

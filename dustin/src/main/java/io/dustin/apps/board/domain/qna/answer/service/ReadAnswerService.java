@@ -22,19 +22,15 @@ public class ReadAnswerService {
     private final AnswerRepository answerRepository;
 
     @Transactional(readOnly = true)
-    public AnswerDto getAnswer(Long id) {
-        return this.answerRepository.findById(id);
-    }
-
-    @Transactional(readOnly = true)
-    public List<AnswerDto> getAnswerList(long userId, Long nextId, int size) {
-        return answerRepository.getPostingList(userId, nextId, size);
+    public Answer findByQuestionId(Long questionId) {
+        return answerRepository.findByQuestionId(questionId);
     }
 
 
+
     @Transactional(readOnly = true)
-    public Answer findById(long id) {
-        Optional<Answer> optional = this.answerRepository.findById(id);
+    public Answer findById(Long id) {
+        Optional<Answer> optional = answerRepository.findById(id);
         if(optional.isPresent()) {
             return optional.get();
         } else {
@@ -43,7 +39,7 @@ public class ReadAnswerService {
     }
 
     @Transactional(readOnly = true)
-    public Answer findByIdOrThrow(long id) {
+    public Answer findByIdOrThrow(Long id) {
         Optional<Answer> optional = this.answerRepository.findById(id);
         if(optional.isPresent()) {
             return optional.get();

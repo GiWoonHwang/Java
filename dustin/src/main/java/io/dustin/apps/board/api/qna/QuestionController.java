@@ -2,11 +2,16 @@ package io.dustin.apps.board.api.qna;
 
 import io.dustin.apps.board.api.usecase.qna.question.DeleteQuestionUseCase;
 import io.dustin.apps.board.api.usecase.qna.question.ModifyQuestionUseCase;
+import io.dustin.apps.board.api.usecase.qna.question.ReadQuestionUseCase;
 import io.dustin.apps.board.api.usecase.qna.question.WriteQuestionUseCase;
+import io.dustin.apps.board.domain.community.posting.model.dto.PostingDetailDto;
 import io.dustin.apps.board.domain.community.posting.model.dto.PostingDto;
+import io.dustin.apps.board.domain.qna.question.model.dto.QuestionDetailDto;
 import io.dustin.apps.board.domain.qna.question.model.dto.QuestionDto;
 import io.dustin.apps.board.domain.qna.question.service.ReadQuestionService;
 import io.dustin.apps.common.exception.BadRequestParameterException;
+import io.dustin.apps.common.model.QueryPage;
+import io.dustin.apps.common.model.ResponseWithScroll;
 import io.dustin.apps.common.validation.QuestionForm;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -21,10 +26,20 @@ import java.security.Principal;
 @RequiredArgsConstructor
 public class QuestionController {
 
-    private final ReadQuestionService readQuestionService;
+    private final ReadQuestionUseCase readQuestionUseCase;
     private final WriteQuestionUseCase writeQuestionUseCase;
     private final ModifyQuestionUseCase modifyQuestionUseCase;
     private final DeleteQuestionUseCase deleteQuestionUseCase;
+
+    @GetMapping("/all")
+    public ResponseWithScroll allPostings(QueryPage queryPage) {
+        return readQuestionUseCase.execute(queryPage);
+    }
+
+    @GetMapping("/{questionId}")
+    public QuestionDetailDto postingDetail(@PathVariable("questionId") Long questionId) {
+        return readQuestionUseCase.questionDetail(questionId);
+    }
 
     //@PreAuthorize("isAuthenticated()")
     @PostMapping("/create")
@@ -37,14 +52,14 @@ public class QuestionController {
     public QuestionDto modifyQuestion(@PathVariable("questionId") Long questionId,
                                       @RequestBody QuestionDto questionDto
                                   ) {
-        return modifyQuestionUseCase.execute(questionId, questionDto.userId(), questionDto.subject(), questionDto.content());
+        return modifyQuestionUseCase.execute(questionDto.userId(), questionId, questionDto.subject(), questionDto.content());
     }
 
     //@PreAuthorize("isAuthenticated()")
     @DeleteMapping("/{questionId}")
     public QuestionDto deleteQuestion(@PathVariable("questionId") Long questionId,
                                       @RequestBody QuestionDto questionDto) {
-        return deleteQuestionUseCase.execute(questionId, questionDto.userId());
+        return deleteQuestionUseCase.execute(questionDto.userId(), questionId);
     }
 
 

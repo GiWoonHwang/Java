@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface CustomNoticeRepository {
 
-    NoticeDto getNotice(long loginId, long noticeId);
-    List<NoticeDto> getNoticeList(long loginId, Long nextId, int size);
+    NoticeDto getNotice(long userId, long noticeId);
+    List<NoticeDto> getNoticeList(long userId, Long nextId, int size);
 }

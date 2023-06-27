@@ -20,8 +20,8 @@ public class DeleteAnswerUseCase {
     private final WriteAnswerService writeAnswerService;
 
     @Transactional
-    public AnswerDto execute(Long adminId, Long id) {
-        Answer answer = readAnswerService.findById(id);
+    public AnswerDto execute(Long adminId, Long answerId) {
+        Answer answer = readAnswerService.findById(answerId);
         if(!answer.getAdminId().equals(adminId)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "삭제 권한이 없습니다.");
         }

@@ -20,9 +20,9 @@ public class DeleteQuestionUseCase {
     private final WriteQuestionService writeQuestionService;
 
     @Transactional
-    public QuestionDto execute(Long loginId, Long questionId) {
+    public QuestionDto execute(Long userId, Long questionId) {
         Question question = readQuestionService.findById(questionId);
-        if(!question.getUserId().equals(loginId)) {
+        if(!question.getUserId().equals(userId)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "삭제 권한이 없습니다.");
         }
         writeQuestionService.delete(question);

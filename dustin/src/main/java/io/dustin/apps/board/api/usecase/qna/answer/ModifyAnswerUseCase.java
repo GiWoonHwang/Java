@@ -20,8 +20,8 @@ public class ModifyAnswerUseCase {
     private final WriteAnswerService writeAnswerService;
 
     @Transactional
-    public AnswerDto execute(Long adminId, Long id, String content) {
-        Answer answer = readAnswerService.getAnswer(id);
+    public AnswerDto execute(Long adminId, Long answerId, String content) {
+        Answer answer = readAnswerService.findById(answerId);
         if (!answer.getAdminId().equals(adminId)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "수정권한이 없습니다.");
         }

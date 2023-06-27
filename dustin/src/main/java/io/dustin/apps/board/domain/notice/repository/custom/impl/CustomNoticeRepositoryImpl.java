@@ -21,7 +21,7 @@ public class CustomNoticeRepositoryImpl implements CustomNoticeRepository {
     private final JPAQueryFactory query;
 
     @Override
-    public NoticeDto getNotice(long loginId, long noticeId) {
+    public NoticeDto getNotice(long userId, long noticeId) {
         JPAQuery<NoticeDto> jPAQuery = query.select(constructor(NoticeDto.class,
                         notice.id,
                         notice.adminId,
@@ -36,7 +36,7 @@ public class CustomNoticeRepositoryImpl implements CustomNoticeRepository {
                 .leftJoin(like).on(
                         like.boardType.eq(BoardType.NOTICE)
                                 .and(like.boardId.eq(notice.id))
-                                .and(like.userId.eq(loginId))
+                                .and(like.userId.eq(userId))
 
                 )
                 .where(
@@ -49,7 +49,7 @@ public class CustomNoticeRepositoryImpl implements CustomNoticeRepository {
     }
 
     @Override
-    public List<NoticeDto> getNoticeList(long loginId, Long nextId, int size) {
+    public List<NoticeDto> getNoticeList(long userId, Long nextId, int size) {
         JPAQuery<NoticeDto> jPAQuery = query.select(constructor(NoticeDto.class,
                         notice.id,
                         notice.adminId,
@@ -64,7 +64,7 @@ public class CustomNoticeRepositoryImpl implements CustomNoticeRepository {
                 .leftJoin(like).on(
                         like.boardType.eq(BoardType.NOTICE)
                                 .and(like.boardId.eq(notice.id))
-                                .and(like.userId.eq(loginId))
+                                .and(like.userId.eq(userId))
 
                 )
                 .where(
