@@ -1,8 +1,11 @@
 package io.dustin.apps.board.domain.qna.question.service;
 
 import io.dustin.apps.board.domain.community.posting.model.Posting;
+import io.dustin.apps.board.domain.community.posting.model.dto.PostingDto;
 import io.dustin.apps.board.domain.qna.answer.model.Answer;
+import io.dustin.apps.board.domain.qna.answer.model.dto.AnswerDto;
 import io.dustin.apps.board.domain.qna.question.model.Question;
+import io.dustin.apps.board.domain.qna.question.model.dto.QuestionDto;
 import io.dustin.apps.common.exception.DataNotFoundException;
 import io.dustin.apps.user.domain.model.SiteUser;
 import io.dustin.apps.board.domain.qna.question.repository.QuestionRepository;
@@ -29,17 +32,18 @@ public class ReadQuestionService {
     private final QuestionRepository questionRepository;
 
     @Transactional(readOnly = true)
-    public Question getQuestion(Long id) {
+    public QuestionDto getQuestion(long loginId, long questionId) {
         /**
          * clickCount 한개 증가시키기
          */
-        return getEntity(questionRepository.findById(id), Question.class, "question not found");
+        return questionRepository.getQuestion(loginId, questionId);
     }
 
     @Transactional(readOnly = true)
-    public Page<Question> getList(Pageable pageable) {
-        return questionRepository.findAll(pageable);
+    public List<QuestionDto> getQuestionList(long loginId, Long nextId, int size) {
+        return questionRepository.getQuestionList(loginId, nextId, size);
     }
+
 
     private Specification<Question> search(String kw) {
         return new Specification<>() {

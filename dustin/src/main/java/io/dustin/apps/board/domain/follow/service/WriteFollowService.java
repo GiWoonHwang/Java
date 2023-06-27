@@ -12,7 +12,7 @@ public class WriteFollowService {
     private final FollowRepository followRepository;
 
     public Follow getFollow(Long followerId, Long followingId) {
-        return this.followRepository.getFollowByFollowerIdAndFollowingId(followerId,followingId);
+        return this.followRepository.findByFollowerIdAndFollowingId(followerId,followingId);
     }
 
     public Follow create(Long followerId, Long followingId){

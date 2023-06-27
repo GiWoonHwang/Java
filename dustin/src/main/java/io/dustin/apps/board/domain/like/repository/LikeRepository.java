@@ -9,8 +9,5 @@ import java.util.Optional;
 public interface LikeRepository extends BaseRepository<Like, Long> {
 
     void deleteByUserIdAndBoardIdAndBoardType(Long userId, Long boardId, BoardType boardType);
-
-    boolean existsByUserIdAndBoardIdAndBoardType(Long userId, Long boardId, BoardType boardType);
-
     Optional<Like> findByUserIdAndBoardIdAndBoardType(Long userId, Long boardId, BoardType boardType);
 }

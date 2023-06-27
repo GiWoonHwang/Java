@@ -14,6 +14,8 @@ public record QuestionDto(
 
         String content,
 
+        Boolean isComment,
+
         LocalDateTime createdAt
 ) {
         public static QuestionDto from(Question question) {

@@ -58,9 +58,9 @@ public class ReadPostingUseCase {
 
         writePostingService.click(postingId);
         PostingDto posting = readPostingService.getPosting(userId, postingId);
-        ResponseWithScroll<List<CommentDto>> comment = readCommentUseCase.execute(postingId,queryPage);
+        ResponseWithScroll<List<CommentDto>> commentList = readCommentUseCase.execute(postingId,queryPage);
 
-        return PostingDetailDto.from(posting,comment);
+        return PostingDetailDto.from(posting,commentList);
 
 
 

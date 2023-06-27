@@ -13,13 +13,13 @@ import java.util.List;
 public record PostingDetailDto (
         PostingDto posting,
 
-        ResponseWithScroll<List<CommentDto>> comment
+        ResponseWithScroll<List<CommentDto>> commentList
 
 ) {
-    public static PostingDetailDto from(PostingDto posting,  ResponseWithScroll<List<CommentDto>> comment) {
+    public static PostingDetailDto from(PostingDto posting,  ResponseWithScroll<List<CommentDto>> commentList) {
         return PostingDetailDto.builder()
                 .posting(posting)
-                .comment(comment)
+                .commentList(commentList)
                 .build();
     }
 

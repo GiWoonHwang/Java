@@ -9,7 +9,5 @@ public interface BookmarkRepository extends BaseRepository<Bookmark, Long> {
 
     void deleteByUserIdAndBoardId(Long userId, Long boardId);
 
-    boolean existsByUserIdAndBoardId(Long userId, Long boardId);
-
     Optional<Bookmark> findByUserIdAndBoardId(Long userId, Long boardId);
 }
