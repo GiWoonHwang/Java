@@ -20,8 +20,8 @@ public class ModifyPostingUseCase {
     private final WritePostingService writePostingService;
 
     @Transactional
-    public PostingDto execute(Long id, Long userId, String subject, String content) {
-        Posting posting = readPostingService.findById(id);
+    public PostingDto execute(Long userId, Long postingId, String subject, String content) {
+        Posting posting = readPostingService.findById(postingId);
         if (!posting.getUserId().equals(userId)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "수정권한이 없습니다.");
         }

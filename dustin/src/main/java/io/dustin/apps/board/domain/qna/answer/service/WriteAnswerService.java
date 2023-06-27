@@ -37,8 +37,8 @@ public class WriteAnswerService {
         answer.delete();
     }
 
-    public Answer findById(long id) {
-        Optional<Answer> optional = this.answerRepository.findById(id);
+    public Answer findById(long answerId) {
+        Optional<Answer> optional = this.answerRepository.findById(answerId);
         if(optional.isPresent()) {
             return optional.get();
         } else {
@@ -46,13 +46,13 @@ public class WriteAnswerService {
         }
     }
 
-    public Answer findByIdOrThrow(long id) {
-        Optional<Answer> optional = this.answerRepository.findById(id);
+    public Answer findByIdOrThrow(long answerId) {
+        Optional<Answer> optional = this.answerRepository.findById(answerId);
         if(optional.isPresent()) {
             return optional.get();
         } else {
             throw new DataNotFoundException("""
-                    id [#1]로 조회된 게시물이 없습니다.""".replace("#1", String.valueOf(id)));
+                    id [#1]로 조회된 게시물이 없습니다.""".replace("#1", String.valueOf(answerId)));
         }
     }
 

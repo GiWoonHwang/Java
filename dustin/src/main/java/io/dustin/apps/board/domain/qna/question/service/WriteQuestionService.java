@@ -41,16 +41,16 @@ public class WriteQuestionService {
     }
 
     @Transactional
-    public void click(long id){
-        log.info("게시물 id : [" + id + "] 조회 수 증가");
-        Question question = this.findByIdOrThrow(id);
+    public void click(long questionId){
+        log.info("게시물 id : [" + questionId + "] 조회 수 증가");
+        Question question = this.findByIdOrThrow(questionId);
         Long count = question.getClickCount() + 1;
         question.setClickCount(count);
     }
 
 
-    public Question findById(long id) {
-        Optional<Question> optional = this.questionRepository.findById(id);
+    public Question findById(long questionId) {
+        Optional<Question> optional = this.questionRepository.findById(questionId);
         if(optional.isPresent()) {
             return optional.get();
         } else {
@@ -58,13 +58,13 @@ public class WriteQuestionService {
         }
     }
 
-    public Question findByIdOrThrow(long id) {
-        Optional<Question> optional = this.questionRepository.findById(id);
+    public Question findByIdOrThrow(long questionId) {
+        Optional<Question> optional = this.questionRepository.findById(questionId);
         if(optional.isPresent()) {
             return optional.get();
         } else {
             throw new DataNotFoundException("""
-                    id [#1]로 조회된 게시물이 없습니다.""".replace("#1", String.valueOf(id)));
+                    id [#1]로 조회된 게시물이 없습니다.""".replace("#1", String.valueOf(questionId)));
         }
     }
 

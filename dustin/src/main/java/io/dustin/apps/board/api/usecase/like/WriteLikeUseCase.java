@@ -15,8 +15,8 @@ public class WriteLikeUseCase {
     private final WriteLikeService writeLikeService;
 
     @Transactional
-    public LikeDto execute(Long boardId, Long userId, BoardType boardType) {
-        Like like = writeLikeService.create(boardId, userId, boardType);
+    public LikeDto execute(Long userId, Long boardId,  BoardType boardType) {
+        Like like = writeLikeService.create(userId, boardId, boardType);
         LikeDto dto = LikeDto.from(like);
         return LikeDto.from(like);
     }

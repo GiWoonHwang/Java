@@ -20,7 +20,7 @@ public class DeleteLikeUseCase {
 
     @Transactional
     public LikeDto execute(Long userId, Long boardId, BoardType boardType) {
-        Like like = readLIkeService.getLike(boardId, userId, boardType);
+        Like like = readLIkeService.getLike(userId, boardId, boardType);
         if(!like.getUserId().equals(userId)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "삭제 권한이 없습니다.");
         }

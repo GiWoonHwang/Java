@@ -16,8 +16,8 @@ public class ReadLIkeService {
     private final LikeRepository likeRepository;
 
     @Transactional(readOnly = true)
-    public Like getLike(Long boardId, Long userId, BoardType boardType) {
-        return getEntity(this.likeRepository.findByUserIdAndBoardIdAndBoardType(boardId, userId, boardType), Like.class, "like not found");
+    public Like getLike(Long userId, Long boardId, BoardType boardType) {
+        return getEntity(this.likeRepository.findByUserIdAndBoardIdAndBoardType(userId, boardId, boardType), Like.class, "like not found");
     }
 
 }

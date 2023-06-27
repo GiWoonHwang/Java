@@ -40,34 +40,34 @@ public class WriteNoticeService implements LikeCountService {
     }
 
     @Transactional
-    public void click(long id){
-        log.info("게시물 id : [" + id + "] 조회 수 증가");
-        Notice notice = this.findByIdOrThrow(id);
+    public void click(long noticeId){
+        log.info("게시물 id : [" + noticeId + "] 조회 수 증가");
+        Notice notice = this.findByIdOrThrow(noticeId);
         Long count = notice.getClickCount() + 1;
         notice.setClickCount(count);
     }
 
     @Override
     @Transactional
-    public void likeCount(long id) {
-        System.out.println("공지 좋아요 id : [" + id + "] 카운트 하나 올림");
-        Notice notice = this.findByIdOrThrow(id);
+    public void likeCount(long noticeId) {
+        System.out.println("공지 좋아요 id : [" + noticeId + "] 카운트 하나 올림");
+        Notice notice = this.findByIdOrThrow(noticeId);
         Long likeCount = notice.getLikeCount() + 1;
         notice.setLikeCount(likeCount);
     }
 
     @Override
     @Transactional
-    public void likeUnCount(long id) {
-        System.out.println("공지 좋아요 id : [" + id + "] 카운트 하나 내림");
-        Notice notice = this.findByIdOrThrow(id);
+    public void likeUnCount(long noticeId) {
+        System.out.println("공지 좋아요 id : [" + noticeId + "] 카운트 하나 내림");
+        Notice notice = this.findByIdOrThrow(noticeId);
         Long likeCount = notice.getLikeCount() - 1;
         notice.setLikeCount(likeCount);
     }
 
 
-    public Notice findById(long id) {
-        Optional<Notice> optional = this.noticeRepository.findById(id);
+    public Notice findById(long noticeId) {
+        Optional<Notice> optional = this.noticeRepository.findById(noticeId);
         if(optional.isPresent()) {
             return optional.get();
         } else {
@@ -75,13 +75,13 @@ public class WriteNoticeService implements LikeCountService {
         }
     }
 
-    public Notice findByIdOrThrow(long id) {
-        Optional<Notice> optional = this.noticeRepository.findById(id);
+    public Notice findByIdOrThrow(long noticeId) {
+        Optional<Notice> optional = this.noticeRepository.findById(noticeId);
         if(optional.isPresent()) {
             return optional.get();
         } else {
             throw new DataNotFoundException("""
-                    id [#1]로 조회된 게시물이 없습니다.""".replace("#1", String.valueOf(id)));
+                    id [#1]로 조회된 게시물이 없습니다.""".replace("#1", String.valueOf(noticeId)));
         }
     }
 

@@ -31,8 +31,8 @@ public class ReadPostingService {
     }
 
     @Transactional(readOnly = true)
-    public Posting findById(long id) {
-        Optional<Posting> optional = this.postingRepository.findById(id);
+    public Posting findById(long postingId) {
+        Optional<Posting> optional = this.postingRepository.findById(postingId);
         if(optional.isPresent()) {
             return optional.get();
         } else {
@@ -41,13 +41,13 @@ public class ReadPostingService {
     }
 
     @Transactional(readOnly = true)
-    public Posting findByIdOrThrow(long id) {
-        Optional<Posting> optional = this.postingRepository.findById(id);
+    public Posting findByIdOrThrow(long postingId) {
+        Optional<Posting> optional = this.postingRepository.findById(postingId);
         if(optional.isPresent()) {
             return optional.get();
         } else {
             throw new DataNotFoundException("""
-                    id [#1]로 조회된 게시물이 없습니다.""".replace("#1", String.valueOf(id)));
+                    id [#1]로 조회된 게시물이 없습니다.""".replace("#1", String.valueOf(postingId)));
         }
     }
 

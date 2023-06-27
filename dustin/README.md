@@ -131,6 +131,12 @@ qna
 NOTICE 좋아요 안됨  -> db 설정 변경 후 해결
 
 
+코드 컨벤션 ?
+1. 유저아이디, 테이블id값, 제목, 내용 순으로 
+2. 연관관게라면 상위테이블 id값 먼저 ex) postingId, commentId .. 
+2. id -> 테이브Id ex) noticeId, questionId ...
+
+
 
 
 

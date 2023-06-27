@@ -41,22 +41,22 @@ public class WriteCommentService implements LikeCountService {
 
 
     @Override
-    public void likeCount(long id) { System.out.println("댓글 id : [" + id + "] 좋아요 수 증가");
-        Comment comment = this.findByIdOrThrow(id);
+    public void likeCount(long commentId) { System.out.println("댓글 id : [" + commentId + "] 좋아요 수 증가");
+        Comment comment = this.findByIdOrThrow(commentId);
         Long LikeCount = comment.getLikeCount() + 1;
         comment.setLikeCount(LikeCount);
     }
 
     @Override
-    public void likeUnCount(long id) {
-        System.out.println("댓글 id : [" + id + "] 좋아요 수 감소");
-        Comment comment = this.findByIdOrThrow(id);
+    public void likeUnCount(long commentId) {
+        System.out.println("댓글 id : [" + commentId + "] 좋아요 수 감소");
+        Comment comment = this.findByIdOrThrow(commentId);
         Long LikeCount = comment.getLikeCount() - 1;
         comment.setLikeCount(LikeCount);
     }
 
-    public Comment findById(long id) {
-        Optional<Comment> optional = this.commentRepository.findById(id);
+    public Comment findById(long commentId) {
+        Optional<Comment> optional = this.commentRepository.findById(commentId);
         if(optional.isPresent()) {
             return optional.get();
         } else {
@@ -64,13 +64,13 @@ public class WriteCommentService implements LikeCountService {
         }
     }
 
-    public Comment findByIdOrThrow(long id) {
-        Optional<Comment> optional = this.commentRepository.findById(id);
+    public Comment findByIdOrThrow(long commentId) {
+        Optional<Comment> optional = this.commentRepository.findById(commentId);
         if(optional.isPresent()) {
             return optional.get();
         } else {
             throw new DataNotFoundException("""
-                    id [#1]로 조회된 댓글이 없습니다.""".replace("#1", String.valueOf(id)));
+                    id [#1]로 조회된 댓글이 없습니다.""".replace("#1", String.valueOf(commentId)));
         }
     }
 

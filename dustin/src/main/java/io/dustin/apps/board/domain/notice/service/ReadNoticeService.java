@@ -38,8 +38,8 @@ public class ReadNoticeService {
     }
 
     @Transactional(readOnly = true)
-    public Notice findById(long id) {
-        Optional<Notice> optional = this.noticeRepository.findById(id);
+    public Notice findById(long noticeId) {
+        Optional<Notice> optional = this.noticeRepository.findById(noticeId);
         if(optional.isPresent()) {
             return optional.get();
         } else {
@@ -48,13 +48,13 @@ public class ReadNoticeService {
     }
 
     @Transactional(readOnly = true)
-    public Notice findByIdOrThrow(long id) {
-        Optional<Notice> optional = this.noticeRepository.findById(id);
+    public Notice findByIdOrThrow(long noticeId) {
+        Optional<Notice> optional = this.noticeRepository.findById(noticeId);
         if(optional.isPresent()) {
             return optional.get();
         } else {
             throw new DataNotFoundException("""
-                    id [#1]로 조회된 게시물이 없습니다.""".replace("#1", String.valueOf(id)));
+                    id [#1]로 조회된 게시물이 없습니다.""".replace("#1", String.valueOf(noticeId)));
         }
     }
 

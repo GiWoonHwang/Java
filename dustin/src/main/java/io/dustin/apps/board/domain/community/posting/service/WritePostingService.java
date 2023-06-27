@@ -44,48 +44,48 @@ public class WritePostingService implements LikeCountService {
 
 
     @Transactional
-    public void click(long id){
-        log.info("게시물 id : [" + id + "] 조회 수 증가");
-        Posting posting = this.findByIdOrThrow(id);
+    public void click(long postingId){
+        log.info("게시물 id : [" + postingId + "] 조회 수 증가");
+        Posting posting = this.findByIdOrThrow(postingId);
         Long count = posting.getClickCount() + 1;
         posting.setClickCount(count);
     }
 
     @Transactional
-    public void commentCount(long id) {
-        Posting posting = this.findByIdOrThrow(id);
+    public void commentCount(long postingId) {
+        Posting posting = this.findByIdOrThrow(postingId);
         Long count = posting.getCommentCount() + 1;
         log.info("게시물 id : [{}] 댓글 수 증가", posting.getCommentCount());
         posting.setCommentCount(count);
     }
 
     @Transactional
-    public void commentUnCount(long id) {
-        System.out.println("게시물 id : [" + id + "] 댓글 수 감소");
-        Posting posting = this.findByIdOrThrow(id);
+    public void commentUnCount(long postingId) {
+        System.out.println("게시물 id : [" + postingId + "] 댓글 수 감소");
+        Posting posting = this.findByIdOrThrow(postingId);
         Long count = posting.getCommentCount() - 1;
         posting.setLikeCount(count);
     }
 
     @Override
     @Transactional
-    public void likeCount(long id) { System.out.println("게시물 id : [" + id + "] 좋아요 증가");
-        Posting posting = this.findByIdOrThrow(id);
+    public void likeCount(long postingId) { System.out.println("게시물 id : [" + postingId + "] 좋아요 증가");
+        Posting posting = this.findByIdOrThrow(postingId);
         Long likeCount = posting.getLikeCount() + 1;
         posting.setLikeCount(likeCount);
     }
 
     @Override
     @Transactional
-    public void likeUnCount(long id) {
-        System.out.println("게시물 id : [" + id + "] 좋아요 감소");
-        Posting posting = this.findByIdOrThrow(id);
+    public void likeUnCount(long postingId) {
+        System.out.println("게시물 id : [" + postingId + "] 좋아요 감소");
+        Posting posting = this.findByIdOrThrow(postingId);
         Long likeCount = posting.getLikeCount() - 1;
         posting.setLikeCount(likeCount);
     }
 
-    public Posting findById(long id) {
-        Optional<Posting> optional = this.postingRepository.findById(id);
+    public Posting findById(long postingId) {
+        Optional<Posting> optional = this.postingRepository.findById(postingId);
         if(optional.isPresent()) {
             return optional.get();
         } else {
@@ -93,13 +93,13 @@ public class WritePostingService implements LikeCountService {
         }
     }
 
-    public Posting findByIdOrThrow(long id) {
-        Optional<Posting> optional = this.postingRepository.findById(id);
+    public Posting findByIdOrThrow(long postingId) {
+        Optional<Posting> optional = this.postingRepository.findById(postingId);
         if(optional.isPresent()) {
             return optional.get();
         } else {
             throw new DataNotFoundException("""
-                    id [#1]로 조회된 게시물이 없습니다.""".replace("#1", String.valueOf(id)));
+                    id [#1]로 조회된 게시물이 없습니다.""".replace("#1", String.valueOf(postingId)));
         }
     }
 }

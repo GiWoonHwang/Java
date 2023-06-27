@@ -37,8 +37,8 @@ public class ReadCommentService {
 
 
     @Transactional(readOnly = true)
-    public Comment findById(long id) {
-        Optional<Comment> optional = this.commentRepository.findById(id);
+    public Comment findById(long commentId) {
+        Optional<Comment> optional = this.commentRepository.findById(commentId);
         if(optional.isPresent()) {
             return optional.get();
         } else {
@@ -46,13 +46,13 @@ public class ReadCommentService {
         }
     }
     @Transactional(readOnly = true)
-    public Comment findByIdOrThrow(long id) {
-        Optional<Comment> optional = this.commentRepository.findById(id);
+    public Comment findByIdOrThrow(long commentId) {
+        Optional<Comment> optional = this.commentRepository.findById(commentId);
         if(optional.isPresent()) {
             return optional.get();
         } else {
             throw new DataNotFoundException("""
-                    id [#1]로 조회된 게시물이 없습니다.""".replace("#1", String.valueOf(id)));
+                    id [#1]로 조회된 게시물이 없습니다.""".replace("#1", String.valueOf(commentId)));
         }
     }
 

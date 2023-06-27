@@ -44,7 +44,7 @@ public class PostingController {
     public PostingDto modifyPosting(@PathVariable("postingId") Long postingId,
                                     @RequestBody PostingDto postingDto) {
         /** req 데이터 검증로직 추가 필요 */
-        return modifyPostingUseCase.execute(postingId, postingDto.userId(), postingDto.subject(), postingDto.content());
+        return modifyPostingUseCase.execute(postingDto.userId(), postingId, postingDto.subject(), postingDto.content());
     }
 
     //@PreAuthorize("isAuthenticated()")
@@ -52,7 +52,7 @@ public class PostingController {
     public PostingDto deletePosting(@PathVariable("postingId") Long postingId,
                                     @RequestBody PostingDto postingDto) {
         /** req 데이터 검증로직 추가 필요 */
-        return deletePostingUseCase.execute(postingId, postingDto.userId());
+        return deletePostingUseCase.execute(postingDto.userId(), postingId);
     }
 
 

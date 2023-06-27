@@ -18,7 +18,7 @@ public class DeleteNoticeUseCase {
     private final WriteNoticeService writeNoticeService;
 
     @Transactional
-    public NoticeDto execute(Long noticeId, Long adminId) {
+    public NoticeDto execute(Long adminId, Long noticeId) {
         Notice notice = readNoticeService.findById(noticeId);
         if(!notice.getAdminId().equals(adminId)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "삭제 권한이 없습니다.");
