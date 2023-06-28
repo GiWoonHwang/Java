@@ -1,21 +1,16 @@
 package io.dustin.apps.board.domain.notice.service;
 
-import io.dustin.apps.board.domain.community.posting.model.Posting;
 import io.dustin.apps.board.domain.notice.model.Notice;
 import io.dustin.apps.board.domain.notice.model.dto.NoticeDto;
 import io.dustin.apps.board.domain.notice.repository.NoticeRepository;
 import io.dustin.apps.common.exception.DataNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
-
-import static io.dustin.apps.common.utils.OptionalUtils.getEntity;
 
 @Slf4j
 @Service

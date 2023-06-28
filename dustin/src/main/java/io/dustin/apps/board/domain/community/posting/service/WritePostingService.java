@@ -1,11 +1,9 @@
 package io.dustin.apps.board.domain.community.posting.service;
 
-import io.dustin.apps.board.domain.community.comment.model.Comment;
-import io.dustin.apps.board.domain.like.model.LikeCountService;
 import io.dustin.apps.board.domain.community.posting.model.Posting;
 import io.dustin.apps.board.domain.community.posting.repository.PostingRepository;
+import io.dustin.apps.board.domain.like.model.LikeCountService;
 import io.dustin.apps.common.exception.DataNotFoundException;
-import io.dustin.apps.user.domain.model.SiteUser;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

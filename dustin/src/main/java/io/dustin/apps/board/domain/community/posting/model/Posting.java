@@ -1,22 +1,14 @@
 package io.dustin.apps.board.domain.community.posting.model;
 
-import io.dustin.apps.board.domain.qna.answer.model.Answer;
-import io.dustin.apps.board.domain.community.comment.model.Comment;
 import io.dustin.apps.common.code.YesOrNo;
 import io.dustin.apps.common.model.BaseEntity;
-import io.dustin.apps.common.model.IdAble;
-import io.dustin.apps.user.domain.model.SiteUser;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.DynamicUpdate;
-
-import java.util.List;
-import java.util.Set;
 
 @Getter
 @Entity

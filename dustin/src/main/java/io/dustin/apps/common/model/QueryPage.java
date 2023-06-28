@@ -1,6 +1,7 @@
 package io.dustin.apps.common.model;
 
-import lombok.*;
+import lombok.Data;
+import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;

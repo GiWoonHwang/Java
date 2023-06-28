@@ -1,8 +1,7 @@
 package io.dustin.apps.common.validation;
 
-import jakarta.validation.constraints.NotEmpty; // 빈 문자를 허용하지 않는다.
-import jakarta.validation.constraints.Size; // 문자 길이를 제한한다.
-
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 

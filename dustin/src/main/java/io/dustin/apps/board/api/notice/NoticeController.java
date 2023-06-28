@@ -4,7 +4,6 @@ import io.dustin.apps.board.api.usecase.notice.DeleteNoticeUseCase;
 import io.dustin.apps.board.api.usecase.notice.ModifyNoticeUseCase;
 import io.dustin.apps.board.api.usecase.notice.ReadNoticeUseCase;
 import io.dustin.apps.board.api.usecase.notice.WriteNoticeUseCase;
-import io.dustin.apps.board.domain.community.posting.model.dto.PostingDto;
 import io.dustin.apps.board.domain.notice.model.dto.NoticeDto;
 import io.dustin.apps.common.model.QueryPage;
 import io.dustin.apps.common.model.ResponseWithScroll;

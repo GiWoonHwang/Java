@@ -1,6 +1,5 @@
 package io.dustin.apps.user.domain.service;
 
-import io.dustin.apps.board.domain.community.posting.model.Posting;
 import io.dustin.apps.user.domain.model.SiteUser;
 import io.dustin.apps.user.domain.repository.UserRepository;
 import lombok.RequiredArgsConstructor;

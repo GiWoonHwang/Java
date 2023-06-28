@@ -11,8 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
-import static io.dustin.apps.common.utils.OptionalUtils.getEntity;
-
 @Service
 @RequiredArgsConstructor
 public class ReadPostingService {

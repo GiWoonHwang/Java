@@ -1,15 +1,13 @@
 package io.dustin.apps.board.domain.qna.answer.model;
 
-import java.util.List;
-import java.util.Set;
-
-import io.dustin.apps.board.domain.qna.question.model.Question;
 import io.dustin.apps.common.code.YesOrNo;
 import io.dustin.apps.common.model.BaseEntity;
-import io.dustin.apps.user.domain.model.SiteUser;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 
 @Getter

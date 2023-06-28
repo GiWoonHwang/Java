@@ -1,6 +1,5 @@
 package io.dustin.apps.board.domain.notice.model.dto;
 
-import io.dustin.apps.board.domain.community.posting.model.Posting;
 import io.dustin.apps.board.domain.notice.model.Notice;
 import io.dustin.apps.common.model.IdAble;
 import lombok.Builder;

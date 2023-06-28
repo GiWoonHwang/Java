@@ -3,14 +3,10 @@ package io.dustin.apps.board.api.usecase.community.posting;
 import io.dustin.apps.board.api.usecase.community.comment.ReadCommentUseCase;
 import io.dustin.apps.board.domain.community.comment.model.dto.CommentDto;
 import io.dustin.apps.board.domain.community.comment.service.ReadCommentService;
-import io.dustin.apps.board.domain.community.posting.model.Posting;
 import io.dustin.apps.board.domain.community.posting.model.dto.PostingDetailDto;
-import io.dustin.apps.board.domain.community.posting.model.dto.PostingDetailDtoTest;
 import io.dustin.apps.board.domain.community.posting.model.dto.PostingDto;
 import io.dustin.apps.board.domain.community.posting.service.ReadPostingService;
 import io.dustin.apps.board.domain.community.posting.service.WritePostingService;
-import io.dustin.apps.board.domain.notice.model.dto.NoticeDto;
-import io.dustin.apps.board.domain.notice.service.WriteNoticeService;
 import io.dustin.apps.common.model.CountByPagingInfo;
 import io.dustin.apps.common.model.QueryPage;
 import io.dustin.apps.common.model.ResponseWithScroll;
@@ -18,12 +14,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
 import static io.dustin.apps.common.model.ResponseWithScrollSetting.getCountByPagingInfo;
-import static java.util.stream.Collectors.groupingBy;
 
 @Service
 @RequiredArgsConstructor

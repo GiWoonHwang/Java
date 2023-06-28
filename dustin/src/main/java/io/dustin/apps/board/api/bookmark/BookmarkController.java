@@ -2,13 +2,7 @@ package io.dustin.apps.board.api.bookmark;
 
 import io.dustin.apps.board.api.usecase.bookmark.DeleteBookmarkUseCase;
 import io.dustin.apps.board.api.usecase.bookmark.WriteBookmarkUseCase;
-import io.dustin.apps.board.api.usecase.like.DeleteLikeUseCase;
-import io.dustin.apps.board.api.usecase.like.WriteLikeUseCase;
 import io.dustin.apps.board.domain.bookmark.model.dto.BookMarkDto;
-import io.dustin.apps.board.domain.like.model.LikeCountService;
-import io.dustin.apps.board.domain.like.model.dto.LikeDto;
-import io.dustin.apps.board.domain.like.model.dto.LikeItCommand;
-import io.dustin.apps.common.model.QueryPage;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,7 +1,5 @@
 package io.dustin.apps.board.api.usecase.community.posting;
 
-import io.dustin.apps.board.domain.community.comment.model.Comment;
-import io.dustin.apps.board.domain.community.comment.model.dto.CommentDto;
 import io.dustin.apps.board.domain.community.posting.model.Posting;
 import io.dustin.apps.board.domain.community.posting.model.dto.PostingDto;
 import io.dustin.apps.board.domain.community.posting.service.ReadPostingService;

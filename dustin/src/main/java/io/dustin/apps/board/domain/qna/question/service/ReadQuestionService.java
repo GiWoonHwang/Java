@@ -1,29 +1,19 @@
 package io.dustin.apps.board.domain.qna.question.service;
 
-import io.dustin.apps.board.domain.community.posting.model.Posting;
-import io.dustin.apps.board.domain.community.posting.model.dto.PostingDto;
 import io.dustin.apps.board.domain.qna.answer.model.Answer;
-import io.dustin.apps.board.domain.qna.answer.model.dto.AnswerDto;
 import io.dustin.apps.board.domain.qna.question.model.Question;
 import io.dustin.apps.board.domain.qna.question.model.dto.QuestionDto;
+import io.dustin.apps.board.domain.qna.question.repository.QuestionRepository;
 import io.dustin.apps.common.exception.DataNotFoundException;
 import io.dustin.apps.user.domain.model.SiteUser;
-import io.dustin.apps.board.domain.qna.question.repository.QuestionRepository;
 import jakarta.persistence.criteria.*;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
-import static io.dustin.apps.common.utils.OptionalUtils.getEntity;
 
 @Service
 @RequiredArgsConstructor

@@ -1,6 +1,5 @@
 package io.dustin.apps.board.domain.qna.question.repository.custom;
 
-import io.dustin.apps.board.domain.community.posting.model.dto.PostingDto;
 import io.dustin.apps.board.domain.qna.question.model.dto.QuestionDto;
 
 import java.util.List;

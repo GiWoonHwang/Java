@@ -3,15 +3,9 @@ package io.dustin.apps.board.api.qna;
 import io.dustin.apps.board.api.usecase.qna.answer.DeleteAnswerUseCase;
 import io.dustin.apps.board.api.usecase.qna.answer.ModifyAnswerUseCase;
 import io.dustin.apps.board.api.usecase.qna.answer.WriteAnswerUseCase;
-import io.dustin.apps.board.domain.community.comment.model.dto.CommentDto;
-import io.dustin.apps.common.validation.AnswerForm;
 import io.dustin.apps.board.domain.qna.answer.model.dto.AnswerDto;
 import io.dustin.apps.common.exception.BadRequestParameterException;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
-//import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;

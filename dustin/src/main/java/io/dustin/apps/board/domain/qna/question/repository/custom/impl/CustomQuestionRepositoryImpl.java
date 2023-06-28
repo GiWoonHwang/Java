@@ -3,20 +3,14 @@ package io.dustin.apps.board.domain.qna.question.repository.custom.impl;
 import com.querydsl.core.types.dsl.CaseBuilder;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import io.dustin.apps.board.domain.community.posting.model.dto.PostingDto;
-import io.dustin.apps.board.domain.qna.answer.model.Answer;
 import io.dustin.apps.board.domain.qna.question.model.dto.QuestionDto;
 import io.dustin.apps.board.domain.qna.question.repository.custom.CustomQuestionRepository;
-import io.dustin.apps.common.code.BoardType;
 import io.dustin.apps.common.code.YesOrNo;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 
 import static com.querydsl.core.types.Projections.constructor;
-import static io.dustin.apps.board.domain.bookmark.model.QBookmark.bookmark;
-import static io.dustin.apps.board.domain.community.posting.model.QPosting.posting;
-import static io.dustin.apps.board.domain.like.model.QLike.like;
 import static io.dustin.apps.board.domain.qna.answer.model.QAnswer.answer;
 import static io.dustin.apps.board.domain.qna.question.model.QQuestion.question;
 

@@ -16,7 +16,6 @@ import static com.querydsl.core.types.Projections.constructor;
 import static io.dustin.apps.board.domain.community.comment.model.QComment.comment;
 import static io.dustin.apps.board.domain.community.posting.model.QPosting.posting;
 import static io.dustin.apps.board.domain.like.model.QLike.like;
-import static io.dustin.apps.board.domain.notice.model.QNotice.notice;
 
 @RequiredArgsConstructor
 public class CustomCommentRepositoryImpl implements CustomCommentRepository {

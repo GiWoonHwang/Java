@@ -1,19 +1,13 @@
 package io.dustin.apps.board.domain.qna.answer.service;
 
-import io.dustin.apps.board.domain.community.posting.model.dto.PostingDto;
-import io.dustin.apps.board.domain.notice.model.Notice;
-import io.dustin.apps.board.domain.qna.answer.model.dto.AnswerDto;
-import io.dustin.apps.board.domain.qna.answer.repository.AnswerRepository;
 import io.dustin.apps.board.domain.qna.answer.model.Answer;
+import io.dustin.apps.board.domain.qna.answer.repository.AnswerRepository;
 import io.dustin.apps.common.exception.DataNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import java.util.Optional;
-
-import static io.dustin.apps.common.utils.OptionalUtils.getEntity;
 
 @Service
 @RequiredArgsConstructor

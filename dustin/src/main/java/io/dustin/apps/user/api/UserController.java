@@ -2,7 +2,6 @@ package io.dustin.apps.user.api;
 
 import io.dustin.apps.common.validation.UserCreateForm;
 import io.dustin.apps.user.api.usecase.WriteUserUseCase;
-import io.dustin.apps.user.domain.model.SiteUser;
 import io.dustin.apps.user.domain.model.dto.UserDto;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

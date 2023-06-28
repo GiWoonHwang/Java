@@ -1,9 +1,6 @@
 package io.dustin.apps.board.domain.bookmark.model.dto;
 
 import io.dustin.apps.board.domain.bookmark.model.Bookmark;
-import io.dustin.apps.board.domain.like.model.Like;
-import io.dustin.apps.board.domain.like.model.dto.LikeDto;
-import io.dustin.apps.common.code.BoardType;
 import lombok.Builder;
 
 import java.time.LocalDateTime;

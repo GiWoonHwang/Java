@@ -1,12 +1,8 @@
 package io.dustin.apps.common.model;
 
-import io.dustin.apps.board.domain.community.comment.service.ReadCommentService;
-import io.dustin.apps.board.domain.community.posting.model.dto.PostingDto;
-import io.dustin.apps.board.domain.community.posting.service.ReadPostingService;
 import io.dustin.apps.common.exception.DataNotFoundException;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 
 import java.util.Comparator;
 import java.util.List;

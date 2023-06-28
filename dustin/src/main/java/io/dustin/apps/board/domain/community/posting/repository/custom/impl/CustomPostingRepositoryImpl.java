@@ -14,7 +14,6 @@ import java.util.List;
 
 import static com.querydsl.core.types.Projections.constructor;
 import static io.dustin.apps.board.domain.bookmark.model.QBookmark.bookmark;
-import static io.dustin.apps.board.domain.community.comment.model.QComment.comment;
 import static io.dustin.apps.board.domain.community.posting.model.QPosting.posting;
 import static io.dustin.apps.board.domain.like.model.QLike.like;
 

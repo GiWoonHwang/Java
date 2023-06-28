@@ -5,7 +5,6 @@ import io.dustin.apps.board.api.usecase.like.WriteLikeUseCase;
 import io.dustin.apps.board.domain.like.model.LikeCountService;
 import io.dustin.apps.board.domain.like.model.dto.LikeDto;
 import io.dustin.apps.board.domain.like.model.dto.LikeItCommand;
-import io.dustin.apps.common.model.QueryPage;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

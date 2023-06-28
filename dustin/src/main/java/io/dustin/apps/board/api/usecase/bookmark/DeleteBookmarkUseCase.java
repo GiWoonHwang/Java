@@ -4,7 +4,6 @@ import io.dustin.apps.board.domain.bookmark.model.Bookmark;
 import io.dustin.apps.board.domain.bookmark.model.dto.BookMarkDto;
 import io.dustin.apps.board.domain.bookmark.service.ReadBookmarkService;
 import io.dustin.apps.board.domain.bookmark.service.WriteBookmarkService;
-import io.dustin.apps.common.code.BoardType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;

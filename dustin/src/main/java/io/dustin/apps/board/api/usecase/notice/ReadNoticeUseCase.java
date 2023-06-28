@@ -1,8 +1,6 @@
 package io.dustin.apps.board.api.usecase.notice;
 
 
-import io.dustin.apps.board.domain.community.posting.model.dto.PostingDto;
-import io.dustin.apps.board.domain.notice.model.Notice;
 import io.dustin.apps.board.domain.notice.model.dto.NoticeDto;
 import io.dustin.apps.board.domain.notice.service.ReadNoticeService;
 import io.dustin.apps.board.domain.notice.service.WriteNoticeService;

@@ -1,6 +1,5 @@
 package io.dustin.apps.board.api.usecase.qna.question;
 
-import io.dustin.apps.board.domain.community.posting.model.dto.PostingDto;
 import io.dustin.apps.board.domain.qna.answer.model.Answer;
 import io.dustin.apps.board.domain.qna.answer.model.dto.AnswerDto;
 import io.dustin.apps.board.domain.qna.answer.service.ReadAnswerService;

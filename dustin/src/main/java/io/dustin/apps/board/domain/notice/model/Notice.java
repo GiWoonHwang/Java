@@ -1,9 +1,7 @@
 package io.dustin.apps.board.domain.notice.model;
 
-import io.dustin.apps.board.domain.admin.model.Admin;
 import io.dustin.apps.common.code.YesOrNo;
 import io.dustin.apps.common.model.BaseEntity;
-import io.dustin.apps.user.domain.model.SiteUser;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;

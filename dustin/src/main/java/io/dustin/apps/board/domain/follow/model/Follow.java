@@ -1,7 +1,6 @@
 package io.dustin.apps.board.domain.follow.model;
 
 
-import io.dustin.apps.common.code.BoardType;
 import io.dustin.apps.common.model.BaseEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;

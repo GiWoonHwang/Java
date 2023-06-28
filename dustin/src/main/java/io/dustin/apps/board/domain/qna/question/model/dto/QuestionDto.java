@@ -3,6 +3,7 @@ package io.dustin.apps.board.domain.qna.question.model.dto;
 import io.dustin.apps.board.domain.qna.question.model.Question;
 import io.dustin.apps.common.model.IdAble;
 import lombok.Builder;
+
 import java.time.LocalDateTime;
 
 @Builder

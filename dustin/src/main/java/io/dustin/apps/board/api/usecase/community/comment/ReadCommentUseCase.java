@@ -2,16 +2,12 @@ package io.dustin.apps.board.api.usecase.community.comment;
 
 import io.dustin.apps.board.domain.community.comment.model.dto.CommentDto;
 import io.dustin.apps.board.domain.community.comment.service.ReadCommentService;
-import io.dustin.apps.board.domain.community.posting.model.dto.PostingDto;
-import io.dustin.apps.board.domain.notice.model.dto.NoticeDto;
-import io.dustin.apps.common.exception.DataNotFoundException;
 import io.dustin.apps.common.model.CountByPagingInfo;
 import io.dustin.apps.common.model.QueryPage;
 import io.dustin.apps.common.model.ResponseWithScroll;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Comparator;
 import java.util.List;
 
 import static io.dustin.apps.common.model.ResponseWithScrollSetting.getCountByPagingInfo;
