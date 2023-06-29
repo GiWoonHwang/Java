@@ -12,7 +12,6 @@ public class ReadAdminUseCase {
     private final ReadPostingService readPostingService;
 
     /** 전체 게시물 불러오기 */
-    PostingDto
 
     /** 단일 게시물 불러오기 */
 
