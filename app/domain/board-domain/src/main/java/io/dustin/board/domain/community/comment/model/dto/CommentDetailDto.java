@@ -1,0 +1,47 @@
+package io.dustin.board.domain.community.comment.model.dto;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.dustin.board.common.model.ResponseWithScroll;
+import io.dustin.board.domain.community.comment.model.Comment;
+import io.dustin.board.domain.community.posting.model.Posting;
+import lombok.Builder;
+
+import java.time.LocalDateTime;
+import java.util.List;
+
+@Builder
+public record CommentDetailDto (
+        Long id,
+
+        @JsonIgnore
+        Posting posting,
+
+        String content,
+
+        ResponseWithScroll<List<CommentDto>> comment,
+
+        Boolean isLike,
+
+        Boolean isReply,
+
+        Long userId,
+
+        Long postingId,
+
+        Long replyId,
+
+        LocalDateTime createdAt
+){
+    public static CommentDetailDto from(Comment comment) {
+        return CommentDetailDto.builder()
+                .id(comment.getId())
+                .content(comment.getContent())
+                .userId(comment.getUserId())
+                .postingId(comment.getPostingId())
+                .replyId(comment.getReplyId())
+                .createdAt(comment.getCreatedAt())
+                .build();
+    }
+}
+
+
