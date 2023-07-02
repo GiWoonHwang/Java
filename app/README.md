@@ -4,14 +4,7 @@
 프로젝트 구조
  ㄴ apps
     ㄴ domain
-        ㄴ api
-            ㄴ controller
-                - DomainController.java
-            ㄴ usecase
-                - ReadDomainUseCase.java
-                - WriteDomainUseCase.java
-                - DeleteDomainUseCase.java
-                - ModifyDomainUseCase.java                
+        ㄴ common     
         ㄴ model
             ㄴ dto
                 - DomainDto.java
@@ -23,6 +16,7 @@
         ㄴ service 
             - ReadDomainService.java
             - WriteDomainService.java
+        
     ㄴ common
         ㄴ advice
         ㄴ code
@@ -34,6 +28,17 @@
         ㄴ repository
         ㄴ utils
         ㄴ validation 
+        
+    ㄴ project
+        ㄴ api
+            ㄴ controller
+                - DomainController.java
+            ㄴ usecase
+                - ReadDomainUseCase.java
+                - WriteDomainUseCase.java
+                - DeleteDomainUseCase.java
+                - ModifyDomainUseCase.java 
+        ㄴ SpringBootApplication.java
         
     
 
@@ -62,11 +67,6 @@ qna
  - 1:1 문의
  - 1:1 답변
 
-공지 ---> 어드민의 세부기능으로 이동
- - 공지사항 작성
- - 공지사항 저장
- - 공지사항 수정
- - 공지사항 보여주기
  
 어드민
  - 신고 처리
@@ -138,17 +138,23 @@ NOTICE 좋아요 안됨  -> db 설정 변경 후 해결
 
 
 
---- 06.28일 고민 ---
+--- 06.28일 ---
 
 1. 어드민은 기본적으로 도메인의 usecase를 다시 불러온다 -> ex) 게시물 리스트 등등 ... 
  -> 그렇다면 usecase를 가져다 써야 하나 ? usecase는 요구사항을 구현해 놓은거니까 service를 써야 하나 ?
- -> 내생각에는 서비스다: 요구사항에는 여러 기능들이 섞여있을 수 있기 떄문
  
 2. 광고를 올려야 하니까 게시물 작성도 필요하겠고 ...
 
 3. 1번 고민은 잘못 되었다. 어드민은 개별 프로젝트로 분리한다
 
 
+--- 07.04 ---
 
+1. 06.28의 고민의 결과로 어드민을 개별 서버에서 실행킨다. 이에 더해   프로젝트를 모노레포로 구성하기로 결정
 
+모노레포 사용 이유
+    - 코드 공유 및 재사용: 모노레포에서는 여러 프로젝트가 동일한 코드베이스를 공유할 수 있다. 공통 모듈, 유틸리티, 컴포넌트 등을 단일 저장소에서 관리하므로 코드 중복을 피하고, 코드 품질과 일관성을 유지할 수 있다.
+    - 의존성 관리: 모노레포에서는 프로젝트 간의 의존성을 쉽게 관리할 수 있다. 의존하는 프로젝트의 코드 변경이 있을 때 자동으로 의존하는 프로젝트도 업데이트되므로 일관된 버전 관리가 가능하다.
+    - 협업 및 커뮤니케이션 간소화: 모노레포에서는 여러 프로젝트가 함께 개발되므로, 팀 내에서의 협업과 커뮤니케이션이 용하다. 코드 변경에 대한 지식 공유와 코드 리뷰, 버그 추적 등이 단일 저장소에서 이루어지므로 효율성을 높일 수 있다.
+    - 버전 관리 및 이력 추적: 모노레포에서는 모든 프로젝트의 버전 관리 및 이력 추적을 단일 저장소에서 수행할 수 있다. 이를 통해 특정 시점의 코드 상태를 쉽게 확인하고, 변경 내역을 추적하고 관리할 수 있다. 
 ```
