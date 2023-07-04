@@ -1,28 +1,0 @@
-
-t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Î™ö²ûÿÿÿÿ
-£
-java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(®Ò»Çÿÿÿÿÿ8Ñàá­„1
-y
-java:S1450"WRemove the "calories" field and declare it as a local variable in the relevant methods.(Ã¯ÿÙüÿÿÿÿ8Ôàá­„1
-}
-java:S1450"[Remove the "carbohydrate" field and declare it as a local variable in the relevant methods.(°ôŸûÿÿÿÿ8Ôàá­„1
-t
-java:S1450"RRemove the "fat" field and declare it as a local variable in the relevant methods.(¬ŸªÏşÿÿÿÿ8Ôàá­„1
-w
-java:S1450"ZRemove the "servingSize" field and declare it as a local variable in the relevant methods.(ƒÔ¢æ8Ôàá­„1
-t
-java:S1450"WRemove the "servings" field and declare it as a local variable in the relevant methods.(¯Ö“Ÿ8Õàá­„1
-r
-java:S1450"URemove the "sodium" field and declare it as a local variable in the relevant methods.(ë¹¼‹8Õàá­„1
-L
-java:S1068"/Remove this unused "servingSize" private field.(ƒÔ¢æ8ààá­„1
-I
-java:S1068",Remove this unused "servings" private field.(¯Ö“Ÿ8áàá­„1
-N
-java:S1068",Remove this unused "calories" private field.(Ã¯ÿÙüÿÿÿÿ8áàá­„1
-I
-java:S1068"'Remove this unused "fat" private field.(¬ŸªÏşÿÿÿÿ8áàá­„1
-G
-java:S1068"*Remove this unused "sodium" private field.(ë¹¼‹8áàá­„1
-R
-java:S1068"0Remove this unused "carbohydrate" private field.(°ôŸûÿÿÿÿ8áàá­„1

@@ -1,18 +1,0 @@
-
-v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ù®¼”8‡Ş­„1
-g
-java:S1659"EDeclare "servings" and all following declarations on a separate line.(…ßÍıÿÿÿÿ8Ğ±¶­„1
-G
-java:S1659"*Declare "carbohydrate" on a separate line.(ƒ„ÑĞ8Ğ±¶­„1
-Q
-java:S1068"/Remove this unused "servingSize" private field.(…ßÍıÿÿÿÿ8Ù±¶­„1
-N
-java:S1068",Remove this unused "servings" private field.(…ßÍıÿÿÿÿ8Ú±¶­„1
-N
-java:S1068",Remove this unused "calories" private field.(…ßÍıÿÿÿÿ8Ú±¶­„1
-I
-java:S1068"'Remove this unused "fat" private field.(…ßÍıÿÿÿÿ8Ú±¶­„1
-G
-java:S1068"*Remove this unused "sodium" private field.(ƒ„ÑĞ8Ú±¶­„1
-M
-java:S1068"0Remove this unused "carbohydrate" private field.(ƒ„ÑĞ8Û±¶­„1

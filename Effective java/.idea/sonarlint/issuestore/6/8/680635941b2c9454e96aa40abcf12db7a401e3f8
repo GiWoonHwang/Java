@@ -1,19 +1,0 @@
-
-{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÐÙ±ôÿÿÿÿÿ8û¸¬®„1
-^
-java:S18548"<Remove this useless assignment to local variable "cocaCola".(×Ì€úÿÿÿÿ8†¹¬®„1
-O
-java:S14818"-Remove this unused "cocaCola" local variable.(×Ì€úÿÿÿÿ8‡¹¬®„1
-Q
-java:S1068	"/Remove this unused "servingSize" private field.(µÁ€Ìýÿÿÿÿ8ˆ¹¬®„1
-N
-java:S1068
-",Remove this unused "servings" private field.(ò’©æøÿÿÿÿ8ˆ¹¬®„1
-I
-java:S1068",Remove this unused "calories" private field.(»¤µâ8ˆ¹¬®„1
-D
-java:S1068"'Remove this unused "fat" private field.(å®­»8ˆ¹¬®„1
-G
-java:S1068"*Remove this unused "sodium" private field.(áëµ8ˆ¹¬®„1
-M
-java:S1068"0Remove this unused "carbohydrate" private field.(Ì³á 8ˆ¹¬®„1
