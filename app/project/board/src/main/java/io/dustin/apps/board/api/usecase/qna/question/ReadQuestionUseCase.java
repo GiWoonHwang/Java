@@ -1,8 +1,6 @@
 package io.dustin.apps.board.api.usecase.qna.question;
 
-import io.dustin.board.common.model.CountByPagingInfo;
-import io.dustin.board.common.model.QueryPage;
-import io.dustin.board.common.model.ResponseWithScroll;
+
 import io.dustin.board.domain.qna.answer.model.Answer;
 import io.dustin.board.domain.qna.answer.model.dto.AnswerDto;
 import io.dustin.board.domain.qna.answer.service.ReadAnswerService;
@@ -10,12 +8,16 @@ import io.dustin.board.domain.qna.question.model.dto.QuestionDetailDto;
 import io.dustin.board.domain.qna.question.model.dto.QuestionDto;
 import io.dustin.board.domain.qna.question.service.ReadQuestionService;
 import io.dustin.board.domain.qna.question.service.WriteQuestionService;
+import io.dustin.common.model.CountByPagingInfo;
+import io.dustin.common.model.QueryPage;
+import io.dustin.common.model.ResponseWithScroll;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static io.dustin.board.common.model.ResponseWithScrollSetting.getCountByPagingInfo;
+import static io.dustin.common.model.ResponseWithScrollSetting.getCountByPagingInfo;
+
 
 @Service
 @RequiredArgsConstructor

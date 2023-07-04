@@ -19,7 +19,7 @@ public class QQuestion extends EntityPathBase<Question> {
 
     public static final QQuestion question = new QQuestion("question");
 
-    public final io.dustin.board.common.model.QBaseEntity _super = new io.dustin.board.common.model.QBaseEntity(this);
+    public final io.dustin.common.model.QBaseEntity _super = new io.dustin.common.model.QBaseEntity(this);
 
     public final NumberPath<Long> clickCount = createNumber("clickCount", Long.class);
 
@@ -30,7 +30,7 @@ public class QQuestion extends EntityPathBase<Question> {
 
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
-    public final EnumPath<io.dustin.board.common.code.YesOrNo> isDeleted = createEnum("isDeleted", io.dustin.board.common.code.YesOrNo.class);
+    public final EnumPath<io.dustin.common.code.YesOrNo> isDeleted = createEnum("isDeleted", io.dustin.common.code.YesOrNo.class);
 
     public final StringPath subject = createString("subject");
 

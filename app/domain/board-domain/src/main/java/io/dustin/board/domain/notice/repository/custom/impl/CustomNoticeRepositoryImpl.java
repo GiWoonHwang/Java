@@ -3,10 +3,10 @@ package io.dustin.board.domain.notice.repository.custom.impl;
 import com.querydsl.core.types.dsl.CaseBuilder;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import io.dustin.board.common.code.BoardType;
-import io.dustin.board.common.code.YesOrNo;
 import io.dustin.board.domain.notice.model.dto.NoticeDto;
 import io.dustin.board.domain.notice.repository.custom.CustomNoticeRepository;
+import io.dustin.board.common.code.BoardType;
+import io.dustin.common.code.YesOrNo;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;

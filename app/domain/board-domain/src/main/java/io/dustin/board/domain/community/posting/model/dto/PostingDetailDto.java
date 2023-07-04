@@ -1,7 +1,7 @@
 package io.dustin.board.domain.community.posting.model.dto;
 
-import io.dustin.board.common.model.ResponseWithScroll;
 import io.dustin.board.domain.community.comment.model.dto.CommentDto;
+import io.dustin.common.model.ResponseWithScroll;
 import lombok.Builder;
 
 import java.util.List;

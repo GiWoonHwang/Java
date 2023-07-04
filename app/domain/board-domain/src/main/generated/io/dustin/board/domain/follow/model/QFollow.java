@@ -19,7 +19,7 @@ public class QFollow extends EntityPathBase<Follow> {
 
     public static final QFollow follow = new QFollow("follow");
 
-    public final io.dustin.board.common.model.QBaseEntity _super = new io.dustin.board.common.model.QBaseEntity(this);
+    public final io.dustin.common.model.QBaseEntity _super = new io.dustin.common.model.QBaseEntity(this);
 
     //inherited
     public final DateTimePath<java.time.LocalDateTime> createdAt = _super.createdAt;

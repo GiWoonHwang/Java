@@ -1,9 +1,9 @@
 package io.dustin.board.domain.qna.question.service;
 
 
-import io.dustin.board.common.exception.DataNotFoundException;
 import io.dustin.board.domain.qna.question.model.Question;
 import io.dustin.board.domain.qna.question.repository.QuestionRepository;
+import io.dustin.common.exception.DataNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

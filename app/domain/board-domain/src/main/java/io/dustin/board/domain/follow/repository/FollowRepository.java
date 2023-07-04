@@ -1,8 +1,8 @@
 package io.dustin.board.domain.follow.repository;
 
 
-import io.dustin.board.common.repository.BaseRepository;
 import io.dustin.board.domain.follow.model.Follow;
+import io.dustin.common.repository.BaseRepository;
 
 public interface FollowRepository extends BaseRepository<Follow, Long> {
 

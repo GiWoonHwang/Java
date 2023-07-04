@@ -3,11 +3,11 @@ package io.dustin.board.domain.community.comment.repository.custom.impl;
 import com.querydsl.core.types.dsl.CaseBuilder;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import io.dustin.board.common.code.BoardType;
-import io.dustin.board.common.code.YesOrNo;
 import io.dustin.board.domain.community.comment.model.QComment;
 import io.dustin.board.domain.community.comment.model.dto.CommentDto;
 import io.dustin.board.domain.community.comment.repository.custom.CustomCommentRepository;
+import io.dustin.board.common.code.BoardType;
+import io.dustin.common.code.YesOrNo;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;

@@ -1,9 +1,9 @@
 package io.dustin.board.domain.community.posting.service;
 
-import io.dustin.board.common.exception.DataNotFoundException;
 import io.dustin.board.domain.community.posting.model.Posting;
 import io.dustin.board.domain.community.posting.model.dto.PostingDto;
 import io.dustin.board.domain.community.posting.repository.PostingRepository;
+import io.dustin.common.exception.DataNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

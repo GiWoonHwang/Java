@@ -3,9 +3,9 @@ package io.dustin.board.domain.qna.question.repository.custom.impl;
 import com.querydsl.core.types.dsl.CaseBuilder;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import io.dustin.board.common.code.YesOrNo;
 import io.dustin.board.domain.qna.question.model.dto.QuestionDto;
 import io.dustin.board.domain.qna.question.repository.custom.CustomQuestionRepository;
+import io.dustin.common.code.YesOrNo;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;

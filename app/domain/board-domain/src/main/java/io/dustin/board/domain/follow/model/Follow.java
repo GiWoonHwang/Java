@@ -1,6 +1,6 @@
 package io.dustin.board.domain.follow.model;
 
-import io.dustin.board.common.model.BaseEntity;
+import io.dustin.common.model.BaseEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;

@@ -1,9 +1,9 @@
 package io.dustin.board.domain.qna.question.repository;
 
 
-import io.dustin.board.common.repository.BaseRepository;
 import io.dustin.board.domain.qna.question.model.Question;
 import io.dustin.board.domain.qna.question.repository.custom.CustomQuestionRepository;
+import io.dustin.common.repository.BaseRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;

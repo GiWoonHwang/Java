@@ -1,7 +1,7 @@
 package io.dustin.board.domain.bookmark.repository;
 
-import io.dustin.board.common.repository.BaseRepository;
 import io.dustin.board.domain.bookmark.model.Bookmark;
+import io.dustin.common.repository.BaseRepository;
 
 import java.util.Optional;
 

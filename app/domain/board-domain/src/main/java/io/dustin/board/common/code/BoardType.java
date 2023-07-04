@@ -1,8 +1,9 @@
 package io.dustin.board.common.code;
 
-import io.dustin.board.common.utils.CommonUtil;
-import io.dustin.board.common.utils.Supplier;
 import io.dustin.board.domain.like.model.LikeCountService;
+import io.dustin.common.utils.CommonUtil;
+
+import java.util.function.Supplier;
 
 public enum BoardType {
 

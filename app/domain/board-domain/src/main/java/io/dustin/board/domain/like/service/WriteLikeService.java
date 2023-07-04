@@ -1,8 +1,8 @@
 package io.dustin.board.domain.like.service;
 
-import io.dustin.board.common.code.BoardType;
 import io.dustin.board.domain.like.model.Like;
 import io.dustin.board.domain.like.repository.LikeRepository;
+import io.dustin.board.common.code.BoardType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

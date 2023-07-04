@@ -1,18 +1,20 @@
 package io.dustin.apps.board.api.usecase.notice;
 
-import io.dustin.board.common.model.CountByPagingInfo;
-import io.dustin.board.common.model.QueryPage;
-import io.dustin.board.common.model.ResponseWithScroll;
+
 import io.dustin.board.domain.notice.model.dto.NoticeDto;
 import io.dustin.board.domain.notice.service.ReadNoticeService;
 import io.dustin.board.domain.notice.service.WriteNoticeService;
+import io.dustin.common.model.CountByPagingInfo;
+import io.dustin.common.model.QueryPage;
+import io.dustin.common.model.ResponseWithScroll;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-import static io.dustin.board.common.model.ResponseWithScrollSetting.getCountByPagingInfo;
+import static io.dustin.common.model.ResponseWithScrollSetting.getCountByPagingInfo;
+
 
 @Service
 @RequiredArgsConstructor

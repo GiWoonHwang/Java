@@ -1,16 +1,18 @@
 package io.dustin.apps.board.api.usecase.community.comment;
 
-import io.dustin.board.common.model.CountByPagingInfo;
-import io.dustin.board.common.model.QueryPage;
-import io.dustin.board.common.model.ResponseWithScroll;
+
 import io.dustin.board.domain.community.comment.model.dto.CommentDto;
 import io.dustin.board.domain.community.comment.service.ReadCommentService;
+import io.dustin.common.model.CountByPagingInfo;
+import io.dustin.common.model.QueryPage;
+import io.dustin.common.model.ResponseWithScroll;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static io.dustin.board.common.model.ResponseWithScrollSetting.getCountByPagingInfo;
+import static io.dustin.common.model.ResponseWithScrollSetting.getCountByPagingInfo;
+
 
 @Service
 @RequiredArgsConstructor

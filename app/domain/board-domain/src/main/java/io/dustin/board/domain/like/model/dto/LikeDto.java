@@ -1,7 +1,7 @@
 package io.dustin.board.domain.like.model.dto;
 
-import io.dustin.board.common.code.BoardType;
 import io.dustin.board.domain.like.model.Like;
+import io.dustin.board.common.code.BoardType;
 import lombok.Builder;
 
 import java.time.LocalDateTime;

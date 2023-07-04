@@ -4,10 +4,10 @@ import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.dsl.CaseBuilder;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import io.dustin.board.common.code.BoardType;
-import io.dustin.board.common.code.YesOrNo;
 import io.dustin.board.domain.community.posting.model.dto.PostingDto;
 import io.dustin.board.domain.community.posting.repository.custom.CustomPostingRepository;
+import io.dustin.board.common.code.BoardType;
+import io.dustin.common.code.YesOrNo;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;

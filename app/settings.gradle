@@ -6,5 +6,9 @@ findProject(':domain:board-domain')?.name = 'board-domain'
 include 'project'
 include 'project:board'
 findProject(':project:board')?.name = 'board'
-
+include 'domain:admin-domain'
+findProject(':domain:admin-domain')?.name = 'admin-domain'
+include 'project:admin'
+findProject(':project:admin')?.name = 'admin'
+include 'common'
 

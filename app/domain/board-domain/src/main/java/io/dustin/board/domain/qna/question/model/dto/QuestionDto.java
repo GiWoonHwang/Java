@@ -1,7 +1,7 @@
 package io.dustin.board.domain.qna.question.model.dto;
 
-import io.dustin.board.common.model.IdAble;
 import io.dustin.board.domain.qna.question.model.Question;
+import io.dustin.common.model.IdAble;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Builder;

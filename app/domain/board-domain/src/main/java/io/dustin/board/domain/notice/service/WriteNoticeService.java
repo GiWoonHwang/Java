@@ -1,10 +1,10 @@
 package io.dustin.board.domain.notice.service;
 
 
-import io.dustin.board.common.exception.DataNotFoundException;
 import io.dustin.board.domain.like.model.LikeCountService;
 import io.dustin.board.domain.notice.model.Notice;
 import io.dustin.board.domain.notice.repository.NoticeRepository;
+import io.dustin.common.exception.DataNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

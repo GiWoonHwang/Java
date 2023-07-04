@@ -1,7 +1,7 @@
 package io.dustin.board.domain.community.comment.model;
 
 import static com.querydsl.core.types.PathMetadataFactory.*;
-import io.dustin.board.common.model.extension.*;
+import io.dustin.board.common.extenstion.*;
 
 import com.querydsl.core.types.dsl.*;
 
@@ -20,7 +20,7 @@ public class QComment extends EntityPathBase<Comment> {
 
     public static final QComment comment = new QComment("comment");
 
-    public final io.dustin.board.common.model.QBaseEntity _super = new io.dustin.board.common.model.QBaseEntity(this);
+    public final io.dustin.common.model.QBaseEntity _super = new io.dustin.common.model.QBaseEntity(this);
 
     public final NumberPath<Long> clickCount = createNumber("clickCount", Long.class);
 
@@ -31,7 +31,7 @@ public class QComment extends EntityPathBase<Comment> {
 
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
-    public final EnumPath<io.dustin.board.common.code.YesOrNo> isDeleted = createEnum("isDeleted", io.dustin.board.common.code.YesOrNo.class);
+    public final EnumPath<io.dustin.common.code.YesOrNo> isDeleted = createEnum("isDeleted", io.dustin.common.code.YesOrNo.class);
 
     public final NumberPath<Long> likeCount = createNumber("likeCount", Long.class);
 

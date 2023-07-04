@@ -54,5 +54,17 @@ subprojects {
 project(":project:board") {
 	dependencies {
 		implementation project(":domain:board-domain")
+		implementation project(":common:")
+
+	}
+
+}
+
+project(":project:admin") {
+	dependencies {
+		implementation project(":domain:admin-domain")
+		implementation project(":common:")
 	}
 }
+
+

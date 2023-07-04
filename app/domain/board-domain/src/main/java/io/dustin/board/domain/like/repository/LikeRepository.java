@@ -1,9 +1,9 @@
 package io.dustin.board.domain.like.repository;
 
 
-import io.dustin.board.common.code.BoardType;
-import io.dustin.board.common.repository.BaseRepository;
 import io.dustin.board.domain.like.model.Like;
+import io.dustin.board.common.code.BoardType;
+import io.dustin.common.repository.BaseRepository;
 
 import java.util.Optional;
 

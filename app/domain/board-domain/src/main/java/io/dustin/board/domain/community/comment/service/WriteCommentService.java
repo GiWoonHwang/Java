@@ -1,9 +1,9 @@
 package io.dustin.board.domain.community.comment.service;
 
-import io.dustin.board.common.exception.DataNotFoundException;
 import io.dustin.board.domain.community.comment.model.Comment;
 import io.dustin.board.domain.community.comment.repository.CommentRepository;
 import io.dustin.board.domain.like.model.LikeCountService;
+import io.dustin.common.exception.DataNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -19,7 +19,7 @@ public class QLike extends EntityPathBase<Like> {
 
     public static final QLike like = new QLike("like1");
 
-    public final io.dustin.board.common.model.QBaseEntity _super = new io.dustin.board.common.model.QBaseEntity(this);
+    public final io.dustin.common.model.QBaseEntity _super = new io.dustin.common.model.QBaseEntity(this);
 
     public final NumberPath<Long> boardId = createNumber("boardId", Long.class);
 

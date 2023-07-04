@@ -6,7 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import static io.dustin.board.common.utils.OptionalUtils.getEntity;
+import static io.dustin.common.utils.OptionalUtils.getEntity;
+
 
 @RequiredArgsConstructor
 @Service
