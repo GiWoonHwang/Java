@@ -1,4 +1,4 @@
-package io.dustin.apps.board.domain.BlockedUser.model;
+package io.dustin.apps.board.domain.blockeduser.model;
 
 import io.dustin.apps.common.model.BaseEntity;
 import jakarta.persistence.*;

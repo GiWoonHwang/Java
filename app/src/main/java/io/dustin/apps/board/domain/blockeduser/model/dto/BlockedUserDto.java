@@ -1,6 +1,6 @@
-package io.dustin.apps.board.domain.BlockedUser.model.dto;
+package io.dustin.apps.board.domain.blockeduser.model.dto;
 
-import io.dustin.apps.board.domain.BlockedUser.model.BlockedUser;
+import io.dustin.apps.board.domain.blockeduser.model.BlockedUser;
 import io.dustin.apps.board.domain.bookmark.model.Bookmark;
 import io.dustin.apps.board.domain.bookmark.model.dto.BookMarkDto;
 import lombok.Builder;

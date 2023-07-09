@@ -1,9 +1,9 @@
 package io.dustin.apps.board.api.usecase.blockeduser;
 
-import io.dustin.apps.board.domain.BlockedUser.model.BlockedUser;
-import io.dustin.apps.board.domain.BlockedUser.model.dto.BlockedUserDto;
-import io.dustin.apps.board.domain.BlockedUser.service.ReadBlockedUserService;
-import io.dustin.apps.board.domain.BlockedUser.service.WriteBlockedUserService;
+import io.dustin.apps.board.domain.blockeduser.model.BlockedUser;
+import io.dustin.apps.board.domain.blockeduser.model.dto.BlockedUserDto;
+import io.dustin.apps.board.domain.blockeduser.service.ReadBlockedUserService;
+import io.dustin.apps.board.domain.blockeduser.service.WriteBlockedUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;

@@ -2,8 +2,7 @@ package io.dustin.apps.board.api.blockeduser;
 
 import io.dustin.apps.board.api.usecase.blockeduser.DeleteBlockedUserUseCase;
 import io.dustin.apps.board.api.usecase.blockeduser.WriteBlockedUserUseCase;
-import io.dustin.apps.board.domain.BlockedUser.model.dto.BlockedUserDto;
-import io.dustin.apps.board.domain.bookmark.model.dto.BookMarkDto;
+import io.dustin.apps.board.domain.blockeduser.model.dto.BlockedUserDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

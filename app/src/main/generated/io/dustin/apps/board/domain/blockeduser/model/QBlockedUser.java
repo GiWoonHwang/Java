@@ -1,4 +1,4 @@
-package io.dustin.apps.board.domain.BlockedUser.model;
+package io.dustin.apps.board.domain.blockeduser.model;
 
 import static com.querydsl.core.types.PathMetadataFactory.*;
 
@@ -15,7 +15,7 @@ import com.querydsl.core.types.Path;
 @Generated("com.querydsl.codegen.DefaultEntitySerializer")
 public class QBlockedUser extends EntityPathBase<BlockedUser> {
 
-    private static final long serialVersionUID = 1671444102L;
+    private static final long serialVersionUID = 1582570118L;
 
     public static final QBlockedUser blockedUser = new QBlockedUser("blockedUser");
 

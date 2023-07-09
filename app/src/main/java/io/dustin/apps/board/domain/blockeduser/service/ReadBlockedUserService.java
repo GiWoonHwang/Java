@@ -1,9 +1,8 @@
-package io.dustin.apps.board.domain.BlockedUser.service;
+package io.dustin.apps.board.domain.blockeduser.service;
 
 
-import io.dustin.apps.board.domain.BlockedUser.model.BlockedUser;
-import io.dustin.apps.board.domain.BlockedUser.repository.BlockedUserRepository;
-import io.dustin.apps.board.domain.bookmark.model.Bookmark;
+import io.dustin.apps.board.domain.blockeduser.model.BlockedUser;
+import io.dustin.apps.board.domain.blockeduser.repository.BlockedUserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

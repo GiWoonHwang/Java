@@ -92,7 +92,7 @@ public class CustomPostingRepositoryImpl implements CustomPostingRepository {
                     booleanBuilder,
                     posting.isDeleted.ne(YesOrNo.Y)
                     /**
-                      * 차단,제한 테일블에서 userId가 차단한 유저의 id,  userId를 차단한 유저의 id 리스트를 찾아서 그 유저들이 만든 게시물은 보이지 않아야 한다.
+                      * 차단,제한 테이블에서 userId가 차단한 유저의 id,  userId를 차단한 유저의 id 리스트를 찾아서 그 유저들이 만든 게시물은 보이지 않아야 한다.
                     */
 
                 )
