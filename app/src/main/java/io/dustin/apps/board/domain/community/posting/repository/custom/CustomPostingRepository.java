@@ -10,4 +10,8 @@ public interface CustomPostingRepository {
 
     List<PostingDto> getPostingList(long userId, Long nextId, int size);
 
+    PostingDto getMyPosting(long userId, long postingId);
+//
+    List<PostingDto> getMyPostingList(long userId, Long nextId, int size);
+
 }

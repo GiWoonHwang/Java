@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
-@Profile("localcache")
+@Profile("local cache")
 public class LocalCacheService implements CacheService {
     @Override
     public String cached() {

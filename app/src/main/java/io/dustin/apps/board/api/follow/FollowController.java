@@ -13,8 +13,8 @@ public class FollowController {
     private final WriteFollowUseCase writeFollowUseCase;
     private final DeleteFollowUseCase deleteFollowUseCase;
 
-    @PostMapping("follow/{id}")
-    public FollowDto follow(@PathVariable("id") Long followingId, @RequestBody FollowDto followDto) {
+    @PostMapping("follow/{followingId}")
+    public FollowDto follow(@PathVariable("followingId") Long followingId, @RequestBody FollowDto followDto) {
         /**
          * {id} 에 해당하는 유저 팔로워 증가 및 로그인 유저 팔로잉 증가 로직 필요
          * */
@@ -22,8 +22,8 @@ public class FollowController {
 
     }
 
-    @DeleteMapping("unfollow/{id}")
-    public FollowDto unfollow(@PathVariable("id") Long followingId, @RequestBody FollowDto followDto) {
+    @DeleteMapping("unfollow/{followingId}")
+    public FollowDto unfollow(@PathVariable("followingId") Long followingId, @RequestBody FollowDto followDto) {
         /**
          * {id} 에 해당하는 유저 팔로워 감소 및 로그인 유저 팔로잉 감소 로직 필요
          * */
