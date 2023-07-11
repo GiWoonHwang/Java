@@ -2,12 +2,22 @@ package io.dustin.apps.board.api;
 
 import io.dustin.apps.board.domain.like.model.LikeCountService;
 import io.dustin.apps.board.domain.like.model.dto.LikeItCommand;
+import io.dustin.apps.board.domain.test.CacheService;
 import io.dustin.apps.common.model.QueryPage;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/test")
+@RequiredArgsConstructor
 public class TestController {
+
+    private final CacheService service;
+
+    @GetMapping("/mytest")
+    public String test() {
+        return service.cached();
+    }
 
     @PostMapping("/like")
     public String like(QueryPage queryPage, @RequestBody LikeItCommand command) {

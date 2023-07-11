@@ -1,5 +1,14 @@
+spring:
+  profiles:
+    #active: local, redis
+    active: local, local cache, scheduled
+
+---
 # DATABASE
 spring:
+  config:
+    activate:
+      on-profile: local
   datasource:
     url: jdbc:postgresql://localhost:5432/sbb
     driver-class-name: org.postgresql.Driver
