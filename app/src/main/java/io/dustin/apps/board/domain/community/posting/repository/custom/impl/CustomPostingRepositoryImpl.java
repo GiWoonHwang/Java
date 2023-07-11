@@ -4,6 +4,9 @@ import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.dsl.CaseBuilder;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import io.dustin.apps.board.domain.blockeduser.model.BlockedUser;
+import io.dustin.apps.board.domain.blockeduser.repository.BlockedUserRepository;
+import io.dustin.apps.board.domain.blockeduser.service.ReadBlockedUserService;
 import io.dustin.apps.board.domain.community.posting.model.dto.PostingDto;
 import io.dustin.apps.board.domain.community.posting.repository.custom.CustomPostingRepository;
 import io.dustin.apps.common.code.BoardType;
@@ -11,6 +14,7 @@ import io.dustin.apps.common.code.YesOrNo;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static com.querydsl.core.types.Projections.constructor;
 import static io.dustin.apps.board.domain.bookmark.model.QBookmark.bookmark;
@@ -21,6 +25,10 @@ import static io.dustin.apps.board.domain.like.model.QLike.like;
 public class CustomPostingRepositoryImpl implements CustomPostingRepository {
 
     private final JPAQueryFactory query;
+    private final ReadBlockedUserService readBlockedUserService;
+
+
+
 
     @Override
     public PostingDto getPosting(long userId, long postingId) {
@@ -64,6 +72,19 @@ public class CustomPostingRepositoryImpl implements CustomPostingRepository {
         if(nextId != null) {
             booleanBuilder.and(posting.id.lt(nextId));
         }
+
+        /** userID가 차단한 리스트를 가져온다*/
+        List<BlockedUser> toUserIdList = readBlockedUserService.getToUserIdList(userId);
+        List<Long> toUserIds = toUserIdList.stream().map(BlockedUser::getToUserId).collect(Collectors.toList());
+
+        /** userID를 차단한 리스트를 가져온다*/
+        List<BlockedUser> fromUserIdList = readBlockedUserService.getFromUserIdList(userId);
+        List<Long> fromUserIds = fromUserIdList.stream().map(BlockedUser::getFromUserId).collect(Collectors.toList());
+
+
+
+        booleanBuilder.and(posting.userId.notIn(toUserIds).and(posting.userId.notIn(fromUserIds)));
+
 
         JPAQuery<PostingDto> jPAQuery = query.select(constructor(PostingDto.class,
                         posting.id,
