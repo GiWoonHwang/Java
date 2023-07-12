@@ -2,6 +2,7 @@ package io.dustin.apps.board.domain.community.posting.service;
 
 import io.dustin.apps.board.domain.community.posting.model.Posting;
 import io.dustin.apps.board.domain.community.posting.model.dto.PostingDto;
+import io.dustin.apps.board.domain.community.posting.model.dto.PostingListDto;
 import io.dustin.apps.board.domain.community.posting.repository.PostingRepository;
 import io.dustin.apps.common.exception.DataNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -18,13 +19,12 @@ public class ReadPostingService {
     private final PostingRepository postingRepository;
 
     @Transactional(readOnly = true)
-    public
-    PostingDto getPosting(long userId, long postingId) {
+    public PostingDto getPosting(long userId, long postingId) {
         return postingRepository.getPosting(userId, postingId);
     }
 
     @Transactional(readOnly = true)
-    public List<PostingDto> getPostingList(long userId, Long nextId, int size) {
+    public List<PostingListDto> getPostingList(long userId, Long nextId, int size) {
         return postingRepository.getPostingList(userId, nextId, size);
     }
 

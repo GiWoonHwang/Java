@@ -5,6 +5,7 @@ import io.dustin.apps.board.domain.community.comment.model.dto.CommentDto;
 import io.dustin.apps.board.domain.community.comment.service.ReadCommentService;
 import io.dustin.apps.board.domain.community.posting.model.dto.PostingDetailDto;
 import io.dustin.apps.board.domain.community.posting.model.dto.PostingDto;
+import io.dustin.apps.board.domain.community.posting.model.dto.PostingListDto;
 import io.dustin.apps.board.domain.community.posting.service.ReadPostingService;
 import io.dustin.apps.board.domain.community.posting.service.WritePostingService;
 import io.dustin.apps.common.model.CountByPagingInfo;
@@ -27,7 +28,7 @@ public class ReadPostingUseCase {
     private final WritePostingService writePostingService;
     private final ReadCommentUseCase readCommentUseCase;
 
-    public ResponseWithScroll<List<PostingDto>> execute(QueryPage queryPage) {
+    public ResponseWithScroll<List<PostingListDto>> execute(QueryPage queryPage) {
         /**
          * 게시물 리스트 보여줌
          */
@@ -35,8 +36,8 @@ public class ReadPostingUseCase {
         int realSize = queryPage.getSize();
         int querySize = realSize + 1;
 
-        List<PostingDto> result = readPostingService.getPostingList(userId, queryPage.getNextId(), querySize);
-        CountByPagingInfo<PostingDto> cbi = getCountByPagingInfo(result, realSize);
+        List<PostingListDto> result = readPostingService.getPostingList(userId, queryPage.getNextId(), querySize);
+        CountByPagingInfo<PostingListDto> cbi = getCountByPagingInfo(result, realSize);
 
         return ResponseWithScroll.from(cbi.result(), cbi.isLast(), cbi.nextId());
 
