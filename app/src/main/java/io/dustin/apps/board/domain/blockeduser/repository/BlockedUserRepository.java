@@ -8,7 +8,6 @@ import java.util.Optional;
 
 public interface BlockedUserRepository extends BaseRepository<BlockedUser, Long> {
 
-
     void deleteByFromUserIdAndToUserId(Long fromUserId, Long toUserId);
     Optional<BlockedUser> findByFromUserIdAndToUserId(Long fromUserId, Long toUserId);
     List<BlockedUser> findByFromUserId(Long fromUserId);
