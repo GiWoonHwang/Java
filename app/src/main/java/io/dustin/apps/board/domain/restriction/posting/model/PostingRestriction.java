@@ -1,5 +1,6 @@
 package io.dustin.apps.board.domain.restriction.posting.model;
 
+import io.dustin.apps.common.model.BaseEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
@@ -12,7 +13,7 @@ import org.hibernate.annotations.DynamicUpdate;
 @Entity
 @DynamicUpdate
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class PostingRestriction {
+public class PostingRestriction extends BaseEntity {
 
     @Builder
     public PostingRestriction(Long id, @NotNull Long fromUserId, @NotNull Long toUserId, @NotNull Long postingId) {

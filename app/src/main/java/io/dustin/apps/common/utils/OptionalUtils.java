@@ -14,7 +14,7 @@ public class OptionalUtils {
         if(optional.isPresent()) {
             return optional.get();
         } else {
-            throw new DataNotFoundException(errorMessage);
+            throw new DataNotFoundException("데이터가 없습니다.");
         }
     }
 

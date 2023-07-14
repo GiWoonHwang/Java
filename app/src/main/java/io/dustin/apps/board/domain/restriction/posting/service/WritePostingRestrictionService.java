@@ -20,4 +20,6 @@ public class WritePostingRestrictionService {
         this.postingRestrictionRepository.save(postingRestriction);
         return postingRestriction;
     }
+
+    public void delete(Long fromUserId, Long toUserId, Long postingId) { postingRestrictionRepository.deleteByFromUserIdAndToUserIdAndPostingId(fromUserId, toUserId, postingId); }
 }

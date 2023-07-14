@@ -30,7 +30,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(BadRequestParameterException.class)
     protected ApiError handleBadRequestParameterException(BadRequestParameterException e) {
         return ApiError.builder()
-                .status(HttpStatus.NOT_FOUND.value())
+                .status(HttpStatus.BAD_REQUEST.value())
                 .message(e.getMessage())
                 .timestamp(SelectDate.TYPE_FOUR.transform(now()))
                 .build();

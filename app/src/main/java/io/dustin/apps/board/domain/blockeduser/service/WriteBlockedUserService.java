@@ -22,7 +22,7 @@ public class WriteBlockedUserService {
     }
 
     @Transactional
-    public void delete(Long fromUserId, Long toUserId) { this.blockedUserRepository.deleteByFromUserIdAndToUserId(fromUserId, toUserId);}
+    public void delete(Long fromUserId, Long toUserId) { blockedUserRepository.deleteByFromUserIdAndToUserId(fromUserId, toUserId);}
 
 
 
