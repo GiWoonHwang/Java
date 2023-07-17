@@ -3,6 +3,7 @@ package io.dustin.apps.board.api;
 import io.dustin.apps.board.domain.like.model.LikeCountService;
 import io.dustin.apps.board.domain.like.model.dto.LikeItCommand;
 import io.dustin.apps.board.domain.test.CacheService;
+import io.dustin.apps.common.annotations.AuthToken;
 import io.dustin.apps.common.model.QueryPage;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +14,11 @@ import org.springframework.web.bind.annotation.*;
 public class TestController {
 
     private final CacheService service;
+
+    @GetMapping("/resolverTest")
+    public String resolverTest(@AuthToken String token) {
+        return token;
+    }
 
     @GetMapping("/mytest")
     public String test() {

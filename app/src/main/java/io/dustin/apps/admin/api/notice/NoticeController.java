@@ -5,6 +5,7 @@ import io.dustin.apps.admin.api.usecase.notice.ModifyNoticeUseCase;
 import io.dustin.apps.admin.api.usecase.notice.ReadNoticeUseCase;
 import io.dustin.apps.admin.api.usecase.notice.WriteNoticeUseCase;
 import io.dustin.apps.admin.domain.notice.model.dto.NoticeDto;
+import io.dustin.apps.common.annotations.AuthToken;
 import io.dustin.apps.common.model.QueryPage;
 import io.dustin.apps.common.model.ResponseWithScroll;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +20,8 @@ public class NoticeController {
     private final WriteNoticeUseCase writeNoticeUseCase;
     private final ModifyNoticeUseCase modifyNoticeUseCase;
     private final DeleteNoticeUseCase deleteNoticeUseCase;
+
+
 
 
     @GetMapping("/all")

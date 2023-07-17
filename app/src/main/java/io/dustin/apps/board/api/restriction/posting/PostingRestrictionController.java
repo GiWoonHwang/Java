@@ -15,5 +15,5 @@ public class PostingRestrictionController {
     private final WritePostingRestrictionUseCase writePostingRestrictionUseCase;
     private final DeletePostingRestrictionUseCase deletePostingRestrictionUseCase;
 
-    @PostMapping("restriction/{fromUserId}/")
+    //@PostMapping("restriction/{fromUserId}/")
 }
