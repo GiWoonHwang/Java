@@ -12,7 +12,7 @@ import java.util.List;
 
 import static com.querydsl.core.types.Projections.bean;
 import static io.dustin.apps.board.domain.like.model.QLike.like;
-import static io.dustin.apps.user.domain.model.QSiteUser.siteUser;
+import static io.dustin.apps.board.domain.user.model.QSiteUser.siteUser;
 
 @RequiredArgsConstructor
 public class CustomUserRepositoryImpl implements CustomUserRepository {
