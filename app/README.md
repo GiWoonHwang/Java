@@ -1,6 +1,5 @@
 ```
 개발에 사용 및 필요한 skill 및 이론은 skills에 정리
-test
 
 --- io.dustin
 
