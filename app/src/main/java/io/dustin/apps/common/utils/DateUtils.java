@@ -7,10 +7,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
-/**
- * date utils
- * created by basquiat
- */
+
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class DateUtils {
 
