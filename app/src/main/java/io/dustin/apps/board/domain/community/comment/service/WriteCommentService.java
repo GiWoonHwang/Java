@@ -39,13 +39,16 @@ public class WriteCommentService implements LikeCountService {
 
 
     @Override
-    public void likeCount(long commentId) { System.out.println("댓글 id : [" + commentId + "] 좋아요 수 증가");
+    @Transactional
+    public void likeCount(long commentId) {
+        System.out.println("댓글 id : [" + commentId + "] 좋아요 수 증가");
         Comment comment = this.findByIdOrThrow(commentId);
         Long likeCount = comment.getLikeCount() + 1;
         comment.setLikeCount(likeCount);
     }
 
     @Override
+    @Transactional
     public void likeUnCount(long commentId) {
         System.out.println("댓글 id : [" + commentId + "] 좋아요 수 감소");
         Comment comment = this.findByIdOrThrow(commentId);
