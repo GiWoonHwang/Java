@@ -31,8 +31,8 @@ dependencies {
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 
 	/**spring security*/
-	// https://mvnrepository.com/artifact/org.springframework.security/spring-security-crypto
-	implementation 'org.springframework.security:spring-security-crypto:6.1.0'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	testImplementation 'org.springframework.security:spring-security-test'
 
 	// Querydsl 추가
 	implementation 'com.querydsl:querydsl-jpa:5.0.0:jakarta'
