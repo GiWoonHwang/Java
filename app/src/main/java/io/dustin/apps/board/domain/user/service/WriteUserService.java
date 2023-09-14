@@ -3,7 +3,6 @@ package io.dustin.apps.board.domain.user.service;
 import io.dustin.apps.board.domain.user.model.SiteUser;
 import io.dustin.apps.board.domain.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
@@ -11,13 +10,12 @@ import org.springframework.stereotype.Service;
 public class WriteUserService {
 
     private final UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
 
     public SiteUser create(String nickName, String email, String password) {
         SiteUser user = SiteUser.builder()
                 .nickName(nickName)
                 .email(email)
-                .password(passwordEncoder.encode(password))
+                .password(password)
                 .build();
         return userRepository.save(user);
     }
