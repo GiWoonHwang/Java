@@ -2,6 +2,12 @@ spring:
   profiles:
     #active: local, redis
     active: local, local cache
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+
+
 
 ---
 # DATABASE
@@ -25,7 +31,14 @@ spring:
       #       ddl-auto: create
       ddl-auto: update
 
-
+jwt:
+  issuer: dustin
+  subject: dustinsprc
+  # 초단위 3600 -> 1시간
+  #expired-at: 3600
+  expired-at: 60
+  secret: dutinssecurityprc
+  prefix: Bearer
 
 server:
   error:
