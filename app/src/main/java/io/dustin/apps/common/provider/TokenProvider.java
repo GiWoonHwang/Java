@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 import java.security.Key;
 import java.util.Date;
 
-@Component
+//@Component
 @Slf4j
 public class TokenProvider {
 
