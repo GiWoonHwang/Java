@@ -1,0 +1,8 @@
+
+f
+java:S1192."QDefine a constant instead of duplicating this literal "ê²Œì‹œë¬¼ id : [" 4 times.(¼€’2
+S	java:S106>"9Replace this use of System.out or System.err by a logger.(ë“šøúÿÿÿÿ
+N	java:S106F"9Replace this use of System.out or System.err by a logger.(‹ÔË€
+N	java:S106O"9Replace this use of System.out or System.err by a logger.(‚¾ë©
+B
+java:S5663c",Use simple literal for a single-line string.(Œ Èò
